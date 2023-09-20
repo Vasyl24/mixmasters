@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
 
 :root {
 
@@ -93,5 +93,3 @@ input {
   }
 }
 `;
-
-export default GlobalStyles;
