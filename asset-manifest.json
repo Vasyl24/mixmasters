@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/drinkmaster_team5/static/css/main.7acaea2f.css",
-    "main.js": "/drinkmaster_team5/static/js/main.ef88981f.js",
-    "index.html": "/drinkmaster_team5/index.html",
-    "main.7acaea2f.css.map": "/drinkmaster_team5/static/css/main.7acaea2f.css.map",
-    "main.ef88981f.js.map": "/drinkmaster_team5/static/js/main.ef88981f.js.map"
+    "main.css": "/drinkmaster-team5/static/css/main.e7f0bbeb.css",
+    "main.js": "/drinkmaster-team5/static/js/main.bb604257.js",
+    "static/media/background.png": "/drinkmaster-team5/static/media/background.428f994329e6f779724d.png",
+    "static/media/sprite.svg": "/drinkmaster-team5/static/media/sprite.108b2c4d106897ba69faadf9d930edae.svg",
+    "index.html": "/drinkmaster-team5/index.html",
+    "main.e7f0bbeb.css.map": "/drinkmaster-team5/static/css/main.e7f0bbeb.css.map",
+    "main.bb604257.js.map": "/drinkmaster-team5/static/js/main.bb604257.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.ef88981f.js"
+    "static/css/main.e7f0bbeb.css",
+    "static/js/main.bb604257.js"
   ]
 }
