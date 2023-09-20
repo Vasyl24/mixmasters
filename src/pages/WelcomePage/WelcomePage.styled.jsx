@@ -1,6 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const ContainerWelcome = styled.div`
   max-width: 335px;
@@ -10,6 +9,7 @@ export const ContainerWelcome = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 10;
+
 
   @media (min-width: 768px) {
     max-width: 470px;
@@ -69,7 +69,7 @@ export const BtnStart = styled(NavLink)`
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
   cursor: pointer;
-  transition: background $transitionDuration $transitionTimingFunction;
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (min-width: 768px) {
     padding: 18px 44px;
@@ -81,19 +81,3 @@ export const BtnStart = styled(NavLink)`
     color: #f3f3f3;
   }
 `;
-
-export default function WelcomePage() {
-  return (
-    <ContainerWelcome>
-      <TitleStart>Welcome to the app!</TitleStart>
-      <TextStart>
-        This app offers more than just a collection of recipes - it is designed to be your very
-        own digital cookbook. You can easily save and retrieve your own recipes at any time.
-      </TextStart>
-      <ListStart>
-        <BtnStart to="signup">Sign Up</BtnStart>
-        <BtnStart to="signin">Sign In</BtnStart>
-      </ListStart>
-    </ContainerWelcome>
-  );
-}
