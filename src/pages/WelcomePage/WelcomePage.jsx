@@ -1,15 +1,25 @@
-const WelcomePage = () => {
-  return (
-    <p
-      style={{
-        color: 'white',
-        textAlign: 'center',
-        marginTop: 600,
-      }}
-    >
-      Start Page
-    </p>
-  );
-};
+import React from 'react';
+import {
+  ContainerWelcome,
+  TitleStart,
+  TextStart,
+  ListStart,
+  BtnStart,
+} from './WelcomePage.styled';
 
-export default WelcomePage;
+export default function WelcomePage() {
+  return (
+    <ContainerWelcome>
+      <TitleStart>Welcome to the app!</TitleStart>
+      <TextStart>
+        This app offers more than just a collection of recipes - it is designed
+        to be your very own digital cookbook. You can easily save and retrieve
+        your own recipes at any time.
+      </TextStart>
+      <ListStart>
+        <BtnStart to="signup">Sign Up</BtnStart>
+        <BtnStart to="signin">Sign In</BtnStart>
+      </ListStart>
+    </ContainerWelcome>
+  );
+}
