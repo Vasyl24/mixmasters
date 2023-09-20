@@ -1,4 +1,4 @@
-const MainPage = () => {
+const WelcomePage = () => {
   return (
     <p
       style={{
@@ -7,9 +7,9 @@ const MainPage = () => {
         marginTop: 600,
       }}
     >
-      Main Page
+      Start Page
     </p>
   );
 };
 
-export default MainPage;
+export default WelcomePage;

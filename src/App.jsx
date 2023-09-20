@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './components/SharedLayout/SharedLayout';
-import StartPage from './pages/StartPage/StartPage';
-import MainPage from './pages/MainPage/MainPage';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
+import HomePage from './pages/HomePage/HomePage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 function App() {
@@ -9,8 +9,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route path="/start" element={<StartPage />} />
-          <Route path="/main" element={<MainPage />} />
+          <Route path="/start" element={<WelcomePage />} />
+          <Route path="/main" element={<HomePage />} />
 
           <Route path="*" element={<ErrorPage />} />
         </Route>
