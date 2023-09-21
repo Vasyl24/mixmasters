@@ -20,7 +20,7 @@ export const ContainerLayout = styled.div`
     rgba(6, 6, 9, 1),
     rgba(10, 10, 17, 0)
   ),
-  url(${welcomesm1x});
+  url(${welcomemd1x});
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -30,7 +30,7 @@ export const ContainerLayout = styled.div`
       rgba(6, 6, 9, 1),
       rgba(10, 10, 17, 0)
     ),
-    url(${welcomesm2x});
+    url(${welcomemd2x});
   }
 
   @media (max-width: 768px) {
@@ -41,7 +41,7 @@ export const ContainerLayout = styled.div`
       rgba(6, 6, 9, 1),
       rgba(10, 10, 17, 0)
     ),
-    url(${welcomemd1x});
+    url(${welcomesm1x});
     
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -51,7 +51,7 @@ export const ContainerLayout = styled.div`
         rgba(6, 6, 9, 1),
         rgba(10, 10, 17, 0)
       ),
-      url(${welcomemd2x});
+      url(${welcomesm2x});
     }
   }
 

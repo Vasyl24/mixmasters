@@ -5,6 +5,7 @@ import {
   TextStart,
   ListStart,
   BtnStart,
+  BtnFinish
 } from './WelcomePage.styled';
 
 export default function WelcomePage() {
@@ -18,7 +19,7 @@ export default function WelcomePage() {
       </TextStart>
       <ListStart>
         <BtnStart to="signup">Sign Up</BtnStart>
-        <BtnStart to="signin">Sign In</BtnStart>
+        <BtnFinish to="signin">Sign In</BtnFinish>
       </ListStart>
     </ContainerWelcome>
   );
