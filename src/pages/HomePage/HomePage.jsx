@@ -1,15 +1,5 @@
 const HomePage = () => {
-  return (
-    <p
-      style={{
-        color: 'white',
-        textAlign: 'center',
-        marginTop: 600,
-      }}
-    >
-      Main Page
-    </p>
-  );
+  return <></>;
 };
 
 export default HomePage;

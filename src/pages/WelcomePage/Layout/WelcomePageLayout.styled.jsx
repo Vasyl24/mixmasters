@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import welcomesm1x from '../../../assets/welcomesm@1x.png';
 import welcomesm2x from '../../../assets/welcomesm@2x.png';
 import welcomemd1x from '../../../assets/welcomemd@1x.png';
@@ -57,7 +57,6 @@ export const ContainerLayout = styled.div`
 
   @media (min-width: 1024px) {
     justify-content: left;
-    padding-left: 100px;
     background-image: linear-gradient(
       to right,
       rgba(6, 6, 9, 1),
@@ -77,5 +76,49 @@ export const ContainerLayout = styled.div`
     }
   }
 `;
+const mainTitleAnimation = keyframes`
+ 0%,
+ 100% {
+  transform: translateY(0) scale(1) rotate(0);
+  opacity: 1;
+ }
+ 25% {
+  transform: translateY(-50px) scale(0.8) rotate(45deg);
+  opacity: 0.5;
+ }
+ 50% {
+  transform: translateY(-100px) scale(0.6) rotate(90deg);
+  opacity: 0.2;
+ }
+ 75% {
+  transform: translateY(-50px) scale(0.8) rotate(45deg);
+  opacity: 0.5;
+ }
+}`
 
+export const GradientContainer = styled.div`
+    width: 50vw;
+ height: 130vh;
+ background: radial-gradient(ellipse, rgba(64, 112, 205, 0.5), transparent);
+ top: -50%;
+ left: -28%;
+ z-index: 3;
+ border-radius: 50%;
+ position: absolute;
+ filter: blur(50px);
+ animation: ${mainTitleAnimation} 8s ease-in-out infinite;
+`;
+
+export const CircleContainer = styled.div`
+    width: 32vw;
+ height: 75vh;
+ background: radial-gradient(circle, rgba(188, 230, 210, 0.4), transparent);
+ filter: blur(40px);
+ top: -35%;
+ left: 10%;
+ z-index: 10;
+ border-radius: 50%;
+ position: absolute;
+ animation: ${mainTitleAnimation} 8s ease-in-out infinite 2s;;
+`;
 
