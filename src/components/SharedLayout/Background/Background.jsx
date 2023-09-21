@@ -1,13 +1,18 @@
 import React from 'react';
-import {ContainerLayout, GradientContainer, CircleContainer } from './Background.styled'
+import {
+  ContainerLayout,
+  GradientContainer,
+  CircleContainer,
+} from './Background.styled';
 
 const Background = ({ children }) => {
-    return (
+  return (
     <>
-        <ContainerLayout />
-        <GradientContainer />
-        <CircleContainer />
-        {/* <GradienFooter /> */}       
+      {children}
+      <ContainerLayout />
+      <GradientContainer />
+      <CircleContainer />
+      {/* <GradienFooter /> */}
     </>
   );
 };

@@ -4,21 +4,20 @@ import SharedLayout from './components/SharedLayout/SharedLayout';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import HomePage from './pages/HomePage/HomePage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
-import { GlobalStyles } from './App.styled';
 import { WelcomePageLayout } from './pages/WelcomePage/Layout/WelcomePageLayout';
 
 function App() {
   return (
     <>
-      <GlobalStyles />
+      {/* <GlobalStyles /> */}
 
       <Routes>
-        <Route path="/welcome" element={<WelcomePageLayout />}>
-          <Route index element={<WelcomePage />} />
+        <Route element={<WelcomePageLayout />}>
+          <Route path="/welcome" index element={<WelcomePage />} />
         </Route>
 
         <Route path="/" element={<SharedLayout />}>
-          <Route path="/home" element={<HomePage />} />
+          <Route path="home" element={<HomePage />} />
           {/* <Route path="/drinks" element={<DrinksPage />} /> */}
           {/* <Route path="/add" element={<AddDrinkPage />} /> */}
           {/* <Route path="/my" element={<MyDrinksPage />} /> */}
