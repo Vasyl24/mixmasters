@@ -18,55 +18,57 @@ const mainTitleAnimation = keyframes`
 		transform: translateY(-50px) scale(0.8) rotate(45deg);
 		opacity: 0.5;
 	}
-}`
+}`;
 
 export const ContainerLayout = styled.div`
-    width: 100vw;
-	height: 100vh;
-	display: flex;
-	background-size: contain;
-	justify-content: center;
-	align-items: center;
-	background-position: right;
-	background-repeat: no-repeat;
-	background-image: linear-gradient(to right, rgba(6, 6, 9, 1), rgba(10, 10, 17, 0)),
+  display: flex;
+  background-size: contain;
+  justify-content: center;
+  align-items: center;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+    to right,
+    rgba(6, 6, 9, 1),
+    rgba(10, 10, 17, 0)
+  );
 `;
 
 export const GradientContainer = styled.div`
-    width: 50vw;
-	height: 130vh;
-	background: radial-gradient(ellipse, rgba(64, 112, 205, 0.5), transparent);
-	top: -50%;
-	left: -28%;
-	z-index: 3;
-	border-radius: 50%;
-	position: absolute;
-	filter: blur(50px);
-	animation: ${mainTitleAnimation} 8s ease-in-out infinite;
+  width: 50vw;
+  height: 130vh;
+  background: radial-gradient(ellipse, rgba(64, 112, 205, 0.5), transparent);
+  top: -50%;
+  left: -28%;
+  z-index: 3;
+  border-radius: 50%;
+  position: absolute;
+  filter: blur(50px);
+  animation: ${mainTitleAnimation} 8s ease-in-out infinite;
 `;
 
 export const CircleContainer = styled.div`
-    width: 32vw;
-	height: 75vh;
-	background: radial-gradient(circle, rgba(188, 230, 210, 0.4), transparent);
-	filter: blur(40px);
-	top: -35%;
-	left: 10%;
-	z-index: 10;
-	border-radius: 50%;
-	position: absolute;
-	animation: ${mainTitleAnimation} 8s ease-in-out infinite 2s;;
+  width: 32vw;
+  height: 75vh;
+  background: radial-gradient(circle, rgba(188, 230, 210, 0.4), transparent);
+  filter: blur(40px);
+  top: -35%;
+  left: 10%;
+  z-index: 10;
+  border-radius: 50%;
+  position: absolute;
+  animation: ${mainTitleAnimation} 8s ease-in-out infinite 2s;
 `;
 
 export const GradienFooter = styled.div`
-   width: 32vw;
-	height: 75vh;
-	background: radial-gradient(circle, rgba(188, 230, 210, 0.4), transparent);
-	filter: blur(50px);
-	bottom: -60%;
-	left: 40%;
-	z-index: 10;
-	border-radius: 50%;
-	position: absolute;
-	animation: ${mainTitleAnimation} 8s ease-in-out infinite 2s;;
+  width: 32vw;
+  height: 75vh;
+  background: radial-gradient(circle, rgba(188, 230, 210, 0.4), transparent);
+  filter: blur(50px);
+  bottom: -60%;
+  left: 40%;
+  z-index: 10;
+  border-radius: 50%;
+  position: absolute;
+  animation: ${mainTitleAnimation} 8s ease-in-out infinite 2s;
 `;
