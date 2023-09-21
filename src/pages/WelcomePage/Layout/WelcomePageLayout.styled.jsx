@@ -57,7 +57,6 @@ export const ContainerLayout = styled.div`
 
   @media (min-width: 1024px) {
     justify-content: left;
-    padding-left: 100px;
     background-image: linear-gradient(
       to right,
       rgba(6, 6, 9, 1),

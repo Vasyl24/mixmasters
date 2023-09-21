@@ -20,6 +20,7 @@ export const ContainerWelcome = styled.div`
 
   @media (min-width: 1024px) {
     max-width: 485px;
+    padding-left: 100px;
   }
 `;
 
