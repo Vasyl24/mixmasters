@@ -13,11 +13,16 @@ function App() {
       <GlobalStyles />
 
       <Routes>
-        <Route path="/signup" element={<WelcomePageLayout />}>
+        <Route path="/welcome" element={<WelcomePageLayout />}>
           <Route index element={<WelcomePage />} />
         </Route>
+
         <Route path="/" element={<SharedLayout />}>
-          <Route path="/mainpage" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          {/* <Route path="/drinks" element={<DrinksPage />} /> */}
+          {/* <Route path="/add" element={<AddDrinkPage />} /> */}
+          {/* <Route path="/my" element={<MyDrinksPage />} /> */}
+          {/* <Route path="/favorites" element={<FavoriteDrinkPage />} /> */}
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
