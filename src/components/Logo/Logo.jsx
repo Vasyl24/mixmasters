@@ -5,12 +5,14 @@ import icons from '../../assets/sprite.svg'
 
 export default function Logo() {
   return (
-    <NavLink to="/">
+    <NavLink to="/home" style={{ zIndex: 11 }}>
       <LogoGroup>
         <Icon>
-         <svg>
-        <use xlinkHref={`${icons}#icon-logo`} />
-      </svg>
+         <a href="/home">
+            <svg>
+              <use xlinkHref={`${icons}#icon-logo`} />
+            </svg>
+          </a>
         </Icon>
         <Name>Drink Master</Name>
       </LogoGroup>
