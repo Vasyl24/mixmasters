@@ -50,7 +50,7 @@ export const TextStart = styled.p`
   line-height: calc(18 / 14);
   text-align: center;
   margin-top: 14px;
-  width: 319px;
+  max-width: 319px;
 
   @media (min-width: 768px) {
     font-size: 18px;
