@@ -3,8 +3,8 @@ import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import {
   signupUser,
-  loginUser,
-  logoutUser,
+  signinUser,
+  signoutUser,
   refreshUser,
 } from './authOperations';
 
@@ -37,25 +37,25 @@ const authSlice = createSlice({
 
     // loginUser
 
-    [loginUser.fulfilled](state, action) {
+    [signinUser.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
 
-    [loginUser.rejected](state, action) {
+    [signinUser.rejected](state, action) {
       state.error = action.payload;
     },
 
     // logoutUser
 
-    [logoutUser.fulfilled](state) {
+    [signoutUser.fulfilled](state) {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
     },
 
-    [logoutUser.rejected](state, action) {
+    [signoutUser.rejected](state, action) {
       state.error = action.payload;
     },
 
