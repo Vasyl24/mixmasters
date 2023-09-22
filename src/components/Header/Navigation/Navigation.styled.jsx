@@ -47,13 +47,12 @@ export const Nav = styled.nav`
 
   & a {
     padding: 8px 16px;
-    border: 1px solid rgba(243, 243, 243, 0.2);
-    border-radius: 40px;
+
   }
 
   & [class='active'] {
     padding: 8px 16px;
-    background-color: rgba(243, 243, 243, 0.2);
+    
   }
 `;
 
@@ -77,12 +76,14 @@ export const Item = styled.div`
   border-radius: 40px;
   font-size: 14px;
   font-weight: 500;
-  transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index:11;
+  line-height: calc(22.4 / 14);;
 
   &:hover,
-  &:focus {
-    transform: scale(1.1);
+  &:focus,
+  &:active {
+    background: #161F37;
+    border: none;
   }
 `;
