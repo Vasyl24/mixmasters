@@ -31,6 +31,7 @@ export const ContainerLayout = styled.div`
       rgba(10, 10, 17, 0)
     ),
     url(${welcomemd2x});
+    justify-content: left;
   }
 
   @media (max-width: 768px) {
