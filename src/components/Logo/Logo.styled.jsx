@@ -53,15 +53,16 @@ export const Name = styled.span`
   }
 `;
 
-
 const Logo = () => {
   return (
     <NavLink to="/home" style={{ zIndex: 11 }}>
       <LogoGroup>
         <Icon>
+         <a href="/home">
             <svg>
               <use xlinkHref={`${icons}#icon-logo`} />
-          </svg>
+            </svg>
+          </a>
         </Icon>
         <Name>Drink Master</Name>
       </LogoGroup>

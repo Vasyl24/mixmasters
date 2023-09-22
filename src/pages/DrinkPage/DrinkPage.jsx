@@ -28,12 +28,13 @@ const DrinkPage = () => {
   //     }
   //     getDrinkInfo();
   //   }, [drinkId]);
-
+  const recipe =
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit praesentium ipsa reprehenderit cumque dolorum nisi accusamus nemo laborum dolore minima? Error incidunt illo inventore in dolorum veniam quae ullam consequuntur? Reprehenderit est officiis doloremque aspernatur eos, exercitationem at modi. Odit.';
   return (
     <>
       <DrinkPageHero drink={null} />
       <DrinkIngredientsList ingredients={[]} />
-      <RecipePreparation recipe={null} />
+      <RecipePreparation recipe={recipe} />
     </>
   );
 };
