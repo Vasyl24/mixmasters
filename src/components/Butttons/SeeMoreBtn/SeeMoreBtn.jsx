@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { StyledSeeMoreBtn } from './SeMoreBtn.styled';
+import { StyledSeeMoreBtn } from './SeeMoreBtn.styled';
 
 export const SeeButton = ({ id }) => {
   const navigate = useNavigate();
