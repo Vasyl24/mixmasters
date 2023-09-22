@@ -9,6 +9,8 @@ import HomePage from './pages/HomePage/HomePage';
 import DrinkPage from 'pages/DrinkPage/DrinkPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { WelcomePageLayout } from './pages/WelcomePage/Layout/WelcomePageLayout';
+import MyDrinksPage from 'pages/MyDrinksPage/MyDrinksPage';
+import FavoriteDrinkPage from 'pages/FavoriteDrinksPage/FavoriteDrinksPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,8 +31,8 @@ function App() {
           {/* <Route path="/drinks" element={<DrinksPage />} /> */}
           <Route path="/drink/:drinkId" element={<DrinkPage />} />
           {/* <Route path="/add" element={<AddDrinkPage />} /> */}
-          {/* <Route path="/my" element={<MyDrinksPage />} /> */}
-          {/* <Route path="/favorites" element={<FavoriteDrinkPage />} /> */}
+          <Route path="/my" element={<MyDrinksPage />} />
+          <Route path="/favorite" element={<FavoriteDrinkPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
