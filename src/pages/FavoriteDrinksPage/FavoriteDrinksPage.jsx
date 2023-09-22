@@ -9,7 +9,7 @@ import {
 import {
   selectDrinks,
   selectError,
-  selectIsLoading,
+  // selectIsLoading,
 } from 'redux/drinks/drinksSelectors';
 import { StyledTitle, StyledDescr } from './FavoriteDrinksPage.styled';
 import { toast } from 'react-toastify';
