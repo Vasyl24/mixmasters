@@ -7,7 +7,7 @@ const Navigation = forwardRef((_, ref) => {
     <Nav ref={ref}>
       <List id="navigation">
         <Item>
-          <NavLink to="/" className="link">
+          <NavLink to="/home" className="link">
             Home
           </NavLink>
         </Item>

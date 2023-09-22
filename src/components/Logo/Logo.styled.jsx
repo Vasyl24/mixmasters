@@ -1,16 +1,28 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import icons from '../../assets/sprite.svg';
 
+const slideInFromLeft = keyframes`
+  from {
+    transform: translateX(-200%);
+  }
+  to {
+    transform: translateX(0);
+  }
+`;
 
 export const LogoGroup = styled.div`
   display: flex;
+  align-items: center;
   gap: 8px;
   margin-right: auto;
+  justify-content: flex-start;
+  animation: ${slideInFromLeft} 0.8s ease-in-out forwards; 
+  transform: translateX(-200%);
 
   transition-property: transform;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 
   @media screen and (min-width: 768px) {
     gap: 14px;
@@ -43,10 +55,14 @@ export const Name = styled.span`
 
 const Logo = () => {
   return (
-    <NavLink to="/">
+    <NavLink to="/home" style={{ zIndex: 11 }}>
       <LogoGroup>
         <Icon>
-          <use href={`${icons}#logo`} />
+         <a href="/home">
+            <svg>
+              <use xlinkHref={`${icons}#icon-logo`} />
+            </svg>
+          </a>
         </Icon>
         <Name>Drink Master</Name>
       </LogoGroup>

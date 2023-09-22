@@ -29,7 +29,7 @@ export const Nav = styled.nav`
   left: 0;
   right: 0;
   display: grid;
-  background-color: $background-color;
+  background: #0A0A11;
   transform: translateX(100%); 
   animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s cubic-bezier(0.42, 0, 0.58, 1) forwards;
 
