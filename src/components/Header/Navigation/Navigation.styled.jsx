@@ -77,12 +77,11 @@ export const Item = styled.div`
   border-radius: 40px;
   font-size: 14px;
   font-weight: 500;
-  transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index:11;
 
   &:hover,
   &:focus {
-    transform: scale(1.1);
+    background: #161F37;
   }
 `;
