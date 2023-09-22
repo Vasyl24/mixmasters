@@ -6,7 +6,7 @@ import { fetchMyDrinks, deleteMyDrink } from 'redux/drinks/drinksOperations';
 import {
   selectDrinks,
   selectError,
-  selectIsLoading,
+  // selectIsLoading,
 } from 'redux/drinks/drinksSelectors';
 import { StyledTitle, StyledDescr } from './MyDrinksPage.styled';
 import { toast } from 'react-toastify';
