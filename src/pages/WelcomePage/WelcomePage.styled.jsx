@@ -11,14 +11,14 @@ export const ContainerWelcome = styled.div`
   z-index: 10;
 
   @media (min-width: 768px) {
-    max-width: 470px;
-    padding-left: 100px;
+    max-width: 570px;
     justify-content: flex-start;
     align-items: flex-start;
+    padding-left: 100px;
   }
 
   @media (min-width: 1024px) {
-    max-width: 485px;
+    max-width: 585px;
     padding-left: 100px;
   }
   
