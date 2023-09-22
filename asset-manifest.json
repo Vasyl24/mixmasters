@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mixmasters/static/css/main.1c8e14d0.css",
-    "main.js": "/mixmasters/static/js/main.78c32973.js",
+    "main.css": "/mixmasters/static/css/main.daab60fd.css",
+    "main.js": "/mixmasters/static/js/main.4a47ba9c.js",
     "static/media/welcome@2x.png": "/mixmasters/static/media/welcome@2x.edc08666d5be843fe821.png",
     "static/media/welcomemd@2x.png": "/mixmasters/static/media/welcomemd@2x.a3ff776a39b96a8c6be6.png",
     "static/media/welcome@1x.png": "/mixmasters/static/media/welcome@1x.bab2ac5762d0853d530d.png",
@@ -9,13 +9,14 @@
     "static/media/welcomemd@1x.png": "/mixmasters/static/media/welcomemd@1x.fc15f6c74f73331e76b4.png",
     "static/media/recipe-img.jpg": "/mixmasters/static/media/recipe-img.55b35ef84dcb0b1e9154.jpg",
     "static/media/welcomesm@1x.png": "/mixmasters/static/media/welcomesm@1x.0152620b0cf85e2ba7f1.png",
+    "static/media/blue-iced-tea.png": "/mixmasters/static/media/blue-iced-tea.6757754c0686df9611d7.png",
     "static/media/sprite.svg": "/mixmasters/static/media/sprite.d9d9a324d1eeb553295289dbc2fbd489.svg",
     "index.html": "/mixmasters/index.html",
-    "main.1c8e14d0.css.map": "/mixmasters/static/css/main.1c8e14d0.css.map",
-    "main.78c32973.js.map": "/mixmasters/static/js/main.78c32973.js.map"
+    "main.daab60fd.css.map": "/mixmasters/static/css/main.daab60fd.css.map",
+    "main.4a47ba9c.js.map": "/mixmasters/static/js/main.4a47ba9c.js.map"
   },
   "entrypoints": [
-    "static/css/main.1c8e14d0.css",
-    "static/js/main.78c32973.js"
+    "static/css/main.daab60fd.css",
+    "static/js/main.4a47ba9c.js"
   ]
 }
