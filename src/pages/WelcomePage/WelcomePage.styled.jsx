@@ -55,7 +55,7 @@ export const TextStart = styled.p`
   @media (min-width: 768px) {
     font-size: 18px;
     text-align: left;
-    width: 470px;
+    max-width: 470px;
   }
 `;
 
