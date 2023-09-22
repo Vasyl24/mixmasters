@@ -24,7 +24,6 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 //   import('./components/SharedLayout/SharedLayout')
 // );
 // const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
-import { WelcomePageLayout } from './pages/WelcomePage/Layout/WelcomePageLayout';
 import MyDrinksPage from 'pages/MyDrinksPage/MyDrinksPage';
 import FavoriteDrinkPage from 'pages/FavoriteDrinksPage/FavoriteDrinksPage';
 
