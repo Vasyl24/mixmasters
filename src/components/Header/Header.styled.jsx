@@ -20,5 +20,7 @@ export const HeaderWrapper = styled.div`
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 22px;
+    padding-bottom: 22px;
   }
 `;
