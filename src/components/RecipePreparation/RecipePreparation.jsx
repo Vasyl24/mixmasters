@@ -1,11 +1,13 @@
-import foto from "../../assets/recipe-img.jpg"
+import foto from "../../assets/recipe-img.jpg";
+import { Title, Recipe, Image } from './RecipePreparation.styled';
 
 export function RecipePreparation({ recipe }) {
     return (
       <>
-        <p>Recipe Preparation</p>
-        <p>{recipe}</p>
-        <img src={foto} alt="foto" />
+        <Title>Recipe Preparation</Title>
+        <Recipe>{recipe}</Recipe>
+        <Image src={foto} alt="foto" />
       </>
     );
 }
+ 

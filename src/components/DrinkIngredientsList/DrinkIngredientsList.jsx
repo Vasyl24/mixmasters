@@ -1,18 +1,51 @@
+import {
+  Subtitle,
+  IngredientsContainer,
+  IngredientItem,
+  IngredientImage,
+  CaptionContainer,
+  CaptionText,
+} from './DrinkIngredientsList.styled';
+import defaultImage from '../../assets/rectangle-2.jpg';
+
 export function DrinkIngredientsList({ ingredients }) {
   return (
     <>
-      <p>Ingredients</p>
-      <ul>
-        {ingredients.map(({ id, name, foto, amount }) => {
+      <Subtitle>Ingredients</Subtitle>
+      <IngredientsContainer>
+        {/* {ingredients.map(({ id, name, foto, amount }) => {
           return (
-            <li key={id}>
-              <img src={foto} alt="{name}" width={'100px'} />
-              <p>{name}</p>
-              <p>Amount: {amount}</p>
-            </li>
+            <IngredientItem key={id}>
+              <IngredientImage src={foto} alt="{name}" width={'100px'} />
+              <CaptionContainer>
+                <CaptionText>{name}</CaptionText>
+                <CaptionText>Amount: {amount}</CaptionText>
+              </CaptionContainer>
+            </IngredientItem>
           );
-        })}
-      </ul>
+        })} */}
+        <IngredientItem key={'1'}>
+          <IngredientImage src={defaultImage} alt="" />
+          <CaptionContainer>
+            <CaptionText>Coctail</CaptionText>
+            <CaptionText>Amount: 2</CaptionText>
+          </CaptionContainer>
+        </IngredientItem>
+        <IngredientItem key={'2'}>
+          <IngredientImage src={defaultImage} alt="" />
+          <CaptionContainer>
+            <CaptionText>Coctail</CaptionText>
+            <CaptionText>Amount: 2</CaptionText>
+          </CaptionContainer>
+        </IngredientItem>
+        <IngredientItem key={'3'}>
+          <IngredientImage src={defaultImage} alt="" />
+          <CaptionContainer>
+            <CaptionText>Coctail</CaptionText>
+            <CaptionText>Amount: 2</CaptionText>
+          </CaptionContainer>
+        </IngredientItem>
+      </IngredientsContainer>
     </>
   );
 }
