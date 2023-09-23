@@ -4,8 +4,7 @@ import { Header, HeaderWrapper } from './Header.styled';
 import Logo from '../../components/Logo/Logo';
 import Navigation from './Navigation/Navigation';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
-
-
+import { UserLogo } from 'components/UserLogo/UserLogo';
 
 function AppHeader() {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1280);
@@ -22,15 +21,16 @@ function AppHeader() {
     }
   };
 
-  const handleBackdropClicks = (e) => {
+  const handleBackdropClicks = e => {
     const backdrop =
-      e.target.closest('#burger_menu') === null && e.target.closest('#navigation') === null;
+      e.target.closest('#burger_menu') === null &&
+      e.target.closest('#navigation') === null;
     if (backdrop) {
       setIsOpenBurgerMenu(false);
     }
   };
 
-  const handleEscClick = (e) => {
+  const handleEscClick = e => {
     const target = e.key === 'Escape';
     if (target) {
       setIsOpenBurgerMenu(false);
@@ -61,6 +61,7 @@ function AppHeader() {
         <HeaderWrapper>
           <Logo />
           {isDesktop && <Navigation />}
+          <UserLogo />
           <BurgerMenu
             toggleMenu={toggleMenu}
             isOpenBurgerMenu={isOpenBurgerMenu}
@@ -71,6 +72,5 @@ function AppHeader() {
     </>
   );
 }
-
 
 export default AppHeader;
