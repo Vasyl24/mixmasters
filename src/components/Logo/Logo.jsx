@@ -8,12 +8,10 @@ export default function Logo() {
     <NavLink to="/home" style={{ zIndex: 11 }}>
       <LogoGroup>
         <Icon>
-         <a href="/home">
-            <svg>
+          <svg>
               <use xlinkHref={`${icons}#icon-logo`} />
             </svg>
-          </a>
-        </Icon>
+          </Icon>
         <Name>Drink Master</Name>
       </LogoGroup>
     </NavLink>
