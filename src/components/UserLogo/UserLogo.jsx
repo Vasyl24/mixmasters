@@ -6,17 +6,19 @@ import { lock, unlock } from 'tua-body-scroll-lock';
 import { selectUser } from '../../redux/selectors';
 import { UserMenu, UserIcon, UserName, ModalStyles } from './UserLogo.styled';
 import { UserLogoPopup } from 'components/UserLogoPopup/UserLogoPopup';
+import { LogOutModal } from '../LogOutModal/LogOutModal';
 
 Modal.setAppElement('#root');
 export const UserLogo = () => {
   const { name, avatarURL } = useSelector(selectUser);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const [modalComponet, setModalComponent] = useState(null);
+  const [modalComponet, setModalComponent] = useState(null);
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
   };
   const handleUserMenuShow = () => {
     setModalIsOpen(true);
+    setModalComponent('UserLogoPopup');
   };
   // const handleEditProfile = () => {
   //   window.alert('Edit profile modal');
@@ -39,7 +41,15 @@ export const UserLogo = () => {
         onAfterOpen={lock}
         onAfterClose={unlock}
       >
-        <UserLogoPopup />
+        {modalComponet === 'UserLogoPopup' && (
+          <UserLogoPopup setModalComponent={setModalComponent} />
+        )}
+        {modalComponet === 'LogOutModal' && (
+          <LogOutModal
+            setModalComponent={setModalComponent}
+            toggleModal={toggleModal}
+          />
+        )}
       </Modal>
     </>
   );

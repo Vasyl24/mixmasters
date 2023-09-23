@@ -17,10 +17,10 @@ export const UserMenu = styled.div`
   @media (min-width: 1024px) {
     margin-right: 0;
   }
-  /* &:hover,
+  &:hover,
   &:focus {
     transform: scale(1.1);
-  } */
+  }
 `;
 
 export const UserIcon = styled.img`
@@ -58,10 +58,9 @@ export const ModalStyles = {
   },
   content: {
     position: 'absolute',
+    top: '10%',
     left: '50%',
     transform: 'translateX(-50%)',
-    width: '335px',
-    height: '345px',
     background: 'none',
     overflow: 'auto',
     WebkitOverflowScrolling: 'touch',
