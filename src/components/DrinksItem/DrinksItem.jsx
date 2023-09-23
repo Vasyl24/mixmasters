@@ -1,23 +1,37 @@
-import { StyledBtn, StyledImg, StyledName } from './StyledDrinksItem';
+import {
+  StyledItem,
+  StyledContainer,
+  StyledBtn,
+  StyledImg,
+  StyledName,
+  StyledType,
+  StyledDescr,
+  StyledBtnDel,
+  StyledDelIcon,
+} from './DrinksItem.styled';
+import defaultImg from 'assets/rectangle-2.jpg';
+import sprite from 'assets/sprite.svg';
 
-const DrinksItem = ({ drinkThumb, name }) => {
+const DrinksItem = props => {
+  const { _id, drink, alcoholic, description, drinkThumb } = props.drink;
+  const id = _id.$oid;
+  const { onDeleteFunction } = props.onDelete;
+
   return (
-    <>
-      <div style={{ width: 400 }}>
-        <StyledImg src={drinkThumb} alt={name} />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'baseline',
-            width: '',
-          }}
-        >
-          <StyledName>{name}</StyledName>
-          <StyledBtn>See more</StyledBtn>
-        </div>
-      </div>
-    </>
+    <StyledItem key={id}>
+      <StyledImg src={drinkThumb ? drinkThumb : defaultImg} alt={drink} />
+      <StyledName>{drink}</StyledName>
+      <StyledType>{alcoholic}</StyledType>
+      <StyledDescr>{description}</StyledDescr>
+      <StyledContainer>
+        <StyledBtn to={`/drink/${id}`}>See more</StyledBtn>
+        <StyledBtnDel type="button" onClick={() => onDeleteFunction(id)}>
+          <StyledDelIcon>
+            <use href={sprite + '#icon-trash'} />
+          </StyledDelIcon>
+        </StyledBtnDel>
+      </StyledContainer>
+    </StyledItem>
   );
 };
 export default DrinksItem;

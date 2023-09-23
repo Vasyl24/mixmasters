@@ -10,19 +10,28 @@ export const ContainerWelcome = styled.div`
   align-items: center;
   z-index: 10;
 
-
   @media (min-width: 768px) {
-    max-width: 470px;
-    padding: 0;
+    max-width: 570px;
     justify-content: flex-start;
     align-items: flex-start;
+    padding-left: 100px;
   }
 
   @media (min-width: 1024px) {
-    max-width: 485px;
+    max-width: 585px;
     padding-left: 100px;
   }
+  
+  @media (max-width: 767px) {
+    max-width: 335px;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
+
 
 export const TitleStart = styled.h2`
   font-weight: 600;
@@ -41,10 +50,12 @@ export const TextStart = styled.p`
   line-height: calc(18 / 14);
   text-align: center;
   margin-top: 14px;
+  max-width: 319px;
 
   @media (min-width: 768px) {
     font-size: 18px;
     text-align: left;
+    max-width: 470px;
   }
 `;
 
@@ -80,5 +91,28 @@ export const BtnStart = styled(NavLink)`
   &:hover {
     background: transparent;
     color: #f3f3f3;
+  }
+`;
+
+export const BtnFinish = styled(NavLink)`
+  padding: 14px 40px;
+  font-size: 14px;
+  line-height: calc(18 / 16);
+  font-weight: 600;
+  background: transparent;
+  color: #f3f3f3;
+  border-radius: 42px;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  cursor: pointer;
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  @media (min-width: 768px) {
+    padding: 18px 44px;
+    font-size: 16px;
+  }
+
+  &:hover {
+    background: #f3f3f3;
+    color: #161f37;
   }
 `;

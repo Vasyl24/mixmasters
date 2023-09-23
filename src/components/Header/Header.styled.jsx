@@ -1,37 +1,26 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.div`
-  padding: 10px;
+export const Header = styled.div`
+  border-bottom: 1px solid rgba(243, 243, 243, 0.2);
 `;
 
-export const Navigation = styled.nav`
+export const HeaderWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-`;
+  padding: 20px;
 
-export const StyledLink = styled(Link)`
-  padding: 8px 16px;
-  color: #ffffff; /* White text color */
-  text-shadow: 0 0 5px #00baff, 0 0 10px #00baff, 0 0 20px #00baff,
-    0 0 40px #00baff, 0 0 80px #00baff;
-  transition: color 0.3s, text-shadow 0.3s;
-
-  &:hover,
-  &:focus {
-    color: #00baff; /* Blue text color on hover/focus */
-    text-shadow: 0 0 5px #00baff, 0 0 10px #00baff, 0 0 20px #00baff,
-      0 0 40px #00baff, 0 0 80px #00baff;
+  @media (min-width: 768px) {
+    padding: 20px 32px;
   }
-`;
 
-export const IconWrapper = styled.svg`
-  width: ${props => props.size || '12px'};
-  height: ${props => props.size || '12px'};
-  fill: ${props => props.color || '#ffffff'};
-  display: inline-block;
-  margin-right: 5px;
-  box-shadow: 0 0 5px #00baff, 0 0 10px #00baff, 0 0 20px #00baff,
-    0 0 40px #00baff, 0 0 80px #00baff;
+  @media (min-width: 1024px) {
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
 `;
