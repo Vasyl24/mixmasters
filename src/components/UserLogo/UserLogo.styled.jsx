@@ -44,3 +44,30 @@ export const UserName = styled.span`
     line-height: 1.5;
   }
 `;
+export const ModalStyles = {
+  overlay: {
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    width: '100vw',
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  },
+  content: {
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    width: '335px',
+    height: '345px',
+    background: 'none',
+    overflow: 'auto',
+    WebkitOverflowScrolling: 'touch',
+    borderRadius: 'none',
+    outline: 'none',
+    border: 'none',
+    padding: '0',
+  },
+};
