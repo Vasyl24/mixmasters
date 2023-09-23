@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom';
 import { refreshUser } from './redux/auth/authOperations';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
+import SignUpPage from 'pages/SignUpPage/SignUpPage';
 import { WelcomePageLayout } from './pages/WelcomePage/Layout/WelcomePageLayout';
 import HomePage from './pages/HomePage/HomePage';
 import DrinkPage from 'pages/DrinkPage/DrinkPage';
@@ -15,7 +16,6 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import MyDrinksPage from 'pages/MyDrinksPage/MyDrinksPage';
 import FavoriteDrinkPage from 'pages/FavoriteDrinksPage/FavoriteDrinksPage';
 // import SignInPage from 'pages/SignInPage/SignInPage';
-// import SignUpPage from 'pages/SignUpPage/SignUpPage';
 
 // const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 // const WelcomePageLayout = lazy(() =>
@@ -43,8 +43,8 @@ function App() {
       <Routes>
         <Route path="/welcome" element={<WelcomePageLayout />}>
           <Route index element={<WelcomePage />}>
-            {/* <Route path="/signup" element={<SignUpPage />}></Route>
-            <Route path="/signin" element={<SignInPage />}></Route> */}
+            <Route path="/signup" element={<SignUpPage />} />
+             {/*<Route path="/signin" element={<SignInPage />}></Route> */}
             {/* <Route
               path="/signup"
               element={
