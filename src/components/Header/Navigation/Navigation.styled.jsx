@@ -48,7 +48,7 @@ export const Nav = styled.nav`
   }
 `;
 
-export const List = styled.div`
+export const List = styled.ul`
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -62,7 +62,7 @@ export const List = styled.div`
   }
 `;
 
-export const Item = styled.div``;
+export const Item = styled.li``;
 export const NavigationLink = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 40px;
