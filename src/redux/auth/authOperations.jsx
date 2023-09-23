@@ -3,10 +3,10 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const signupUser = createAsyncThunk(
-  'auth/register',
+  'auth/signup',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('/signup', credentials);
+      const res = await axios.post('/auth/signup', credentials);
 
       setAuthHeader(res.data.token);
       return res.data;
@@ -17,10 +17,10 @@ export const signupUser = createAsyncThunk(
 );
 
 export const loginUser = createAsyncThunk(
-  'auth/login',
+  'auth/signin',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('/login', credentials);
+      const res = await axios.post('/auth/signin', credentials);
      setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
@@ -30,10 +30,10 @@ export const loginUser = createAsyncThunk(
 );
 
 export const logoutUser = createAsyncThunk(
-  'auth/logout',
+  'auth/signout',
   async (_, thunkAPI) => {
     try {
-      const res = await axios.post('/logout');
+      const res = await axios.post('/auth/signout');
       clearAuthHeader();
       return res.data;
     } catch (error) {
