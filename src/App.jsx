@@ -41,11 +41,11 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/welcome" element={<WelcomePageLayout />}>
-          <Route index element={<WelcomePage />}>
-            <Route path="/signup" element={<SignUpPage />} />
-             {/*<Route path="/signin" element={<SignInPage />}></Route> */}
-            {/* <Route
+        <Route element={<WelcomePageLayout />}>
+          <Route index path="/welcome" element={<WelcomePage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          {/*<Route path="/signin" element={<SignInPage />}></Route> */}
+          {/* <Route
               path="/signup"
               element={
                 <RestrictedRoute
@@ -63,7 +63,6 @@ function App() {
                 />
               }
             /> */}
-          </Route>
         </Route>
 
         <Route path="/" element={<SharedLayout />}>
