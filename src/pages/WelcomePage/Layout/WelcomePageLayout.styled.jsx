@@ -1,10 +1,10 @@
-import styled, {keyframes} from 'styled-components';
-import welcomesm1x from '../../../assets/welcomesm@1x.png';
-import welcomesm2x from '../../../assets/welcomesm@2x.png';
-import welcomemd1x from '../../../assets/welcomemd@1x.png';
-import welcomemd2x from '../../../assets/welcomemd@2x.png';
-import welcome1x from '../../../assets/welcome@1x.png';
-import welcome2x from '../../../assets/welcome@2x.png';
+import styled, { keyframes } from 'styled-components';
+import welcomesm1x from '../../../assets/welcome-mob.jpg';
+import welcomesm2x from '../../../assets/welcome-mob@2x.jpg';
+import welcomemd1x from '../../../assets/welcome-tabl.jpg';
+import welcomemd2x from '../../../assets/welcome-tabl@2x.jpg';
+import welcome1x from '../../../assets/welcome-desk.jpg';
+import welcome2x from '../../../assets/welcome-desk@2x.jpg';
 
 export const ContainerLayout = styled.div`
   width: 100vw;
@@ -16,63 +16,63 @@ export const ContainerLayout = styled.div`
   background-position: right;
   background-repeat: no-repeat;
   background-image: linear-gradient(
-    to right,
-    rgba(6, 6, 9, 1),
-    rgba(10, 10, 17, 0)
-  ),
-  url(${welcomemd1x});
+      to right,
+      rgba(6, 6, 9, 1),
+      rgba(10, 10, 17, 0)
+    ),
+    url(${welcomemd1x});
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     background-image: linear-gradient(
-      to right,
-      rgba(6, 6, 9, 1),
-      rgba(10, 10, 17, 0)
-    ),
-    url(${welcomemd2x});
+        to right,
+        rgba(6, 6, 9, 1),
+        rgba(10, 10, 17, 0)
+      ),
+      url(${welcomemd2x});
     justify-content: left;
   }
 
   @media (max-width: 767.98px) {
     justify-content: left;
     background-image: linear-gradient(
-      to right,
-      rgba(6, 6, 9, 1),
-      rgba(10, 10, 17, 0)
-    ),
-    url(${welcomesm1x});
-    
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: linear-gradient(
         to right,
         rgba(6, 6, 9, 1),
         rgba(10, 10, 17, 0)
       ),
-      url(${welcomesm2x});
+      url(${welcomesm1x});
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(6, 6, 9, 1),
+          rgba(10, 10, 17, 0)
+        ),
+        url(${welcomesm2x});
     }
   }
 
   @media (min-width: 1024px) {
     justify-content: left;
     background-image: linear-gradient(
-      to right,
-      rgba(6, 6, 9, 1),
-      rgba(10, 10, 17, 0)
-    ),
-    url(${welcome1x});
+        to right,
+        rgba(6, 6, 9, 1),
+        rgba(10, 10, 17, 0)
+      ),
+      url(${welcome1x});
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: linear-gradient(
-        to right,
-        rgba(6, 6, 9, 1),
-        rgba(10, 10, 17, 0)
-      ),
-      url(${welcome2x});
+          to right,
+          rgba(6, 6, 9, 1),
+          rgba(10, 10, 17, 0)
+        ),
+        url(${welcome2x});
     }
   }
 `;
@@ -94,31 +94,30 @@ const mainTitleAnimation = keyframes`
   transform: translateY(-50px) scale(0.8) rotate(45deg);
   opacity: 0.5;
  }
-}`
+}`;
 
 export const GradientContainer = styled.div`
-    width: 50vw;
- height: 130vh;
- background: radial-gradient(ellipse, rgba(64, 112, 205, 0.5), transparent);
- top: -50%;
- left: -28%;
- z-index: 3;
- border-radius: 50%;
- position: absolute;
- filter: blur(50px);
- animation: ${mainTitleAnimation} 8s ease-in-out infinite;
+  width: 50vw;
+  height: 130vh;
+  background: radial-gradient(ellipse, rgba(64, 112, 205, 0.5), transparent);
+  top: -50%;
+  left: -28%;
+  z-index: 3;
+  border-radius: 50%;
+  position: absolute;
+  filter: blur(50px);
+  animation: ${mainTitleAnimation} 8s ease-in-out infinite;
 `;
 
 export const CircleContainer = styled.div`
-    width: 32vw;
- height: 75vh;
- background: radial-gradient(circle, rgba(188, 230, 210, 0.4), transparent);
- filter: blur(40px);
- top: -35%;
- left: 10%;
- z-index: 10;
- border-radius: 50%;
- position: absolute;
- animation: ${mainTitleAnimation} 8s ease-in-out infinite 2s;;
+  width: 32vw;
+  height: 75vh;
+  background: radial-gradient(circle, rgba(188, 230, 210, 0.4), transparent);
+  filter: blur(40px);
+  top: -35%;
+  left: 10%;
+  z-index: 10;
+  border-radius: 50%;
+  position: absolute;
+  animation: ${mainTitleAnimation} 8s ease-in-out infinite 2s;
 `;
-
