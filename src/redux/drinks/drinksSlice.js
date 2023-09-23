@@ -7,6 +7,9 @@ import {
 } from './drinksOperations';
 import { toast } from 'react-toastify';
 
+//Для тестування. Видалити коли буде робочий бек
+import coctails from 'temporary/recipes.json';
+
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
@@ -25,7 +28,8 @@ const handleRejected = (state, action) => {
 const drinksSlice = createSlice({
   name: 'drinks',
   initialState: {
-    items: [],
+    //Для тестування. Замінити на "items: [],"" коли буде робочий бек
+    items: coctails,
     isLoading: false,
     error: null,
   },
