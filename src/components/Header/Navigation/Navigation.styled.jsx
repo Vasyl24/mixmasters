@@ -78,12 +78,12 @@ export const Item = styled.div`
   font-weight: 500;
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index:11;
-  line-height: calc(22.4 / 14);;
+  line-height: calc(22.4 / 14);
 
   &:hover,
   &:focus,
   &:active {
     background: #161F37;
-    border: none;
+    border-color: transparent;
   }
 `;
