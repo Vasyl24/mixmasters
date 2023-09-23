@@ -76,7 +76,7 @@ export const Item = styled.div`
   border-radius: 40px;
   font-size: 14px;
   font-weight: 500;
-  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index:11;
   line-height: calc(22.4 / 14);
 

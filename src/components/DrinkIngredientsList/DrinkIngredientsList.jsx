@@ -4,7 +4,8 @@ import {
   IngredientItem,
   IngredientImage,
   CaptionContainer,
-  CaptionText,
+  IngredientName,
+  IngredientAmount,
 } from './DrinkIngredientsList.styled';
 import defaultImage from '../../assets/rectangle-2.jpg';
 
@@ -18,8 +19,8 @@ export function DrinkIngredientsList({ ingredients }) {
             <IngredientItem key={id}>
               <IngredientImage src={foto} alt="{name}" width={'100px'} />
               <CaptionContainer>
-                <CaptionText>{name}</CaptionText>
-                <CaptionText>Amount: {amount}</CaptionText>
+                <IngredientName>{name}</IngredientName>
+                <IngredientAmount>Amount: {amount}</IngredientAmount>
               </CaptionContainer>
             </IngredientItem>
           );
@@ -27,22 +28,36 @@ export function DrinkIngredientsList({ ingredients }) {
         <IngredientItem key={'1'}>
           <IngredientImage src={defaultImage} alt="" />
           <CaptionContainer>
-            <CaptionText>Coctail</CaptionText>
-            <CaptionText>Amount: 2</CaptionText>
+            <IngredientName>Coctail</IngredientName>
+            <IngredientAmount>Amount: 2</IngredientAmount>
           </CaptionContainer>
         </IngredientItem>
         <IngredientItem key={'2'}>
           <IngredientImage src={defaultImage} alt="" />
           <CaptionContainer>
-            <CaptionText>Coctail</CaptionText>
-            <CaptionText>Amount: 2</CaptionText>
+            <IngredientName>Coctail</IngredientName>
+            <IngredientAmount>Amount: 2</IngredientAmount>
           </CaptionContainer>
         </IngredientItem>
         <IngredientItem key={'3'}>
           <IngredientImage src={defaultImage} alt="" />
           <CaptionContainer>
-            <CaptionText>Coctail</CaptionText>
-            <CaptionText>Amount: 2</CaptionText>
+            <IngredientName>Coctail</IngredientName>
+            <IngredientAmount>Amount: 2</IngredientAmount>
+          </CaptionContainer>
+        </IngredientItem>
+        <IngredientItem key={'4'}>
+          <IngredientImage src={defaultImage} alt="" />
+          <CaptionContainer>
+            <IngredientName>Coctail</IngredientName>
+            <IngredientAmount>Amount: 2</IngredientAmount>
+          </CaptionContainer>
+        </IngredientItem>
+        <IngredientItem key={'5'}>
+          <IngredientImage src={defaultImage} alt="" />
+          <CaptionContainer>
+            <IngredientName>Coctail</IngredientName>
+            <IngredientAmount>Amount: 2</IngredientAmount>
           </CaptionContainer>
         </IngredientItem>
       </IngredientsContainer>
