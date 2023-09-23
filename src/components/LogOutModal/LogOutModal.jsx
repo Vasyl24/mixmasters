@@ -1,4 +1,8 @@
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import icons from '../../assets/sprite.svg';
+import { signoutUser } from '../../redux/auth/authOperations';
 import {
   Container,
   Text,
@@ -10,8 +14,11 @@ import {
 import { StyledLogoutBtn } from '../Butttons/LogoutBtn/LogoutBtn.styled';
 
 export const LogOutModal = ({ setModalComponent, toggleModal }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleLogOut = () => {
-    setModalComponent('LogOutModal');
+    dispatch(signoutUser());
+    navigate('/welcome', { replace: true });
   };
   const handleClose = () => {
     toggleModal();
