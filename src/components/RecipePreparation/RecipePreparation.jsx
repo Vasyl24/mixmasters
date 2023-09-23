@@ -1,4 +1,4 @@
-import foto from "../../assets/recipe-img.jpg";
+import foto from '../../assets/recipe-img-desk.png';
 import { Title, Recipe, Image, ContainerRecipe } from './RecipePreparation.styled';
 
 export function RecipePreparation({ recipe }) {

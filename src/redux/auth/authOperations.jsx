@@ -16,6 +16,7 @@ export const signupUser = createAsyncThunk(
   }
 );
 
+
 export const signinUser = createAsyncThunk(
   'auth/signin',
   async (credentials, thunkAPI) => {
@@ -28,6 +29,7 @@ export const signinUser = createAsyncThunk(
     }
   }
 );
+
 
 export const signoutUser = createAsyncThunk(
   'auth/signout',
