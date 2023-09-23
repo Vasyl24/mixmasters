@@ -4,7 +4,7 @@
 
 - [Vasyl Shaposhnyk (Frontend Team Lead)](https://github.com/Vasyl24)
 - [Heorhii Honcharov (Backend Team Lead)](https://github.com/DemiGGV)
-- [Hanna Svietik (Sctum Master)](https://github.com/hsvietik)
+- [Hanna Svietik (Scrum Master)](https://github.com/hsvietik)
 - [Kostia Shaposhnyk](https://github.com/1192skm)
 - [Andrii Pavliuk](https://github.com/andrpavl)
 - [Yevhenii Malinovskiy](https://github.com/Travellin91)
