@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mixmasters/static/css/main.ac43f415.css",
-    "main.js": "/mixmasters/static/js/main.fbc9a207.js",
+    "main.js": "/mixmasters/static/js/main.4943caac.js",
     "static/media/welcome-desk@2x.jpg": "/mixmasters/static/media/welcome-desk@2x.061eb6ff8715ee1bed59.jpg",
     "static/media/welcome-tabl@2x.jpg": "/mixmasters/static/media/welcome-tabl@2x.677f59d9b34848b90af8.jpg",
     "static/media/recipe-img-desk.png": "/mixmasters/static/media/recipe-img-desk.9c21216893219faa8aef.png",
@@ -13,10 +13,10 @@
     "static/media/welcome-mob.jpg": "/mixmasters/static/media/welcome-mob.cc00c21e562de1207966.jpg",
     "index.html": "/mixmasters/index.html",
     "main.ac43f415.css.map": "/mixmasters/static/css/main.ac43f415.css.map",
-    "main.fbc9a207.js.map": "/mixmasters/static/js/main.fbc9a207.js.map"
+    "main.4943caac.js.map": "/mixmasters/static/js/main.4943caac.js.map"
   },
   "entrypoints": [
     "static/css/main.ac43f415.css",
-    "static/js/main.fbc9a207.js"
+    "static/js/main.4943caac.js"
   ]
 }
