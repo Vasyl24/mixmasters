@@ -7,6 +7,7 @@ const styles = {
     width: '100px',
     marginTop: '-100px',
     marginLeft: '-50px',
+    transform: 'translate(-50%, -50%)',
   },
   glass: {
     position: 'relative',

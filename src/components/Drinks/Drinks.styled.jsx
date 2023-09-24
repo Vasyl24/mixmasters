@@ -24,5 +24,6 @@ export const StyledList = styled.ul`
     & {
       gap: 80px 20px;
     }
+    margin-bottom: 80px;
   }
 `;

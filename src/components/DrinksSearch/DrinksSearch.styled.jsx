@@ -5,6 +5,7 @@ export const StyledFilterContainer = styled.div`
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     margin-top: 60px;
+    display: flex;
     & > *:not(:last-child) {
       margin-right: 8px;
     }
@@ -32,7 +33,6 @@ export const StyledTextInput = styled.input`
   opacity: 0.8;
   background-color: inherit;
 
-  margin-bottom: 14px;
 
   padding: 14px 24px;
 
