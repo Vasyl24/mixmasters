@@ -15,6 +15,7 @@ import DrinkPage from 'pages/DrinkPage/DrinkPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import MyDrinksPage from 'pages/MyDrinksPage/MyDrinksPage';
 import FavoriteDrinkPage from 'pages/FavoriteDrinksPage/FavoriteDrinksPage';
+import { DrinksPage } from 'pages/DrinksPage/DrinksPage';
 // import SignInPage from 'pages/SignInPage/SignInPage';
 
 // const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
@@ -79,7 +80,7 @@ function App() {
               <PrivateRoute redirectTo="/welcome" component={<HomePage />} />
             } 
           />*/}
-          {/* <Route path="/drinks" element={<DrinksPage />} /> */}
+          <Route path="/drinks" element={<DrinksPage />} /> 
           {/* <Route
             path="//drink/:drinkId"
             element={
