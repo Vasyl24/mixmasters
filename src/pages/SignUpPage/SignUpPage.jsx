@@ -1,11 +1,11 @@
-// import { AuthForm } from 'components/AuthForm/AuthForm';
+import AuthForm from 'components/AuthForm/AuthForm';
 
-// const SinUpPage = () => {
-//   return (
-//     <>
-//       <AuthForm />
-//     </>
-//   );
-// };
+const SignUpPage = () => {
+  return (
+    <>
+      <AuthForm />
+    </>
+  );
+};
 
-// export default SinUpPage;
+export default SignUpPage;
