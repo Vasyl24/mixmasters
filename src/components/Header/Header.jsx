@@ -4,6 +4,8 @@ import { Header, HeaderWrapper } from './Header.styled';
 import Logo from '../../components/Logo/Logo';
 import Navigation from './Navigation/Navigation';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
+import { UserLogo } from 'components/UserLogo/UserLogo';
+
 
 function AppHeader() {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1280);
@@ -60,6 +62,7 @@ function AppHeader() {
         <HeaderWrapper>
           <Logo />
           {isDesktop && <Navigation />}
+          <UserLogo />
           <BurgerMenu
             toggleMenu={toggleMenu}
             isOpenBurgerMenu={isOpenBurgerMenu}
