@@ -9,7 +9,13 @@ import {
 } from './authOperations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: {
+    name: 'Victoria',
+    birthdate: null,
+    email: null,
+    avatarURL:
+      'https://s.gravatar.com/avatar/30fad9d5f313b75a4bdd4c53cc9b0f46?s=250&d=wavatar',
+  },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -50,7 +56,7 @@ const authSlice = createSlice({
     // logoutUser
 
     [signoutUser.fulfilled](state) {
-      state.user = { name: null, email: null };
+      state.user = { name: null, birthdate: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
     },
