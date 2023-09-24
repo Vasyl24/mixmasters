@@ -1,29 +1,21 @@
 import React from 'react';
-import { NavWrapper, NavLink } from './Nav.styled'
+import { NavWrapper, NavLink } from './Nav.styled';
 
 export const Nav = () => {
   return (
     <NavWrapper>
       <ul>
         <li>
-          <NavLink to="/drinks" activeClassName="active">
-            Drinks
-          </NavLink>
+          <NavLink to="/drinks">Drinks</NavLink>
         </li>
         <li>
-          <NavLink to="/add" activeClassName="active">
-            Add drink
-          </NavLink>
+          <NavLink to="/add">Add drink</NavLink>
         </li>
         <li>
-          <NavLink to="/my" activeClassName="active">
-            My drink
-          </NavLink>
+          <NavLink to="/my">My drink</NavLink>
         </li>
         <li>
-          <NavLink to="/favorite" activeClassName="active">
-            Favorites
-          </NavLink>
+          <NavLink to="/favorite">Favorites</NavLink>
         </li>
       </ul>
     </NavWrapper>
