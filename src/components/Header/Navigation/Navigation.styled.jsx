@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const slideIn = keyframes`
   from {
@@ -30,6 +31,7 @@ export const Nav = styled.nav`
   right: 0;
   display: grid;
   background-color: #0a0a11;
+
   transform: translateX(100%);
   animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
     cubic-bezier(0.42, 0, 0.58, 1) forwards;
@@ -56,7 +58,7 @@ export const Nav = styled.nav`
   }
 `;
 
-export const List = styled.div`
+export const List = styled.ul`
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -70,9 +72,9 @@ export const List = styled.div`
   }
 `;
 
-export const Item = styled.div`
-  display: flex;
-  border: 1px solid rgba(243, 243, 243, 0.2);
+export const Item = styled.li``;
+export const NavigationLink = styled(NavLink)`
+  padding: 8px 16px;
   border-radius: 40px;
   font-size: 14px;
   font-weight: 500;

@@ -6,6 +6,7 @@ import Navigation from './Navigation/Navigation';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
 import { UserLogo } from 'components/UserLogo/UserLogo';
 
+
 function AppHeader() {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1280);
   const [isOpenBurgerMenu, setIsOpenBurgerMenu] = useState(false);
