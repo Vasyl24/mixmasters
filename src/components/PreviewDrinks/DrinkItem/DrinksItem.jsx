@@ -1,5 +1,4 @@
 import {
-  StyledItem,
   StyledContainer,
   StyledBtn,
   StyledImg,
@@ -8,18 +7,17 @@ import {
 import defaultImg from '../../../assets/rectangle-2.jpg';
 
 const DrinksItem = props => {
-  const { _id, drink } = props.drinkItem;
-  // const { _id, drink, drinkThumb } = props.drinkItem;
-  // const src = drinkThumb || defaultImg;
+  const { _id, drink, drinkThumb } = props.drinkItem;
+  const src = drinkThumb || defaultImg; 
 
   return (
-    <StyledItem key={_id}>
-      <StyledImg src={defaultImg} alt={drink} />
+    <li key={_id.$oid}>
+      <StyledImg src={src} alt={drink} />
       <StyledContainer>
         <StyledName>{drink}</StyledName>
         <StyledBtn to={`/drink/${_id}`}>See more</StyledBtn>
       </StyledContainer>
-    </StyledItem>
+    </li>
   );
 };
 export default DrinksItem;
