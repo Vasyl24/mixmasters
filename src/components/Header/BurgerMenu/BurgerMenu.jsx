@@ -4,7 +4,6 @@ import { IconWrapper, Icon } from './BurgerMenu.styled';
 import Navigation from '../Navigation/Navigation';
 import PropTypes from 'prop-types';
 
-
 export default function BurgerMenu({
   toggleMenu,
   isOpenBurgerMenu,
@@ -13,19 +12,14 @@ export default function BurgerMenu({
   return (
     <>
       <IconWrapper onClick={toggleMenu} id="burger_menu">
-  <Icon className="icon">
-    {isOpenBurgerMenu ? (
-      <svg>
-        <use xlinkHref={`${icons}#burger-close`} />
-      </svg>
-    ) : (
-      <svg>
-        <use xlinkHref={`${icons}#icon-burger`} />
-      </svg>
-    )}
-  </Icon>
-</IconWrapper>
-
+        <Icon className="icon">
+          {isOpenBurgerMenu ? (
+            <use xlinkHref={`${icons}#burger-close`} />
+          ) : (
+            <use xlinkHref={`${icons}#icon-burger`} />
+          )}
+        </Icon>
+      </IconWrapper>
 
       {isOpenBurgerMenu && !isDesktop && <Navigation />}
     </>

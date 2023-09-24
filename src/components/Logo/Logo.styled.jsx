@@ -17,7 +17,7 @@ export const LogoGroup = styled.div`
   gap: 8px;
   margin-right: auto;
   justify-content: flex-start;
-  animation: ${slideInFromLeft} 0.8s ease-in-out forwards; 
+  animation: ${slideInFromLeft} 0.8s ease-in-out forwards;
   transform: translateX(-200%);
 
   transition-property: transform;
@@ -58,7 +58,7 @@ const Logo = () => {
     <NavLink to="/home" style={{ zIndex: 11 }}>
       <LogoGroup>
         <Icon>
-         <a href="/home">
+          <a href="/home">
             <svg>
               <use xlinkHref={`${icons}#icon-logo`} />
             </svg>
