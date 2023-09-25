@@ -9,7 +9,7 @@ export const RegistrationContainer = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 2000;
 
   @media (min-width: 768px) {
     max-width: 470px;
@@ -18,7 +18,7 @@ export const RegistrationContainer = styled.form`
     align-items: flex-start;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     max-width: 485px;
     padding-left: 100px;
   }

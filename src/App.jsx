@@ -67,7 +67,7 @@ function App() {
         </Route>
 
         <Route path="/" element={<SharedLayout />}>
-          <Route path="home" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
           {/* <Route
             path="/home"
             element={
@@ -80,7 +80,7 @@ function App() {
               <PrivateRoute redirectTo="/welcome" component={<HomePage />} />
             } 
           />*/}
-          <Route path="/drinks" element={<DrinksPage />} /> 
+          <Route path="/drinks" element={<DrinksPage />} />
           {/* <Route
             path="//drink/:drinkId"
             element={

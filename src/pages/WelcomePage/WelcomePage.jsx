@@ -5,7 +5,7 @@ import {
   TextStart,
   ListStart,
   BtnStart,
-  BtnFinish
+  BtnFinish,
 } from './WelcomePage.styled';
 
 export default function WelcomePage() {
@@ -18,8 +18,8 @@ export default function WelcomePage() {
         your own recipes at any time.
       </TextStart>
       <ListStart>
-        <BtnStart to="signup">Sign Up</BtnStart>
-        <BtnFinish to="signin">Sign In</BtnFinish>
+        <BtnStart to="/signup">Sign Up</BtnStart>
+        <BtnFinish to="/signin">Sign In</BtnFinish>
       </ListStart>
     </ContainerWelcome>
   );
