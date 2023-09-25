@@ -16,13 +16,23 @@ export const NotFoundImgStyled = styled.img`
   position: relative;
   width: 158px;
   height: 201px;
-  top: 100px;
+  top: 130px;
+
+  @media (max-width: 768px) {
+  width: 123px;
+  height: 156px;
+  top: 110px;
+  }
 
   @media (min-width: 768px) {
     width: 158px;
     height: 201px;
-    top: 100px;
+    top: 120px;
   }
+
+  @media (min-width: 1024px) {
+  top: 130px;
+}
 `;
 
 export const NotFoundTextStyled = styled.p`
@@ -32,15 +42,27 @@ export const NotFoundTextStyled = styled.p`
   top: 130px;
   color: rgba(243, 243, 243, 0.1);
   text-align: center;
-  font-size: 120px;
+  font-size: 200px;
   font-weight: 600;
-  line-height: calc(123 / 120);
-  margin-right: 15px;
+  line-height: calc(200 / 200);
+  margin-right: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 120px;
+    font-style: normal;
+    line-height: calc(123 / 120);
+  }
 
   @media (min-width: 768px) {
     font-size: 150px;
     font-weight: 600;
     line-height: calc(150 / 123);
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 200px;
+    font-weight: 600;
+    line-height: calc(200 / 200);
   }
 `;
 

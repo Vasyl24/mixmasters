@@ -5,12 +5,15 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  justify-content: center;
-  align-items: center;
+  /*min-height: 100vh;*/
   margin: 0 auto;
+  /*padding-top: 200px;*/
+  padding-bottom: 139px;
+
+  @media screen and (max-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 170px;
+  }
 `;
 
 export const NotFoundWrapper = styled.div`
@@ -25,6 +28,4 @@ export const MainTitle = styled.div`
   text-align: center;
 `;
 
-export const Footer = styled.footer`
-  margin-top: auto;
-`;
+
