@@ -9,6 +9,7 @@ export const DrinksSearch = ({
   onCategoryChange,
   onIngredientChange,
 }) => {
+  
   return (
     <StyledFilterContainer>
       <StyledTextInput
