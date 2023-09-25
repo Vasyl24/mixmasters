@@ -11,12 +11,19 @@ const slideInFromLeft = keyframes`
   }
 `;
 
+export const LogoLink = styled(NavLink)`
+  margin-right: auto;
+  z-index: 400;
+
+  @media screen and (min-width: 1440px) {
+    margin-right: 225px;
+  }
+`;
+
 export const LogoGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-right: auto;
-  justify-content: flex-start;
   animation: ${slideInFromLeft} 0.8s ease-in-out forwards;
   transform: translateX(-200%);
 
@@ -26,10 +33,6 @@ export const LogoGroup = styled.div`
 
   @media screen and (min-width: 768px) {
     gap: 14px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    margin-right: 0;
   }
 `;
 
@@ -55,7 +58,7 @@ export const Name = styled.span`
 
 const Logo = () => {
   return (
-    <NavLink to="/home" style={{ zIndex: 11 }}>
+    <NavLink to="/home" style={{ zIndex: 400 }}>
       <LogoGroup>
         <Icon>
           <a href="/home">

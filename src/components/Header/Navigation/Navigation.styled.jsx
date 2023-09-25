@@ -23,29 +23,30 @@ const slideOut = keyframes`
 `;
 
 export const Nav = styled.nav`
-  position: absolute;
-  z-index: 2000;
-  top: 77px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: grid;
-  background-color: #0a0a11;
   transform: translateX(100%);
   animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
     cubic-bezier(0.42, 0, 0.58, 1) forwards;
 
+  @media (max-width: 767.98px) {
+    top: 72.8px;
+  }
+
   @media (min-width: 768px) {
-    top: 84px;
+    top: 84.8px;
+  }
+  @media (max-width: 1439.98px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #0a0a11;
+    z-index: 200;
   }
 
   @media (min-width: 1440px) {
-    background-color: transparent;
-    position: static;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
+    margin-right: 190px;
     transform: translateX(0);
+    z-index: 400;
   }
 `;
 
@@ -54,11 +55,14 @@ export const List = styled.ul`
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  margin: 20% auto 0 auto;
+  z-index: 1000;
+
+  @media (max-width: 1439.98px) {
+    margin: 20% auto 0 auto;
+  }
 
   @media (min-width: 1440px) {
     flex-direction: row;
-    margin: 0;
   }
 `;
 
@@ -71,8 +75,8 @@ export const NavigationLink = styled(NavLink)`
   font-weight: 500;
   line-height: 1.6;
   border: 1px solid rgba(243, 243, 243, 0.2);
-  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) border 0.3s
-    cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus,
   &:active {
