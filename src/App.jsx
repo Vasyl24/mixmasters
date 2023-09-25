@@ -15,6 +15,8 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 // import SignInPage from 'pages/SignInPage/SignInPage';
 // import SignUpPage from 'pages/SignUpPage/SignUpPage';
 
+import AddDrinkPage from './pages/AddDrinkPage/AddDrinkPage'
+
 // const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 // const WelcomePageLayout = lazy(() =>
 //   import('./pages/WelcomePage/Layout/WelcomePageLayout')
@@ -54,7 +56,7 @@ function App() {
           /> */}
           {/* <Route path="/drinks" element={<DrinksPage />} /> */}
           <Route path="/drink/:drinkId" element={<DrinkPage />} />
-          {/* <Route path="/add" element={<AddDrinkPage />} /> */}
+          <Route path="/add" element={<AddDrinkPage />} />
           <Route path="/my" element={<MyDrinksPage />} />
           <Route path="/favorite" element={<FavoriteDrinkPage />} />
           <Route path="*" element={<ErrorPage />} />
