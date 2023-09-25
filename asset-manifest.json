@@ -1,7 +1,23 @@
 {
   "files": {
-    "main.css": "/mixmasters/static/css/main.ac43f415.css",
-    "main.js": "/mixmasters/static/js/main.42f52b87.js",
+    "main.css": "/mixmasters/static/css/main.56c9b7be.css",
+    "main.js": "/mixmasters/static/js/main.c3f44cbf.js",
+    "static/js/691.1b0dee62.chunk.js": "/mixmasters/static/js/691.1b0dee62.chunk.js",
+    "static/js/477.15109791.chunk.js": "/mixmasters/static/js/477.15109791.chunk.js",
+    "static/js/396.8735ac97.chunk.js": "/mixmasters/static/js/396.8735ac97.chunk.js",
+    "static/js/442.f2262eae.chunk.js": "/mixmasters/static/js/442.f2262eae.chunk.js",
+    "static/js/6.f54d95a6.chunk.js": "/mixmasters/static/js/6.f54d95a6.chunk.js",
+    "static/js/827.2d094f4f.chunk.js": "/mixmasters/static/js/827.2d094f4f.chunk.js",
+    "static/js/511.49a3f603.chunk.js": "/mixmasters/static/js/511.49a3f603.chunk.js",
+    "static/js/911.1ca99a70.chunk.js": "/mixmasters/static/js/911.1ca99a70.chunk.js",
+    "static/js/658.52fae2c5.chunk.js": "/mixmasters/static/js/658.52fae2c5.chunk.js",
+    "static/js/928.b0f1a69e.chunk.js": "/mixmasters/static/js/928.b0f1a69e.chunk.js",
+    "static/js/608.c449333d.chunk.js": "/mixmasters/static/js/608.c449333d.chunk.js",
+    "static/js/892.d90f0762.chunk.js": "/mixmasters/static/js/892.d90f0762.chunk.js",
+    "static/css/246.4f2f4158.chunk.css": "/mixmasters/static/css/246.4f2f4158.chunk.css",
+    "static/js/246.df81441c.chunk.js": "/mixmasters/static/js/246.df81441c.chunk.js",
+    "static/js/82.6b692195.chunk.js": "/mixmasters/static/js/82.6b692195.chunk.js",
+    "static/js/561.f23b6e3c.chunk.js": "/mixmasters/static/js/561.f23b6e3c.chunk.js",
     "static/media/recipe-img-tabl@2x.png": "/mixmasters/static/media/recipe-img-tabl@2x.5958778ab978d2ce2aa7.png",
     "static/media/welcome-desk@2x.jpg": "/mixmasters/static/media/welcome-desk@2x.061eb6ff8715ee1bed59.jpg",
     "static/media/recipe-img-desk@2x.png": "/mixmasters/static/media/recipe-img-desk@2x.08cdad580e501084e10f.png",
@@ -18,11 +34,27 @@
     "static/media/sprite.svg": "/mixmasters/static/media/sprite.d9d9a324d1eeb553295289dbc2fbd489.svg",
     "static/media/welcome-mob.jpg": "/mixmasters/static/media/welcome-mob.cc00c21e562de1207966.jpg",
     "index.html": "/mixmasters/index.html",
-    "main.ac43f415.css.map": "/mixmasters/static/css/main.ac43f415.css.map",
-    "main.42f52b87.js.map": "/mixmasters/static/js/main.42f52b87.js.map"
+    "main.56c9b7be.css.map": "/mixmasters/static/css/main.56c9b7be.css.map",
+    "main.c3f44cbf.js.map": "/mixmasters/static/js/main.c3f44cbf.js.map",
+    "691.1b0dee62.chunk.js.map": "/mixmasters/static/js/691.1b0dee62.chunk.js.map",
+    "477.15109791.chunk.js.map": "/mixmasters/static/js/477.15109791.chunk.js.map",
+    "396.8735ac97.chunk.js.map": "/mixmasters/static/js/396.8735ac97.chunk.js.map",
+    "442.f2262eae.chunk.js.map": "/mixmasters/static/js/442.f2262eae.chunk.js.map",
+    "6.f54d95a6.chunk.js.map": "/mixmasters/static/js/6.f54d95a6.chunk.js.map",
+    "827.2d094f4f.chunk.js.map": "/mixmasters/static/js/827.2d094f4f.chunk.js.map",
+    "511.49a3f603.chunk.js.map": "/mixmasters/static/js/511.49a3f603.chunk.js.map",
+    "911.1ca99a70.chunk.js.map": "/mixmasters/static/js/911.1ca99a70.chunk.js.map",
+    "658.52fae2c5.chunk.js.map": "/mixmasters/static/js/658.52fae2c5.chunk.js.map",
+    "928.b0f1a69e.chunk.js.map": "/mixmasters/static/js/928.b0f1a69e.chunk.js.map",
+    "608.c449333d.chunk.js.map": "/mixmasters/static/js/608.c449333d.chunk.js.map",
+    "892.d90f0762.chunk.js.map": "/mixmasters/static/js/892.d90f0762.chunk.js.map",
+    "246.4f2f4158.chunk.css.map": "/mixmasters/static/css/246.4f2f4158.chunk.css.map",
+    "246.df81441c.chunk.js.map": "/mixmasters/static/js/246.df81441c.chunk.js.map",
+    "82.6b692195.chunk.js.map": "/mixmasters/static/js/82.6b692195.chunk.js.map",
+    "561.f23b6e3c.chunk.js.map": "/mixmasters/static/js/561.f23b6e3c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ac43f415.css",
-    "static/js/main.42f52b87.js"
+    "static/css/main.56c9b7be.css",
+    "static/js/main.c3f44cbf.js"
   ]
 }
