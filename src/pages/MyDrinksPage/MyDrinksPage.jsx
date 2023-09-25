@@ -32,22 +32,24 @@ const MyDrinksPage = () => {
     dispatch(fetchMyDrinks());
   }, [dispatch]);
 
+  const errorNotification = () =>
+    toast.error('Something went wrong please try later.', {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    });
+
   return (
     <StyledPageContainer>
       <StyledTitle>My drinks</StyledTitle>
       {/* {isLoading && Поставити лоадер} */}
       {/* {!isLoading && Прибрати лоадер} */}
-      {error &&
-        toast.error('Something went wrong please try later.', {
-          position: 'top-center',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'dark',
-        })}
+      {error && errorNotification}
       {drinks.length !== 0 ? (
         <DrinksList handleDel={onDelete} />
       ) : (
