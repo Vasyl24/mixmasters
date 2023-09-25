@@ -11,7 +11,7 @@ const WelcomePageLayout = lazy(() =>
   import('./pages/WelcomePage/Layout/WelcomePageLayout')
 );
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
-const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
+// const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 // const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
 const SharedLayout = lazy(() =>
   import('./components/SharedLayout/SharedLayout')
