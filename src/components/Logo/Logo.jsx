@@ -5,7 +5,7 @@ import icons from '../../assets/sprite.svg';
 
 export default function Logo() {
   return (
-    <NavLink to="/home" style={{ zIndex: 11 }}>
+    <NavLink to="/home" style={{ zIndex: 2000 }}>
       <LogoGroup>
         <Icon>
           <use xlinkHref={`${icons}#icon-logo`} />

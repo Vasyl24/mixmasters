@@ -16,7 +16,6 @@ export const signupUser = createAsyncThunk(
   }
 );
 
-
 export const signinUser = createAsyncThunk(
   'auth/signin',
   async (credentials, thunkAPI) => {
@@ -29,7 +28,6 @@ export const signinUser = createAsyncThunk(
     }
   }
 );
-
 
 export const signoutUser = createAsyncThunk(
   'auth/signout',
@@ -55,6 +53,19 @@ export const refreshUser = createAsyncThunk(
     setAuthHeader(persistedToken);
     try {
       const res = await axios.get('/users/current');
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  'auth/update',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.patch('/users/update', credentials);
+      console.log(res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

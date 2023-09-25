@@ -9,14 +9,15 @@ import {
   // selectIsLoading,
 } from 'redux/drinks/drinksSelectors';
 import { StyledTitle, StyledDescr } from './MyDrinksPage.styled';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
   const drinks = useSelector(selectDrinks);
   //   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-
+  console.log(error);
+  console.log(drinks);
   const onDelete = id => {
     dispatch(deleteMyDrink(id));
   };
@@ -46,6 +47,19 @@ const MyDrinksPage = () => {
       ) : (
         <StyledDescr>You haven't added any cocktails yet</StyledDescr>
       )}
+      <DrinksList handleDel={onDelete} />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 };

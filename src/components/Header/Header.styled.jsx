@@ -14,7 +14,7 @@ export const HeaderWrapper = styled.div`
     padding: 20px 32px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     justify-content: space-between;
     padding: 20px;
     max-width: 1280px;
