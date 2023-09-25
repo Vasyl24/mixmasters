@@ -9,7 +9,12 @@ import {
 } from './authOperations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: {
+    name: '',
+    birthdate: null,
+    email: null,
+    avatarURL: '',
+  },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -20,7 +25,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
+
     // signUser
+    
     [signupUser.pending](state, _) {
       state.isRefreshing = true;
     },
@@ -50,7 +57,7 @@ const authSlice = createSlice({
     // logoutUser
 
     [signoutUser.fulfilled](state) {
-      state.user = { name: null, email: null };
+      state.user = { name: null, birthdate: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
     },

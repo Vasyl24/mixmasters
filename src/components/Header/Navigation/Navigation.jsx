@@ -1,35 +1,25 @@
 import React, { forwardRef } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Nav, List, Item } from './Navigation.styled';
+
+import { Nav, List, Item, NavigationLink } from './Navigation.styled';
 
 const Navigation = forwardRef((_, ref) => {
   return (
     <Nav ref={ref}>
       <List id="navigation">
         <Item>
-          <NavLink to="/home" className="link">
-            Home
-          </NavLink>
+          <NavigationLink to="/home">Home</NavigationLink>
         </Item>
         <Item>
-          <NavLink to="/drinks" className="link">
-            Drinks
-          </NavLink>
+          <NavigationLink to="/drinks">Drinks</NavigationLink>
         </Item>
         <Item>
-          <NavLink to="/add" className="link">
-            Add drink
-          </NavLink>
+          <NavigationLink to="/add">Add drink</NavigationLink>
         </Item>
         <Item>
-          <NavLink to="/my" className="link">
-            My drink
-          </NavLink>
+          <NavigationLink to="/my">My drink</NavigationLink>
         </Item>
         <Item>
-          <NavLink to="/favorite" className="link">
-            Favorites
-          </NavLink>
+          <NavigationLink to="/favorite">Favorites</NavigationLink>
         </Item>
       </List>
     </Nav>

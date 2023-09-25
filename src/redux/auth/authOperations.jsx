@@ -16,9 +16,11 @@ export const signupUser = createAsyncThunk(
   }
 );
 
+
 export const signinUser = createAsyncThunk(
   'auth/signin',
   async (credentials, thunkAPI) => {
+    
     try {
       const res = await axios.post('/auth/signin', credentials);
       setAuthHeader(res.data.token);
@@ -28,6 +30,7 @@ export const signinUser = createAsyncThunk(
     }
   }
 );
+
 
 export const signoutUser = createAsyncThunk(
   'auth/signout',
