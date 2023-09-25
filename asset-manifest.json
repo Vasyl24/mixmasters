@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/mixmasters/static/css/main.56c9b7be.css",
-    "main.js": "/mixmasters/static/js/main.d6eecab7.js",
+    "main.js": "/mixmasters/static/js/main.3891a51f.js",
     "static/js/691.1b0dee62.chunk.js": "/mixmasters/static/js/691.1b0dee62.chunk.js",
     "static/js/477.15109791.chunk.js": "/mixmasters/static/js/477.15109791.chunk.js",
     "static/js/442.56ce443e.chunk.js": "/mixmasters/static/js/442.56ce443e.chunk.js",
     "static/js/6.f54d95a6.chunk.js": "/mixmasters/static/js/6.f54d95a6.chunk.js",
     "static/js/827.79325b15.chunk.js": "/mixmasters/static/js/827.79325b15.chunk.js",
-    "static/js/511.49a3f603.chunk.js": "/mixmasters/static/js/511.49a3f603.chunk.js",
+    "static/js/726.fc0d8537.chunk.js": "/mixmasters/static/js/726.fc0d8537.chunk.js",
     "static/js/911.1ca99a70.chunk.js": "/mixmasters/static/js/911.1ca99a70.chunk.js",
     "static/js/658.6a7675f1.chunk.js": "/mixmasters/static/js/658.6a7675f1.chunk.js",
     "static/js/928.b0f1a69e.chunk.js": "/mixmasters/static/js/928.b0f1a69e.chunk.js",
     "static/js/608.c449333d.chunk.js": "/mixmasters/static/js/608.c449333d.chunk.js",
     "static/js/745.ffeb48c7.chunk.js": "/mixmasters/static/js/745.ffeb48c7.chunk.js",
-    "static/js/561.75a40b14.chunk.js": "/mixmasters/static/js/561.75a40b14.chunk.js",
+    "static/js/561.d2035798.chunk.js": "/mixmasters/static/js/561.d2035798.chunk.js",
     "static/media/recipe-img-tabl@2x.png": "/mixmasters/static/media/recipe-img-tabl@2x.5958778ab978d2ce2aa7.png",
     "static/media/welcome-desk@2x.jpg": "/mixmasters/static/media/welcome-desk@2x.061eb6ff8715ee1bed59.jpg",
     "static/media/recipe-img-desk@2x.png": "/mixmasters/static/media/recipe-img-desk@2x.08cdad580e501084e10f.png",
@@ -27,26 +27,26 @@
     "static/media/welcome-tabl.jpg": "/mixmasters/static/media/welcome-tabl.23820f0f42504bbc0697.jpg",
     "static/media/blue-iced-tea.png": "/mixmasters/static/media/blue-iced-tea.1c7629b2a72364b7bf50.png",
     "static/media/welcome-mob@2x.jpg": "/mixmasters/static/media/welcome-mob@2x.131ba3649665347a7997.jpg",
-    "static/media/sprite.svg": "/mixmasters/static/media/sprite.337e9ab7fab9571ee4f0f3903c4c4b13.svg",
+    "static/media/sprite.svg": "/mixmasters/static/media/sprite.b0732ceaac16569b46158400bc649bd3.svg",
     "static/media/welcome-mob.jpg": "/mixmasters/static/media/welcome-mob.cc00c21e562de1207966.jpg",
     "index.html": "/mixmasters/index.html",
     "main.56c9b7be.css.map": "/mixmasters/static/css/main.56c9b7be.css.map",
-    "main.d6eecab7.js.map": "/mixmasters/static/js/main.d6eecab7.js.map",
+    "main.3891a51f.js.map": "/mixmasters/static/js/main.3891a51f.js.map",
     "691.1b0dee62.chunk.js.map": "/mixmasters/static/js/691.1b0dee62.chunk.js.map",
     "477.15109791.chunk.js.map": "/mixmasters/static/js/477.15109791.chunk.js.map",
     "442.56ce443e.chunk.js.map": "/mixmasters/static/js/442.56ce443e.chunk.js.map",
     "6.f54d95a6.chunk.js.map": "/mixmasters/static/js/6.f54d95a6.chunk.js.map",
     "827.79325b15.chunk.js.map": "/mixmasters/static/js/827.79325b15.chunk.js.map",
-    "511.49a3f603.chunk.js.map": "/mixmasters/static/js/511.49a3f603.chunk.js.map",
+    "726.fc0d8537.chunk.js.map": "/mixmasters/static/js/726.fc0d8537.chunk.js.map",
     "911.1ca99a70.chunk.js.map": "/mixmasters/static/js/911.1ca99a70.chunk.js.map",
     "658.6a7675f1.chunk.js.map": "/mixmasters/static/js/658.6a7675f1.chunk.js.map",
     "928.b0f1a69e.chunk.js.map": "/mixmasters/static/js/928.b0f1a69e.chunk.js.map",
     "608.c449333d.chunk.js.map": "/mixmasters/static/js/608.c449333d.chunk.js.map",
     "745.ffeb48c7.chunk.js.map": "/mixmasters/static/js/745.ffeb48c7.chunk.js.map",
-    "561.75a40b14.chunk.js.map": "/mixmasters/static/js/561.75a40b14.chunk.js.map"
+    "561.d2035798.chunk.js.map": "/mixmasters/static/js/561.d2035798.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.56c9b7be.css",
-    "static/js/main.d6eecab7.js"
+    "static/js/main.3891a51f.js"
   ]
 }
