@@ -11,7 +11,7 @@ const SharedLayout = () => {
       <Wrap>
         <Header />
         <Main>
-          <Suspense fallback={null}>
+          <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
         </Main>
