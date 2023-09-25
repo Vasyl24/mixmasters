@@ -10,11 +10,10 @@ import {
 
 const initialState = {
   user: {
-    name: 'Victoria',
+    name: '',
     birthdate: null,
     email: null,
-    avatarURL:
-      'https://s.gravatar.com/avatar/30fad9d5f313b75a4bdd4c53cc9b0f46?s=250&d=wavatar',
+    avatarURL: '',
   },
   token: null,
   isLoggedIn: false,
@@ -26,7 +25,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
+
     // signUser
+    
     [signupUser.pending](state, _) {
       state.isRefreshing = true;
     },

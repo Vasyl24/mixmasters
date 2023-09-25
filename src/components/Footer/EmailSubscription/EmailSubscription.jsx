@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Formik, Form} from 'formik';
+import { Formik, Form } from 'formik';
 import {
   SubscribeFormContainer,
   SubscribeText,
@@ -81,11 +81,12 @@ const SubscribeForm = () => {
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                isValid={!errors.email && isFocused}
-                isInvalid={errors.email && isFocused}
+                data-customvalid={!errors.email && isFocused}
+                data-custominvalid={errors.email && isFocused}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
               />
+
               {isFocused && errors.email && (
                 <ErrorMessageOnBorder>{errors.email}</ErrorMessageOnBorder>
               )}
@@ -93,13 +94,17 @@ const SubscribeForm = () => {
             <SubscribeStatusContainer>
               {status === 'success' && isConfirmed && (
                 <StatusMessage>
-                  <SuccessStatus>You have successfully subscribed to the newsletter</SuccessStatus>
+                  <SuccessStatus>
+                    You have successfully subscribed to the newsletter
+                  </SuccessStatus>
                 </StatusMessage>
               )}
 
               {status === 'error' && (
                 <StatusMessage>
-                  <ErrorStatus>Oops! An error occurred. Please try again later.</ErrorStatus>
+                  <ErrorStatus>
+                    Oops! An error occurred. Please try again later.
+                  </ErrorStatus>
                 </StatusMessage>
               )}
             </SubscribeStatusContainer>

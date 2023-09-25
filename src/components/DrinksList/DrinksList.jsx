@@ -5,10 +5,12 @@ import { selectDrinks } from 'redux/drinks/drinksSelectors';
 
 const DrinksList = onDelete => {
   const drinks = useSelector(selectDrinks);
+  const { handleDel } = onDelete;
+
   return (
     <StyledList>
       {drinks.map(drink => (
-        <DrinksItem drink={drink} onDelete={onDelete} />
+        <DrinksItem drink={drink} onDelete={handleDel} />
       ))}
     </StyledList>
   );
