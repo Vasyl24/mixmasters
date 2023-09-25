@@ -7,6 +7,9 @@ import { useAuth } from 'useAuth';
 
 import { refreshUser } from './redux/auth/authOperations';
 
+const AddDrinkPage = lazy(() =>
+  import('./pages/AddDrinkPage/AddDrinkPage')
+);
 const WelcomePageLayout = lazy(() =>
   import('./pages/WelcomePage/Layout/WelcomePageLayout')
 );
@@ -66,7 +69,7 @@ function App() {
           <Route path="home" element={<HomePage />} />
           <Route path="/drinks" element={<DrinksPage />} />
           <Route path="/drink/:drinkId" element={<DrinkPage />} />
-          {/* <Route path="/add" element={<AddDrinkPage />} /> */}
+          <Route path="/add" element={<AddDrinkPage />} />
           <Route path="/my" element={<MyDrinksPage />} />
           <Route path="/favorite" element={<FavoriteDrinkPage />} />
           <Route path="*" element={<ErrorPage />} />
