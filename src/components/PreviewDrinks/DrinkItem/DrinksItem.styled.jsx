@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-export const StyledItem = styled.li``;
 
 export const StyledImg = styled.img`
   width: 335px;

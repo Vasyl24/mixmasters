@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -50,34 +49,3 @@ export const NavLink = styled(Link)`
     }
   }
 `;
-
-const Nav = () => {
-  return (
-    <NavWrapper>
-      <ul>
-        <li>
-          <NavLink to="/drinks" activeClassName="active">
-            Drinks
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/add" activeClassName="active">
-            Add drink
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/my" activeClassName="active">
-            My drink
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/favorite" activeClassName="active">
-            Favorites
-          </NavLink>
-        </li>
-      </ul>
-    </NavWrapper>
-  );
-};
-
-export default Nav;

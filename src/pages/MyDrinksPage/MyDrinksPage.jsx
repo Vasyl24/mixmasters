@@ -8,8 +8,15 @@ import {
   selectError,
   // selectIsLoading,
 } from 'redux/drinks/drinksSelectors';
-import { StyledTitle, StyledDescr } from './MyDrinksPage.styled';
+import {
+  StyledPageContainer,
+  StyledTitle,
+  StyledDefaultContainer,
+  StyledNotFoundImg,
+  StyledDescr,
+} from './MyDrinksPage.styled';
 import { toast } from 'react-toastify';
+import defaultImg from '../../assets/blue-iced-tea.png';
 
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
@@ -26,7 +33,7 @@ const MyDrinksPage = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <StyledPageContainer>
       <StyledTitle>My drinks</StyledTitle>
       {/* {isLoading && Поставити лоадер} */}
       {/* {!isLoading && Прибрати лоадер} */}
@@ -44,9 +51,12 @@ const MyDrinksPage = () => {
       {drinks.length !== 0 ? (
         <DrinksList handleDel={onDelete} />
       ) : (
-        <StyledDescr>You haven't added any cocktails yet</StyledDescr>
+        <StyledDefaultContainer>
+          <StyledNotFoundImg src={`${defaultImg}`} alt="blue-iced-tea" />
+          <StyledDescr>You haven't added any cocktails yet</StyledDescr>
+        </StyledDefaultContainer>
       )}
-    </>
+    </StyledPageContainer>
   );
 };
 

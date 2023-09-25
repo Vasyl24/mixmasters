@@ -9,7 +9,12 @@ import {
 } from './authOperations';
 
 const initialState = {
-  user: { name: '', birthdate: null, email: '' },
+  user: {
+    name: '',
+    birthdate: null,
+    email: null,
+    avatarURL: '',
+  },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -50,7 +55,6 @@ const authSlice = createSlice({
     },
 
     // logoutUser
-
 
     [signoutUser.fulfilled](state) {
       state.user = { name: null, birthdate: null, email: null };

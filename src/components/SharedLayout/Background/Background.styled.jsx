@@ -40,7 +40,7 @@ export const GradientContainer = styled.div`
   background: radial-gradient(ellipse, rgba(64, 112, 205, 0.5), transparent);
   top: -50%;
   left: -28%;
-  z-index: 3;
+  z-index: 1003;
   border-radius: 50%;
   position: absolute;
   filter: blur(50px);
@@ -54,7 +54,7 @@ export const CircleContainer = styled.div`
   filter: blur(40px);
   top: -35%;
   left: 10%;
-  z-index: 10;
+  z-index: 1010;
   border-radius: 50%;
   position: absolute;
   animation: ${mainTitleAnimation} 8s ease-in-out infinite 2s;
