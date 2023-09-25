@@ -30,6 +30,7 @@ const drinksSlice = createSlice({
   initialState: {
     //Для тестування. Замінити на "items: [],"" коли буде робочий бек
     items: coctails,
+    // items: [],
     isLoading: false,
     error: null,
   },
