@@ -4,7 +4,7 @@ import { PageTitle } from 'components/PageTitle/PageTitle';
 import { useState } from 'react';
 import drinks from '../../temporary/recipes.json';
 
-export const DrinksPage = () => {
+const DrinksPage = () => {
   const [filteredDrinks, setFilteredDrinks] = useState(drinks);
 
   const handleSearch = text => {
@@ -48,3 +48,5 @@ export const DrinksPage = () => {
     </>
   );
 };
+
+export default DrinksPage;

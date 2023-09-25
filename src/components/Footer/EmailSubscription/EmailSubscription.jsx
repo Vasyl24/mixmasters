@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Formik, Form} from 'formik';
+import { Formik, Form } from 'formik';
 import {
   SubscribeFormContainer,
   SubscribeText,
@@ -93,13 +93,17 @@ const SubscribeForm = () => {
             <SubscribeStatusContainer>
               {status === 'success' && isConfirmed && (
                 <StatusMessage>
-                  <SuccessStatus>You have successfully subscribed to the newsletter</SuccessStatus>
+                  <SuccessStatus>
+                    You have successfully subscribed to the newsletter
+                  </SuccessStatus>
                 </StatusMessage>
               )}
 
               {status === 'error' && (
                 <StatusMessage>
-                  <ErrorStatus>Oops! An error occurred. Please try again later.</ErrorStatus>
+                  <ErrorStatus>
+                    Oops! An error occurred. Please try again later.
+                  </ErrorStatus>
                 </StatusMessage>
               )}
             </SubscribeStatusContainer>
