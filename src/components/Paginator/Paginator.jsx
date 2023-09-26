@@ -36,7 +36,7 @@ const Paginator = ({
         <StyledArrows
           type="button"
           onClick={() => handlePageChange(currentPage - 1)}
-          style={{ display: currentPage === 1 ? 'none' : 'block' }}
+          disabled={currentPage === 1}
         >
           <svg style={{ width: 14, height: 20, marginRight: 30 }}>
             <use href={sprite + '#icon-arrow-left'} />
@@ -54,14 +54,9 @@ const Paginator = ({
         ))}
         <StyledArrows
           onClick={() => handlePageChange(currentPage + 1)}
-          style={{
-            display:
-              currentPage === Math.ceil(totalDrinks / drinksPerPage)
-                ? 'none'
-                : 'block',
-          }}
+          disabled={currentPage === Math.ceil(totalDrinks / drinksPerPage)}
         >
-          <svg style={{ width: 14, height: 20, marginLeft: 30 }}>
+          <svg style={{ width: 14, height: 20}}>
             <use href={sprite + '#icon-arrow-right'} />
           </svg>
         </StyledArrows>

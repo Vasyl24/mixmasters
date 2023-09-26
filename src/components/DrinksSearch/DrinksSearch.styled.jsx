@@ -16,6 +16,9 @@ export const StyledFilterContainer = styled.div`
 
   & > *:not(:last-child) {
     margin-bottom: 14px;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 0;
+    }
   }
 `;
 
@@ -33,7 +36,6 @@ export const StyledTextInput = styled.input`
   opacity: 0.8;
   background-color: inherit;
 
-
   padding: 14px 24px;
 
   &::placeholder {
@@ -45,7 +47,7 @@ export const StyledTextInput = styled.input`
     font-weight: 400;
     line-height: 2.6;
   }
-  
+
   @media screen and (min-width: 768px) {
     width: 264px;
     height: 56px;
@@ -57,7 +59,7 @@ export const StyledSelectInput = styled.select`
   height: 54px;
 
   border-radius: 200px;
-  background: #161f37;
+  background-color: #161f37;
 
   color: #f3f3f3;
   text-align: left;

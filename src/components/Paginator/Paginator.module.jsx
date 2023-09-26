@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 
 export const StyledPagination = styled.div`
+  padding: 14px 0;
+  @media screen and (min-width: 768px) {
+    padding: 14px 24px;
+  }
+
   ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
-    margin-bottom: 140px;
   }
 
   li {
