@@ -2,17 +2,17 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const NavWrapper = styled.nav`
+  @media (min-width: 768px) {
+    margin-top: 40px;
+  }
+  @media (min-width: 1440px) {
+    margin-top: 0;
+  }
   ul {
     display: flex;
     flex-direction: column;
     gap: 14px;
-
-    @media (min-width: 768px) {
-      margin-top: 40px;
-    }
-
     @media (min-width: 1440px) {
-      margin-top: 0;
       gap: 16px;
     }
   }
