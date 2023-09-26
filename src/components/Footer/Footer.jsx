@@ -9,7 +9,7 @@ import {
   FooterGroup,
   FooterInfo,
   FooterTextTop,
-  FooterTextButton
+  FooterTextButton,
 } from './Footer.styled';
 
 function Footer() {
@@ -26,8 +26,10 @@ function Footer() {
           </FooterGroup>
           <EmailSubscription />
         </FlexContainer>
-        <FooterInfo className="FooterInfo">
-          <FooterTextTop>©2023 Drink Master. All rights reserved.</FooterTextTop>
+        <FooterInfo>
+          <FooterTextTop>
+            ©2023 Drink Master. All rights reserved.
+          </FooterTextTop>
           <div style={{ display: 'flex' }}>
             <FooterTextButton>
               <a

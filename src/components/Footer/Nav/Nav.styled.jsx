@@ -11,10 +11,9 @@ export const NavWrapper = styled.nav`
       margin-top: 40px;
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1440px) {
       margin-top: 0;
       gap: 16px;
-      margin-left: 389px;
     }
   }
 `;
