@@ -1,6 +1,7 @@
 import { setAuthHeader, clearAuthHeader } from '../services';
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 export const signupUser = createAsyncThunk(
   'auth/signup',
@@ -11,11 +12,11 @@ export const signupUser = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
+      toast.error('Registration error');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
 
 export const signinUser = createAsyncThunk(
   'auth/signin',
@@ -25,11 +26,11 @@ export const signinUser = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
+      toast.error('Authentication error');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
 
 export const signoutUser = createAsyncThunk(
   'auth/signout',
@@ -55,6 +56,19 @@ export const refreshUser = createAsyncThunk(
     setAuthHeader(persistedToken);
     try {
       const res = await axios.get('/users/current');
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  'auth/update',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.patch('/users/update', credentials);
+      // console.log(res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

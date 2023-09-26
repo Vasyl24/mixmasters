@@ -1,4 +1,25 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const slideIn = keyframes`
+  from {
+    transform: translateX(500%);
+  }
+  to {
+    transform: translateX(0);
+  }
+`;
+
+const slideOut = keyframes`
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  
+`;
 
 export const UserMenu = styled.div`
   /* padding: 20px 0px; */
@@ -9,12 +30,14 @@ export const UserMenu = styled.div`
   margin-right: 14px;
   transition: transform;
   cursor: pointer;
+  animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
+    cubic-bezier(0.42, 0, 0.58, 1) forwards;
 
   @media (min-width: 768px) {
     margin-right: 24px;
     gap: 14px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     margin-right: 0;
   }
   &:hover,
@@ -47,26 +70,23 @@ export const UserName = styled.span`
 export const ModalStyles = {
   overlay: {
     position: 'fixed',
-    top: '0',
-    left: '0',
     width: '100vw',
     height: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    padding: '0px',
   },
   content: {
-    position: 'absolute',
-    top: '10%',
+    top: '30%',
     left: '50%',
-    transform: 'translateX(-50%)',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
     background: 'none',
     overflow: 'auto',
     WebkitOverflowScrolling: 'touch',
     borderRadius: 'none',
     outline: 'none',
     border: 'none',
-    padding: '0',
   },
 };

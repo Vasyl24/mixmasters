@@ -8,15 +8,25 @@ import {
   selectError,
   // selectIsLoading,
 } from 'redux/drinks/drinksSelectors';
-import { StyledTitle, StyledDescr } from './MyDrinksPage.styled';
+
+import {
+  StyledPageContainer,
+  StyledTitle,
+  StyledDefaultContainer,
+  StyledNotFoundImg,
+  StyledDescr,
+} from './MyDrinksPage.styled';
 import { toast } from 'react-toastify';
+import defaultImg from '../../assets/blue-iced-tea.png';
+
 
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
   const drinks = useSelector(selectDrinks);
   //   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-
+  console.log(error);
+  console.log(drinks);
   const onDelete = id => {
     dispatch(deleteMyDrink(id));
   };
@@ -25,28 +35,35 @@ const MyDrinksPage = () => {
     dispatch(fetchMyDrinks());
   }, [dispatch]);
 
+  const errorNotification = () =>
+    toast.error('Something went wrong please try later.', {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    });
+
   return (
-    <>
+    <StyledPageContainer>
       <StyledTitle>My drinks</StyledTitle>
       {/* {isLoading && Поставити лоадер} */}
       {/* {!isLoading && Прибрати лоадер} */}
-      {error &&
-        toast.error('Something went wrong please try later.', {
-          position: 'top-center',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'dark',
-        })}
+      {error && errorNotification}
       {drinks.length !== 0 ? (
         <DrinksList handleDel={onDelete} />
       ) : (
-        <StyledDescr>You haven't added any cocktails yet</StyledDescr>
+        <StyledDefaultContainer>
+          <StyledNotFoundImg src={`${defaultImg}`} alt="blue-iced-tea" />
+          <StyledDescr>You haven't added any cocktails yet</StyledDescr>
+        </StyledDefaultContainer>
       )}
-    </>
+
+    </StyledPageContainer>
+
   );
 };
 

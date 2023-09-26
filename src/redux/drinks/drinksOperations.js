@@ -5,7 +5,7 @@ export const fetchMyDrinks = createAsyncThunk(
   'drinks/fetchMyDrinks',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/own');
+      const response = await axios.get('/drinks/own');
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -17,7 +17,7 @@ export const deleteMyDrink = createAsyncThunk(
   'drinks/deleteMyDrink',
   async (id, thunkAPI) => {
     try {
-      const response = await axios.delete(`/own/remove/${id}`);
+      const response = await axios.delete(`/drinks/own/remove/${id}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

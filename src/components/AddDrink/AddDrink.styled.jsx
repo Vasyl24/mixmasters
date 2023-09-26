@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 export const SectionContainer = styled.section`
   padding-top: 80px;
   padding-bottom: 80px;
@@ -16,7 +18,15 @@ export const SectionContainer = styled.section`
     padding-bottom: 160px;
   }
 `;
-export const Container = styled.div``;
+export const Container = styled.div`
+  margin-bottom: 47px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 54px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0px;
+  }
+`;
 
 export const Header = styled.h1`
   margin-bottom: 16px;
@@ -49,4 +59,24 @@ export const Text = styled.p`
 `;
 export const Picture = styled.img`
   width: 252px;
+`;
+export const Button = styled(Link)`
+  z-index: 2000;
+  display: inline-block;
+  border-radius: 42px;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  background-color: var(--text-btn-color);
+  padding: 14px 40px;
+  color: var(--accent-color);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.28;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--hover-btn-color);
+    color: var(--text-btn-color);
+  }
 `;

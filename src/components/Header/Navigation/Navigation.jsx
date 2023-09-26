@@ -16,7 +16,7 @@ const Navigation = forwardRef((_, ref) => {
           <NavigationLink to="/add">Add drink</NavigationLink>
         </Item>
         <Item>
-          <NavigationLink to="/my">My drink</NavigationLink>
+          <NavigationLink to="/my">My drinks</NavigationLink>
         </Item>
         <Item>
           <NavigationLink to="/favorite">Favorites</NavigationLink>

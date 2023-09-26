@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const SubscribeFormContainer = styled.div`
+  margin: 0px auto;
   display: flex;
   flex-direction: column;
   max-width: 480px;
@@ -128,4 +129,3 @@ export {
   SuccessStatus,
   ErrorStatus,
 };
- 

@@ -6,9 +6,12 @@ export const UserLogoPopup = ({ setModalComponent }) => {
   const handleLogOut = () => {
     setModalComponent('LogOutModal');
   };
+  const handleEdit = () => {
+    setModalComponent('UserInfoModal');
+  };
   return (
     <Container>
-      <EditProfileWrap>
+      <EditProfileWrap onClick={handleEdit}>
         <Text>Edit profile</Text>
         <Icon>
           <use xlinkHref={`${icons}#icon-edit`} />
