@@ -7,6 +7,7 @@ import { selectUser } from '../../redux/selectors';
 import { UserMenu, UserIcon, UserName, ModalStyles } from './UserLogo.styled';
 import { UserLogoPopup } from 'components/UserLogoPopup/UserLogoPopup';
 import { LogOutModal } from '../LogOutModal/LogOutModal';
+import { UserInfoModal } from '../UserInfoModal/UserInfoModal';
 
 Modal.setAppElement('#root');
 export const UserLogo = () => {
@@ -20,12 +21,6 @@ export const UserLogo = () => {
     setModalIsOpen(true);
     setModalComponent('UserLogoPopup');
   };
-  // const handleEditProfile = () => {
-  //   window.alert('Edit profile modal');
-  // };
-  // const handleLogout = () => {
-  //   window.alert('Log out modal');
-  // };
 
   return (
     <>
@@ -49,6 +44,9 @@ export const UserLogo = () => {
             setModalComponent={setModalComponent}
             toggleModal={toggleModal}
           />
+        )}
+        {modalComponet === 'UserInfoModal' && (
+          <UserInfoModal toggleModal={toggleModal} />
         )}
       </Modal>
     </>

@@ -17,8 +17,10 @@ export const HeaderWrapper = styled.div`
   }
 
   @media (min-width: 1440px) {
+
     width: 1440px;
 
     padding: 20px 100px;
+
   }
 `;

@@ -8,6 +8,7 @@ import {
   selectError,
   // selectIsLoading,
 } from 'redux/drinks/drinksSelectors';
+
 import {
   StyledPageContainer,
   StyledTitle,
@@ -18,12 +19,14 @@ import {
 import { toast } from 'react-toastify';
 import defaultImg from '../../assets/blue-iced-tea.png';
 
+
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
   const drinks = useSelector(selectDrinks);
   //   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-
+  console.log(error);
+  console.log(drinks);
   const onDelete = id => {
     dispatch(deleteMyDrink(id));
   };
@@ -58,7 +61,9 @@ const MyDrinksPage = () => {
           <StyledDescr>You haven't added any cocktails yet</StyledDescr>
         </StyledDefaultContainer>
       )}
+
     </StyledPageContainer>
+
   );
 };
 
