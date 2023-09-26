@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 // Create a container for the footer
-export const FooterContainer = styled.div`
+export const FooterContainer = styled.footer`
   position: relative;
   overflow: hidden;
   padding: 40px 20px 18px;
@@ -60,7 +60,31 @@ export const FooterInfo = styled.div`
   }
 `;
 
-export const FooterText = styled.p`
+export const FooterTextTop = styled.p`
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.24px;
+  color: #f3f3f37e;
+  transition: border 0.3s ease;
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.28px;
+    margin-right: 18px;
+  }
+
+    @media (max-width: 768px) {
+    margin-right: 14px;
+    margin-top: 80px;
+    margin-bottom: 8px;
+}
+    }
+  }
+`;
+
+export const FooterTextButton = styled.p`
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
@@ -76,6 +100,7 @@ export const FooterText = styled.p`
 
   &:not(:last-child) {
     margin-right: 14px;
+    
 
     @media (min-width: 768px) {
       margin-right: 18px;
