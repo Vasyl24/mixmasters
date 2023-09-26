@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import coctail from '../../assets/blue-iced-tea.png';
+import coctail2x from '../../assets/blue-iced-tea@2x.png';
 
 import {
   SectionContainer,
@@ -7,6 +7,7 @@ import {
   Header,
   Text,
   Picture,
+  Button,
 } from './AddDrink.styled';
 
 export const AddDrink = () => {
@@ -19,9 +20,9 @@ export const AddDrink = () => {
           destination for exploring, crafting, and mastering the world's finest
           beverages.
         </Text>
-        <Link to="/add">Add drinks</Link>
+        <Button to="/add">Add drinks</Button>
       </Container>
-      <Picture src={coctail} alt="phonebook" />
+      <Picture src={coctail} alt="coctail" srcSet={`${coctail2x} 2x`} />
     </SectionContainer>
   );
 };

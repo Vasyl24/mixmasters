@@ -37,8 +37,9 @@ export const UserInfoModal = ({ toggleModal }) => {
   //     hiddenFileInput.current.click();
   //   };
   const handleSubmit = values => {
-    console.log(values);
+    // console.log(values);
     dispatch(updateUser(values));
+    toggleModal();
   };
   return (
     <Container>

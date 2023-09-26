@@ -26,9 +26,8 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-
     // signUser
-    
+
     [signupUser.pending](state, _) {
       state.isRefreshing = true;
     },
@@ -89,7 +88,6 @@ const authSlice = createSlice({
     },
 
     [updateUser.fulfilled](state, action) {
-      console.log(action.payload);
       state.user.name = action.payload.name;
       state.user.avatarURL = action.payload.avatarURL;
       state.isRefreshing = false;
