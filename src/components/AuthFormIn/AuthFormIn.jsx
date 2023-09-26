@@ -60,7 +60,9 @@ const AuthFormIn = () => {
       return;
     } else if (dispatch(signinUser({ ...values }))) {
       resetForm();
-      navigate('/home', { replace: true });
+      if (isLoggedIn) {
+        navigate('/home', { replace: true });
+      }
     }
   };
 
