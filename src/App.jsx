@@ -1,7 +1,7 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-// import { RestrictedRoute } from './RestrictedRoute';
+import { RestrictedRoute } from './RestrictedRoute';
 // import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'useAuth';
 
@@ -11,8 +11,8 @@ const WelcomePageLayout = lazy(() =>
   import('./pages/WelcomePage/Layout/WelcomePageLayout')
 );
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
-// const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
-// const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
+const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
+const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
 const SharedLayout = lazy(() =>
   import('./components/SharedLayout/SharedLayout')
 );
@@ -40,20 +40,20 @@ function App() {
       <Routes>
         <Route element={<WelcomePageLayout />}>
           <Route index path="/welcome" element={<WelcomePage />} />
-          {/*<Route path="/signin" element={<SignInPage />}></Route> */}
+          <Route path="/signin" element={<SignInPage />}></Route>
 
-          {/* <Route
+          <Route
             path="/signup"
             element={
               <RestrictedRoute redirectTo="/home" component={<SignUpPage />} />
             }
-          /> */}
-          {/* <Route
+          />
+          <Route
             path="/signin"
             element={
               <RestrictedRoute redirectTo="/home" component={<SignInPage />} />
             }
-          /> */}
+          />
         </Route>
 
         {/* <Route
