@@ -12,7 +12,7 @@ export const Nav = () => {
           <NavLink to="/add">Add drink</NavLink>
         </li>
         <li>
-          <NavLink to="/my">My drink</NavLink>
+          <NavLink to="/my">My drinks</NavLink>
         </li>
         <li>
           <NavLink to="/favorite">Favorites</NavLink>

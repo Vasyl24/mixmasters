@@ -2,30 +2,32 @@ import styled from 'styled-components';
 
 // Create a container for the footer
 export const FooterContainer = styled.footer`
-  /* position: relative; */
-  padding: 40px 20px 18px;
   border-top: 1px solid rgba(243, 243, 243, 0.2);
+`;
+
+export const FooterWrap = styled.div`
+  padding: 40px 20px 18px;
 
   @media (min-width: 768px) {
+    width: 768px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 80px 32px 24px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
+    width: 1440px;
     padding: 80px 100px 24px;
   }
 `;
 
 // Create a flex container
 export const FlexContainer = styled.div`
-  max-width: 375px;
   margin-bottom: 80px;
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   flex-direction: column;
 
   @media (min-width: 768px) {
-    max-width: 768px;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -40,6 +42,7 @@ export const FooterGroup = styled.div`
   justify-content: space-between;
 
   @media (min-width: 768px) {
+    margin-bottom: 0px;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -51,12 +54,13 @@ export const FooterGroup = styled.div`
 
 export const FooterInfo = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 8px;
 
-  @media (max-width: 768px) {
-    display: initial;
+  @media (min-width: 768px) {
+    flex-direction: row;
   }
 `;
 
@@ -72,13 +76,6 @@ export const FooterTextTop = styled.p`
     font-size: 14px;
     line-height: 18px;
     letter-spacing: -0.28px;
-    margin-right: 18px;
-  }
-
-  @media (max-width: 768px) {
-    margin-right: 14px;
-    margin-top: 80px;
-    margin-bottom: 8px;
   }
 `;
 
