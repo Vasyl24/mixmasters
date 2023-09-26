@@ -18,7 +18,7 @@ const mainTitleAnimation = keyframes`
 		transform: translateY(-50px) scale(0.8) rotate(45deg);
 		opacity: 0.5;
 	}
-}`;
+`;
 
 export const ContainerLayout = styled.div`
   display: flex;
