@@ -7,29 +7,19 @@ const Navigation = forwardRef((_, ref) => {
     <Nav ref={ref}>
       <List id="navigation">
         <Item>
-          <NavigationLink to="/home" className="link">
-            Home
-          </NavigationLink>
+          <NavigationLink to="/home">Home</NavigationLink>
         </Item>
         <Item>
-          <NavigationLink to="/drinks" className="link">
-            Drinks
-          </NavigationLink>
+          <NavigationLink to="/drinks">Drinks</NavigationLink>
         </Item>
         <Item>
-          <NavigationLink to="/add" className="link">
-            Add drink
-          </NavigationLink>
+          <NavigationLink to="/add">Add drink</NavigationLink>
         </Item>
         <Item>
-          <NavigationLink to="/my" className="link">
-            My drink
-          </NavigationLink>
+          <NavigationLink to="/my">My drink</NavigationLink>
         </Item>
         <Item>
-          <NavigationLink to="/favorite" className="link">
-            Favorites
-          </NavigationLink>
+          <NavigationLink to="/favorite">Favorites</NavigationLink>
         </Item>
       </List>
     </Nav>

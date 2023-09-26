@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { signupUser } from 'redux/auth/authOperations';
 import { useFormik } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -40,6 +41,7 @@ const formatDate = date => {
 
 const AuthForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const initialValues = {
     name: '',
@@ -62,6 +64,7 @@ const AuthForm = () => {
 
     dispatch(signupUser({ ...formattedValues }));
     resetForm();
+    navigate('/home', { replace: true });
   };
 
   const formik = useFormik({

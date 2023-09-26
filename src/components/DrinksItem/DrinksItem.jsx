@@ -1,21 +1,19 @@
 import {
   StyledItem,
   StyledContainer,
-  StyledBtn,
   StyledImg,
   StyledName,
   StyledType,
   StyledDescr,
-  StyledBtnDel,
-  StyledDelIcon,
 } from './DrinksItem.styled';
 import defaultImg from 'assets/rectangle-2.jpg';
-import sprite from 'assets/sprite.svg';
+import { DeleteBtn } from 'components/Butttons/DeleteBtn/DeleteBtn';
+import { SeeButton } from 'components/Butttons/SeeMoreBtn/SeeMoreBtn';
 
 const DrinksItem = props => {
   const { _id, drink, alcoholic, description, drinkThumb } = props.drink;
   const id = _id.$oid;
-  const { onDeleteFunction } = props.onDelete;
+  const { onDelete } = props;
 
   return (
     <StyledItem key={id}>
@@ -24,12 +22,8 @@ const DrinksItem = props => {
       <StyledType>{alcoholic}</StyledType>
       <StyledDescr>{description}</StyledDescr>
       <StyledContainer>
-        <StyledBtn to={`/drink/${id}`}>See more</StyledBtn>
-        <StyledBtnDel type="button" onClick={() => onDeleteFunction(id)}>
-          <StyledDelIcon>
-            <use href={sprite + '#icon-trash'} />
-          </StyledDelIcon>
-        </StyledBtnDel>
+        <SeeButton id={id} />
+        <DeleteBtn type="button" onDelete={onDelete} id={id} />
       </StyledContainer>
     </StyledItem>
   );

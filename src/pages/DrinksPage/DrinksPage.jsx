@@ -89,3 +89,5 @@ export const DrinksPage = () => {
     </>
   );
 };
+
+export default DrinksPage;

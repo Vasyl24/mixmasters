@@ -24,49 +24,39 @@ const slideOut = keyframes`
 
 export const Nav = styled.nav`
   position: absolute;
-  z-index: 10;
+  z-index: 2000;
   top: 77px;
   bottom: 0;
   left: 0;
   right: 0;
   display: grid;
   background-color: #0a0a11;
-
   transform: translateX(100%);
   animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
     cubic-bezier(0.42, 0, 0.58, 1) forwards;
 
   @media (min-width: 768px) {
     top: 84px;
-    background-color: none;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
+    background-color: transparent;
     position: static;
     display: block;
     margin-right: auto;
     margin-left: auto;
     transform: translateX(0);
   }
-
-  & a {
-    padding: 8px 16px;
-  }
-
-  & [class='active'] {
-    padding: 8px 16px;
-  }
 `;
 
 export const List = styled.ul`
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
   margin: 20% auto 0 auto;
 
-  @media (min-width: 1024px) {
-    display: flex;
+  @media (min-width: 1440px) {
     flex-direction: row;
     margin: 0;
   }
@@ -74,19 +64,19 @@ export const List = styled.ul`
 
 export const Item = styled.li``;
 export const NavigationLink = styled(NavLink)`
+  display: block;
   padding: 8px 16px;
   border-radius: 40px;
   font-size: 14px;
   font-weight: 500;
-  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    border 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 11;
-  line-height: calc(22.4 / 14);
-
+  line-height: 1.6;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) border 0.3s
+    cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus,
   &:active {
-    background: #161f37;
+    background: var(--accent-color);
     border-color: transparent;
   }
 `;
