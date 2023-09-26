@@ -4,6 +4,7 @@ import { DrinksSearch } from 'components/DrinksSearch/DrinksSearch';
 import { PageTitle } from 'components/PageTitle/PageTitle';
 import Paginator from 'components/Paginator/Paginator';
 import drinksData from '../../temporary/recipes.json';
+import { StyledMainContainer } from './DrinksPage.styled';
 
 export const DrinksPage = () => {
   const [drinks] = useState(drinksData);
@@ -13,12 +14,15 @@ export const DrinksPage = () => {
   const [pageNumbersToShow, setPageNumbersToShow] = useState(8);
 
   const updateDrinksPerPageAndPageNumbers = () => {
-    if (window.innerWidth >= 768) {
-      setDrinksPerPage(9);
-      setPageNumbersToShow(8);
-    } else {
+    if (window.innerWidth < 768) {
       setDrinksPerPage(10);
-      setPageNumbersToShow(4);
+      setPageNumbersToShow(5);
+    } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
+      setDrinksPerPage(10);
+      setPageNumbersToShow(8);
+    } else if (window.innerWidth >= 1440) {
+      setDrinksPerPage(9)
+      setPageNumbersToShow(8)
     }
   };
 
@@ -70,8 +74,8 @@ export const DrinksPage = () => {
   );
 
   return (
-    <>
-      <PageTitle title="Drinks" />
+    <StyledMainContainer>
+      <PageTitle title="Drinks"/>
       <DrinksSearch
         onSearch={handleSearch}
         onCategoryChange={handleCategoryChange}
@@ -86,7 +90,7 @@ export const DrinksPage = () => {
           pageNumbersToShow={pageNumbersToShow}
         />
       )}
-    </>
+    </StyledMainContainer>
   );
 };
 
