@@ -26,7 +26,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
+
     // signUser
+    
     [signupUser.pending](state, _) {
       state.isRefreshing = true;
     },

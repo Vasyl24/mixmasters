@@ -7,14 +7,14 @@ import styled from 'styled-components';
 export const IconWrapper = styled.div`
   width: 32px;
   height: 32px;
-  stroke: #F3F3F3;
+  stroke: #f3f3f3;
 
   @media (min-width: 768px) {
     width: 38px;
     height: 38px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     display: none;
   }
 `;
@@ -31,7 +31,11 @@ const BurgerMenuWrapper = styled.div`
   transition: max-height 0.5s ease-in-out;
 `;
 
-export default function BurgerMenu({ toggleMenu, isOpenBurgerMenu, isDesktop }) {
+export default function BurgerMenu({
+  toggleMenu,
+  isOpenBurgerMenu,
+  isDesktop,
+}) {
   return (
     <>
       <IconWrapper onClick={toggleMenu} id="burger_menu">
