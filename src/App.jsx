@@ -62,15 +62,15 @@ function App() {
             <PrivateRoute redirectTo="/welcome" component={<SharedLayout />} />
           }
         >
-{/*         <Route path="/" element={<SharedLayout />}>
+        {/* <Route path="/" element={<SharedLayout />}>
           <Route path="home" element={<HomePage />} />
           <Route path="/drinks" element={<DrinksPage />} />
           <Route path="/drink/:drinkId" element={<DrinkPage />} /> */}
           {/* <Route path="/add" element={<AddDrinkPage />} /> */}
 {/*           <Route path="/my" element={<MyDrinksPage />} />
           <Route path="/favorite" element={<FavoriteDrinkPage />} />
-          <Route path="*" element={<ErrorPage />} />
           <Route path="*" element={<ErrorPage />} /> */}
+          <Route path="*" element={<ErrorPage />} />
 
           <Route
             path="/home"
