@@ -21,7 +21,6 @@ const slideOut = keyframes`
   
 `;
 
-
 export const UserMenu = styled.div`
   /* padding: 20px 0px; */
   position: relative;
@@ -32,13 +31,13 @@ export const UserMenu = styled.div`
   transition: transform;
   cursor: pointer;
   animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
-  cubic-bezier(0.42, 0, 0.58, 1) forwards;
+    cubic-bezier(0.42, 0, 0.58, 1) forwards;
 
   @media (min-width: 768px) {
     margin-right: 24px;
     gap: 14px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     margin-right: 0;
   }
   &:hover,
@@ -55,7 +54,6 @@ export const UserIcon = styled.img`
   @media (min-width: 768px) {
     width: 44px;
     height: 44px;
-    
   }
 `;
 
