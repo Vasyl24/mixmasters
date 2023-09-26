@@ -5,7 +5,7 @@ export const FooterContainer = styled.footer`
   position: relative;
   overflow: hidden;
   padding: 40px 20px 18px;
-  border-top: 1px solid rgba(243, 243, 243, 0.20);
+  border-top: 1px solid rgba(243, 243, 243, 0.2);
 
   @media (min-width: 768px) {
     padding: 80px 32px 24px;

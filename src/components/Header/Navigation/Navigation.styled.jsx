@@ -78,8 +78,11 @@ export const NavigationLink = styled(NavLink)`
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     border 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
+    background: var(--accent-color);
+    border-color: transparent;
+  }
+  &.active {
     background: var(--accent-color);
     border-color: transparent;
   }
