@@ -37,6 +37,7 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.isRefreshing = false;
+      state.error = null;
     },
 
     [signupUser.rejected](state, action) {
@@ -49,6 +50,7 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.error = null;
     },
 
     [signinUser.rejected](state, action) {
@@ -61,6 +63,7 @@ const authSlice = createSlice({
       state.user = { name: null, birthdate: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
+      state.error = null;
     },
 
     [signoutUser.rejected](state, action) {
@@ -77,6 +80,7 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isRefreshing = false;
+      state.error = null;
     },
 
     [refreshUser.rejected](state, action) {
@@ -91,6 +95,7 @@ const authSlice = createSlice({
       state.user.name = action.payload.name;
       state.user.avatarURL = action.payload.avatarURL;
       state.isRefreshing = false;
+      state.error = null;
     },
 
     [updateUser.rejected](state, action) {

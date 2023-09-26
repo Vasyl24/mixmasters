@@ -72,3 +72,14 @@ export const getDrinkById = createAsyncThunk(
     }
   }
 );
+export const fetchMainpage = createAsyncThunk(
+  'drinks/fetchMainpage',
+  async (count, thunkAPI) => {
+    try {
+      const response = await axios.get(`/drinks/mainpage?count=${count}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
