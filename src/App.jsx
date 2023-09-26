@@ -2,7 +2,7 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
-// import { PrivateRoute } from './PrivateRoute';
+import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'useAuth';
 
 import { refreshUser } from './redux/auth/authOperations';
@@ -40,7 +40,7 @@ function App() {
       <Routes>
         <Route element={<WelcomePageLayout />}>
           <Route index path="/welcome" element={<WelcomePage />} />
-          <Route path="/signin" element={<SignInPage />}></Route>
+{/*           <Route path="/signin" element={<SignInPage />}></Route> */}
 
           <Route
             path="/signup"
@@ -56,23 +56,23 @@ function App() {
           />
         </Route>
 
-        {/* <Route
+        <Route
           path="/"
           element={
             <PrivateRoute redirectTo="/welcome" component={<SharedLayout />} />
           }
-        > */}
-        <Route path="/" element={<SharedLayout />}>
+        >
+{/*         <Route path="/" element={<SharedLayout />}>
           <Route path="home" element={<HomePage />} />
           <Route path="/drinks" element={<DrinksPage />} />
-          <Route path="/drink/:drinkId" element={<DrinkPage />} />
+          <Route path="/drink/:drinkId" element={<DrinkPage />} /> */}
           {/* <Route path="/add" element={<AddDrinkPage />} /> */}
-          <Route path="/my" element={<MyDrinksPage />} />
+{/*           <Route path="/my" element={<MyDrinksPage />} />
           <Route path="/favorite" element={<FavoriteDrinkPage />} />
           <Route path="*" element={<ErrorPage />} />
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="*" element={<ErrorPage />} /> */}
 
-          {/* <Route
+          <Route
             path="/home"
             element={
               <PrivateRoute redirectTo="/welcome" component={<HomePage />} />
@@ -89,8 +89,8 @@ function App() {
             element={
               <PrivateRoute redirectTo="/welcome" component={<DrinkPage />} />
             }
-          /> */}
-          {/* <Route
+          />
+          <Route
             path="/add"
             element={
               <PrivateRoute
@@ -98,8 +98,8 @@ function App() {
                 component={<AddDrinkPage />}
               />
             }
-          /> */}
-          {/* <Route
+          />
+          <Route
             path="/my"
             element={
               <PrivateRoute
@@ -116,7 +116,7 @@ function App() {
                 component={<FavoriteDrinkPage />}
               />
             }
-          /> */}
+          />
         </Route>
       </Routes>
     </Suspense>
