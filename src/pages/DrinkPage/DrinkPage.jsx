@@ -11,6 +11,7 @@ const DrinkPage = () => {
   const [drinkInfo, setDrinkInfo] = useState({});
   const dispatch = useDispatch();
   const { drinkId } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
 
   console.log(drinkInfo);
 
@@ -27,40 +28,41 @@ const DrinkPage = () => {
     });
 
   useEffect(() => {
-    const info = dispatch(getDrinkById(drinkId));
-    if (info) {
-      setDrinkInfo(info);
-    } else {
-      errorToast('Something went wrong please try later.');
+    async function getDrinkInfo() {
+      try {
+        setIsLoading(true);
+        const info = await dispatch(getDrinkById(drinkId));
+        if (info) {
+          setDrinkInfo(info.payload);
+        } else {
+          errorToast('Something went wrong please try later.');
+        }
+      } catch (error) {
+        errorToast(error.message);
+      } finally {
+        setIsLoading(false);
+      }
     }
+    getDrinkInfo();
   }, [dispatch, drinkId]);
 
+console.log(drinkInfo.ingredients);
+
   return (
-    <>
-      <DrinkPageHero drinkInfo={drinkInfo} />
-      <DrinkIngredientsList ingredients={drinkInfo.ingredients} />
-      <RecipePreparation
-        instructions={drinkInfo.instructions}
-        description={drinkInfo.description}
-      />
-    </>
+    <div>
+      {!isLoading && drinkInfo.drink && (
+        <>
+          <DrinkPageHero drinkInfo={drinkInfo} />
+          <DrinkIngredientsList ingredients={drinkInfo.ingredients} />
+          <RecipePreparation
+            instructions={drinkInfo.instructions}
+            description={drinkInfo.description}
+          />
+        </>)}
+    </div>
   );
 };
 
 export default DrinkPage;
 
-// useEffect(() => {
-//   async function getDrinkInfo() {
-//     try {
-//      const info = await dispatch(getDrinkById(drinkId));
-//       if (info) {
-//         setDrinkInfo(info);
-//       } else {
-//          errorToast('Something went wrong please try later.')
-//       }
-//     } catch (error) {
-//       errorToast(error.message);
-//     }
-//   }
-//   getDrinkInfo();
-// }, [dispatch, drinkId]);
+

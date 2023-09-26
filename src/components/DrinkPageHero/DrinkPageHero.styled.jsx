@@ -10,6 +10,22 @@ export const ContainerHero = styled.div`
   }
 `;
 
+export const PageTitle = styled.h1`
+  margin-bottom: 8px;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  @media screen and (min-width: 768px) {
+    font-size: 56px;
+    line-height: 1.1;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 715px;
+    font-size: 64px;
+    width: 600px;
+  }
+`;
+
 export const ContainerDescription = styled.div`
   padding-top: 80px;
   @media screen and (min-width: 768px) {
@@ -17,7 +33,7 @@ export const ContainerDescription = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    padding-top: 10px;
+    padding-top: 26px;
     width: 600px;
   }
 `;
@@ -61,6 +77,7 @@ export const Button = styled.button`
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
   cursor: pointer;
+  z-index: 320;
   transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
     color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
@@ -68,6 +85,10 @@ export const Button = styled.button`
     padding: 18px 44px;
     font-size: 16px;
     line-height: calc(18 / 16);
+  }
+
+  @media (min-width: 1440px) {
+    margin-bottom: 0px;
   }
 
   &:hover {
@@ -80,14 +101,43 @@ export const Picture = styled.img`
   margin-bottom: 18px;
   width: 335px;
   height: 400px;
+
   @media screen and (min-width: 768px) {
     margin-bottom: 80px;
     width: 704px;
     height: 400px;
+    background-size: cover;
   }
   @media screen and (min-width: 1440px) {
     margin-bottom: 0px;
     width: 400px;
     height: 400px;
+    background-size: cover;
   }
 `;
+
+// export const ContainerImage = styled.div`
+//   width: 335px;
+//   height: 430px;
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   background-image: url(${recipeImgMob1x});
+  
+
+//   @media screen and (min-width: 768px) {
+//     width: 704px;
+//     height: 430px;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     background-image: url(${recipeImgTab1x});
+  
+//   }
+//   @media screen and (min-width: 1440px) {
+//     width: 631px;
+//     height: 480px;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     background-image: url(${recipeImgDesk1x});
+    
+//   }
+// `;

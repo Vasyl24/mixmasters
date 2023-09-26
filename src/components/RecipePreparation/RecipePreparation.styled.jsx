@@ -34,6 +34,27 @@ export const ContainerRecipe = styled.div`
   }
 `;
 
+export const ContainerDescription = styled.div`
+  @media screen and (min-width: 1440px) {
+    width: 549px;
+  }
+`;
+
+export const Description = styled.p`
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #f3f3f3;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.38;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 549px;
+  }
+`;
+
 export const Recipe = styled.p`
   margin-bottom: 40px;
   font-size: 14px;

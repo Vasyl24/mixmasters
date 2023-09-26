@@ -1,17 +1,22 @@
 
 import {
   Title,
+  Description,
   Recipe,
   ContainerRecipe,
   ContainerImage,
+  ContainerDescription,
 } from './RecipePreparation.styled';
 
-export function RecipePreparation({ description }) {
+export function RecipePreparation({ description, instructions }) {
   return (
     <>
       <Title>Recipe Preparation</Title>
       <ContainerRecipe>
-        <Recipe>{description}</Recipe>
+        <ContainerDescription>
+          <Description>{description}</Description>
+          <Recipe>{instructions}</Recipe>
+        </ContainerDescription>
         <ContainerImage />
       </ContainerRecipe>
     </>
