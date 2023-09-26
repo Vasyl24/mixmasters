@@ -5,7 +5,7 @@ import icons from '../../assets/sprite.svg';
 export default function Logo() {
   return (
 
-    <LogoLink to="/home" style={{ zIndex: 2000 }}>
+    <LogoLink to="/home">
 
       <LogoGroup>
         <Icon>
