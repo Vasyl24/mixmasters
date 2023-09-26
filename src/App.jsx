@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
-import { useAuth } from 'useAuth';
+// import { useAuth } from 'useAuth';
 
 import { refreshUser } from './redux/auth/authOperations';
 
@@ -42,7 +42,7 @@ function App() {
       <Routes>
         <Route element={<WelcomePageLayout />}>
           <Route index path="/welcome" element={<WelcomePage />} />
-{/*           <Route path="/signin" element={<SignInPage />}></Route> */}
+          {/*           <Route path="/signin" element={<SignInPage />}></Route> */}
 
           <Route
             path="/signup"
@@ -64,7 +64,7 @@ function App() {
             <PrivateRoute redirectTo="/welcome" component={<SharedLayout />} />
           }
         >
-        {/* <Route path="/" element={<SharedLayout />}>
+          {/* <Route path="/" element={<SharedLayout />}>
           <Route path="home" element={<HomePage />} />
           <Route path="/drinks" element={<DrinksPage />} />
           <Route path="/drink/:drinkId" element={<DrinkPage />} />
