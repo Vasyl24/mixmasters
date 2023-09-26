@@ -3,17 +3,21 @@ import icons from '../../../../assets/sprite.svg';
 import { CounterWrp, StyledButton } from './Counter.styled';
 
 const Counter = () => {
-  const [counter, setCounter] = useState(3);
+  const [counter, setCounter] = useState(1);
 
 
 
   const handleAddCounter = () => {
-    setCounter(p => p + 1);
+    setCounter(counter + 1);
   };
 
   const handleMinusCounter = () => {
-    setCounter(p => p - 1);
-  };
+    setCounter(counter - 1);
+    if (counter === 1) {
+      setCounter(1);
+      return;
+    };
+  }
 
 return (
     <CounterWrp>

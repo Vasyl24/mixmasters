@@ -16,7 +16,7 @@ export const Title = styled.h3`
 	font-size: 18px;
 	font-weight: 500;
 	line-height: calc(24 / 18);
-    margin-top: 88px;
+    // margin-top: 88px;
 
 	@media (min-width: 768px)  {
 		font-size: 24px;
@@ -68,7 +68,7 @@ export const TextWrapper = styled.div`
 `;
 
 export const Subtitle = styled.p`
-    color: $mainFontColor;
+    color: #f3f3f3;
 	font-size: 16px;
 	font-weight: 500;
 	line-height: calc(22 / 16);
