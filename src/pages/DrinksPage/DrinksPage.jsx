@@ -78,12 +78,14 @@ export const DrinksPage = () => {
         onIngredientChange={handleIngredientChange}
       />
       <Drinks drinks={currentDrinks} />
-      <Paginator
-        drinksPerPage={drinksPerPage}
-        totalDrinks={filteredDrinks.length}
-        onPageChange={onPageChange}
-        pageNumbersToShow={pageNumbersToShow}
-      />
+      {filteredDrinks.length > 8 && (
+        <Paginator
+          drinksPerPage={drinksPerPage}
+          totalDrinks={filteredDrinks.length}
+          onPageChange={onPageChange}
+          pageNumbersToShow={pageNumbersToShow}
+        />
+      )}
     </>
   );
 };

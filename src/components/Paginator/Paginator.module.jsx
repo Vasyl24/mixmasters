@@ -5,7 +5,6 @@ export const StyledPagination = styled.div`
     list-style: none;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-top: 80px;
@@ -23,7 +22,7 @@ export const StyledPagination = styled.div`
     transition: background-color 0.5s;
     font-size: 12px;
     font-weight: 500;
-    background-color: inherit;
+    background-color: transparent;
     border: none;
     font-style: normal;
     margin: 0 10px;
@@ -32,4 +31,13 @@ export const StyledPagination = styled.div`
   button.active {
     background-color: rgba(64, 112, 205, 0.5);
   }
+`;
+
+export const StyledArrows = styled.button`
+  width: 27px;
+  height: 27px;
+  fill: rgba(243, 243, 243, 0.3);
+  background-color: transparent;
+  border: none;
+  margin: 0 10px;
 `;
