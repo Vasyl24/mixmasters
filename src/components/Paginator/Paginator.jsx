@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyledPagination } from './Paginator.module';
+import { StyledArrows, StyledPagination } from './Paginator.module';
 import sprite from 'assets/sprite.svg';
 
 const Paginator = ({
@@ -24,18 +24,8 @@ const Paginator = ({
     const halfPageNumbersToShow = Math.floor(pageNumbersToShow / 2);
     const currentPageIndex = pageNumbers.indexOf(currentPage);
 
-    let start = currentPageIndex - halfPageNumbersToShow;
-    let end = currentPageIndex + halfPageNumbersToShow;
-
-    if (start < 0) {
-      start = 0;
-      end = pageNumbersToShow - 1;
-    }
-
-    if (end >= pageNumbers.length) {
-      end = pageNumbers.length - 1;
-      start = end - (pageNumbersToShow - 1);
-    }
+    const start = Math.max(0, currentPageIndex - halfPageNumbersToShow);
+    const end = Math.min(pageNumbers.length - 1, start + pageNumbersToShow - 1);
 
     return pageNumbers.slice(start, end + 1);
   };
@@ -43,7 +33,7 @@ const Paginator = ({
   return (
     <StyledPagination>
       <ul>
-        <button
+        <StyledArrows
           type="button"
           onClick={() => handlePageChange(currentPage - 1)}
           style={{ display: currentPage === 1 ? 'none' : 'block' }}
@@ -51,7 +41,7 @@ const Paginator = ({
           <svg style={{ width: 14, height: 20, marginRight: 30 }}>
             <use href={sprite + '#icon-arrow-left'} />
           </svg>
-        </button>
+        </StyledArrows>
         {getVisiblePageNumbers().map(number => (
           <li key={number}>
             <button
@@ -62,7 +52,7 @@ const Paginator = ({
             </button>
           </li>
         ))}
-        <button
+        <StyledArrows
           onClick={() => handlePageChange(currentPage + 1)}
           style={{
             display:
@@ -74,7 +64,7 @@ const Paginator = ({
           <svg style={{ width: 14, height: 20, marginLeft: 30 }}>
             <use href={sprite + '#icon-arrow-right'} />
           </svg>
-        </button>
+        </StyledArrows>
       </ul>
     </StyledPagination>
   );
