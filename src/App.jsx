@@ -3,13 +3,11 @@ import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 // import { RestrictedRoute } from './RestrictedRoute';
 // import { PrivateRoute } from './PrivateRoute';
-import { useAuth } from 'useAuth';
+// import { useAuth } from 'useAuth';
 
 import { refreshUser } from './redux/auth/authOperations';
 
-const AddDrinkPage = lazy(() =>
-  import('./pages/AddDrinkPage/AddDrinkPage')
-);
+const AddDrinkPage = lazy(() => import('./pages/AddDrinkPage/AddDrinkPage'));
 const WelcomePageLayout = lazy(() =>
   import('./pages/WelcomePage/Layout/WelcomePageLayout')
 );
@@ -30,15 +28,16 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 function App() {
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
+  // const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <b>Refreshing user...</b>
-  ) : (
+  // return isRefreshing ? (
+  //   <b>Refreshing user...</b>
+  // ) : (
+  return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route element={<WelcomePageLayout />}>
