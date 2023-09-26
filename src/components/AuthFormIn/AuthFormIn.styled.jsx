@@ -9,13 +9,11 @@ export const LoginContainer = styled.form`
   margin-right: 20px;
 
   @media (min-width: 768px) {
-    width: 470px;
+    width: 400px;
     margin-left: 64px;
   }
 
   @media (min-width: 1024px) {
-    width: 400px;
-
     margin-left: 100px;
   }
 `;
@@ -33,7 +31,7 @@ export const Title = styled.h1`
 `;
 
 export const InputBlock = styled.div`
-position: relative;
+  position: relative;
   margin-top: 28px;
   margin-bottom: 14px;
 `;
@@ -79,16 +77,12 @@ export const StyledInput = styled.input`
 
 export const ErrorContainer = styled.div`
   position: absolute;
- 
 `;
 
 export const ErrorMessage = styled.div`
   color: red;
   font-size: 12px;
 `;
-
-
-
 
 export const StyledBtn = styled.button`
   display: flex;
@@ -123,15 +117,15 @@ export const StyledBtn = styled.button`
 `;
 
 export const StyledLink = styled(NavLink)`
-display: flex;
-justify-content: center;
- font-size: 12px;
-font-weight: 600;
-line-height: 1.3;
-text-decoration-line: underline;
-padding-top: 14px;
- 
-@media (min-width: 768px) {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration-line: underline;
+  padding-top: 14px;
+
+  @media (min-width: 768px) {
     font-size: 14px;
     line-height: 1.3;
   }
@@ -158,4 +152,3 @@ export const IconPasswordShow = styled.svg`
   transform: translateY(-50%);
   cursor: pointer;
 `;
-

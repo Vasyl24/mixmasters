@@ -54,15 +54,13 @@ const AuthFormIn = () => {
 
   const onSubmit = async values => {
     if (isLoggedIn) {
-      toast.error('User is already logged in');
-      resetForm();
+      // toast.error('User is already logged in');
       navigate('/home', { replace: true });
       return;
+    } else if (dispatch(signinUser({ ...values }))) {
+      resetForm();
+      navigate('/home', { replace: true });
     }
-
-    dispatch(signinUser({ ...values }));
-    resetForm();
-    navigate('/home', { replace: true });
   };
 
   const formik = useFormik({

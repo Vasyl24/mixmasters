@@ -1,61 +1,83 @@
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import DatePicker from 'react-datepicker';
 
-export const RegistrationContainer = styled.form`
-  max-width: 335px;
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
+export const RegisterContainer = styled.form`
+  width: 335px;
+  height: auto;
+  margin-left: 20px;
+  margin-right: 20px;
 
   @media (min-width: 768px) {
-    max-width: 470px;
-    padding: 0;
-    justify-content: flex-start;
-    align-items: flex-start;
+    width: 400px;
+    margin-left: 64px;
   }
 
-  @media (min-width: 1440px) {
-    max-width: 485px;
-    padding-left: 100px;
+  @media (min-width: 1024px) {
+    width: 400px;
+
+    margin-left: 100px;
   }
 `;
 
-export const Title = styled.h2`
-  font-weight: 600;
+export const Title = styled.h1`
+  color: #f3f3f3;
   font-size: 28px;
-  line-height: calc(32 / 28);
-  text-align: center;
+  font-weight: 600;
+  line-height: 1.15;
 
   @media (min-width: 768px) {
     font-size: 40px;
-    text-align: left;
-  }
-`;
-
-export const StyledInput = styled.input`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-
-  &::placeholder {
-    color: #999;
+    line-height: 1.1;
   }
 `;
 
 export const StyledDatePicker = styled(DatePicker)`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  width: 335px;
+  height: 54px;
+  border-radius: 200px;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  background-color: transparent;
+  padding-left: 24px;
+  margin-bottom: 14px;
 
   &::placeholder {
-    color: #999;
+    color: #f3f3f3;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
   }
+
+  @media (min-width: 768px) {
+    width: 400px;
+    height: 56px;
+    font-size: 17px;
+    line-height: 1.5;
+
+    &::placeholder {
+      font-size: 17px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    padding-left: 22px;
+  }
+
+  &:focus,
+  &:hover {
+    outline: none;
+    color: #f3f3f3;
+    border-color: rgba(243, 243, 243, 0.5);
+    background-color: transparent;
+  }
+`;
+
+export const StyledIconСalendar = styled.div`
+  position: absolute;
+  top: 100px;
+  transform: translateY(-50%);
+  right: 20px;
+  cursor: pointer;
 `;
 
 export const IconСalendar = styled.svg`
@@ -63,38 +85,125 @@ export const IconСalendar = styled.svg`
   height: 24px;
 `;
 
-export const Plaseholder = styled.p`
-  font-size: 14px;
-  line-height: calc(18 / 14);
-  text-align: center;
-  margin-top: 14px;
+export const InputBlock = styled.div`
+  position: relative;
+  margin-top: 28px;
+  margin-bottom: 14px;
+`;
+
+export const StyledInput = styled.input`
+  width: 100%;
+  height: 54px;
+  border-radius: 200px;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  background-color: transparent;
+  padding-left: 24px;
+  margin-bottom: 14px;
+
+  &::placeholder {
+    color: #f3f3f3;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
 
   @media (min-width: 768px) {
-    font-size: 18px;
-    text-align: left;
+    height: 56px;
+    font-size: 17px;
+    line-height: 1.5;
+
+    &::placeholder {
+      font-size: 17px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    padding-left: 22px;
+  }
+
+  &:focus,
+  &:hover {
+    outline: none;
+    color: #f3f3f3;
+    border-color: rgba(243, 243, 243, 0.5);
+    background-color: transparent;
   }
 `;
 
+export const ErrorContainer = styled.div`
+  position: absolute;
+`;
+
+export const ErrorMessage = styled.div`
+  color: red;
+  font-size: 12px;
+`;
+
 export const StyledBtn = styled.button`
-  padding: 14px 40px;
-  font-size: 14px;
-  line-height: calc(18 / 16);
-  font-weight: 600;
-  background: #f3f3f3;
-  color: #161f37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 54px;
+
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
-  cursor: pointer;
-  transition: backgroundColor 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  background: #f3f3f3;
 
-  @media (min-width: 768px) {
-    padding: 18px 44px;
-    font-size: 16px;
-  }
+  color: #161f37;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.1;
+
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s ease;
 
   &:hover {
-    background: transparent;
+    background: #434d67;
     color: #f3f3f3;
   }
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+`;
+
+export const StyledLink = styled(NavLink)`
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration-line: underline;
+  padding-top: 14px;
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+`;
+
+export const IconPasswordHidden = styled.svg`
+  width: 24px;
+  height: 24px;
+
+  position: absolute;
+  right: 20px;
+  top: 238px;
+  transform: translateY(-50%);
+  cursor: pointer;
+`;
+
+export const IconPasswordShow = styled.svg`
+  width: 24px;
+  height: 24px;
+
+  position: absolute;
+  right: 20px;
+  top: 238px;
+  transform: translateY(-50%);
+  cursor: pointer;
 `;

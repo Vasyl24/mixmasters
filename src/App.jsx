@@ -1,9 +1,9 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-// import { RestrictedRoute } from './RestrictedRoute';
-// import { PrivateRoute } from './PrivateRoute';
-// import { useAuth } from 'useAuth';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+import { useAuth } from 'useAuth';
 
 import { refreshUser } from './redux/auth/authOperations';
 
@@ -12,8 +12,8 @@ const WelcomePageLayout = lazy(() =>
   import('./pages/WelcomePage/Layout/WelcomePageLayout')
 );
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
-// const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
-// const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
+const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
+const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
 const SharedLayout = lazy(() =>
   import('./components/SharedLayout/SharedLayout')
 );
@@ -42,39 +42,39 @@ function App() {
       <Routes>
         <Route element={<WelcomePageLayout />}>
           <Route index path="/welcome" element={<WelcomePage />} />
-          {/*<Route path="/signin" element={<SignInPage />}></Route> */}
+{/*           <Route path="/signin" element={<SignInPage />}></Route> */}
 
-          {/* <Route
+          <Route
             path="/signup"
             element={
               <RestrictedRoute redirectTo="/home" component={<SignUpPage />} />
             }
-          /> */}
-          {/* <Route
+          />
+          <Route
             path="/signin"
             element={
               <RestrictedRoute redirectTo="/home" component={<SignInPage />} />
             }
-          /> */}
+          />
         </Route>
 
-        {/* <Route
+        <Route
           path="/"
           element={
             <PrivateRoute redirectTo="/welcome" component={<SharedLayout />} />
           }
-        > */}
-        <Route path="/" element={<SharedLayout />}>
+        >
+        {/* <Route path="/" element={<SharedLayout />}>
           <Route path="home" element={<HomePage />} />
           <Route path="/drinks" element={<DrinksPage />} />
           <Route path="/drink/:drinkId" element={<DrinkPage />} />
           <Route path="/add" element={<AddDrinkPage />} />
           <Route path="/my" element={<MyDrinksPage />} />
           <Route path="/favorite" element={<FavoriteDrinkPage />} />
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="*" element={<ErrorPage />} /> */}
           <Route path="*" element={<ErrorPage />} />
 
-          {/* <Route
+          <Route
             path="/home"
             element={
               <PrivateRoute redirectTo="/welcome" component={<HomePage />} />
@@ -91,8 +91,8 @@ function App() {
             element={
               <PrivateRoute redirectTo="/welcome" component={<DrinkPage />} />
             }
-          /> */}
-          {/* <Route
+          />
+          <Route
             path="/add"
             element={
               <PrivateRoute
@@ -100,8 +100,8 @@ function App() {
                 component={<AddDrinkPage />}
               />
             }
-          /> */}
-          {/* <Route
+          />
+          <Route
             path="/my"
             element={
               <PrivateRoute
@@ -118,7 +118,7 @@ function App() {
                 component={<FavoriteDrinkPage />}
               />
             }
-          /> */}
+          />
         </Route>
       </Routes>
     </Suspense>
