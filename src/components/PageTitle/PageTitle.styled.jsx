@@ -5,15 +5,12 @@ export const Title = styled.h1`
   font-size: 32px;
   font-weight: 600;
   line-height: 1.2;
-  margin-top: 80px;
   @media screen and (min-width: 768px) {
     font-size: 56px;
     line-height: 1.1;
-    margin-top: 140px;
   }
   @media screen and (min-width: 1440px) {
     width: 715px;
     font-size: 64px;
-    margin-top: 160px;
   }
 `;
