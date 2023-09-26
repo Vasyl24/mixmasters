@@ -6,12 +6,12 @@ import {
   ContainerImage,
 } from './RecipePreparation.styled';
 
-export function RecipePreparation({ recipe }) {
+export function RecipePreparation({ description }) {
   return (
     <>
       <Title>Recipe Preparation</Title>
       <ContainerRecipe>
-        <Recipe>{recipe}</Recipe>
+        <Recipe>{description}</Recipe>
         <ContainerImage />
       </ContainerRecipe>
     </>

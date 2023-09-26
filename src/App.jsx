@@ -87,7 +87,7 @@ function App() {
             }
           />
           <Route
-            path="/drink/:drinkId"
+            path="/drinks/:drinkId"
             element={
               <PrivateRoute redirectTo="/welcome" component={<DrinkPage />} />
             }

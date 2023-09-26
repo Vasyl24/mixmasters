@@ -48,3 +48,27 @@ export const deleteFavoriteDrink = createAsyncThunk(
     }
   }
 );
+
+export const addFavoriteDrink = createAsyncThunk(
+  'drinks/addFavoriteDrink',
+  async (newFavoriteDrink, thunkAPI) => {
+    try {
+      const response = await axios.post(`/favorite/add`, newFavoriteDrink);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getDrinkById = createAsyncThunk(
+  'drinks/getDrinkByID',
+  async (drinkId, thunkAPI) => {
+    try {
+      const response = await axios.get(`/drinks/${drinkId}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
