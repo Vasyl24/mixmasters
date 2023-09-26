@@ -6,21 +6,21 @@ export const Header = styled.header`
 
 export const HeaderWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 20px;
 
   @media (min-width: 768px) {
+    width: 768px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 20px 32px;
   }
 
-  @media (min-width: 1024px) {
-    justify-content: space-between;
-    padding: 20px;
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 22px;
-    padding-bottom: 22px;
+  @media (min-width: 1440px) {
+
+    width: 1440px;
+
+    padding: 20px 100px;
+
   }
 `;

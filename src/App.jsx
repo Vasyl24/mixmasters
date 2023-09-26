@@ -7,6 +7,7 @@ import { useAuth } from 'useAuth';
 
 import { refreshUser } from './redux/auth/authOperations';
 
+const AddDrinkPage = lazy(() => import('./pages/AddDrinkPage/AddDrinkPage'));
 const WelcomePageLayout = lazy(() =>
   import('./pages/WelcomePage/Layout/WelcomePageLayout')
 );
@@ -27,15 +28,16 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 function App() {
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
+  // const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <b>Refreshing user...</b>
-  ) : (
+  // return isRefreshing ? (
+  //   <b>Refreshing user...</b>
+  // ) : (
+  return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route element={<WelcomePageLayout />}>
@@ -65,9 +67,9 @@ function App() {
         {/* <Route path="/" element={<SharedLayout />}>
           <Route path="home" element={<HomePage />} />
           <Route path="/drinks" element={<DrinksPage />} />
-          <Route path="/drink/:drinkId" element={<DrinkPage />} /> */}
-          {/* <Route path="/add" element={<AddDrinkPage />} /> */}
-{/*           <Route path="/my" element={<MyDrinksPage />} />
+          <Route path="/drink/:drinkId" element={<DrinkPage />} />
+          <Route path="/add" element={<AddDrinkPage />} />
+          <Route path="/my" element={<MyDrinksPage />} />
           <Route path="/favorite" element={<FavoriteDrinkPage />} />
           <Route path="*" element={<ErrorPage />} /> */}
           <Route path="*" element={<ErrorPage />} />

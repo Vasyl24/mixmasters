@@ -2,19 +2,42 @@ import React from 'react';
 import icons from '../../../assets/sprite.svg';
 import Navigation from '../Navigation/Navigation';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const slideIn = keyframes`
+  from {
+    transform: translateX(600%);
+  }
+  to {
+    transform: translateX(0);
+  }
+`;
+
+const slideOut = keyframes`
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  
+`;
 
 export const IconWrapper = styled.div`
   width: 32px;
   height: 32px;
-  stroke: #F3F3F3;
+  stroke: #f3f3f3;
+    animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
+  cubic-bezier(0.42, 0, 0.58, 1) forwards;
 
   @media (min-width: 768px) {
     width: 38px;
     height: 38px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     display: none;
   }
 `;
@@ -29,9 +52,14 @@ const BurgerMenuWrapper = styled.div`
   max-height: ${({ isOpen }) => (isOpen ? '500px' : '0')};
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
+  
 `;
 
-export default function BurgerMenu({ toggleMenu, isOpenBurgerMenu, isDesktop }) {
+export default function BurgerMenu({
+  toggleMenu,
+  isOpenBurgerMenu,
+  isDesktop,
+}) {
   return (
     <>
       <IconWrapper onClick={toggleMenu} id="burger_menu">

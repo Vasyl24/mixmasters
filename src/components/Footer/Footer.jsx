@@ -8,7 +8,8 @@ import {
   FlexContainer,
   FooterGroup,
   FooterInfo,
-  FooterText,
+  FooterTextTop,
+  FooterTextButton,
 } from './Footer.styled';
 
 function Footer() {
@@ -25,10 +26,12 @@ function Footer() {
           </FooterGroup>
           <EmailSubscription />
         </FlexContainer>
-        <FooterInfo className="FooterInfo">
-          <FooterText>©2023 Drink Master. All rights reserved.</FooterText>
+        <FooterInfo>
+          <FooterTextTop>
+            ©2023 Drink Master. All rights reserved.
+          </FooterTextTop>
           <div style={{ display: 'flex' }}>
-            <FooterText>
+            <FooterTextButton>
               <a
                 target="_blank"
                 rel="noopener noreferrer"
@@ -36,8 +39,8 @@ function Footer() {
               >
                 Privacy Policy
               </a>
-            </FooterText>
-            <FooterText>
+            </FooterTextButton>
+            <FooterTextButton>
               <a
                 target="_blank"
                 rel="noopener noreferrer"
@@ -45,7 +48,7 @@ function Footer() {
               >
                 Terms of Service
               </a>
-            </FooterText>
+            </FooterTextButton>
           </div>
         </FooterInfo>
       </FooterContainer>
