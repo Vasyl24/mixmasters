@@ -1,31 +1,65 @@
+import React from 'react';
 import styled from 'styled-components';
+import DrinkDefault from '../../assets/blue-iced-tea.png';
+import DrinkImage2 from '../../assets/blue-iced-tea@2x.png';
+import DrinkImg1 from '../../assets/blue-iced-tea.png';
+import DrinkImg2 from '../../assets/blue-iced-tea@2x.png';
 
-export const Container = styled.div`
-  position: relative;
-`;
-
-export const Wrapper = styled.div`
-  /*min-height: 100vh;*/
-  margin: 0 auto;
-  /*padding-top: 200px;*/
-  padding-bottom: 139px;
+// Оновлений імпорт для використання унікальних імен
+export const ImgBoxStyled = styled.div`
+  display: flex;
+  align-items: center;
+  padding-bottom: 260px;
+  padding-top: 200px;
 
   @media screen and (max-width: 768px) {
-    padding-top: 60px;
     padding-bottom: 170px;
+  }
+  @media screen and (max-width: 1440px) {
+    padding-bottom: 140px;
   }
 `;
 
-export const NotFoundWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
+export const NotFoundImgStyled = styled.img`
+  width: 123px;
+  height: 156px;
+
+  @media (min-width: 768px) {
+    width: 158px;
+    height: 200px;
+  }
 `;
 
-export const MainTitle = styled.div`
-  text-align: center;
+export const NotFoundTextStyled = styled.span`
+  color: rgba(243, 243, 243, 0.1);
+  font-size: 120px;
+  font-weight: 600;
+  line-height: calc(123 / 120);
+  font-style: normal;
+
+  @media (min-width: 768px) {
+    font-size: 150px;
+    line-height: calc(123 / 150);
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 200px;
+    line-height: calc(200 / 200);
+  }
 `;
 
-
+export default function ErrorPage404() {
+  return (
+    <ImgBoxStyled>
+      <source srcSet={`${DrinkImg1}, ${DrinkImg2} 2x`} type="image/webp" />
+      <source srcSet={`${DrinkDefault}, ${DrinkImage2} 2x`} type="image/jpeg" />
+      <NotFoundImgStyled
+        className="notFoundImg"
+        src={DrinkDefault}
+        alt="Not Found"
+      />
+      <NotFoundTextStyled>4</NotFoundTextStyled>
+      <NotFoundTextStyled>4</NotFoundTextStyled>
+    </ImgBoxStyled>
+  );
+}
