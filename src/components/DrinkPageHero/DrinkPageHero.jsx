@@ -1,4 +1,4 @@
-import { PageTitle } from 'components/PageTitle/PageTitle';
+// import { PageTitle } from 'components/PageTitle/PageTitle';
 import {
   ContainerHero,
   ContainerDescription,
@@ -6,6 +6,7 @@ import {
   Description,
   GlassAlcohol,
   Picture,
+  PageTitle,
 } from './DrinkPageHero.styled';
 // import defaultImage from '../../assets/rectangle-2.jpg';
 
@@ -14,14 +15,13 @@ export function DrinkPageHero({ drinkInfo }) {
   return (
     <ContainerHero>
       <ContainerDescription>
-        <PageTitle title={drink} />
+        <PageTitle>{drink}</PageTitle>
         <GlassAlcohol>
           {glass} / {alcoholic}
         </GlassAlcohol>
         <Description>{category}</Description>
         <Button type="button">Add to favorite drinks</Button>
       </ContainerDescription>
-
       <Picture src={drinkThumb} alt="foto" />
     </ContainerHero>
   );
