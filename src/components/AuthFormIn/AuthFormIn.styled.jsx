@@ -44,6 +44,7 @@ export const StyledInput = styled.input`
   background-color: transparent;
   padding-left: 24px;
   margin-bottom: 14px;
+  color: var(--text-btn-color);
 
   &::placeholder {
     color: #f3f3f3;

@@ -43,7 +43,7 @@ const validationSchema = yup.object().shape({
 });
 
 const formatDate = date => {
-  return format(date, 'dd/mm/yyyy');
+  return format(date, 'dd/MM/yyyy');
 };
 
 const AuthForm = () => {
@@ -77,9 +77,10 @@ const AuthForm = () => {
       birthdate: values.birthdate ? formatDate(values.birthdate) : null,
     };
 
-    
     dispatch(signupUser({ ...formattedValues }));
-
+    console.log(formattedValues);
+    console.log(values.birthdate);
+    console.log(formatDate(values.birthdate));
     resetForm();
     navigate('/home', { replace: true });
   };
@@ -119,7 +120,7 @@ const AuthForm = () => {
             onChange={date => {
               formik.setFieldValue('birthdate', date);
             }}
-            dateFormat="dd/mm/yyyy"
+            dateFormat="dd/MM/yyyy"
             onBlur={formik.handleBlur}
           />
           <StyledIconСalendar onClick={openCalendar}>
