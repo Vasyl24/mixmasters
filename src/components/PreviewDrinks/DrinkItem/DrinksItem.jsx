@@ -8,7 +8,7 @@ import defaultImg from '../../../assets/rectangle-2.jpg';
 
 const DrinksItem = props => {
   const { _id, drink, drinkThumb } = props.drinkItem;
-  const src = drinkThumb || defaultImg; 
+  const src = drinkThumb || defaultImg;
 
   return (
     <li key={_id.$oid}>

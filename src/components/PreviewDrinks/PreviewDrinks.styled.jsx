@@ -4,8 +4,17 @@ export const SectionContainer = styled.section`
   padding-bottom: 80px;
 `;
 export const Container = styled.ul``;
-export const CategoryItem = styled.div`
-  margin-bottom: 0 auto 80px auto;
+export const CategoryItem = styled.li`
+  margin: 0 auto 40px auto;
+
+  @media (min-width: 768px) {
+    margin: 0 auto 80px auto;
+    width: 704px;
+  }
+  @media (min-width: 1440px) {
+    width: 1240px;
+    margin: 0 auto 80px auto;
+  }
 `;
 
 export const CategoryDrinksList = styled.ul`

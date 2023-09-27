@@ -11,10 +11,17 @@ function AppHeader() {
   const [isOpenBurgerMenu, setIsOpenBurgerMenu] = useState(false);
   const location = useLocation();
 
-  const toggleMenu = () => setIsOpenBurgerMenu(!isOpenBurgerMenu);
+  const toggleMenu = () => {
+    if (!isOpenBurgerMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    setIsOpenBurgerMenu(!isOpenBurgerMenu);
+  };
 
   const updateMedia = () => {
-    setIsDesktop(window.innerWidth >= 1024);
+    setIsDesktop(window.innerWidth >= 1440);
     if (isDesktop) {
       setIsOpenBurgerMenu(false);
     }

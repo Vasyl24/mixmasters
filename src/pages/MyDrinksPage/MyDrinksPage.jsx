@@ -8,22 +8,24 @@ import {
   selectError,
   // selectIsLoading,
 } from 'redux/drinks/drinksSelectors';
+
 import {
   StyledPageContainer,
-  StyledTitle,
   StyledDefaultContainer,
   StyledNotFoundImg,
   StyledDescr,
 } from './MyDrinksPage.styled';
 import { toast } from 'react-toastify';
 import defaultImg from '../../assets/blue-iced-tea.png';
+import { PageTitle } from 'components/PageTitle/PageTitle';
 
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
   const drinks = useSelector(selectDrinks);
   //   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-
+  console.log(error);
+  console.log(drinks);
   const onDelete = id => {
     dispatch(deleteMyDrink(id));
   };
@@ -46,7 +48,7 @@ const MyDrinksPage = () => {
 
   return (
     <StyledPageContainer>
-      <StyledTitle>My drinks</StyledTitle>
+      <PageTitle title={'My drinks'} />
       {/* {isLoading && Поставити лоадер} */}
       {/* {!isLoading && Прибрати лоадер} */}
       {error && errorNotification}

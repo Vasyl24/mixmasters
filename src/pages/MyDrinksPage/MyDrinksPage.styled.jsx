@@ -17,21 +17,6 @@ export const StyledPageContainer = styled.div`
   }
 `;
 
-export const StyledTitle = styled.h1`
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.18;
-
-  @media screen and (min-width: 768px) {
-    font-size: 56px;
-    line-height: 1.07;
-  }
-
-  @media screen and (min-width: 1440px) {
-    font-size: 64px;
-  }
-`;
-
 export const StyledDefaultContainer = styled.div`
   margin: 0 auto;
   padding-top: 91px;

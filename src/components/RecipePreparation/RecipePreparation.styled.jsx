@@ -23,12 +23,35 @@ export const Title = styled.p`
 `;
 
 export const ContainerRecipe = styled.div`
-
+  padding-bottom: 80px;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 140px;
+  }
   @media screen and (min-width: 1440px) {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  margin-bottom: 140px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+`;
+
+export const ContainerDescription = styled.div`
+  @media screen and (min-width: 1440px) {
+    width: 549px;
+  }
+`;
+
+export const Description = styled.p`
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #f3f3f3;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.38;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 549px;
   }
 `;
 
@@ -49,7 +72,6 @@ export const Recipe = styled.p`
 `;
 
 export const ContainerImage = styled.div`
-  margin-bottom: 80px;
   width: 335px;
   height: 430px;
   background-size: contain;
@@ -62,7 +84,6 @@ export const ContainerImage = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    margin-bottom: 140px;
     width: 704px;
     height: 430px;
     background-size: contain;
@@ -75,7 +96,6 @@ export const ContainerImage = styled.div`
     }
   }
   @media screen and (min-width: 1440px) {
-    margin-bottom: 0px;
     width: 631px;
     height: 480px;
     background-size: contain;

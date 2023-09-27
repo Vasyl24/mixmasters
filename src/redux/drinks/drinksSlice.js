@@ -4,11 +4,12 @@ import {
   deleteMyDrink,
   fetchFavoriteDrinks,
   deleteFavoriteDrink,
+  fetchMainpage,
 } from './drinksOperations';
 import { toast } from 'react-toastify';
 
 //Для тестування. Видалити коли буде робочий бек
-import coctails from 'temporary/recipes.json';
+// import coctails from 'temporary/recipes.json';
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
@@ -29,7 +30,7 @@ const drinksSlice = createSlice({
   name: 'drinks',
   initialState: {
     //Для тестування. Замінити на "items: [],"" коли буде робочий бек
-    items: coctails,
+    items: [],
     // items: [],
     isLoading: false,
     error: null,
@@ -106,6 +107,18 @@ const drinksSlice = createSlice({
       });
     },
     [deleteFavoriteDrink.rejected]: handleRejected,
+    [fetchMainpage.pending](state) {
+      state.isLoading = true;
+    },
+    [fetchMainpage.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
+    },
+    [fetchMainpage.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 
