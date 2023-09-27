@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
-// import { useAuth } from 'useAuth';
-
+import { useAuth } from 'useAuth';
 import { refreshUser } from './redux/auth/authOperations';
+import Loader from './components/Loader/Loader';
 
 const AddDrinkPage = lazy(() => import('./pages/AddDrinkPage/AddDrinkPage'));
 const WelcomePageLayout = lazy(() =>
@@ -28,22 +28,27 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 function App() {
   const dispatch = useDispatch();
-  // const { isRefreshing } = useAuth();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  // return isRefreshing ? (
-  //   <b>Refreshing user...</b>
-  // ) : (
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
+  return isRefreshing ? (
+    <Loader />
+  ) : (
+    <Suspense fallback={<Loader />}>
       <Routes>
-        <Route element={<WelcomePageLayout />}>
+        <Route
+          path="/"
+          element={
+            <RestrictedRoute
+              redirectTo="/home"
+              component={<WelcomePageLayout />}
+            />
+          }
+        >
           <Route index path="/welcome" element={<WelcomePage />} />
-          {/*           <Route path="/signin" element={<SignInPage />}></Route> */}
-
           <Route
             path="/signup"
             element={
@@ -64,17 +69,25 @@ function App() {
             <PrivateRoute redirectTo="/welcome" component={<SharedLayout />} />
           }
         >
-          {/* <Route path="/" element={<SharedLayout />}>
           <Route path="home" element={<HomePage />} />
           <Route path="/drinks" element={<DrinksPage />} />
           <Route path="/drink/:drinkId" element={<DrinkPage />} />
           <Route path="/add" element={<AddDrinkPage />} />
           <Route path="/my" element={<MyDrinksPage />} />
           <Route path="/favorite" element={<FavoriteDrinkPage />} />
-          <Route path="*" element={<ErrorPage />} /> */}
           <Route path="*" element={<ErrorPage />} />
+        </Route>
+      </Routes>
+    </Suspense>
+  );
+}
 
-          <Route
+export default App;
+
+/* <Route path="/" element={<SharedLayout />}> */
+
+/* <Route
+            index
             path="/home"
             element={
               <PrivateRoute redirectTo="/welcome" component={<HomePage />} />
@@ -118,11 +131,4 @@ function App() {
                 component={<FavoriteDrinkPage />}
               />
             }
-          />
-        </Route>
-      </Routes>
-    </Suspense>
-  );
-}
-
-export default App;
+          /> */
