@@ -63,18 +63,53 @@ function App() {
           />
         </Route>
 
-        <Route
-          path="/"
-          element={
-            <PrivateRoute redirectTo="/welcome" component={<SharedLayout />} />
-          }
-        >
-          <Route path="home" element={<HomePage />} />
-          <Route path="/drinks" element={<DrinksPage />} />
-          <Route path="/drink/:drinkId" element={<DrinkPage />} />
-          <Route path="/add" element={<AddDrinkPage />} />
-          <Route path="/my" element={<MyDrinksPage />} />
-          <Route path="/favorite" element={<FavoriteDrinkPage />} />
+        <Route path="/" element={<SharedLayout />}>
+          <Route
+            index
+            path="/home"
+            element={
+              <PrivateRoute redirectTo="/welcome" component={<HomePage />} />
+            }
+          />
+          <Route
+            path="/drinks"
+            element={
+              <PrivateRoute redirectTo="/welcome" component={<DrinksPage />} />
+            }
+          />
+          <Route
+            path="/drinks/:drinkId"
+            element={
+              <PrivateRoute redirectTo="/welcome" component={<DrinkPage />} />
+            }
+          />
+          <Route
+            path="/add"
+            element={
+              <PrivateRoute
+                redirectTo="/welcome"
+                component={<AddDrinkPage />}
+              />
+            }
+          />
+          <Route
+            path="/my"
+            element={
+              <PrivateRoute
+                redirectTo="/welcome"
+                component={<MyDrinksPage />}
+              />
+            }
+          />
+          <Route
+            path="/favorite"
+            element={
+              <PrivateRoute
+                redirectTo="/welcome"
+                component={<FavoriteDrinkPage />}
+              />
+            }
+          />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
