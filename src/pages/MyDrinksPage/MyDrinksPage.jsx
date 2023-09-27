@@ -11,14 +11,13 @@ import {
 
 import {
   StyledPageContainer,
-  StyledTitle,
   StyledDefaultContainer,
   StyledNotFoundImg,
   StyledDescr,
 } from './MyDrinksPage.styled';
 import { toast } from 'react-toastify';
 import defaultImg from '../../assets/blue-iced-tea.png';
-
+import { PageTitle } from 'components/PageTitle/PageTitle';
 
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
@@ -49,7 +48,7 @@ const MyDrinksPage = () => {
 
   return (
     <StyledPageContainer>
-      <StyledTitle>My drinks</StyledTitle>
+      <PageTitle title={'My drinks'} />
       {/* {isLoading && Поставити лоадер} */}
       {/* {!isLoading && Прибрати лоадер} */}
       {error && errorNotification}
@@ -61,9 +60,7 @@ const MyDrinksPage = () => {
           <StyledDescr>You haven't added any cocktails yet</StyledDescr>
         </StyledDefaultContainer>
       )}
-
     </StyledPageContainer>
-
   );
 };
 

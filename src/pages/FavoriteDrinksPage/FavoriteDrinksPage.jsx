@@ -13,13 +13,13 @@ import {
 } from 'redux/drinks/drinksSelectors';
 import {
   StyledPageContainer,
-  StyledTitle,
   StyledDefaultContainer,
   StyledNotFoundImg,
   StyledDescr,
 } from './FavoriteDrinksPage.styled';
 import { toast } from 'react-toastify';
 import defaultImg from '../../assets/blue-iced-tea.png';
+import { PageTitle } from 'components/PageTitle/PageTitle';
 
 const FavoriteDrinksPage = () => {
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ const FavoriteDrinksPage = () => {
 
   return (
     <StyledPageContainer>
-      <StyledTitle>Favorites</StyledTitle>
+      <PageTitle title={'Favorites'} />
       {/* {isLoading && Поставити лоадер} */}
       {/* {!isLoading && Прибрати лоадер} */}
       {error && errorNotification}

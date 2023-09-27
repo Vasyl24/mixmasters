@@ -5,6 +5,7 @@ import { selectDrinks } from 'redux/drinks/drinksSelectors';
 
 const DrinksList = onDelete => {
   const drinks = useSelector(selectDrinks);
+  console.log(drinks);
   const { handleDel } = onDelete;
 
   return (
