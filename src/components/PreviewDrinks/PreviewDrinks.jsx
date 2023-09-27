@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
 import {
   SectionContainer,
   Container,
@@ -7,45 +9,51 @@ import {
   CategoryDrinksList,
   Category,
 } from './PreviewDrinks.styled';
-import data from '../../temporary/recipes.json';
+
 import DrinksItem from './DrinkItem/DrinksItem';
+import { fetchMainpage } from '../../redux/drinks/drinksOperations';
+import { selectDrinks } from '../../redux/drinks/drinksSelectors';
+// import { selectDrinks, selectError } from '../../redux/drinks/drinksSelectors';
+import { useWindowWidth } from '../../hooks/useWindowWidth';
 
 export const PreviewDrinks = () => {
-  const [numberOfItems, setNumberOfItems] = useState(1);
+  const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
+  const drinks = useSelector(selectDrinks);
+  // const error = useSelector(selectError);
+  const windowWidth = useWindowWidth();
+
+  const categories = drinks
+    .map(drink => drink.category)
+    .filter((category, index, arr) => arr.indexOf(category) === index);
 
   useEffect(() => {
-    if (window.screen.width >= 768 && window.screen.width < 1440) {
-      setNumberOfItems(2);
-    } else if (window.screen.width >= 1440) {
-      setNumberOfItems(3);
+    if (windowWidth > 0 && windowWidth < 768) setCount(1);
+    else if (windowWidth >= 768 && windowWidth < 1440) {
+      setCount(2);
+    } else if (windowWidth >= 1440) {
+      setCount(4);
     }
-  }, []);
+    if (count) dispatch(fetchMainpage(count));
+  }, [dispatch, count, windowWidth]);
 
   return (
     <SectionContainer>
       <Container>
-        <CategoryItem>
-          <Category>Ordinary Drink</Category>
-          <CategoryDrinksList>
-            {data
-              .filter(item => item.category === 'Ordinary Drink')
-              .slice(0, numberOfItems)
-              .map(item => (
-                <DrinksItem drinkItem={item} />
-              ))}
-          </CategoryDrinksList>
-        </CategoryItem>
-        <CategoryItem>
-          <Category>Cocktail</Category>
-          <CategoryDrinksList>
-            {data
-              .filter(item => item.category === 'Cocktail')
-              .slice(0, numberOfItems)
-              .map(item => (
-                <DrinksItem drinkItem={item} />
-              ))}
-          </CategoryDrinksList>
-        </CategoryItem>
+        {categories.map((category, index) => {
+          return (
+            <CategoryItem key={index}>
+              <Category>{category}</Category>
+              <CategoryDrinksList>
+                {drinks
+                  .filter(item => item.category === category)
+                  .map(item => (
+                    <DrinksItem drinkItem={item} key={item._id} />
+                  ))}
+              </CategoryDrinksList>
+            </CategoryItem>
+          );
+        })}
       </Container>
       <Link to="/drinks">Other drinks</Link>
     </SectionContainer>
