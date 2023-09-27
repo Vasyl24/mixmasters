@@ -5,13 +5,13 @@ import {
   Button,
   Description,
   GlassAlcohol,
-  Picture,
   PageTitle,
+  ContainerImage,
 } from './DrinkPageHero.styled';
-// import defaultImage from '../../assets/rectangle-2.jpg';
+import defaultImage from '../../assets/rectangle-1.png';
 
 export function DrinkPageHero({ drinkInfo }) {
-  const { drink, alcoholic, glass, category, drinkThumb } = drinkInfo;
+  const { drink, alcoholic, glass, shortDescription, drinkThumb } = drinkInfo;
   return (
     <ContainerHero>
       <ContainerDescription>
@@ -19,10 +19,14 @@ export function DrinkPageHero({ drinkInfo }) {
         <GlassAlcohol>
           {glass} / {alcoholic}
         </GlassAlcohol>
-        <Description>{category}</Description>
+        <Description>{shortDescription}</Description>
         <Button type="button">Add to favorite drinks</Button>
       </ContainerDescription>
-      <Picture src={drinkThumb} alt="foto" />
+      {drinkThumb ? (
+        <ContainerImage img={drinkThumb} />
+      ) : (
+        <ContainerImage img={defaultImage} />
+      )}
     </ContainerHero>
   );
 }

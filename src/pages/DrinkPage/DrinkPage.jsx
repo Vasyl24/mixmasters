@@ -46,8 +46,6 @@ const DrinkPage = () => {
     getDrinkInfo();
   }, [dispatch, drinkId]);
 
-console.log(drinkInfo.ingredients);
-
   return (
     <div>
       {!isLoading && drinkInfo.drink && (
