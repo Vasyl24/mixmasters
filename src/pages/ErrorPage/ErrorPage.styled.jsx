@@ -9,6 +9,7 @@ import DrinkImg2 from '../../assets/blue-iced-tea@2x.png';
 export const ImgBoxStyled = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   padding-bottom: 260px;
   padding-top: 200px;
 
