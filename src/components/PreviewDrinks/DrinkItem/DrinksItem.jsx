@@ -15,7 +15,7 @@ const DrinksItem = props => {
       <StyledImg src={src} alt={drink} />
       <StyledContainer>
         <StyledName>{drink}</StyledName>
-        <StyledBtn to={`/drink/${_id}`}>See more</StyledBtn>
+        <StyledBtn to={`/drink/${_id.$oid}`}>See more</StyledBtn>
       </StyledContainer>
     </li>
   );
