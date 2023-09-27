@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 // import { PrivateRoute } from './PrivateRoute';
 // import { useAuth } from 'useAuth';
 import { refreshUser } from './redux/auth/authOperations';
-import Loader from './components/Loader/Loader';
+// import Loader from './components/Loader/Loader';
 
 const AddDrinkPage = lazy(() => import('./pages/AddDrinkPage/AddDrinkPage'));
 const WelcomePageLayout = lazy(() =>
@@ -38,7 +38,7 @@ function App() {
   //   <Loader />
   // ) : (
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<b>Loading...</b>}>
       <Routes>
         {/* <Route
           path="/"
@@ -49,10 +49,10 @@ function App() {
             />
           }
         > */}
-        <Route path="/" element={<WelcomePageLayout />}>
+        <Route element={<WelcomePageLayout />}>
           <Route index path="/welcome" element={<WelcomePage />} />
-          <Route index path="/signup" element={<SignUpPage />} />
-          <Route index path="/signin" element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/signin" element={<SignInPage />} />
           {/* <Route
             path="/signup"
             element={
