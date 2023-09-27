@@ -2,7 +2,7 @@ import {
   Subtitle,
   IngredientsContainer,
   IngredientItem,
-  IngredientImage,
+  ContainerImage,
   CaptionContainer,
   IngredientName,
   IngredientAmount,
@@ -19,9 +19,9 @@ export function DrinkIngredientsList({ ingredients }) {
           return (
             <IngredientItem key={_id}>
               {ingredientThumb ? (
-                <IngredientImage src={ingredientThumb} alt="{title}" />
+                <ContainerImage img={ingredientThumb} />
               ) : (
-                <IngredientImage src={defaultImage} alt="{title}" />
+                <ContainerImage img={defaultImage} />
               )}
               <CaptionContainer>
                 <IngredientName>{title}</IngredientName>

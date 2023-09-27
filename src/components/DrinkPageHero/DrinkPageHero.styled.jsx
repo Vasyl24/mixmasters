@@ -97,47 +97,21 @@ export const Button = styled.button`
   }
 `;
 
-export const Picture = styled.img`
+export const ContainerImage = styled.div`
+  background-image: ${props => `url(${props.img})`};
+  border-radius: 8px;
   margin-bottom: 18px;
   width: 335px;
   height: 400px;
-
+  background-size: cover;
   @media screen and (min-width: 768px) {
     margin-bottom: 80px;
     width: 704px;
     height: 400px;
-    background-size: cover;
   }
   @media screen and (min-width: 1440px) {
     margin-bottom: 0px;
     width: 400px;
     height: 400px;
-    background-size: cover;
   }
 `;
-
-// export const ContainerImage = styled.div`
-//   width: 335px;
-//   height: 430px;
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   background-image: url(${recipeImgMob1x});
-  
-
-//   @media screen and (min-width: 768px) {
-//     width: 704px;
-//     height: 430px;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     background-image: url(${recipeImgTab1x});
-  
-//   }
-//   @media screen and (min-width: 1440px) {
-//     width: 631px;
-//     height: 480px;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     background-image: url(${recipeImgDesk1x});
-    
-//   }
-// `;
