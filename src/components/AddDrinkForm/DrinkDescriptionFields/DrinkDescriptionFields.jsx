@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ImageContainer,
   Wrapper,
@@ -20,8 +20,23 @@ import icons from '../../../assets/sprite.svg'
 import { styles } from "./selectStyle";
 
 export const DrinkDescriptionFields = () => {
- 
+const [categories, setCategories] = useState([]);
+const [glasses, setGlasses] = useState([]);
+const [title, setTitle] = useState({});
+const [selectedCategory, setSelectedCategory] = useState('');
+const [selectedGlass, setSelectedGlass] = useState('');
+const [selectedIngredients, setSelectedIngredients] = useState([]);
 
+  
+  const handleCategorySelect = category => {
+    setSelectedCategory(category);
+  };
+
+  const handleGlassSelect = glass => {
+    setSelectedGlass(glass);
+  };
+
+  
 
     return (
       <Wrapper>
@@ -47,13 +62,11 @@ export const DrinkDescriptionFields = () => {
             <FieldStyle
               placeholder="Enter item title"
               type="text"
-            // name="name"
             />
             <Validate></Validate>
             <FieldStyle
               placeholder="Enter about recipe"
               type="text"
-            // name="name"
             />
             <Validate></Validate>
           </InputWraper>
@@ -61,6 +74,7 @@ export const DrinkDescriptionFields = () => {
             <SelectWrapper>
               <LabelSelect>Category</LabelSelect>
               <Select
+                onSelect={handleCategorySelect}
                 defaultValue={{ value: "Cocktail", label: "Cocktail" }}
                 unstyled
                 styles={styles}
@@ -70,6 +84,7 @@ export const DrinkDescriptionFields = () => {
             <SelectWrapper>
               <LabelSelect>Glass</LabelSelect>
               <Select
+                onSelect={handleGlassSelect}
                 defaultValue={{ value: "Highball glass", label: "Highball glass" }}
                 unstyled
                 styles={styles}
