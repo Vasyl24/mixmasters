@@ -32,7 +32,7 @@ export const PreviewDrinks = () => {
     else if (windowWidth >= 768 && windowWidth < 1440) {
       setCount(2);
     } else if (windowWidth >= 1440) {
-      setCount(4);
+      setCount(3);
     }
     if (count) dispatch(fetchMainpage(count));
   }, [dispatch, count, windowWidth]);
