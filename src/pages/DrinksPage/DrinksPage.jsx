@@ -6,7 +6,7 @@ import Paginator from 'components/Paginator/Paginator';
 // import drinksData from '../../temporary/recipes.json';
 import { StyledMainContainer } from './DrinksPage.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDrinks, selectError } from 'redux/drinks/drinksSelectors';
+import { selectDrinks } from 'redux/drinks/drinksSelectors';
 import { fetchAllDrinks } from 'redux/drinks/drinksOperations';
 
 export const DrinksPage = () => {
@@ -14,7 +14,6 @@ export const DrinksPage = () => {
 
   const dispatch = useDispatch();
   const drinks = useSelector(selectDrinks);
-  const error = useSelector(selectError);
 
   const [filteredDrinks, setFilteredDrinks] = useState(drinks);
   const [currentPage, setCurrentPage] = useState(1);
