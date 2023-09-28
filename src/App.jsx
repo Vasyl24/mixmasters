@@ -37,6 +37,15 @@ function App() {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route
+              index
+              element={
+                <RestrictedRoute
+                  redirectTo="/home"
+                  component={<WelcomePage />}
+                />
+              }
+            />
+            <Route
               path="/welcome"
               element={
                 <RestrictedRoute
