@@ -21,8 +21,8 @@ export const DrinksPage = () => {
       setDrinksPerPage(10);
       setPageNumbersToShow(8);
     } else if (window.innerWidth >= 1440) {
-      setDrinksPerPage(9)
-      setPageNumbersToShow(8)
+      setDrinksPerPage(9);
+      setPageNumbersToShow(8);
     }
   };
 
@@ -75,7 +75,7 @@ export const DrinksPage = () => {
 
   return (
     <StyledMainContainer>
-      <PageTitle title="Drinks"/>
+      <PageTitle title="Drinks" />
       <DrinksSearch
         onSearch={handleSearch}
         onCategoryChange={handleCategoryChange}
