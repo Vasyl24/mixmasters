@@ -37,7 +37,6 @@ function App() {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route
-              index
               path="/welcome"
               element={
                 <RestrictedRoute
@@ -65,7 +64,6 @@ function App() {
               }
             />
             <Route
-              index
               path="/home"
               element={
                 <PrivateRoute redirectTo="/welcome" component={<HomePage />} />
