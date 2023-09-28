@@ -36,15 +36,27 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
-            <Route
-              index
-              element={
-                <RestrictedRoute
-                  redirectTo="/home"
-                  component={<WelcomePage />}
-                />
-              }
-            />
+            {isLoggedIn ? (
+              <Route
+                index
+                element={
+                  <RestrictedRoute
+                    redirectTo="/home"
+                    component={<HomePage />}
+                  />
+                }
+              />
+            ) : (
+              <Route
+                index
+                element={
+                  <PrivateRoute
+                    redirectTo="/welcome"
+                    component={<WelcomePage />}
+                  />
+                }
+              />
+            )}
             <Route
               path="/welcome"
               element={
