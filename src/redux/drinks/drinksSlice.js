@@ -92,7 +92,7 @@ const drinksSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       const index = state.items.findIndex(
-        drink => drink.id === action.payload.id
+        drink => drink._id === action.payload.id
       );
       state.items.splice(index, 1);
       toast.success('Drink deleted successfully.', {

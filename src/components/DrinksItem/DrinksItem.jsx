@@ -15,8 +15,12 @@ const DrinksItem = props => {
   const { onDelete } = props;
 
   return (
-    <StyledItem key={_id}>
-      <StyledImg src={drinkThumb ? drinkThumb : defaultImg} alt={drink} />
+    <StyledItem>
+      <StyledImg
+        src={drinkThumb ? drinkThumb : defaultImg}
+        alt={drink}
+        loading="lazy"
+      />
       <StyledName>{drink}</StyledName>
       <StyledType>{alcoholic}</StyledType>
       <StyledDescr>{description}</StyledDescr>
