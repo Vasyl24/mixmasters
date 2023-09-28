@@ -8,7 +8,6 @@ export const Main = styled.main`
 
   @media screen and (max-width: 767.98px) {
     max-width: 375px;
-
   }
 
   @media screen and (min-width: 768px) {
@@ -21,6 +20,22 @@ export const Main = styled.main`
     width: 1440px;
     padding-left: 100px;
     padding-right: 100px;
+  }
+`;
+
+export const WelcomeMain = styled.main`
+  flex-grow: 1;
+
+  @media screen and (max-width: 767.98px) {
+    max-width: 375px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
   }
 `;
 export const Wrap = styled.div`

@@ -8,9 +8,6 @@ import { refreshUser } from './redux/auth/authOperations';
 import Loader from './components/Loader/Loader';
 
 const AddDrinkPage = lazy(() => import('./pages/AddDrinkPage/AddDrinkPage'));
-const WelcomePageLayout = lazy(() =>
-  import('./components/WelcomePageLayout/WelcomePageLayout')
-);
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
@@ -38,7 +35,7 @@ function App() {
     !isLoading && (
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route element={<WelcomePageLayout />}>
+          <Route path="/" element={<SharedLayout />}>
             <Route
               index
               path="/welcome"
@@ -67,25 +64,63 @@ function App() {
                 />
               }
             />
-          </Route>
-          <Route
-            path="/"
-            element={
-              <PrivateRoute
-                redirectTo="/welcome"
-                component={<SharedLayout />}
-              />
-            }
-          >
-            <Route path="home" element={<HomePage />} />
+            <Route
+              index
+              path="/home"
+              element={
+                <PrivateRoute redirectTo="/welcome" component={<HomePage />} />
+              }
+            />
+            <Route
+              path="/drinks"
+              element={
+                <PrivateRoute
+                  redirectTo="/welcome"
+                  component={<DrinksPage />}
+                />
+              }
+            />
+            <Route
+              path="/drinks/:drinkId"
+              element={
+                <PrivateRoute redirectTo="/welcome" component={<DrinkPage />} />
+              }
+            />
+            <Route
+              path="/add"
+              element={
+                <PrivateRoute
+                  redirectTo="/welcome"
+                  component={<AddDrinkPage />}
+                />
+              }
+            />
+            <Route
+              path="/my"
+              element={
+                <PrivateRoute
+                  redirectTo="/welcome"
+                  component={<MyDrinksPage />}
+                />
+              }
+            />
+            <Route
+              path="/favorite"
+              element={
+                <PrivateRoute
+                  redirectTo="/welcome"
+                  component={<FavoriteDrinkPage />}
+                />
+              }
+            />
+
+            {/* <Route path="home" element={<HomePage />} />
             <Route path="/drinks" element={<DrinksPage />} />
             <Route path="/drinks/:drinkId" element={<DrinkPage />} />
             <Route path="/add" element={<AddDrinkPage />} />
             <Route path="/my" element={<MyDrinksPage />} />
-            <Route path="/favorite" element={<FavoriteDrinkPage />} />
-          </Route>
-
-          <Route path="/" element={<SharedLayout />}>
+            <Route path="/favorite" element={<FavoriteDrinkPage />} /> */}
+            {/* <Route path="/" element={<SharedLayout />}> */}
             <Route path="*" element={<ErrorPage />} />
           </Route>
         </Routes>
