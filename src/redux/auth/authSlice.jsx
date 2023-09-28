@@ -19,6 +19,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  isLoading: false,
   error: null,
 };
 
@@ -30,6 +31,7 @@ const authSlice = createSlice({
 
     [signupUser.pending](state, _) {
       state.isRefreshing = true;
+      state.isLoading = true;
     },
 
     [signupUser.fulfilled](state, action) {
@@ -37,11 +39,13 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.isRefreshing = false;
+      state.isLoading = false;
       state.error = null;
     },
 
     [signupUser.rejected](state, action) {
       state.error = action.payload;
+      state.isLoading = false;
     },
 
     // loginUser
@@ -74,33 +78,39 @@ const authSlice = createSlice({
 
     [refreshUser.pending](state, action) {
       state.isRefreshing = true;
+      state.isLoading = true;
     },
 
     [refreshUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isRefreshing = false;
+      state.isLoading = false;
       state.error = null;
     },
 
     [refreshUser.rejected](state, action) {
       state.error = action.payload;
+      state.isLoading = false;
     },
     // updateUser
     [updateUser.pending](state, _) {
       state.isRefreshing = true;
+      state.isLoading = true;
     },
 
     [updateUser.fulfilled](state, action) {
       state.user.name = action.payload.name;
       state.user.avatarURL = action.payload.avatarURL;
       state.isRefreshing = false;
+      state.isLoading = false;
       state.error = null;
     },
 
     [updateUser.rejected](state, action) {
       state.error = action.payload;
       state.isRefreshing = false;
+      state.isLoading = false;
     },
   },
 });

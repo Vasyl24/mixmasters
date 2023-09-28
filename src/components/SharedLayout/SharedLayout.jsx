@@ -4,6 +4,7 @@ import Header from 'components/Header/Header';
 import Background from 'components/SharedLayout/Background/Background';
 import { Wrap, Main } from './SharedLayout.styled';
 import Footer from 'components/Footer/Footer';
+import Loader from 'components/Loader/Loader';
 
 const SharedLayout = () => {
   return (
@@ -11,7 +12,7 @@ const SharedLayout = () => {
       <Wrap>
         <Header />
         <Main>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader/>}>
             <Outlet />
           </Suspense>
         </Main>
