@@ -79,7 +79,7 @@ function App() {
           >
             <Route path="home" element={<HomePage />} />
             <Route path="/drinks" element={<DrinksPage />} />
-            <Route path="/drink/:drinkId" element={<DrinkPage />} />
+            <Route path="/drinks/:drinkId" element={<DrinkPage />} />
             <Route path="/add" element={<AddDrinkPage />} />
             <Route path="/my" element={<MyDrinksPage />} />
             <Route path="/favorite" element={<FavoriteDrinkPage />} />
