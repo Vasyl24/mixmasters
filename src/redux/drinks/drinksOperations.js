@@ -52,9 +52,9 @@ export const deleteFavoriteDrink = createAsyncThunk(
 
 export const addFavoriteDrink = createAsyncThunk(
   'drinks/addFavoriteDrink',
-  async (newFavoriteDrink, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
-      const response = await axios.post(`/favorite/add`, newFavoriteDrink);
+      const response = await axios.post(`/drinks/favorite/add`, id);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
