@@ -3,11 +3,19 @@ import { Drinks } from 'components/Drinks/Drinks';
 import { DrinksSearch } from 'components/DrinksSearch/DrinksSearch';
 import { PageTitle } from 'components/PageTitle/PageTitle';
 import Paginator from 'components/Paginator/Paginator';
-import drinksData from '../../temporary/recipes.json';
+// import drinksData from '../../temporary/recipes.json';
 import { StyledMainContainer } from './DrinksPage.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectDrinks, selectError } from 'redux/drinks/drinksSelectors';
+import { fetchAllDrinks } from 'redux/drinks/drinksOperations';
 
 export const DrinksPage = () => {
-  const [drinks] = useState(drinksData);
+  // const [drinks] = useState(drinksData);
+
+  const dispatch = useDispatch();
+  const drinks = useSelector(selectDrinks);
+  const error = useSelector(selectError);
+
   const [filteredDrinks, setFilteredDrinks] = useState(drinks);
   const [currentPage, setCurrentPage] = useState(1);
   const [drinksPerPage, setDrinksPerPage] = useState(9);
@@ -27,12 +35,14 @@ export const DrinksPage = () => {
   };
 
   useEffect(() => {
+    dispatch(fetchAllDrinks());
     updateDrinksPerPageAndPageNumbers();
     window.addEventListener('resize', updateDrinksPerPageAndPageNumbers);
     return () => {
       window.removeEventListener('resize', updateDrinksPerPageAndPageNumbers);
     };
-  }, []);
+  }, [dispatch]);
+  console.log(drinks);
 
   const handleSearch = text => {
     const filtered = drinks.filter(drink =>

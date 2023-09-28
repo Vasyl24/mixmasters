@@ -1,15 +1,31 @@
+import { useDispatch, useSelector } from 'react-redux';
 import {
   StyledFilterContainer,
   StyledSelectInput,
   StyledTextInput,
 } from './DrinksSearch.styled';
+import {
+  selectCategories,
+  selectIngredients,
+} from 'redux/filters/filtersSelectors';
+import { useEffect } from 'react';
+import { getCategories, getIngredients } from 'redux/filters/filtersOperations';
 
 export const DrinksSearch = ({
   onSearch,
   onCategoryChange,
   onIngredientChange,
 }) => {
-  
+  const dispatch = useDispatch();
+
+  const categories = useSelector(selectCategories);
+  const ingredients = useSelector(selectIngredients);
+
+  useEffect(() => {
+    dispatch(getCategories());
+    dispatch(getIngredients());
+  }, [dispatch]);
+
   return (
     <StyledFilterContainer>
       <StyledTextInput
@@ -19,27 +35,17 @@ export const DrinksSearch = ({
       />
       <StyledSelectInput onChange={e => onCategoryChange(e.target.value)}>
         <option value="">All categories</option>
-        <option value="Ordinary Drink">Ordinary drink</option>
-        <option value="Snake">Snake</option>
-        <option value="Other/Unknow">Other/Unknow</option>
-        <option value="Cocoa">Cocoa</option>
-        <option value="Shot">Shot</option>
-        <option value="Coffee / Tea">Coffee/Tea</option>
-        <option value="Homemade Liqueur">Homemade Liqueur</option>
-        <option value="Punch / Party Drink">Punch / Party Drink</option>
-        <option value="Beer">Beer</option>
-        <option value="Soft Drink">Soft Drink</option>
+        {categories.map(category => (
+          <option value={category}>{category}</option>
+        ))}
       </StyledSelectInput>
-      <StyledSelectInput onChange={e => onIngredientChange(e.target.value)}>
-        <option value="">Ingredients</option>
-        <option value="Light rum">Light rum</option>
-        <option value="Applejack">Applejack</option>
-        <option value="Gin">Gin</option>
-        <option value="Dark rum">Dark rum</option>
-        <option value=" Sweet Vermouth">Sweet Vermouth</option>
-        <option value="Strawberry">Strawberry</option>
-        <option value="Scotch">Scotch</option>
-        <option value="Apricot brandy">Apricot brandy</option>
+      <StyledSelectInput onChange={e => onIngredientChange(e.target.value)} >
+        <option value="">
+          Ingredients
+        </option>
+        {ingredients.map(ingredient => (
+          <option value={ingredient.title}>{ingredient.title}</option>
+        ))}
       </StyledSelectInput>
     </StyledFilterContainer>
   );
