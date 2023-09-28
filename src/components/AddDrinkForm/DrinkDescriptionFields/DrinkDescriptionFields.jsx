@@ -1,5 +1,4 @@
-import React from 'react';
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 import {
   ImageContainer,
   Wrapper,
@@ -10,12 +9,14 @@ import {
   FlexContainer,
   InputWraper,
   FieldStyle,
-  Validate,
+  // Validate,
   Margin,
   SelectWrapper,
   LabelSelect,
   RadioWrapper,
 } from './DrinkDescriptionFields.styled';
+import { optionsGlass } from '../Glass/Glass';
+import { optionsCoctail } from '../CoctailCategory/CoctailCategory';
 import Select from 'react-select';
 import icons from '../../../assets/sprite.svg';
 import { styles } from './selectStyle';
@@ -27,6 +28,11 @@ export const DrinkDescriptionFields = () => {
   // const [selectedCategory, setSelectedCategory] = useState('');
   // const [selectedGlass, setSelectedGlass] = useState('');
   // const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const [selectedAlcoholic, setselectedAlcoholic] = useState('alcoholic');
+
+  const handleOptionChange = changeEvent => {
+    setselectedAlcoholic(changeEvent.target.value);
+  };
 
   // const handleCategorySelect = category => {
   //   setSelectedCategory(category);
@@ -42,7 +48,7 @@ export const DrinkDescriptionFields = () => {
         <Image />
         <>
           <BtnContainer>
-            <svg width="28" height="28">
+            <svg width="50" height="50">
               <use xlinkHref={`${icons}#icon-plus`} />
             </svg>
           </BtnContainer>
@@ -55,16 +61,17 @@ export const DrinkDescriptionFields = () => {
       <FlexContainer>
         <InputWraper>
           <FieldStyle placeholder="Enter item title" type="text" />
-          <Validate></Validate>
+          {/* <Validate></Validate> */}
           <FieldStyle placeholder="Enter about recipe" type="text" />
-          <Validate></Validate>
+          {/* <Validate></Validate> */}
         </InputWraper>
         <Margin>
           <SelectWrapper>
             <LabelSelect>Category</LabelSelect>
             <Select
               // onSelect={handleCategorySelect}
-              defaultValue={{ value: 'Cocktail', label: 'Cocktail' }}
+              defaultValue={[{ value: 'Cocktail', label: 'Cocktail' }]}
+              options={optionsCoctail}
               unstyled
               styles={styles}
               required
@@ -78,6 +85,7 @@ export const DrinkDescriptionFields = () => {
                 value: 'Highball glass',
                 label: 'Highball glass',
               }}
+              options={optionsGlass}
               unstyled
               styles={styles}
               required
@@ -86,11 +94,24 @@ export const DrinkDescriptionFields = () => {
         </Margin>
         <RadioWrapper>
           <label>
-            <input stroke="#F3F3F3" type="radio" value="alcoholic" checked />
+            <input
+              id="option1"
+              stroke="#F3F3F3"
+              type="radio"
+              value="alcoholic"
+              checked={selectedAlcoholic === 'alcoholic'}
+              onChange={handleOptionChange}
+            />
             Alcoholic
           </label>
           <label>
-            <input type="radio" value="nonAlcoholic" />
+            <input
+              id="option2"
+              type="radio"
+              value="nonAlcoholic"
+              checked={selectedAlcoholic === 'nonAlcoholic'}
+              onChange={handleOptionChange}
+            />
             Non-alcoholic
           </label>
         </RadioWrapper>

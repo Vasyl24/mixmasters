@@ -25,6 +25,7 @@ const DrinkIngredientsFields = () => {
   const [count, setCount] = useState(1);
   // const [drinks] = useState(drinksData);
   // const [filteredDrinks, setFilteredDrinks] = useState(drinks);
+  // console.log(ingredients);
 
   const plusButtonHandler = () => {
     setCount(count + 1);
@@ -111,12 +112,15 @@ const DrinkIngredientsFields = () => {
               </FlexWraper>
               <DeleteBtn
                 onClick={() => {
-                  if (count === 1) {
-                    return;
-                  }
+                  console.log('delete element');
+                  // if (count === 1) {
+                  //   return;
+                  // }
                   setIngredients(() => {
                     const newIngredients = [...ingredients];
+                    console.log(newIngredients);
                     const idxOfIngredient = newIngredients.indexOf(arr);
+                    console.log(idxOfIngredient);
                     newIngredients.splice(idxOfIngredient, 1);
                     setCount(count - 1);
 
