@@ -1,5 +1,82 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import welcomesm2x from '../../assets/welcome-mob@2x.jpg';
+import welcomesm1x from '../../assets/welcome-mob.jpg';
+import welcomemd1x from '../../assets/welcome-tabl.jpg';
+import welcomemd2x from '../../assets/welcome-tabl@2x.jpg';
+import welcome1x from '../../assets/welcome-desk.jpg';
+import welcome2x from '../../assets/welcome-desk@2x.jpg';
+
+export const ContainerLayout = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-size: contain;
+  justify-content: center;
+  align-items: center;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+      to right,
+      rgba(6, 6, 9, 1),
+      rgba(10, 10, 17, 0)
+    ),
+    url(${welcomemd1x});
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        to right,
+        rgba(6, 6, 9, 1),
+        rgba(10, 10, 17, 0)
+      ),
+      url(${welcomemd2x});
+    justify-content: left;
+  }
+
+  @media (max-width: 767.98px) {
+    justify-content: left;
+    background-image: linear-gradient(
+        to right,
+        rgba(6, 6, 9, 1),
+        rgba(10, 10, 17, 0)
+      ),
+      url(${welcomesm1x});
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(6, 6, 9, 1),
+          rgba(10, 10, 17, 0)
+        ),
+        url(${welcomesm2x});
+    }
+  }
+
+  @media (min-width: 1024px) {
+    justify-content: left;
+    background-image: linear-gradient(
+        to right,
+        rgba(6, 6, 9, 1),
+        rgba(10, 10, 17, 0)
+      ),
+      url(${welcome1x});
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(6, 6, 9, 1),
+          rgba(10, 10, 17, 0)
+        ),
+        url(${welcome2x});
+    }
+  }
+`;
 
 export const LoginContainer = styled.form`
   position: relative;

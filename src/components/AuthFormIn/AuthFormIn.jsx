@@ -21,6 +21,7 @@ import {
   StyledLink,
   IconPasswordHidden,
   IconPasswordShow,
+  ContainerLayout,
 } from './AuthFormIn.styled';
 
 const validationSchema = yup.object().shape({
@@ -73,64 +74,66 @@ const AuthFormIn = () => {
   });
 
   return (
-    <LoginContainer onSubmit={formik.handleSubmit}>
-      <ToastContainer />
-      <Title>Sign In</Title>
+    <ContainerLayout>
+      <LoginContainer onSubmit={formik.handleSubmit}>
+        <ToastContainer />
+        <Title>Sign In</Title>
 
-      <InputBlock>
-        <label htmlFor="email">
-          <StyledInput
-            name="email"
-            type="text"
-            placeholder="Email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-        </label>
-        {formik.touched.email && formik.errors.email && (
-          <ErrorContainer>
-            <ErrorMessage>{formik.errors.email}</ErrorMessage>
-          </ErrorContainer>
-        )}
+        <InputBlock>
+          <label htmlFor="email">
+            <StyledInput
+              name="email"
+              type="text"
+              placeholder="Email"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+            />
+          </label>
+          {formik.touched.email && formik.errors.email && (
+            <ErrorContainer>
+              <ErrorMessage>{formik.errors.email}</ErrorMessage>
+            </ErrorContainer>
+          )}
 
-        <label htmlFor="password">
-          <StyledInput
-            name="password"
-            type={textPassword ? 'password' : 'text'}
-            placeholder="Password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            style={{ color: textPassword ? 'inherit' : '#f3f3f3' }}
-          />
-          <div onClick={() => setTextPassword(prevState => !prevState)}>
-            {textPassword ? (
-              <IconPasswordHidden>
-                <use href={`${sprite}#icon-eye-off`} />
-              </IconPasswordHidden>
-            ) : (
-              <IconPasswordShow>
-                <use href={`${sprite}#icon-eye`} />
-              </IconPasswordShow>
-            )}
-          </div>
-        </label>
-        {formik.touched.password && formik.errors.password && (
-          <ErrorContainer>
-            <ErrorMessage>{formik.errors.password}</ErrorMessage>
-          </ErrorContainer>
-        )}
-      </InputBlock>
+          <label htmlFor="password">
+            <StyledInput
+              name="password"
+              type={textPassword ? 'password' : 'text'}
+              placeholder="Password"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              style={{ color: textPassword ? 'inherit' : '#f3f3f3' }}
+            />
+            <div onClick={() => setTextPassword(prevState => !prevState)}>
+              {textPassword ? (
+                <IconPasswordHidden>
+                  <use href={`${sprite}#icon-eye-off`} />
+                </IconPasswordHidden>
+              ) : (
+                <IconPasswordShow>
+                  <use href={`${sprite}#icon-eye`} />
+                </IconPasswordShow>
+              )}
+            </div>
+          </label>
+          {formik.touched.password && formik.errors.password && (
+            <ErrorContainer>
+              <ErrorMessage>{formik.errors.password}</ErrorMessage>
+            </ErrorContainer>
+          )}
+        </InputBlock>
 
-      <StyledBtn
-        type="submit"
-        disabled={!formik.isValid || formik.isSubmitting}
-      >
-        Sign In
-      </StyledBtn>
-      <StyledLink to="/signup">Sign Up</StyledLink>
-    </LoginContainer>
+        <StyledBtn
+          type="submit"
+          disabled={!formik.isValid || formik.isSubmitting}
+        >
+          Sign In
+        </StyledBtn>
+        <StyledLink to="/signup">Sign Up</StyledLink>
+      </LoginContainer>
+    </ContainerLayout>
   );
 };
 

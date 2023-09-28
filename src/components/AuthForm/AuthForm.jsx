@@ -21,6 +21,7 @@ import {
   StyledLink,
   IconPasswordHidden,
   IconPasswordShow,
+  ContainerLayout,
 } from './AuthForm.styled';
 
 const validationSchema = yup.object().shape({
@@ -92,102 +93,104 @@ const AuthForm = () => {
   });
 
   return (
-    <RegisterContainer onSubmit={formik.handleSubmit}>
-      <Title>Sign up</Title>
-      <InputBlock>
-        <label htmlFor="name">
-          <StyledInput
-            name="name"
-            type="text"
-            placeholder="Name"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.name}
-          />
-        </label>
-        {formik.touched.name && formik.errors.name && (
-          <ErrorContainer>
-            <ErrorMessage>{formik.errors.name}</ErrorMessage>
-          </ErrorContainer>
-        )}
+    <ContainerLayout>
+      <RegisterContainer onSubmit={formik.handleSubmit}>
+        <Title>Sign up</Title>
+        <InputBlock>
+          <label htmlFor="name">
+            <StyledInput
+              name="name"
+              type="text"
+              placeholder="Name"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.name}
+            />
+          </label>
+          {formik.touched.name && formik.errors.name && (
+            <ErrorContainer>
+              <ErrorMessage>{formik.errors.name}</ErrorMessage>
+            </ErrorContainer>
+          )}
 
-        <label htmlFor="birthdate">
-          <StyledDatePicker
-            id="birthdate"
-            name="birthdate"
-            placeholderText="dd/mm/yyyy"
-            selected={formik.values.birthdate}
-            onChange={date => {
-              formik.setFieldValue('birthdate', date);
-            }}
-            dateFormat="dd/MM/yyyy"
-            onBlur={formik.handleBlur}
-          />
-          <StyledIconСalendar onClick={openCalendar}>
-            <IconСalendar>
-              <use href={sprite + '#icon-calendar'} />
-            </IconСalendar>
-          </StyledIconСalendar>
-        </label>
+          <label htmlFor="birthdate">
+            <StyledDatePicker
+              id="birthdate"
+              name="birthdate"
+              placeholderText="dd/mm/yyyy"
+              selected={formik.values.birthdate}
+              onChange={date => {
+                formik.setFieldValue('birthdate', date);
+              }}
+              dateFormat="dd/MM/yyyy"
+              onBlur={formik.handleBlur}
+            />
+            <StyledIconСalendar onClick={openCalendar}>
+              <IconСalendar>
+                <use href={sprite + '#icon-calendar'} />
+              </IconСalendar>
+            </StyledIconСalendar>
+          </label>
 
-        {formik.touched.birthdate && formik.errors.birthdate && (
-          <ErrorContainer>
-            <ErrorMessage>{formik.errors.birthdate}</ErrorMessage>
-          </ErrorContainer>
-        )}
+          {formik.touched.birthdate && formik.errors.birthdate && (
+            <ErrorContainer>
+              <ErrorMessage>{formik.errors.birthdate}</ErrorMessage>
+            </ErrorContainer>
+          )}
 
-        <label htmlFor="email">
-          <StyledInput
-            name="email"
-            type="email"
-            placeholder="Email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-        </label>
-        {formik.touched.email && formik.errors.email && (
-          <ErrorContainer>
-            <ErrorMessage>{formik.errors.email}</ErrorMessage>
-          </ErrorContainer>
-        )}
+          <label htmlFor="email">
+            <StyledInput
+              name="email"
+              type="email"
+              placeholder="Email"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+            />
+          </label>
+          {formik.touched.email && formik.errors.email && (
+            <ErrorContainer>
+              <ErrorMessage>{formik.errors.email}</ErrorMessage>
+            </ErrorContainer>
+          )}
 
-        <label htmlFor="password">
-          <StyledInput
-            name="password"
-            type={textPassword ? 'password' : 'text'}
-            placeholder="Password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            style={{ color: textPassword ? 'inherit' : '#f3f3f3' }}
-          />
-          <div onClick={() => setTextPassword(prevState => !prevState)}>
-            {textPassword ? (
-              <IconPasswordHidden>
-                <use href={`${sprite}#icon-eye-off`} />
-              </IconPasswordHidden>
-            ) : (
-              <IconPasswordShow>
-                <use href={`${sprite}#icon-eye`} />
-              </IconPasswordShow>
-            )}
-          </div>
-        </label>
-        {formik.touched.password && formik.errors.password && (
-          <ErrorContainer>
-            <ErrorMessage>{formik.errors.password}</ErrorMessage>
-          </ErrorContainer>
-        )}
-      </InputBlock>
-      <StyledBtn
-        type="submit"
-        disabled={!formik.isValid || formik.isSubmitting}
-      >
-        Sign up
-      </StyledBtn>
-      <StyledLink to="/signin">Sign In</StyledLink>
-    </RegisterContainer>
+          <label htmlFor="password">
+            <StyledInput
+              name="password"
+              type={textPassword ? 'password' : 'text'}
+              placeholder="Password"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              style={{ color: textPassword ? 'inherit' : '#f3f3f3' }}
+            />
+            <div onClick={() => setTextPassword(prevState => !prevState)}>
+              {textPassword ? (
+                <IconPasswordHidden>
+                  <use href={`${sprite}#icon-eye-off`} />
+                </IconPasswordHidden>
+              ) : (
+                <IconPasswordShow>
+                  <use href={`${sprite}#icon-eye`} />
+                </IconPasswordShow>
+              )}
+            </div>
+          </label>
+          {formik.touched.password && formik.errors.password && (
+            <ErrorContainer>
+              <ErrorMessage>{formik.errors.password}</ErrorMessage>
+            </ErrorContainer>
+          )}
+        </InputBlock>
+        <StyledBtn
+          type="submit"
+          disabled={!formik.isValid || formik.isSubmitting}
+        >
+          Sign up
+        </StyledBtn>
+        <StyledLink to="/signin">Sign In</StyledLink>
+      </RegisterContainer>
+    </ContainerLayout>
   );
 };
 
