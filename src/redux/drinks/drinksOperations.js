@@ -83,3 +83,17 @@ export const fetchMainpage = createAsyncThunk(
     }
   }
 );
+
+
+
+export const fetchAllDrinks = createAsyncThunk(
+  'drinks/fetchAllDrinks',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('/drinks/search?page=44&limit=10');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

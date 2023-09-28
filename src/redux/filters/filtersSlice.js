@@ -1,7 +1,7 @@
 const { createSlice } = require("@reduxjs/toolkit");
 const {
   getCategories,
-  getIngridients,
+  getIngredients,
   getGlasses,
 } = require('./filtersOperations');
 
@@ -28,15 +28,15 @@ const filterSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    [getIngridients.pending](state) {
+    [getIngredients.pending](state) {
       state.isLoading = true;
     },
-    [getIngridients.fulfilled](state, action) {
+    [getIngredients.fulfilled](state, action) {
       state.ingredients = action.payload;
       state.isLoading = false;
       state.error = null;
     },
-    [getIngridients.rejected](state, action) {
+    [getIngredients.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
     },

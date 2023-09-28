@@ -66,7 +66,7 @@ export const StyledSelectInput = styled.select`
 
   background: #161f37 url('../../assets/sprite.svg#icon-arrow-up');
   background-position: right 5px top 50%; */
-/* 
+  /* 
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none; */

@@ -13,11 +13,11 @@ export const getCategories = createAsyncThunk(
   }
 );
 
-export const getIngridients = createAsyncThunk(
-  'filters/getIngridients',
+export const getIngredients = createAsyncThunk(
+  'filters/getIngredients',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/filters/ingridients');
+      const response = await axios.get('/filters/ingredients');
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
