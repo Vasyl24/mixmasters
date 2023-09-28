@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { persistedUsersReducer } from './auth/authSlice';
 import { drinksReducer } from './drinks/drinksSlice';
+import { filtersReducer } from './filters/filtersSlice';
+
 import {
   persistStore,
   FLUSH,
@@ -14,6 +16,7 @@ export const store = configureStore({
   reducer: {
     auth: persistedUsersReducer,
     drinks: drinksReducer,
+    filters: filtersReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
