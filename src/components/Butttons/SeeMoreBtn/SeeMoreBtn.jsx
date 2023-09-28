@@ -6,7 +6,7 @@ export const SeeButton = ({ id }) => {
 
   return (
     <StyledSeeMoreBtn
-      to={`/drink/${id}`}
+      to={`/drinks/${id}`}
       //   onClick={() => {
       //     navigate(`/drink/${id}`);
       //   }}
