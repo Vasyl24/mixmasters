@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -8,6 +7,7 @@ import {
   CategoryItem,
   CategoryDrinksList,
   Category,
+  Button,
 } from './PreviewDrinks.styled';
 
 import DrinksItem from './DrinkItem/DrinksItem';
@@ -28,14 +28,18 @@ export const PreviewDrinks = () => {
     .filter((category, index, arr) => arr.indexOf(category) === index);
 
   useEffect(() => {
-    if (windowWidth > 0 && windowWidth < 768) setCount(1);
-    else if (windowWidth >= 768 && windowWidth < 1440) {
+    if (windowWidth > 0 && windowWidth < 768 && count !== 1) {
+      setCount(1);
+    } else if (windowWidth >= 768 && windowWidth < 1440 && count !== 2) {
       setCount(2);
-    } else if (windowWidth >= 1440) {
+    } else if (windowWidth >= 1440 && count !== 3) {
       setCount(3);
     }
+  }, [count, windowWidth]);
+
+  useEffect(() => {
     if (count) dispatch(fetchMainpage(count));
-  }, [dispatch, count, windowWidth]);
+  }, [dispatch, count]);
 
   return (
     <SectionContainer>
@@ -55,7 +59,7 @@ export const PreviewDrinks = () => {
           );
         })}
       </Container>
-      <Link to="/drinks">Other drinks</Link>
+      <Button to="/drinks">Other drinks</Button>
     </SectionContainer>
   );
 };
