@@ -11,11 +11,7 @@ import {
 import { useEffect } from 'react';
 import { getCategories, getIngredients } from 'redux/filters/filtersOperations';
 
-export const DrinksSearch = ({
-  onSearch,
-  onCategoryChange,
-  onIngredientChange,
-}) => {
+export const DrinksSearch = () => {
   const dispatch = useDispatch();
 
   const categories = useSelector(selectCategories);
@@ -31,20 +27,26 @@ export const DrinksSearch = ({
       <StyledTextInput
         type="text"
         placeholder="Enter the text"
-        onChange={e => onSearch(e.target.value)}
+        // onChange={e => onSearch(e.target.value)}
       />
-      <StyledSelectInput onChange={e => onCategoryChange(e.target.value)}>
+      <StyledSelectInput
+      // onChange={e => onCategoryChange(e.target.value)}
+      >
         <option value="">All categories</option>
         {categories.map(category => (
-          <option value={category}>{category}</option>
+          <option key={category} value={category}>
+            {category}
+          </option>
         ))}
       </StyledSelectInput>
-      <StyledSelectInput onChange={e => onIngredientChange(e.target.value)} >
-        <option value="">
-          Ingredients
-        </option>
+      <StyledSelectInput
+      // onChange={e => onIngredientChange(e.target.value)}
+      >
+        <option value="">Ingredients</option>
         {ingredients.map(ingredient => (
-          <option value={ingredient.title}>{ingredient.title}</option>
+          <option key={ingredient._id} value={ingredient.title}>
+            {ingredient.title}
+          </option>
         ))}
       </StyledSelectInput>
     </StyledFilterContainer>
