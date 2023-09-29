@@ -92,14 +92,12 @@ export const RegisterContainer = styled.form`
   }
 
   @media (min-width: 1024px) {
-    width: 400px;
-
     margin-left: 100px;
   }
 `;
 
 export const Title = styled.h1`
-  color: #f3f3f3;
+  color: var(--text-btn-color);
   font-size: 28px;
   font-weight: 600;
   line-height: 1.15;
@@ -118,10 +116,10 @@ export const StyledDatePicker = styled(DatePicker)`
   background-color: transparent;
   padding-left: 24px;
   margin-bottom: 14px;
-  color: #f3f3f3;
+  color: var(--text-btn-color);
 
   &::placeholder {
-    color: #f3f3f3;
+    color: var(--text-btn-color);
     font-size: 14px;
     font-weight: 400;
     line-height: 1.3;
@@ -145,7 +143,7 @@ export const StyledDatePicker = styled(DatePicker)`
   &:focus,
   &:hover {
     outline: none;
-    color: #f3f3f3;
+    color: var(--text-btn-color);
     border-color: rgba(243, 243, 243, 0.5);
   }
 `;
@@ -177,10 +175,10 @@ export const StyledInput = styled.input`
   background-color: transparent;
   padding-left: 24px;
   margin-bottom: 14px;
-  color: #f3f3f3;
+  color: var(--text-btn-color);
 
   &::placeholder {
-    color: #f3f3f3;
+    color: var(--text-btn-color);
     font-size: 14px;
     font-weight: 400;
     line-height: 1.3;
@@ -202,18 +200,11 @@ export const StyledInput = styled.input`
 
   &:focus,
   &:hover {
-    outline: none;
-    color: #f3f3f3;
     border-color: rgba(243, 243, 243, 0.5);
   }
 `;
 
 export const ErrorContainer = styled.div`
-  margin-top: 1px;
-  position: relative;
-`;
-
-export const ValidContainer = styled.div`
   margin-top: 1px;
   position: relative;
 `;
@@ -227,12 +218,17 @@ export const ErrorMessage = styled.div`
   font-size: 12px;
 `;
 
+export const ValidContainer = styled.div`
+  margin-top: 1px;
+  position: relative;
+`;
+
 export const ValidMessage = styled.div`
   position: absolute;
   top: -10px;
   transform: translateY(-50%);
 
-  color: #3cbc81;
+  color: var(--correct-state-color);
   font-size: 12px;
 `;
 
@@ -246,9 +242,9 @@ export const StyledBtn = styled.button`
 
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
-  background: #f3f3f3;
+  background: var(--text-btn-color);
 
-  color: #161f37;
+  color: var(--accent-color);
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -258,9 +254,10 @@ export const StyledBtn = styled.button`
   cursor: pointer;
   transition: 0.3s ease;
 
+  &focus,
   &:hover {
-    background: #434d67;
-    color: #f3f3f3;
+    background: var(--hover-btn-color);
+    color: var(--text-btn-color);
   }
 
   @media (min-width: 768px) {
