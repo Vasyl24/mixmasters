@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-
-export const Container = styled.div`
-  position: relative;
-  margin: 0px auto;
-  width: 335px;
-  height: 193px;
-  padding: 50px 25px;
-  background-color: var(--accent-color);
-  border-radius: 8px;
-`;
+export const ModalStyles = {
+  top: '-70%',
+  borderRadius: '8px',
+  padding: '50px',
+  backgroundColor: 'var(--accent-color)',
+};
+export const BackdropStyles = {
+  backgroundColor: 'rgba(0, 0, 0, 0.8)',
+};
 
 export const Text = styled.p`
   margin-bottom: 25px;
@@ -16,6 +15,15 @@ export const Text = styled.p`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
+  letter-spacing: -0.28px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 37px;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.36px;
+  }
+  @media screen and (min-width: 1440px) {
+  }
 `;
 export const ButtonWrap = styled.div`
   display: flex;
@@ -32,10 +40,15 @@ export const CloseButton = styled.button`
 export const Icon = styled.svg`
   width: 24px;
   height: 24px;
+  @media screen and (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
+  @media screen and (min-width: 1440px) {
+  }
 `;
 export const StyledCancelBtn = styled.button`
   padding: 12px 45px;
-
   border: 1px solid rgba(243, 243, 243, 0.2);
   border-radius: 42px;
   background-color: var(--hover-btn-color);
@@ -51,5 +64,37 @@ export const StyledCancelBtn = styled.button`
   &:hover {
     background-color: var(--text-btn-color);
     color: var(--accent-color);
+  }
+  @media screen and (min-width: 768px) {
+    padding: 18px 69px;
+    font-size: 16px;
+    line-height: 1.12;
+  }
+  @media screen and (min-width: 1440px) {
+  }
+`;
+export const StyledLogoutBtn = styled.button`
+  padding: 12px 45px;
+  background-color: var(--text-btn-color);
+  color: #161f37;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  border-radius: 42px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.28;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  &:hover {
+    background: #434d67;
+    color: #f3f3f3;
+  }
+  @media screen and (min-width: 768px) {
+    padding: 18px 69px;
+    font-size: 16px;
+    line-height: 1.12;
+  }
+  @media screen and (min-width: 1440px) {
   }
 `;
