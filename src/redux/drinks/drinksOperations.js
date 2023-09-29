@@ -98,3 +98,15 @@ export const fetchAllDrinks = createAsyncThunk(
     }
   }
 );
+
+export const fetchPopularDrinks = createAsyncThunk(
+  'drinks/fetchPopularDrinks',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(`/drinks/popular`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

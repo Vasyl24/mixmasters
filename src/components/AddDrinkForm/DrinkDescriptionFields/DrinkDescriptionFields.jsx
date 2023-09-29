@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   ImageContainer,
   Wrapper,
@@ -15,8 +15,8 @@ import {
   LabelSelect,
   RadioWrapper,
 } from './DrinkDescriptionFields.styled';
-import { optionsGlass } from '../Glass/Glass';
-import { optionsCoctail } from '../CoctailCategory/CoctailCategory';
+import { optionsGlass } from '../SelectCategories/Glass';
+import { optionsCoctail } from '../SelectCategories/CoctailCategory';
 import Select from 'react-select';
 import icons from '../../../assets/sprite.svg';
 import { styles } from './selectStyle';
@@ -28,12 +28,24 @@ export const DrinkDescriptionFields = () => {
   // const [selectedCategory, setSelectedCategory] = useState('');
   // const [selectedGlass, setSelectedGlass] = useState('');
   // const [selectedIngredients, setSelectedIngredients] = useState([]);
-  const [selectedAlcoholic, setselectedAlcoholic] = useState('alcoholic');
+  // const [imgUpload, setImgUpload] = useState();
+  const [selectedAlcoholic, setSelectedAlcoholic] = useState('alcoholic');
+  const hiddenFileInput = useRef(null);
 
   const handleOptionChange = changeEvent => {
-    setselectedAlcoholic(changeEvent.target.value);
+    setSelectedAlcoholic(changeEvent.target.value);
   };
 
+  const handleImgClick = evt => {
+    hiddenFileInput.current.click();
+    // setImgUpload(evt.target.files[0]);
+    // console.log(imgUpload);
+  };
+
+  const handleImgUpload = evt => {
+    // const imgUploaded = evt.target.files[0];
+    // handleFile(fileUploaded);
+  };
   // const handleCategorySelect = category => {
   //   setSelectedCategory(category);
   // };
@@ -44,7 +56,7 @@ export const DrinkDescriptionFields = () => {
 
   return (
     <Wrapper>
-      <ImageContainer>
+      <ImageContainer onClick={handleImgClick}>
         <Image />
         <>
           <BtnContainer>
@@ -56,7 +68,12 @@ export const DrinkDescriptionFields = () => {
             <BtnText>Add image</BtnText>
           </div>
         </>
-        <ImageInput />
+        <ImageInput
+          type="file"
+          name="file"
+          ref={hiddenFileInput}
+          onChange={handleImgUpload}
+        />
       </ImageContainer>
       <FlexContainer>
         <InputWraper>
