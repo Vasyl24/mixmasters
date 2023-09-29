@@ -6,6 +6,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'useAuth';
 import { refreshUser } from './redux/auth/authOperations';
 import Loader from './components/Loader/Loader';
+// import { useTheme } from './components/ThemeToggler/ThemeToggler';
 
 const AddDrinkPage = lazy(() => import('./pages/AddDrinkPage/AddDrinkPage'));
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
@@ -23,6 +24,7 @@ const FavoriteDrinkPage = lazy(() =>
 );
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
+
 function App() {
   const dispatch = useDispatch();
   const { isLoading, isLoggedIn } = useAuth();
@@ -31,6 +33,7 @@ function App() {
     dispatch(refreshUser());
   }, [dispatch]);
 
+  // const { theme, setTheme } = useTheme();
   return (
     !isLoading && (
       <Suspense fallback={<Loader />}>
