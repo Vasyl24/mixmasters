@@ -1,6 +1,7 @@
 @import '../node_modules/modern-normalize/modern-normalize.css';
 
 :root {
+  /* Colors */
   --background-color: #0a0a11;
   --accent-color: #161f37;
   --text-btn-color: #f3f3f3;

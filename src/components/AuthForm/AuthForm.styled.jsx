@@ -84,6 +84,7 @@ export const RegisterContainer = styled.form`
   height: auto;
   margin-left: 20px;
   margin-right: 20px;
+  z-index: 1000;
 
   @media (min-width: 768px) {
     width: 400px;
@@ -117,7 +118,7 @@ export const StyledDatePicker = styled(DatePicker)`
   background-color: transparent;
   padding-left: 24px;
   margin-bottom: 14px;
-  color: var(--text-btn-color);
+  color: #f3f3f3;
 
   &::placeholder {
     color: #f3f3f3;
@@ -146,7 +147,6 @@ export const StyledDatePicker = styled(DatePicker)`
     outline: none;
     color: #f3f3f3;
     border-color: rgba(243, 243, 243, 0.5);
-    background-color: transparent;
   }
 `;
 
@@ -177,7 +177,7 @@ export const StyledInput = styled.input`
   background-color: transparent;
   padding-left: 24px;
   margin-bottom: 14px;
-  color: var(--text-btn-color);
+  color: #f3f3f3;
 
   &::placeholder {
     color: #f3f3f3;
@@ -205,16 +205,34 @@ export const StyledInput = styled.input`
     outline: none;
     color: #f3f3f3;
     border-color: rgba(243, 243, 243, 0.5);
-    background-color: transparent;
   }
 `;
 
 export const ErrorContainer = styled.div`
-  position: absolute;
+  margin-top: 1px;
+  position: relative;
+`;
+
+export const ValidContainer = styled.div`
+  margin-top: 1px;
+  position: relative;
 `;
 
 export const ErrorMessage = styled.div`
-  color: red;
+  position: absolute;
+  top: -10px;
+  transform: translateY(-50%);
+
+  color: #da1414;
+  font-size: 12px;
+`;
+
+export const ValidMessage = styled.div`
+  position: absolute;
+  top: -10px;
+  transform: translateY(-50%);
+
+  color: #3cbc81;
   font-size: 12px;
 `;
 
@@ -285,4 +303,24 @@ export const IconPasswordShow = styled.svg`
   top: 238px;
   transform: translateY(-50%);
   cursor: pointer;
+`;
+
+export const IconDone = styled.svg`
+  width: 24px;
+  height: 24px;
+
+  position: absolute;
+  right: 20px;
+  top: 168px;
+  transform: translateY(-50%);
+`;
+
+export const IconError = styled.svg`
+  width: 24px;
+  height: 24px;
+
+  position: absolute;
+  right: 20px;
+  top: 168px;
+  transform: translateY(-50%);
 `;

@@ -5,6 +5,7 @@ import {
   fetchFavoriteDrinks,
   deleteFavoriteDrink,
   fetchMainpage,
+  fetchAllDrinks,
 } from './drinksOperations';
 import { toast } from 'react-toastify';
 
@@ -116,6 +117,18 @@ const drinksSlice = createSlice({
       state.items = action.payload;
     },
     [fetchMainpage.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    [fetchAllDrinks.pending](state) {
+      state.isLoading = true;
+    },
+    [fetchAllDrinks.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
+    },
+    [fetchAllDrinks.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
     },

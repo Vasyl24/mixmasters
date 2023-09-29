@@ -15,7 +15,7 @@ export const DrinksPage = () => {
   const dispatch = useDispatch();
   const drinks = useSelector(selectDrinks);
 
-  const [filteredDrinks, setFilteredDrinks] = useState(drinks);
+  // const [filteredDrinks, setFilteredDrinks] = useState(drinks);
   const [currentPage, setCurrentPage] = useState(1);
   const [drinksPerPage, setDrinksPerPage] = useState(9);
   const [pageNumbersToShow, setPageNumbersToShow] = useState(8);
@@ -32,44 +32,45 @@ export const DrinksPage = () => {
       setPageNumbersToShow(8);
     }
   };
+  console.log(drinksPerPage);
 
   useEffect(() => {
-    dispatch(fetchAllDrinks());
+    dispatch(fetchAllDrinks( pageNumbersToShow,  drinksPerPage ));
     updateDrinksPerPageAndPageNumbers();
     window.addEventListener('resize', updateDrinksPerPageAndPageNumbers);
     return () => {
       window.removeEventListener('resize', updateDrinksPerPageAndPageNumbers);
     };
-  }, [dispatch]);
+  }, [dispatch, pageNumbersToShow, drinksPerPage]);
   console.log(drinks);
 
-  const handleSearch = text => {
-    const filtered = drinks.filter(drink =>
-      drink.drink.toLowerCase().includes(text.toLowerCase())
-    );
-    setFilteredDrinks(filtered);
-  };
+  // const handleSearch = text => {
+  //   const filtered = drinks.filter(drink =>
+  //     drink.drink.toLowerCase().includes(text.toLowerCase())
+  //   );
+  //   setFilteredDrinks(filtered);
+  // };
 
-  const handleCategoryChange = category => {
-    if (category === '') {
-      setFilteredDrinks(drinks);
-    } else {
-      const filtered = drinks.filter(drink => drink.category === category);
-      setFilteredDrinks(filtered);
-    }
-  };
+  // const handleCategoryChange = category => {
+  //   if (category === '') {
+  //     setFilteredDrinks(drinks);
+  //   } else {
+  //     const filtered = drinks.filter(drink => drink.category === category);
+  //     setFilteredDrinks(filtered);
+  //   }
+  // };
 
-  const handleIngredientChange = ingredient => {
-    if (ingredient === '') {
-      setFilteredDrinks(drinks);
-    } else {
-      const filtered = drinks.filter(drink => {
-        const ingredients = drink.ingredients.map(item => item.title);
-        return ingredients.includes(ingredient);
-      });
-      setFilteredDrinks(filtered);
-    }
-  };
+  // const handleIngredientChange = ingredient => {
+  //   if (ingredient === '') {
+  //     setFilteredDrinks(drinks);
+  //   } else {
+  //     const filtered = drinks.filter(drink => {
+  //       const ingredients = drink.ingredients.map(item => item.title);
+  //       return ingredients.includes(ingredient);
+  //     });
+  //     setFilteredDrinks(filtered);
+  //   }
+  // };
 
   const onPageChange = pageNumber => {
     setCurrentPage(pageNumber);
@@ -77,24 +78,21 @@ export const DrinksPage = () => {
 
   const indexOfLastDrink = currentPage * drinksPerPage;
   const indexOfFirstDrink = indexOfLastDrink - drinksPerPage;
-  const currentDrinks = filteredDrinks.slice(
-    indexOfFirstDrink,
-    indexOfLastDrink
-  );
+  const currentDrinks = drinks.slice(indexOfFirstDrink, indexOfLastDrink);
 
   return (
     <StyledMainContainer>
       <PageTitle title="Drinks" />
       <DrinksSearch
-        onSearch={handleSearch}
-        onCategoryChange={handleCategoryChange}
-        onIngredientChange={handleIngredientChange}
+      // onSearch={handleSearch}
+      // onCategoryChange={handleCategoryChange}
+      // onIngredientChange={handleIngredientChange}
       />
       <Drinks drinks={currentDrinks} />
-      {filteredDrinks.length > 8 && (
+      {drinks.length > 8 && (
         <Paginator
           drinksPerPage={drinksPerPage}
-          totalDrinks={filteredDrinks.length}
+          totalDrinks={drinks.length}
           onPageChange={onPageChange}
           pageNumbersToShow={pageNumbersToShow}
         />
