@@ -95,5 +95,3 @@ export function DrinkPageHero({ drinkInfo }) {
     </ContainerHero>
   );
 }
-
-

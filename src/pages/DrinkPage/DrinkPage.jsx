@@ -56,11 +56,10 @@ const DrinkPage = () => {
             instructions={drinkInfo.instructions}
             description={drinkInfo.description}
           />
-        </>)}
+        </>
+      )}
     </div>
   );
 };
 
 export default DrinkPage;
-
-
