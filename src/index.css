@@ -21,6 +21,7 @@
   --correct-state-color: #3cbc81;
   --error-state-color: #da1414;
   --pagination-color: #4070cd;
+  --dark-color: #0a0a11; //темний колір для тих частин апки які повинні залишатися темнини
 }
 
 html[data-theme='light'] {
@@ -33,6 +34,7 @@ html[data-theme='light'] {
   --correct-state-color: #3cbc81;
   --error-state-color: #da1414;
   --pagination-color: #4070cd;
+  --dark-color:#0a0a11; //темний колір для тих частин апки які повинні залишатися темнини
 }  */
 
 *,
