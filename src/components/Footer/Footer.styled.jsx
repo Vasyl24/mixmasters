@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 // Create a container for the footer
 export const FooterContainer = styled.footer`
@@ -100,4 +100,92 @@ export const FooterTextButton = styled.p`
       margin-right: 18px;
     }
   }
+`;
+
+// Keyframes animation
+const footerAnimation = keyframes`
+  0%, 100% {
+    opacity: 0; /* Початковий та кінцевий стани: елемент невидимий */
+  }
+  50% {
+    opacity: 1; /* Середина анімації: елемент видимий */
+  }
+`;
+
+// Styled components for footer balls
+
+export const FooterFirstBallContainer = styled.div`
+  position: absolute;
+  overflow: hidden;
+`;
+
+export const FooterFirstBall = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: -689px;
+  width: 784px;
+  height: 649px;
+  border-radius: 849px;
+  background: rgba(64, 112, 205, 1);
+  filter: blur(104.8543701171875px);
+  animation: ${footerAnimation} 7s ease-in-out infinite 3s;
+
+  @media (max-width: 768px) {
+    left: -690px;
+  }
+`;
+
+export const FooterSecondBall = styled.div`
+  position: absolute;
+  width: 700px;
+  height: 350px;
+  border-radius: 350px 350px 0 0;
+  background: rgba(188, 230, 210, 1);
+  filter: blur(104.8543701171875px);
+  animation: ${footerAnimation} 8s ease-in-out infinite;
+  z-index: -11;
+   transform: translateY(-320px); 
+
+   @media (max-width: 768px) {
+     left: 0px;
+     width: 300px;
+     height: 150px;
+     transform: translateY(-105px);
+ }
+
+ @media (min-width: 768px) {
+     left: 0px;
+
+     @media (min-width: 1440px) {
+    left: 0px;
+  
+
+ }
+`;
+
+export const FooterThirdBall = styled.div`
+  position: absolute;
+  width: 700px;
+  height: 350px;
+  border-radius: 350px 350px 0 0;
+  background: rgba(64, 112, 205, 1);
+  filter: blur(104.8543701171875px);
+  animation: ${footerAnimation} 8s ease-in-out infinite 2s;
+  z-index: -11;
+   transform: translateY(-320px);
+   
+   @media (max-width: 768px) {
+     right: 0px;
+     width: 300px;
+  height: 150px;
+     transform: translateY(-105px);
+ } 
+ @media (min-width: 768px) {
+     right: 0px;
+    
+ }
+
+ @media (min-width: 1440px) {
+  right: 0px;
+  
 `;
