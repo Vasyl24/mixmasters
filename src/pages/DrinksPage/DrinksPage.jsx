@@ -3,20 +3,18 @@ import { Drinks } from 'components/Drinks/Drinks';
 import { DrinksSearch } from 'components/DrinksSearch/DrinksSearch';
 import { PageTitle } from 'components/PageTitle/PageTitle';
 import Paginator from 'components/Paginator/Paginator';
-// import drinksData from '../../temporary/recipes.json';
 import { StyledMainContainer } from './DrinksPage.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDrinks } from 'redux/drinks/drinksSelectors';
 import { fetchAllDrinks } from 'redux/drinks/drinksOperations';
 
 export const DrinksPage = () => {
-  // const [drinks] = useState(drinksData);
 
   const dispatch = useDispatch();
   const drinks = useSelector(selectDrinks);
 
   // const [filteredDrinks, setFilteredDrinks] = useState(drinks);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
   const [drinksPerPage, setDrinksPerPage] = useState(9);
   const [pageNumbersToShow, setPageNumbersToShow] = useState(8);
 
@@ -32,10 +30,10 @@ export const DrinksPage = () => {
       setPageNumbersToShow(8);
     }
   };
-  console.log(drinksPerPage);
+
 
   useEffect(() => {
-    dispatch(fetchAllDrinks( pageNumbersToShow,  drinksPerPage ));
+    dispatch(fetchAllDrinks({ page: pageNumbersToShow, limit: drinksPerPage }));
     updateDrinksPerPageAndPageNumbers();
     window.addEventListener('resize', updateDrinksPerPageAndPageNumbers);
     return () => {
@@ -43,6 +41,7 @@ export const DrinksPage = () => {
     };
   }, [dispatch, pageNumbersToShow, drinksPerPage]);
   console.log(drinks);
+  
 
   // const handleSearch = text => {
   //   const filtered = drinks.filter(drink =>
@@ -72,13 +71,13 @@ export const DrinksPage = () => {
   //   }
   // };
 
-  const onPageChange = pageNumber => {
-    setCurrentPage(pageNumber);
-  };
+  // const onPageChange = pageNumber => {
+  //   setCurrentPage(pageNumber);
+  // };
 
-  const indexOfLastDrink = currentPage * drinksPerPage;
-  const indexOfFirstDrink = indexOfLastDrink - drinksPerPage;
-  const currentDrinks = drinks.slice(indexOfFirstDrink, indexOfLastDrink);
+  // const indexOfLastDrink = currentPage * drinksPerPage;
+  // const indexOfFirstDrink = indexOfLastDrink - drinksPerPage;
+  // const currentDrinks = drinks.slice(indexOfFirstDrink, indexOfLastDrink);
 
   return (
     <StyledMainContainer>
@@ -88,12 +87,14 @@ export const DrinksPage = () => {
       // onCategoryChange={handleCategoryChange}
       // onIngredientChange={handleIngredientChange}
       />
-      <Drinks drinks={currentDrinks} />
+      <Drinks
+        drinks={drinks}
+      />
       {drinks.length > 8 && (
         <Paginator
           drinksPerPage={drinksPerPage}
           totalDrinks={drinks.length}
-          onPageChange={onPageChange}
+          // onPageChange={onPageChange}
           pageNumbersToShow={pageNumbersToShow}
         />
       )}
