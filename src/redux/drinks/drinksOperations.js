@@ -86,12 +86,12 @@ export const fetchMainpage = createAsyncThunk(
 
 export const fetchAllDrinks = createAsyncThunk(
   'drinks/fetchAllDrinks',
-  async (page, limit, thunkAPI) => {
+  async ({page, limit}, thunkAPI) => {
     try {
       const response = await axios.get(
         `/drinks/search?page=${page}&limit=${limit}`
       );
-      return response.data;
+      return response.data.result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
