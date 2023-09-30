@@ -79,11 +79,11 @@ export const ContainerLayout = styled.div`
 `;
 
 export const LoginContainer = styled.form`
-  position: relative;
   width: 335px;
   height: auto;
   margin-left: 20px;
   margin-right: 20px;
+  z-index: 1000;
 
   @media (min-width: 768px) {
     width: 400px;
@@ -96,7 +96,7 @@ export const LoginContainer = styled.form`
 `;
 
 export const Title = styled.h1`
-  color: #f3f3f3;
+  color: var(--text-btn-color);
   font-size: 28px;
   font-weight: 600;
   line-height: 1.15;
@@ -124,7 +124,7 @@ export const StyledInput = styled.input`
   color: var(--text-btn-color);
 
   &::placeholder {
-    color: #f3f3f3;
+    color: var(--text-btn-color);
     font-size: 14px;
     font-weight: 400;
     line-height: 1.3;
@@ -146,19 +146,21 @@ export const StyledInput = styled.input`
 
   &:focus,
   &:hover {
-    outline: none;
-    color: #f3f3f3;
     border-color: rgba(243, 243, 243, 0.5);
-    background-color: transparent;
   }
 `;
 
 export const ErrorContainer = styled.div`
-  position: absolute;
+  margin-top: 1px;
+  position: relative;
 `;
 
 export const ErrorMessage = styled.div`
-  color: red;
+  position: absolute;
+  top: -10px;
+  transform: translateY(-50%);
+
+  color: var(--error-state-color);
   font-size: 12px;
 `;
 
@@ -172,9 +174,9 @@ export const StyledBtn = styled.button`
 
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
-  background: #f3f3f3;
+  background: var(--text-btn-color);
 
-  color: #161f37;
+  color: var(--accent-color);
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -184,9 +186,10 @@ export const StyledBtn = styled.button`
   cursor: pointer;
   transition: 0.3s ease;
 
+  &focus,
   &:hover {
-    background: #434d67;
-    color: #f3f3f3;
+    background: var(--hover-btn-color);
+    color: var(--text-btn-color);
   }
 
   @media (min-width: 768px) {
@@ -229,4 +232,38 @@ export const IconPasswordShow = styled.svg`
   top: 96px;
   transform: translateY(-50%);
   cursor: pointer;
+`;
+
+export const ValidContainer = styled.div`
+  margin-top: 1px;
+  position: relative;
+`;
+
+export const ValidMessage = styled.div`
+  position: absolute;
+  top: -10px;
+  transform: translateY(-50%);
+
+  color: var(--correct-state-color);
+  font-size: 12px;
+`;
+
+export const IconDone = styled.svg`
+  width: 24px;
+  height: 24px;
+
+  position: absolute;
+  right: 20px;
+  top: 28px;
+  transform: translateY(-50%);
+`;
+
+export const IconError = styled.svg`
+  width: 24px;
+  height: 24px;
+
+  position: absolute;
+  right: 20px;
+  top: 28px;
+  transform: translateY(-50%);
 `;
