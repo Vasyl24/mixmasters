@@ -5,7 +5,7 @@ import { DrinkIngredientsList } from 'components/DrinkIngredientsList/DrinkIngre
 import { RecipePreparation } from 'components/RecipePreparation/RecipePreparation';
 import { useDispatch } from 'react-redux';
 import { getDrinkById } from 'redux/drinks/drinksOperations';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const DrinkPage = () => {
   const [drinkInfo, setDrinkInfo] = useState({});

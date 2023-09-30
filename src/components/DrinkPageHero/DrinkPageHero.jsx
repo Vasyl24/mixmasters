@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
-// import { selectDrinks } from 'redux/drinks/drinksSelectors';
+// import { toast, ToastContainer } from 'react-toastify';
+import { selectError } from 'redux/drinks/drinksSelectors';
 import {
   addFavoriteDrink,
   deleteFavoriteDrink,
@@ -38,16 +39,27 @@ export function DrinkPageHero({ drinkInfo }) {
     setIsFavorite(isFavorite);
   }, [favorite, user._id]);
 
-  const onDeleteDrink = id => {
+  const onDeleteDrink = async id => {
     const drink = { id };
-    dispatch(deleteFavoriteDrink(drink));
-    setIsFavorite(false);
+    try {
+      const deletedDrink = await dispatch(deleteFavoriteDrink(drink));
+      if (!deletedDrink.error) {
+        setIsFavorite(false);
+      }
+    } catch (error) {
+    } 
   };
 
-  const onAddDrink = id => {
+  const onAddDrink = async id => {
     const drink = { id };
-    dispatch(addFavoriteDrink(drink));
-    setIsFavorite(true);
+    try {
+      const addDrink = await dispatch(addFavoriteDrink(drink));
+      console.log(addDrink);
+      if (!addDrink.error) {
+        setIsFavorite(true);
+      }
+    } catch (error) {
+    }
   };
 
   return (
