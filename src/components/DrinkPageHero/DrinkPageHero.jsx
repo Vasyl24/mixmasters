@@ -41,27 +41,7 @@ export function DrinkPageHero({ drinkInfo }) {
      setIsFavorite(isFavorite);
    }, [favorite, user._id]);
 
-   const onDeleteDrink = id => {
-     const drink = { id };
-     dispatch(deleteFavoriteDrink(drink));
-     setIsFavorite(false);
-   };
-
-   const onAddDrink = id => {
-     const drink = { id };
-     dispatch(addFavoriteDrink(drink));
-     setIsFavorite(true);
-   };
-
-  // useEffect(() => {
-  //   dispatch(fetchFavoriteDrinks());
-  //    const favoriteDrinkList = drinks.map(drink => drink._id);
-  //   const isFavorite = favoriteDrinkList.includes(_id);
-  //   setIsFavorite(isFavorite);
-  // }, [_id, dispatch, drinks]);
-
-
-  const onDeleteDrink = async id => {
+    const onDeleteDrink = async id => {
     const drink = { id };
     try {
       const deletedDrink = await dispatch(deleteFavoriteDrink(drink));
@@ -111,3 +91,25 @@ export function DrinkPageHero({ drinkInfo }) {
     </ContainerHero>
   );
 }
+
+
+
+
+//  const onDeleteDrink = id => {
+  //    const drink = { id };
+  //    dispatch(deleteFavoriteDrink(drink));
+  //    setIsFavorite(false);
+  //  };
+
+  //  const onAddDrink = id => {
+  //    const drink = { id };
+  //    dispatch(addFavoriteDrink(drink));
+  //    setIsFavorite(true);
+  //  };
+
+  // useEffect(() => {
+  //   dispatch(fetchFavoriteDrinks());
+  //    const favoriteDrinkList = drinks.map(drink => drink._id);
+  //   const isFavorite = favoriteDrinkList.includes(_id);
+  //   setIsFavorite(isFavorite);
+  // }, [_id, dispatch, drinks]);
