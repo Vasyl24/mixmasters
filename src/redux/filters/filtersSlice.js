@@ -1,4 +1,4 @@
-const { createSlice } = require("@reduxjs/toolkit");
+const { createSlice } = require('@reduxjs/toolkit');
 const {
   getCategories,
   getIngredients,
@@ -14,6 +14,26 @@ const filterSlice = createSlice({
     glasses: [],
     isLoading: false,
     error: null,
+  },
+  reducers: {
+    setSearchQuery(state, action) {
+      return {
+        ...state,
+        searchQuery: action.payload,
+      };
+    },
+    setSelectedCategory(state, action) {
+      return {
+        ...state,
+        categories: [...state.categories, action.payload],
+      };
+    },
+    setSelectedIngredient(state, action) {
+      return {
+        ...state,
+        ingredients: [...state.ingredients, action.payload],
+      };
+    },
   },
   extraReducers: {
     [getCategories.pending](state) {
@@ -54,5 +74,6 @@ const filterSlice = createSlice({
     },
   },
 });
-
+export const { setSearchQuery, setSelectedCategory, setSelectedIngredient } =
+  filterSlice.actions;
 export const filtersReducer = filterSlice.reducer;

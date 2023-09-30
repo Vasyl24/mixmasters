@@ -6,17 +6,17 @@ import { Container, SocialLinksIcon, IconContainer } from "./SocialLinks.styled"
 const socialLinks = [
   {
     name: "Facebook",
-    url: "https://www.facebook.com/",
+    url: "https://www.facebook.com/goITclub/",
     iconId: "icon-facebook",
   },
   {
     name: "Instagram",
-    url: "https://www.instagram.com/",
+    url: "https://www.instagram.com/cocktailbox_ua/?igshid=d3cupeo5kedw",
     iconId: "icon-instagram",
   },
   {
     name: "YouTube",
-    url: "https://www.youtube.com/",
+    url: "https://www.youtube.com/watch?v=5McPd0GPqC8&ab_channel=CocktailBox",
     iconId: "icon-youtube",
   },
 ];

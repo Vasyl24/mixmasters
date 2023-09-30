@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { signupUser } from 'redux/auth/authOperations';
 import { useFormik } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
-import { format } from 'date-fns';
+import { format, subDays } from 'date-fns';
 import * as yup from 'yup';
 import sprite from 'assets/sprite.svg';
 import {
@@ -32,7 +32,7 @@ const validationSchema = yup.object().shape({
   name: yup
     .string()
     .min(2, ({ min }) => `Name must be at least ${min} characters`)
-    .max(12, ({ max }) => `Name must be at least ${max} characters`)
+    .max(10, ({ max }) => `Name must be at least ${max} characters`)
     .required('Name is required')
     .label('Name'),
   birthdate: yup.date().nullable().required('Your age is required'),
@@ -59,6 +59,7 @@ const AuthForm = () => {
   const birthdateInputRef = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const yesterday = subDays(new Date(), 1);
 
   const initialValues = {
     name: '',
@@ -84,6 +85,8 @@ const AuthForm = () => {
     const email = e.target.value;
     const isValid = validationSchema.fields.email.isValidSync(email);
     setIsEmailValid(isValid);
+
+    e.target.style.borderColor = isValid ? '#3cbc81' : '#da1414';
   };
 
   const handlePasswordBlur = e => {
@@ -91,6 +94,8 @@ const AuthForm = () => {
     const password = e.target.value;
     const isValid = validationSchema.fields.password.isValidSync(password);
     setIsPasswordValid(isValid);
+
+    e.target.style.borderColor = isValid ? '#3cbc81' : '#da1414';
   };
 
   const onSubmit = values => {
@@ -144,6 +149,7 @@ const AuthForm = () => {
               }}
               dateFormat="dd/MM/yyyy"
               onBlur={formik.handleBlur}
+              maxDate={yesterday}
             />
             <StyledIconСalendar onClick={openCalendar}>
               <IconСalendar>
@@ -165,23 +171,6 @@ const AuthForm = () => {
               onChange={formik.handleChange}
               onBlur={handleEmailBlur}
               value={formik.values.email}
-              style={{
-                borderColor: isEmailValid
-                  ? '#3cbc81'
-                  : formik.touched.email && formik.errors.email
-                  ? '#da1414'
-                  : ' rgba(243, 243, 243, 0.2)',
-              }}
-              onMouseOver={e => {
-                e.target.style.outline = 'none';
-                e.target.style.color = '#f3f3f3';
-                e.target.style.borderColor = 'rgba(243, 243, 243, 0.5)';
-              }}
-              onFocus={e => {
-                e.target.style.outline = 'none';
-                e.target.style.color = '#f3f3f3';
-                e.target.style.borderColor = 'rgba(243, 243, 243, 0.5)';
-              }}
             />
 
             {isEmailValid && (
@@ -221,24 +210,6 @@ const AuthForm = () => {
               onChange={formik.handleChange}
               onBlur={handlePasswordBlur}
               value={formik.values.password}
-              style={{
-                borderColor: isPasswordValid
-                  ? '#3cbc81'
-                  : formik.touched.password && formik.errors.password
-                  ? '#da1414'
-                  : ' rgba(243, 243, 243, 0.2)',
-                color: textPassword ? 'inherit' : '#f3f3f3',
-              }}
-              onMouseOver={e => {
-                e.target.style.outline = 'none';
-                e.target.style.color = '#f3f3f3';
-                e.target.style.borderColor = 'rgba(243, 243, 243, 0.5)';
-              }}
-              onFocus={e => {
-                e.target.style.outline = 'none';
-                e.target.style.color = '#f3f3f3';
-                e.target.style.borderColor = 'rgba(243, 243, 243, 0.5)';
-              }}
             />
 
             {isPasswordValid && (
