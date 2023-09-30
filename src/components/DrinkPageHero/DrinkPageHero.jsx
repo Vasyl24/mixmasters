@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 // import { toast, ToastContainer } from 'react-toastify';
-import { selectError } from 'redux/drinks/drinksSelectors';
+// import { selectError } from 'redux/drinks/drinksSelectors';
 import {
   addFavoriteDrink,
   deleteFavoriteDrink,
@@ -34,22 +34,21 @@ export function DrinkPageHero({ drinkInfo }) {
     favorite,
   } = drinkInfo;
 
-   const { user } = useAuth();
+  const { user } = useAuth();
 
-   useEffect(() => {
-     const isFavorite = favorite.includes(user._id);
-     setIsFavorite(isFavorite);
-   }, [favorite, user._id]);
+  useEffect(() => {
+    const isFavorite = favorite.includes(user._id);
+    setIsFavorite(isFavorite);
+  }, [favorite, user._id]);
 
-    const onDeleteDrink = async id => {
+  const onDeleteDrink = async id => {
     const drink = { id };
     try {
       const deletedDrink = await dispatch(deleteFavoriteDrink(drink));
       if (!deletedDrink.error) {
         setIsFavorite(false);
       }
-    } catch (error) {
-    } 
+    } catch (error) {}
   };
 
   const onAddDrink = async id => {
@@ -60,10 +59,8 @@ export function DrinkPageHero({ drinkInfo }) {
       if (!addDrink.error) {
         setIsFavorite(true);
       }
-    } catch (error) {
-    }
+    } catch (error) {}
   };
-
 
   return (
     <ContainerHero>
@@ -92,24 +89,21 @@ export function DrinkPageHero({ drinkInfo }) {
   );
 }
 
-
-
-
 //  const onDeleteDrink = id => {
-  //    const drink = { id };
-  //    dispatch(deleteFavoriteDrink(drink));
-  //    setIsFavorite(false);
-  //  };
+//    const drink = { id };
+//    dispatch(deleteFavoriteDrink(drink));
+//    setIsFavorite(false);
+//  };
 
-  //  const onAddDrink = id => {
-  //    const drink = { id };
-  //    dispatch(addFavoriteDrink(drink));
-  //    setIsFavorite(true);
-  //  };
+//  const onAddDrink = id => {
+//    const drink = { id };
+//    dispatch(addFavoriteDrink(drink));
+//    setIsFavorite(true);
+//  };
 
-  // useEffect(() => {
-  //   dispatch(fetchFavoriteDrinks());
-  //    const favoriteDrinkList = drinks.map(drink => drink._id);
-  //   const isFavorite = favoriteDrinkList.includes(_id);
-  //   setIsFavorite(isFavorite);
-  // }, [_id, dispatch, drinks]);
+// useEffect(() => {
+//   dispatch(fetchFavoriteDrinks());
+//    const favoriteDrinkList = drinks.map(drink => drink._id);
+//   const isFavorite = favoriteDrinkList.includes(_id);
+//   setIsFavorite(isFavorite);
+// }, [_id, dispatch, drinks]);
