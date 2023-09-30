@@ -58,7 +58,6 @@ const FavoriteDrinksPage = () => {
 
   const onDelete = id => {
     const drink = { id };
-    console.log(drink);
     dispatch(deleteFavoriteDrink(drink));
   };
 

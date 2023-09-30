@@ -9,8 +9,18 @@ import {
 } from './drinksOperations';
 import { toast } from 'react-toastify';
 
-//Для тестування. Видалити коли буде робочий бек
-// import coctails from 'temporary/recipes.json';
+const messageSuccess = () => {
+  toast.success('Drink deleted successfully.', {
+    position: 'top-center',
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'dark',
+  });
+};
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
@@ -30,9 +40,7 @@ const handleRejected = (state, action) => {
 const drinksSlice = createSlice({
   name: 'drinks',
   initialState: {
-    //Для тестування. Замінити на "items: [],"" коли буде робочий бек
     items: [],
-    // items: [],
     isLoading: false,
     error: null,
   },
@@ -57,19 +65,10 @@ const drinksSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       const index = state.items.findIndex(
-        drink => drink.id === action.payload.id
+        drink => drink.id === action.meta.arg.id
       );
       state.items.splice(index, 1);
-      toast.success('Drink deleted successfully.', {
-        position: 'top-center',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-      });
+      messageSuccess();
     },
     [deleteMyDrink.rejected]: handleRejected,
 
@@ -93,19 +92,10 @@ const drinksSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       const index = state.items.findIndex(
-        drink => drink._id === action.payload.id
+        drink => drink._id === action.meta.arg.id
       );
       state.items.splice(index, 1);
-      toast.success('Drink deleted successfully.', {
-        position: 'top-center',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-      });
+      messageSuccess();
     },
     [deleteFavoriteDrink.rejected]: handleRejected,
     [fetchMainpage.pending](state) {

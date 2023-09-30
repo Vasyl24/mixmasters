@@ -56,7 +56,6 @@ const MyDrinksPage = () => {
 
   const onDelete = id => {
     const drink = { id };
-    console.log(drink);
     dispatch(deleteMyDrink(drink));
   };
 
