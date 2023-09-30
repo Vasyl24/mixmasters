@@ -67,26 +67,3 @@ export const UserName = styled.span`
     line-height: 1.5;
   }
 `;
-export const ModalStyles = {
-  overlay: {
-    position: 'fixed',
-    width: '100vw',
-    height: '100vh',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    padding: '0px',
-  },
-  content: {
-    top: '30%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    background: 'none',
-    overflow: 'auto',
-    WebkitOverflowScrolling: 'touch',
-    borderRadius: 'none',
-    outline: 'none',
-    border: 'none',
-  },
-};
