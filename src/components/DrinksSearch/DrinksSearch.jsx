@@ -20,8 +20,8 @@ import {
 export const DrinksSearch = () => {
   const dispatch = useDispatch();
 
-  const  categories  = useSelector(selectCategories);
-  const  ingredients  = useSelector(selectIngredients);
+  const categories = useSelector(selectCategories);
+  const ingredients = useSelector(selectIngredients);
   const searchQuery = useSelector(selectSearchQuery);
 
   const handleTextChange = e => {
