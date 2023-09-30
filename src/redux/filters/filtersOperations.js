@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const getCategories = createAsyncThunk(
@@ -35,4 +36,12 @@ export const getGlasses = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
+);
+
+export const setSearchQuery = createAction('filters/setSearchQuery');
+
+export const setSelectedCategory = createAction('filters/setSelectedCategory');
+
+export const setSelectedIngredient = createAction(
+  'filters/setSelectedIngredient'
 );
