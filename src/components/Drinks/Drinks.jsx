@@ -1,8 +1,7 @@
 import { StyledList } from './Drinks.styled';
 import DrinksItem from 'components/PreviewDrinks/DrinkItem/DrinksItem';
 
-export const Drinks = ({drinks}) => {
- 
+export const Drinks = ({ drinks }) => {
   return (
     <StyledList>
       {drinks.map(drink => (
