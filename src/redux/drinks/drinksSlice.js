@@ -35,6 +35,7 @@ const drinksSlice = createSlice({
     // items: [],
     isLoading: false,
     error: null,
+    
   },
   extraReducers: {
     [fetchMyDrinks.pending](state) {

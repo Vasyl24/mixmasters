@@ -22,16 +22,17 @@ const filterSlice = createSlice({
         searchQuery: action.payload,
       };
     },
+
     setSelectedCategory(state, action) {
       return {
         ...state,
-        categories: [...state.categories, action.payload],
+        selectedCategory: action.payload,
       };
     },
     setSelectedIngredient(state, action) {
       return {
         ...state,
-        ingredients: [...state.ingredients, action.payload],
+        selectedIngredient: action.payload,
       };
     },
   },
