@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import React, { useState, useRef } from 'react';
 import Select from 'react-select';
 import icons from '../../../assets/sprite.svg';
 import {
@@ -18,26 +17,19 @@ import {
 import { optionsIngredientUnit } from '../SelectCategories/optionsIngredientUnit';
 import { styles } from './selectStyle';
 import { stylesMeasure } from './selectStyleMeasure';
-import ingredientsList from '../../../temporary/ingredients.json';
-// import drinksData from '../../../temporary/recipes.json';
 import { ingredientsOption } from '../SelectCategories/IngredientsOptions';
+import { nanoid } from 'nanoid';
 
 const DrinkIngredientsFields = () => {
-  // const ref = useRef(null);
+  const ingredientInput = { id: nanoid() };
 
-  const [ingredients, setIngredients] = useState(ingredientsList);
-  const [count, setCount] = useState(1);
-  const [amountIngredientUnit, setAmountIngredientUnit] = useState('');
-  // const [input, setInput] = useState('');
-  // const [amountIngredient, setAmountIngredient] = useState([]);
-  // const [drinks] = useState(drinksData);
-  // const [filteredDrinks, setFilteredDrinks] = useState(drinks);
-
-  // ingredientsList.map((arr, index) => console.log(arr));
-
-  // function handleChangeInput(e) {
-  //   setInput(e.target.value);
-  // }
+  const [count, setCount] = useState(3);
+  const [allIngredients, setallIngredients] = useState([
+    { id: nanoid() },
+    { id: nanoid() },
+    { id: nanoid() },
+  ]);
+  const [amountIngredientUnit, setAmountIngredientUnit] = useState([]);
 
   const handleAmountUnitChange = e => {
     const regex = /^[0-9\b]+$/;
@@ -48,9 +40,7 @@ const DrinkIngredientsFields = () => {
 
   const plusButtonHandler = () => {
     setCount(count + 1);
-    // setAmountIngredient([...amountIngredient, input]);
-    // setInput('');
-    // ref.current.focus();
+    setallIngredients([...allIngredients, ingredientInput]);
   };
 
   const minusButtonHandler = () => {
@@ -60,40 +50,19 @@ const DrinkIngredientsFields = () => {
       return;
     }
 
-    setIngredients(() => {
-      const newIngredients = [...ingredients];
-      newIngredients.pop();
-      return newIngredients;
-    });
+    allIngredients.pop();
   };
-  // const handleIngredientChange = ingredient => {
-  //   if (ingredient === '') {
-  //     setFilteredDrinks(drinks);
-  //     // console.log(drinks);
-  //   } else {
-  //     const filtered = drinks.filter(drink => {
-  //       console.log(drink);
-  //       const ingredients = drink.ingredients.map(item => item.title);
-  //       return ingredients.includes(ingredient);
-  //     });
-  //     setFilteredDrinks(filtered);
-  //   }
-  // };
 
-  // const handleDeleteIngredient = () => {
-  //   ingredients.map((item, index) => {
-  //     if (count !== 1) {
-  //       setIngredients(() => {
-  //         const newIngredients = [...ingredients];
-  //         const idxOfIngredient = newIngredients.indexOf(item);
-  //         newIngredients.splice(idxOfIngredient, 1);
-  //         setCount(count - 1);
+  const handleDeleteIngredient = evt => {
+    if (count !== 1) {
+      setCount(count - 1);
 
-  //         return newIngredients;
-  //       });
-  //     }
-  //   });
-  // };
+      const idxOfIngredient = allIngredients.findIndex(
+        ingredientId => ingredientId.id === ingredientInput.id
+      );
+      allIngredients.splice(idxOfIngredient, 1);
+    }
+  };
 
   return (
     <Wrapper>
@@ -114,51 +83,47 @@ const DrinkIngredientsFields = () => {
         </CounterWrp>
       </CounterWrapper>
       <IngredientsList>
-        {/* {amountIngredient.map(ingredient => ( */}
-        {/* <li key={count + 1}> */}
-        <li>
-          {/* {ingredient} */}
-          <SelectWraper>
-            <FlexWraper>
-              <Select
-                options={ingredientsOption}
-                name="ingredients"
-                placeholder={'Select ingredient...'}
-                unstyled
-                required
-                styles={styles}
-              />
-
-              <MeasureWraper>
-                <FieldStyle
-                  name="amountIngredient"
-                  type="number"
-                  placeholder="0"
-                  value={amountIngredientUnit}
-                  onChange={handleAmountUnitChange}
-                  min={0}
-                  required
-                />
+        {allIngredients.map(ingredient => (
+          <li key={ingredient.id}>
+            <SelectWraper>
+              <FlexWraper>
                 <Select
-                  options={optionsIngredientUnit}
-                  placeholder={''}
+                  options={ingredientsOption}
+                  name="ingredients"
+                  placeholder={'Select ingredient...'}
                   unstyled
-                  styles={stylesMeasure}
                   required
+                  styles={styles}
                 />
-              </MeasureWraper>
-            </FlexWraper>
-            <DeleteBtn
-              // onClick={handleDeleteIngredient}
-              type="button"
-            >
-              <svg>
-                <use xlinkHref={`${icons}#icon-close`} />
-              </svg>
-            </DeleteBtn>
-          </SelectWraper>
-        </li>
-        {/* ))} */}
+
+                <MeasureWraper>
+                  <FieldStyle
+                    name="amountIngredient"
+                    type="number"
+                    placeholder="0"
+                    value={amountIngredientUnit}
+                    onChange={handleAmountUnitChange}
+                    min={0}
+                    required
+                  />
+                  <Select
+                    options={optionsIngredientUnit}
+                    placeholder={''}
+                    unstyled
+                    styles={stylesMeasure}
+                    required
+                  />
+                </MeasureWraper>
+              </FlexWraper>
+              <DeleteBtn onClick={handleDeleteIngredient} type="button">
+                <svg>
+                  <use xlinkHref={`${icons}#icon-close`} />
+                </svg>
+              </DeleteBtn>
+            </SelectWraper>
+            {ingredient.component}
+          </li>
+        ))}
       </IngredientsList>
     </Wrapper>
   );
