@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import {
   addFavoriteDrink,
   deleteFavoriteDrink,
-  // fetchFavoriteDrinks,
 } from 'redux/drinks/drinksOperations';
 import {
   ContainerHero,
@@ -17,13 +16,11 @@ import {
 } from './DrinkPageHero.styled';
 import defaultImage from '../../assets/rectangle-1.png';
 import { useAuth } from 'useAuth';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export function DrinkPageHero({ drinkInfo }) {
-  const [isFavorite, setIsFavorite] = useState(null);
-  // const drinks = useSelector(selectDrinks);
-  // const { user } = useAuth();
   const dispatch = useDispatch();
+  const { user } = useAuth();
   const {
     _id,
     drink,
@@ -33,13 +30,9 @@ export function DrinkPageHero({ drinkInfo }) {
     drinkThumb,
     favorite,
   } = drinkInfo;
-
-  const { user } = useAuth();
-
-  useEffect(() => {
-    const isFavorite = favorite.includes(user._id);
-    setIsFavorite(isFavorite);
-  }, [favorite, user._id]);
+  const [isFavorite, setIsFavorite] = useState(() =>
+    favorite.includes(user._id)
+  );
 
   const onDeleteDrink = async id => {
     const drink = { id };
@@ -55,7 +48,6 @@ export function DrinkPageHero({ drinkInfo }) {
     const drink = { id };
     try {
       const addDrink = await dispatch(addFavoriteDrink(drink));
-      console.log(addDrink);
       if (!addDrink.error) {
         setIsFavorite(true);
       }
@@ -88,22 +80,3 @@ export function DrinkPageHero({ drinkInfo }) {
     </ContainerHero>
   );
 }
-
-//  const onDeleteDrink = id => {
-//    const drink = { id };
-//    dispatch(deleteFavoriteDrink(drink));
-//    setIsFavorite(false);
-//  };
-
-//  const onAddDrink = id => {
-//    const drink = { id };
-//    dispatch(addFavoriteDrink(drink));
-//    setIsFavorite(true);
-//  };
-
-// useEffect(() => {
-//   dispatch(fetchFavoriteDrinks());
-//    const favoriteDrinkList = drinks.map(drink => drink._id);
-//   const isFavorite = favoriteDrinkList.includes(_id);
-//   setIsFavorite(isFavorite);
-// }, [_id, dispatch, drinks]);
