@@ -48,6 +48,7 @@ export const Icon = styled.svg`
 
 export const Name = styled.span`
   font-weight: 600;
+  white-space: nowrap;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
