@@ -62,7 +62,7 @@ export const DrinksPage = () => {
       <PageTitle title="Drinks" />
       <DrinksSearch />
       <Drinks drinks={filteredDrinks} />
-      {filteredDrinks.length > 8 && <Paginator />}
+      {filteredDrinks.length > 0 && <Paginator />}
     </StyledMainContainer>
   );
 };
