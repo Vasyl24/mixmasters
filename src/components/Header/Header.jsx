@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Header, HeaderWrapper } from './Header.styled';
 import Logo from '../../components/Logo/Logo';
-import Toggle from '../../components/ThemeToggler/ThemeToggler'
+import Toggle from '../../components/ThemeToggler/ThemeToggler';
 import Navigation from './Navigation/Navigation';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
 import { UserLogo } from 'components/UserLogo/UserLogo';
@@ -53,8 +53,8 @@ function AppHeader() {
         <HeaderWrapper>
           <Logo />
           {isDesktop && <Navigation />}
-          <Toggle />
-          <UserLogo />
+          {(isDesktop || isOpenBurgerMenu) && <Toggle />}
+          {!isOpenBurgerMenu && <UserLogo />}
           <BurgerMenu
             toggleMenu={toggleMenu}
             isOpenBurgerMenu={isOpenBurgerMenu}
