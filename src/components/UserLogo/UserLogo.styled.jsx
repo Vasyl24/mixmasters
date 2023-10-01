@@ -61,6 +61,9 @@ export const UserName = styled.span`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @media (min-width: 768px) {
     font-size: 16px;
