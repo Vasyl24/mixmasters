@@ -16,7 +16,6 @@ import {
   setSelectedCategory,
   setSelectedIngredient,
 } from 'redux/filters/filtersOperations';
-// import icons from '../../assets/sprite.svg';
 
 export const DrinksSearch = () => {
   const dispatch = useDispatch();
@@ -30,12 +29,29 @@ export const DrinksSearch = () => {
   };
 
   const handleCategoryChange = e => {
-    dispatch(setSelectedCategory(e.target.value));
+    dispatch(setSelectedCategory(e.value));
   };
 
   const handleIngredientChange = e => {
-    dispatch(setSelectedIngredient(e.target.value));
+    dispatch(setSelectedIngredient(e.value));
   };
+
+  const categoryOptions = [
+    { value: '', label: 'All categories' },
+    ...categories.map(category => ({
+      value: category,
+      label: category,
+    })),
+  ];
+
+  const ingredientOptions = [
+    { value: '', label: 'Ingredients' },
+    ...ingredients.map((ingredient, index) => ({
+      key: index,
+      value: ingredient.title,
+      label: ingredient.title,
+    })),
+  ];
 
   useEffect(() => {
     dispatch(getCategories());
@@ -43,38 +59,27 @@ export const DrinksSearch = () => {
   }, [dispatch]);
 
   return (
-    <StyledFilterContainer>
-      <StyledTextInput
-        type="text"
-        placeholder="Enter the text"
-        value={searchQuery}
-        onChange={handleTextChange}
-      />
-      <StyledSelectInput
-        value={categories.selectCategories}
-        onChange={handleCategoryChange}
-      >
-        <option value="">All categories</option>
-        {categories.map((category, index) => (
-          <option key={index} value={category}>
-            {category}
-          </option>
-        ))}
-      </StyledSelectInput>
-      <StyledSelectInput
-        value={ingredients.title}
-        onChange={handleIngredientChange}
-      >
-        <option value="">Ingredients</option>
-        {ingredients.map((ingredient, index) => (
-          <option key={index} value={ingredient.title}>
-            {ingredient.title}
-          </option>
-        ))}
-      </StyledSelectInput>
-      {/* <svg width="20" height="20" style={{position: 'relative', right: 50, top: 18, background: 'transparent'}}>
-        <use xlinkHref={`${icons}#icon-arrow-down`} />
-      </svg> */}
-    </StyledFilterContainer>
+    <label htmlFor="categorySelect">
+      <StyledFilterContainer>
+        <StyledTextInput
+          type="text"
+          placeholder="Enter the text"
+          value={searchQuery}
+          onChange={handleTextChange}
+        />
+        <StyledSelectInput
+          classNamePrefix="Select"
+          onChange={handleCategoryChange}
+          placeholder="All categories"
+          options={categoryOptions}
+        />
+        <StyledSelectInput
+          onChange={handleIngredientChange}
+          classNamePrefix="Select"
+          placeholder="Ingredients"
+          options={ingredientOptions}
+        ></StyledSelectInput>
+      </StyledFilterContainer>
+    </label>
   );
 };
