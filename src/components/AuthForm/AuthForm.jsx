@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { signupUser } from 'redux/auth/authOperations';
 import { useFormik } from 'formik';
-import 'react-datepicker/dist/react-datepicker.css';
 import { format, subDays } from 'date-fns';
 import * as yup from 'yup';
 import sprite from 'assets/sprite.svg';
@@ -150,6 +149,8 @@ const AuthForm = () => {
               dateFormat="dd/MM/yyyy"
               onBlur={formik.handleBlur}
               maxDate={yesterday}
+              yearDropdown
+              yearDropdownItemNumber={10}
             />
             <StyledIconСalendar onClick={openCalendar}>
               <IconСalendar>
@@ -173,33 +174,26 @@ const AuthForm = () => {
               value={formik.values.email}
             />
 
-            {isEmailValid && (
+            {isEmailValid ? (
               <ValidContainer>
                 <ValidMessage>This is a correct email</ValidMessage>
               </ValidContainer>
-            )}
-
-            {isEmailValid && (
-              <div>
-                <IconDone>
-                  <use href={`${sprite}#icon-done`} />
-                </IconDone>
-              </div>
-            )}
-
-            {formik.touched.email && formik.errors.email && (
+            ) : (
               <ErrorContainer>
                 <ErrorMessage>{formik.errors.email}</ErrorMessage>
               </ErrorContainer>
             )}
 
-            {formik.touched.email && !!formik.errors.email && (
-              <div>
+            {formik.touched.email &&
+              (formik.errors.email ? (
                 <IconError>
                   <use href={`${sprite}#icon-error`} />
                 </IconError>
-              </div>
-            )}
+              ) : (
+                <IconDone>
+                  <use href={`${sprite}#icon-done`} />
+                </IconDone>
+              ))}
           </label>
 
           <label htmlFor="password">
@@ -212,10 +206,14 @@ const AuthForm = () => {
               value={formik.values.password}
             />
 
-            {isPasswordValid && (
+            {isPasswordValid ? (
               <ValidContainer>
                 <ValidMessage>This is a correct password</ValidMessage>
               </ValidContainer>
+            ) : (
+              <ErrorContainer>
+                <ErrorMessage>{formik.errors.password}</ErrorMessage>
+              </ErrorContainer>
             )}
 
             <div onClick={() => setTextPassword(prevState => !prevState)}>
@@ -229,11 +227,6 @@ const AuthForm = () => {
                 </IconPasswordShow>
               )}
             </div>
-            {formik.touched.password && formik.errors.password && (
-              <ErrorContainer>
-                <ErrorMessage>{formik.errors.password}</ErrorMessage>
-              </ErrorContainer>
-            )}
           </label>
         </InputBlock>
         <StyledBtn

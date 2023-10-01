@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import welcomesm2x from '../../assets/welcome-mob@2x.jpg';
 import welcomesm1x from '../../assets/welcome-mob.jpg';
 import welcomemd1x from '../../assets/welcome-tabl.jpg';
@@ -214,7 +215,7 @@ export const ErrorMessage = styled.div`
   top: -10px;
   transform: translateY(-50%);
 
-  color: #da1414;
+  color: var(--error-state-color);
   font-size: 12px;
 `;
 
@@ -258,6 +259,12 @@ export const StyledBtn = styled.button`
   &:hover {
     background: var(--hover-btn-color);
     color: var(--text-btn-color);
+  }
+
+  &:disabled {
+    background-color: initial;
+    color: initial;
+    cursor: not-allowed;
   }
 
   @media (min-width: 768px) {

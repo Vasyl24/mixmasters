@@ -1,7 +1,7 @@
 import { setAuthHeader, clearAuthHeader } from '../services';
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 
 export const signupUser = createAsyncThunk(
   'auth/signup',
@@ -12,7 +12,13 @@ export const signupUser = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      toast.error('Registration error');
+      if (error.response && error.response.status === 401) {
+        toast.error("Bad request")
+      } else if (error.response && error.response.status === 409) {
+        toast.error("Email in use")
+      } else {
+        toast.error("Registration error")
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -26,7 +32,13 @@ export const signinUser = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      toast.error('Authentication error');
+      if (error.response && error.response.status === 401) {
+        toast.error("Unauthorized")
+      } else if (error.response && error.response.status === 409) {
+        toast.error("Email in use")
+      } else {
+        toast.error("Authentication Error")
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
