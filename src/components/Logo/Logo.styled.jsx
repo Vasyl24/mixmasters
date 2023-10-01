@@ -16,7 +16,6 @@ export const LogoLink = styled(NavLink)`
   z-index: 400;
 
   @media screen and (min-width: 1440px) {
-    margin-right: 225px;
   }
 `;
 
