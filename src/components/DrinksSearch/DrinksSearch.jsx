@@ -16,6 +16,7 @@ import {
   setSelectedCategory,
   setSelectedIngredient,
 } from 'redux/filters/filtersOperations';
+// import icons from '../../assets/sprite.svg';
 
 export const DrinksSearch = () => {
   const dispatch = useDispatch();
@@ -71,6 +72,9 @@ export const DrinksSearch = () => {
           </option>
         ))}
       </StyledSelectInput>
+      {/* <svg width="20" height="20" style={{position: 'relative', right: 50, top: 18, background: 'transparent'}}>
+        <use xlinkHref={`${icons}#icon-arrow-down`} />
+      </svg> */}
     </StyledFilterContainer>
   );
 };

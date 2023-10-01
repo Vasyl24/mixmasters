@@ -59,17 +59,20 @@ export const StyledSelectInput = styled.select`
   height: 54px;
 
   border-radius: 200px;
-  background-color: #161f37;
+  /* background-color: #161f37; */
   /* border: none;
   background-position-x: 100%;
   background-position-y: 5px;
-
+/* 
+ */
+  /* background-position: right 5px top 50%; */
   background: #161f37 url('../../assets/sprite.svg#icon-arrow-up');
-  background-position: right 5px top 50%; */
-  /* 
+  background-size: contain;
+  
   -moz-appearance: none;
   -webkit-appearance: none;
-  appearance: none; */
+  appearance: none;
+
   color: #f3f3f3;
   text-align: left;
 
@@ -81,7 +84,7 @@ export const StyledSelectInput = styled.select`
   border-radius: 200px;
   border: 1px solid rgba(243, 243, 243, 0.2);
   opacity: 0.8;
-  padding: 14px 24px;
+  padding: 0 24px;
 
   @media screen and (min-width: 768px) {
     width: 199px;
