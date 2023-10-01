@@ -50,10 +50,11 @@ export const ImageContainer = styled.div`
 `;
 
 export const Image = styled.img`
-  // height: 100%;
-  // width: 100%;
-  // object-fit: cover;
-  // border-radius: 8px;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50%;
+  border-radius: 8px;
 `;
 
 export const BtnContainer = styled.div`
@@ -204,4 +205,12 @@ export const RadioWrapper = styled.div`
   display: flex;
   margin-top: 40px;
   gap: 14px;
+`;
+
+export const RadioLabel = styled.label`
+  cursor: pointer;
+`;
+
+export const RadioButton = styled.input`
+  cursor: pointer;
 `;

@@ -14,6 +14,8 @@ import {
   SelectWrapper,
   LabelSelect,
   RadioWrapper,
+  RadioLabel,
+  RadioButton,
 } from './DrinkDescriptionFields.styled';
 import { optionsGlass } from '../SelectCategories/Glass';
 import { optionsCoctail } from '../SelectCategories/CoctailCategory';
@@ -28,24 +30,26 @@ export const DrinkDescriptionFields = () => {
   // const [selectedCategory, setSelectedCategory] = useState('');
   // const [selectedGlass, setSelectedGlass] = useState('');
   // const [selectedIngredients, setSelectedIngredients] = useState([]);
-  // const [imgUpload, setImgUpload] = useState();
-  const [selectedAlcoholic, setSelectedAlcoholic] = useState('alcoholic');
   const hiddenFileInput = useRef(null);
+  const [selectedAlcoholic, setSelectedAlcoholic] = useState('alcoholic');
+  const [img, setImg] = useState(null);
 
   const handleOptionChange = changeEvent => {
     setSelectedAlcoholic(changeEvent.target.value);
   };
 
-  const handleImgClick = evt => {
+  const handleImgClick = () => {
     hiddenFileInput.current.click();
-    // setImgUpload(evt.target.files[0]);
-    // console.log(imgUpload);
   };
 
   const handleImgUpload = evt => {
-    // const imgUploaded = evt.target.files[0];
-    // handleFile(fileUploaded);
+    if (evt.target.files.length > 0) {
+      setImg({
+        src: URL.createObjectURL(evt.target.files[0]),
+      });
+    }
   };
+
   // const handleCategorySelect = category => {
   //   setSelectedCategory(category);
   // };
@@ -57,20 +61,26 @@ export const DrinkDescriptionFields = () => {
   return (
     <Wrapper>
       <ImageContainer onClick={handleImgClick}>
-        <Image />
-        <>
-          <BtnContainer>
-            <svg width="50" height="50">
-              <use xlinkHref={`${icons}#icon-plus`} />
-            </svg>
-          </BtnContainer>
-          <div>
-            <BtnText>Add image</BtnText>
-          </div>
-        </>
+        {img === null ? (
+          <>
+            <Image style={{ display: 'none' }} />
+            <BtnContainer>
+              <svg width="50" height="50">
+                <use xlinkHref={`${icons}#icon-plus`} />
+              </svg>
+            </BtnContainer>
+            <div>
+              <BtnText>Add image</BtnText>
+            </div>
+          </>
+        ) : (
+          <Image src={img.src} alt={img.src} />
+        )}
+
         <ImageInput
           type="file"
           name="file"
+          accept="image/*"
           ref={hiddenFileInput}
           onChange={handleImgUpload}
         />
@@ -110,8 +120,8 @@ export const DrinkDescriptionFields = () => {
           </SelectWrapper>
         </Margin>
         <RadioWrapper>
-          <label>
-            <input
+          <RadioLabel>
+            <RadioButton
               id="option1"
               stroke="#F3F3F3"
               type="radio"
@@ -120,9 +130,9 @@ export const DrinkDescriptionFields = () => {
               onChange={handleOptionChange}
             />
             Alcoholic
-          </label>
-          <label>
-            <input
+          </RadioLabel>
+          <RadioLabel>
+            <RadioButton
               id="option2"
               type="radio"
               value="nonAlcoholic"
@@ -130,7 +140,7 @@ export const DrinkDescriptionFields = () => {
               onChange={handleOptionChange}
             />
             Non-alcoholic
-          </label>
+          </RadioLabel>
         </RadioWrapper>
       </FlexContainer>
     </Wrapper>
