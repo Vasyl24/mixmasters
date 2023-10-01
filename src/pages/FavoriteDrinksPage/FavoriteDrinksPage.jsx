@@ -9,7 +9,7 @@ import {
 import {
   selectDrinks,
   selectError,
-  // selectIsLoading,
+  selectIsLoading,
 } from 'redux/drinks/drinksSelectors';
 import {
   StyledPageContainer,
@@ -17,15 +17,16 @@ import {
   StyledNotFoundImg,
   StyledDescr,
 } from './FavoriteDrinksPage.styled';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import defaultImg from '../../assets/blue-iced-tea.png';
 import { PageTitle } from 'components/PageTitle/PageTitle';
 import Paginator from 'components/Paginator/Paginator';
+import Loader from 'components/Loader/Loader';
 
 const FavoriteDrinksPage = () => {
   const dispatch = useDispatch();
   const drinks = useSelector(selectDrinks);
-  //   const isLoading = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const [currentPage, setCurrentPage] = useState(1);
   const [drinksPerPage, setDrinksPerPage] = useState(9);
@@ -69,25 +70,17 @@ const FavoriteDrinksPage = () => {
   const indexOfFirstDrink = indexOfLastDrink - drinksPerPage;
   const currentDrinks = drinks.slice(indexOfFirstDrink, indexOfLastDrink);
 
-  const errorNotification = () =>
-    toast.error('Something went wrong please try later.', {
-      position: 'top-center',
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'dark',
-    });
-
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <StyledPageContainer>
       <PageTitle title={'Favorites'} />
-      {/* {isLoading && Поставити лоадер} */}
-      {/* {!isLoading && Прибрати лоадер} */}
-      {error && errorNotification}
-      {drinks.length !== 0 ? (
+      {isLoading && <Loader />}
+      {error &&
+        toast.error('Something went wrong please try later.', {
+          position: 'top-center',
+        })}
+      {drinks.length !== 0 || isLoading ? (
         <DrinksList drinks={currentDrinks} handleDel={onDelete} />
       ) : (
         <StyledDefaultContainer>
