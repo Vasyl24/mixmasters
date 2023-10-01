@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import Select from 'react-select';
 import icons from '../../../assets/sprite.svg';
 import {
@@ -14,22 +16,28 @@ import {
   CounterWrp,
   StyledButton,
 } from './DrinksIngredientsField.styled';
-import { optionsIngredientUnit } from '../SelectCategories/optionsIngredientUnit';
+import { getIngredients } from 'redux/filters/filtersOperations';
+import { selectIngredients } from 'redux/filters/filtersSelectors';
+import { optionsIngredientUnit } from '../optionsIngredientUnit';
 import { styles } from './selectStyle';
 import { stylesMeasure } from './selectStyleMeasure';
-import { ingredientsOption } from '../SelectCategories/IngredientsOptions';
 import { nanoid } from 'nanoid';
 
 const DrinkIngredientsFields = () => {
-  const ingredientInput = { id: nanoid() };
+  const dispatch = useDispatch();
+  const ingredients = useSelector(selectIngredients);
 
-  const [count, setCount] = useState(3);
-  const [allIngredients, setallIngredients] = useState([
-    { id: nanoid() },
-    { id: nanoid() },
-    { id: nanoid() },
-  ]);
+  const [count, setCount] = useState(1);
+  const [allIngredients, setallIngredients] = useState([{ id: nanoid() }]);
   const [amountIngredientUnit, setAmountIngredientUnit] = useState([]);
+
+  useEffect(() => {
+    dispatch(getIngredients());
+  }, [dispatch]);
+
+  const ingredientsSelect = ingredients.map(ingredient => {
+    return { value: ingredient.title, label: ingredient.title };
+  });
 
   const handleAmountUnitChange = e => {
     const regex = /^[0-9\b]+$/;
@@ -40,7 +48,7 @@ const DrinkIngredientsFields = () => {
 
   const plusButtonHandler = () => {
     setCount(count + 1);
-    setallIngredients([...allIngredients, ingredientInput]);
+    setallIngredients([...allIngredients, { id: nanoid() }]);
   };
 
   const minusButtonHandler = () => {
@@ -53,6 +61,7 @@ const DrinkIngredientsFields = () => {
     allIngredients.pop();
   };
 
+
   const handleDeleteIngredient = id => {
     if (count !== 1) {
       setCount(count - 1);
@@ -62,6 +71,14 @@ const DrinkIngredientsFields = () => {
       );
       allIngredients.splice(idxOfIngredient, 1);
     }
+
+    // deleteContact = contactId => {
+    //   this.setState(prevState => ({
+    //     contacts: prevState.contacts.filter(
+    //       contact => contact.id !== contactId
+    //     ),
+    //   }));
+    // };
   };
 
   // const deleteContact = contactId => {
@@ -94,7 +111,7 @@ const DrinkIngredientsFields = () => {
             <SelectWraper>
               <FlexWraper>
                 <Select
-                  options={ingredientsOption}
+                  options={ingredientsSelect}
                   name="ingredients"
                   placeholder={'Select ingredient...'}
                   unstyled

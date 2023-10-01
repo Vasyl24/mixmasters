@@ -20,7 +20,7 @@ export const StyledPageContainer = styled.div`
 export const AllPageWraper = styled.div`
   
 
-@media (min-width: 1028px){
+@media (min-width: 1280px){
 		width: 100%;
 		display: flex;
 		gap: 94px;

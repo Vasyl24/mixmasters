@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   gap: 28px;
   flex-direction: column;
 
-  @media (min-width: 1028px) {
+  @media (min-width: 1280px) {
     gap: 40px;
     width: 313px;
   }
@@ -35,6 +35,7 @@ export const List = styled.ul`
     grid-template-columns: 1fr 1fr;
     gap: 32px;
   }
+
 `;
 
 export const DrinkItem = styled(Link)`
@@ -46,7 +47,7 @@ export const DrinkItem = styled(Link)`
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  @media (min-width: 1028px) {
+  @media (min-width: 1280px) {
     width: 100%;
   }
 
