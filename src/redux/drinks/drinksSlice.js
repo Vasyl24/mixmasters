@@ -7,33 +7,13 @@ import {
   fetchMainpage,
   fetchAllDrinks,
 } from './drinksOperations';
-import { toast } from 'react-toastify';
-
-const messageSuccess = () => {
-  toast.success('Drink deleted successfully.', {
-    position: 'top-center',
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: 'dark',
-  });
-};
+import { toast } from 'react-hot-toast';
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
   toast.error('Something went wrong please try later.', {
     position: 'top-center',
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: 'dark',
   });
 };
 
@@ -43,7 +23,6 @@ const drinksSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
-    
   },
   extraReducers: {
     [fetchMyDrinks.pending](state) {
@@ -69,7 +48,7 @@ const drinksSlice = createSlice({
         drink => drink.id === action.meta.arg.id
       );
       state.items.splice(index, 1);
-      messageSuccess();
+      toast.success('Drink deleted successfully.', { position: 'top-center' });
     },
     [deleteMyDrink.rejected]: handleRejected,
 
@@ -96,7 +75,7 @@ const drinksSlice = createSlice({
         drink => drink._id === action.meta.arg.id
       );
       state.items.splice(index, 1);
-      messageSuccess();
+      toast.success('Drink deleted successfully.', { position: 'top-center' });
     },
     [deleteFavoriteDrink.rejected]: handleRejected,
     [fetchMainpage.pending](state) {
