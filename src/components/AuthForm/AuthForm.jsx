@@ -30,8 +30,8 @@ import {
 const validationSchema = yup.object().shape({
   name: yup
     .string()
-    .min(3, ({ min }) => `Name must be at least ${min} characters`)
-    .max(20, ({ max }) => `Name must be at least ${max} characters`)
+    .min(2, ({ min }) => `The name must be at least ${min} characters`)
+    .max(20, ({ max }) => `The name must be no more than ${max} characters`)
     .required('Name is required')
     .label('Name'),
   birthdate: yup.date().nullable().required('Your age is required'),
@@ -41,8 +41,8 @@ const validationSchema = yup.object().shape({
     .required('Email address is required'),
   password: yup
     .string()
-    .min(6, ({ min }) => `Password must be at least ${min} characters`)
-    .max(30, ({ max }) => `Password must be no more than ${max} characters`)
+    .min(6, ({ min }) => `The password must be at least ${min} characters`)
+    .max(30, ({ max }) => `The password must be no more than ${max} characters`)
     .required('Password is required'),
 });
 
@@ -130,7 +130,7 @@ const AuthForm = () => {
               onBlur={formik.handleBlur}
               value={formik.values.name}
             />
-            {formik.touched.name && formik.errors.name && (
+            {(formik.touched.name || formik.errors.name) && (
               <ErrorContainer>
                 <ErrorMessage>{formik.errors.name}</ErrorMessage>
               </ErrorContainer>
@@ -157,7 +157,7 @@ const AuthForm = () => {
                 <use href={sprite + '#icon-calendar'} />
               </IconСalendar>
             </StyledIconСalendar>
-            {formik.touched.birthdate && formik.errors.birthdate && (
+            {(formik.touched.birthdate || formik.errors.birthdate) && (
               <ErrorContainer>
                 <ErrorMessage>{formik.errors.birthdate}</ErrorMessage>
               </ErrorContainer>
