@@ -3,10 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-hot-toast';
 import sprite from 'assets/sprite.svg';
-
 import { signinUser } from 'redux/auth/authOperations';
 import { selectIsLoggedIn } from '../../redux/selectors';
 import {
@@ -79,14 +77,15 @@ const AuthFormIn = () => {
 
   const onSubmit = async values => {
     if (isLoggedIn) {
-      toast.error('User is already logged in');
       navigate('/home', { replace: true });
       return;
-    } else if (dispatch(signinUser({ ...values }))) {
+    }
+    const response = await dispatch(signinUser({ ...values }));
+
+    if (response && response.error) {
+      toast.error('Edit your details');
+    } else {
       resetForm();
-      if (isLoggedIn) {
-        navigate('/home', { replace: true });
-      }
     }
   };
 
@@ -100,11 +99,9 @@ const AuthFormIn = () => {
   return (
     <ContainerLayout>
       <LoginContainer onSubmit={formik.handleSubmit}>
-        <ToastContainer />
         <Title>Sign In</Title>
-
         <InputBlock>
-        <label htmlFor="email">
+          <label htmlFor="email">
             <StyledInput
               name="email"
               type="email"
@@ -114,33 +111,26 @@ const AuthFormIn = () => {
               value={formik.values.email}
             />
 
-            {isEmailValid && (
+            {isEmailValid ? (
               <ValidContainer>
                 <ValidMessage>This is a correct email</ValidMessage>
               </ValidContainer>
-            )}
-
-            {isEmailValid && (
-              <div>
-                <IconDone>
-                  <use href={`${sprite}#icon-done`} />
-                </IconDone>
-              </div>
-            )}
-
-            {formik.touched.email && formik.errors.email && (
+            ) : (
               <ErrorContainer>
                 <ErrorMessage>{formik.errors.email}</ErrorMessage>
               </ErrorContainer>
             )}
 
-            {formik.touched.email && !!formik.errors.email && (
-              <div>
+            {formik.touched.email &&
+              (formik.errors.email ? (
                 <IconError>
                   <use href={`${sprite}#icon-error`} />
                 </IconError>
-              </div>
-            )}
+              ) : (
+                <IconDone>
+                  <use href={`${sprite}#icon-done`} />
+                </IconDone>
+              ))}
           </label>
 
           <label htmlFor="password">
@@ -153,10 +143,14 @@ const AuthFormIn = () => {
               value={formik.values.password}
             />
 
-            {isPasswordValid && (
+            {isPasswordValid ? (
               <ValidContainer>
                 <ValidMessage>This is a correct password</ValidMessage>
               </ValidContainer>
+            ) : (
+              <ErrorContainer>
+                <ErrorMessage>{formik.errors.password}</ErrorMessage>
+              </ErrorContainer>
             )}
 
             <div onClick={() => setTextPassword(prevState => !prevState)}>
@@ -170,11 +164,6 @@ const AuthFormIn = () => {
                 </IconPasswordShow>
               )}
             </div>
-            {formik.touched.password && formik.errors.password && (
-              <ErrorContainer>
-                <ErrorMessage>{formik.errors.password}</ErrorMessage>
-              </ErrorContainer>
-            )}
           </label>
         </InputBlock>
 

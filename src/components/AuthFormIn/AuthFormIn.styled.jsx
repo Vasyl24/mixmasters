@@ -164,6 +164,20 @@ export const ErrorMessage = styled.div`
   font-size: 12px;
 `;
 
+export const ValidContainer = styled.div`
+  margin-top: 1px;
+  position: relative;
+`;
+
+export const ValidMessage = styled.div`
+  position: absolute;
+  top: -10px;
+  transform: translateY(-50%);
+
+  color: var(--correct-state-color);
+  font-size: 12px;
+`;
+
 export const StyledBtn = styled.button`
   display: flex;
   align-items: center;
@@ -190,6 +204,12 @@ export const StyledBtn = styled.button`
   &:hover {
     background: var(--hover-btn-color);
     color: var(--text-btn-color);
+  }
+
+  &:disabled {
+    background-color: initial;
+    color: initial;
+    cursor: not-allowed;
   }
 
   @media (min-width: 768px) {
@@ -232,20 +252,6 @@ export const IconPasswordShow = styled.svg`
   top: 96px;
   transform: translateY(-50%);
   cursor: pointer;
-`;
-
-export const ValidContainer = styled.div`
-  margin-top: 1px;
-  position: relative;
-`;
-
-export const ValidMessage = styled.div`
-  position: absolute;
-  top: -10px;
-  transform: translateY(-50%);
-
-  color: var(--correct-state-color);
-  font-size: 12px;
 `;
 
 export const IconDone = styled.svg`
