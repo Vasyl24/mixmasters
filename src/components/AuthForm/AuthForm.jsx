@@ -52,8 +52,6 @@ const formatDate = date => {
 
 const AuthForm = () => {
   const [textPassword, setTextPassword] = useState(true);
-  const [isEmailValid, setIsEmailValid] = useState(false);
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
 
   const birthdateInputRef = useRef(null);
   const dispatch = useDispatch();
@@ -77,24 +75,6 @@ const AuthForm = () => {
     if (birthdateInputRef.current) {
       birthdateInputRef.current.setOpen(true);
     }
-  };
-
-  const handleEmailBlur = e => {
-    formik.handleBlur(e);
-    const email = e.target.value;
-    const isValid = validationSchema.fields.email.isValidSync(email);
-    setIsEmailValid(isValid);
-
-    e.target.style.borderColor = isValid ? '#3cbc81' : '#da1414';
-  };
-
-  const handlePasswordBlur = e => {
-    formik.handleBlur(e);
-    const password = e.target.value;
-    const isValid = validationSchema.fields.password.isValidSync(password);
-    setIsPasswordValid(isValid);
-
-    e.target.style.borderColor = isValid ? '#3cbc81' : '#da1414';
   };
 
   const onSubmit = values => {
@@ -130,7 +110,7 @@ const AuthForm = () => {
               onBlur={formik.handleBlur}
               value={formik.values.name}
             />
-            {(formik.touched.name || formik.errors.name) && (
+            {formik.touched.name && formik.errors.name && (
               <ErrorContainer>
                 <ErrorMessage>{formik.errors.name}</ErrorMessage>
               </ErrorContainer>
@@ -157,7 +137,8 @@ const AuthForm = () => {
                 <use href={sprite + '#icon-calendar'} />
               </IconСalendar>
             </StyledIconСalendar>
-            {(formik.touched.birthdate || formik.errors.birthdate) && (
+
+            {formik.touched.birthdate && formik.errors.birthdate && (
               <ErrorContainer>
                 <ErrorMessage>{formik.errors.birthdate}</ErrorMessage>
               </ErrorContainer>
@@ -170,19 +151,25 @@ const AuthForm = () => {
               type="email"
               placeholder="Email"
               onChange={formik.handleChange}
-              onBlur={handleEmailBlur}
+              onBlur={formik.handleBlur}
               value={formik.values.email}
+              border={
+                formik.touched.email &&
+                (formik.errors.email
+                  ? '1px solid #da1414'
+                  : '1px solid #3cbc81')
+              }
             />
-
-            {isEmailValid ? (
-              <ValidContainer>
-                <ValidMessage>This is a correct email</ValidMessage>
-              </ValidContainer>
-            ) : (
-              <ErrorContainer>
-                <ErrorMessage>{formik.errors.email}</ErrorMessage>
-              </ErrorContainer>
-            )}
+            {formik.touched.email &&
+              (formik.errors.email ? (
+                <ErrorContainer>
+                  <ErrorMessage>{formik.errors.email}</ErrorMessage>
+                </ErrorContainer>
+              ) : (
+                <ValidContainer>
+                  <ValidMessage>This is a correct email</ValidMessage>
+                </ValidContainer>
+              ))}
 
             {formik.touched.email &&
               (formik.errors.email ? (
@@ -199,23 +186,28 @@ const AuthForm = () => {
           <label htmlFor="password">
             <StyledInput
               name="password"
-              type={textPassword ? 'password' : 'text'}
+              type="password"
               placeholder="Password"
               onChange={formik.handleChange}
-              onBlur={handlePasswordBlur}
+              onBlur={formik.handleBlur}
               value={formik.values.password}
+              border={
+                formik.touched.password &&
+                (formik.errors.password
+                  ? '1px solid #da1414'
+                  : '1px solid #3cbc81')
+              }
             />
-
-            {isPasswordValid ? (
-              <ValidContainer>
-                <ValidMessage>This is a correct password</ValidMessage>
-              </ValidContainer>
-            ) : (
-              <ErrorContainer>
-                <ErrorMessage>{formik.errors.password}</ErrorMessage>
-              </ErrorContainer>
-            )}
-
+            {formik.touched.password &&
+              (formik.errors.password ? (
+                <ErrorContainer>
+                  <ErrorMessage>{formik.errors.password}</ErrorMessage>
+                </ErrorContainer>
+              ) : (
+                <ValidContainer>
+                  <ValidMessage>This is a correct password</ValidMessage>
+                </ValidContainer>
+              ))}
             <div onClick={() => setTextPassword(prevState => !prevState)}>
               {textPassword ? (
                 <IconPasswordHidden>
