@@ -43,7 +43,6 @@ export const Nav = styled.nav`
   }
 
   @media (min-width: 1440px) {
-    margin-right: 190px;
     transform: translateX(0);
     z-index: 400;
   }
