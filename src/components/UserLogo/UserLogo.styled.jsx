@@ -2,23 +2,22 @@ import styled, { keyframes } from 'styled-components';
 
 const slideIn = keyframes`
   from {
-    transform: translateX(500%);
+    transform: translateY(-100%);
   }
   to {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 `;
 
 const slideOut = keyframes`
   from {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
   }
   to {
-    transform: translateX(100%);
+    transform: translateY(-100%);
     opacity: 0;
   }
-  
 `;
 
 export const UserMenu = styled.div`
