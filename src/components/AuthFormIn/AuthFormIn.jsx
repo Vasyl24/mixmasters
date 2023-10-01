@@ -39,8 +39,7 @@ const validationSchema = yup.object().shape({
 
 const AuthFormIn = () => {
   const [textPassword, setTextPassword] = useState(true);
-  const [isEmailValid, setIsEmailValid] = useState(false);
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
+  
 
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -57,23 +56,7 @@ const AuthFormIn = () => {
     });
   };
 
-  const handleEmailBlur = e => {
-    formik.handleBlur(e);
-    const email = e.target.value;
-    const isValid = validationSchema.fields.email.isValidSync(email);
-    setIsEmailValid(isValid);
-
-    e.target.style.borderColor = isValid ? '#3cbc81' : '#da1414';
-  };
-
-  const handlePasswordBlur = e => {
-    formik.handleBlur(e);
-    const password = e.target.value;
-    const isValid = validationSchema.fields.password.isValidSync(password);
-    setIsPasswordValid(isValid);
-
-    e.target.style.borderColor = isValid ? '#3cbc81' : '#da1414';
-  };
+  
 
   const onSubmit = async values => {
     if (isLoggedIn) {
@@ -83,7 +66,7 @@ const AuthFormIn = () => {
     const response = await dispatch(signinUser({ ...values }));
 
     if (response && response.error) {
-      toast.error('Edit your details');
+      toast.error('Incorrect email or password');
     } else {
       resetForm();
     }
@@ -107,19 +90,25 @@ const AuthFormIn = () => {
               type="email"
               placeholder="Email"
               onChange={formik.handleChange}
-              onBlur={handleEmailBlur}
+              onBlur={formik.handleBlur}
               value={formik.values.email}
+              border={
+                formik.touched.email &&
+                (formik.errors.email
+                  ? '1px solid #da1414'
+                  : '1px solid #3cbc81')
+              }
             />
-
-            {isEmailValid ? (
-              <ValidContainer>
-                <ValidMessage>This is a correct email</ValidMessage>
-              </ValidContainer>
-            ) : (
-              <ErrorContainer>
-                <ErrorMessage>{formik.errors.email}</ErrorMessage>
-              </ErrorContainer>
-            )}
+            {formik.touched.email &&
+              (formik.errors.email ? (
+                <ErrorContainer>
+                  <ErrorMessage>{formik.errors.email}</ErrorMessage>
+                </ErrorContainer>
+              ) : (
+                <ValidContainer>
+                  <ValidMessage>This is a correct email</ValidMessage>
+                </ValidContainer>
+              ))}
 
             {formik.touched.email &&
               (formik.errors.email ? (
@@ -136,23 +125,28 @@ const AuthFormIn = () => {
           <label htmlFor="password">
             <StyledInput
               name="password"
-              type={textPassword ? 'password' : 'text'}
+              type="password"
               placeholder="Password"
               onChange={formik.handleChange}
-              onBlur={handlePasswordBlur}
+              onBlur={formik.handleBlur}
               value={formik.values.password}
+              border={
+                formik.touched.password &&
+                (formik.errors.password
+                  ? '1px solid #da1414'
+                  : '1px solid #3cbc81')
+              }
             />
-
-            {isPasswordValid ? (
-              <ValidContainer>
-                <ValidMessage>This is a correct password</ValidMessage>
-              </ValidContainer>
-            ) : (
-              <ErrorContainer>
-                <ErrorMessage>{formik.errors.password}</ErrorMessage>
-              </ErrorContainer>
-            )}
-
+            {formik.touched.password &&
+              (formik.errors.password ? (
+                <ErrorContainer>
+                  <ErrorMessage>{formik.errors.password}</ErrorMessage>
+                </ErrorContainer>
+              ) : (
+                <ValidContainer>
+                  <ValidMessage>This is a correct password</ValidMessage>
+                </ValidContainer>
+              ))}
             <div onClick={() => setTextPassword(prevState => !prevState)}>
               {textPassword ? (
                 <IconPasswordHidden>

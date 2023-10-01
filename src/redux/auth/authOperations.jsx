@@ -12,8 +12,12 @@ export const signupUser = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      if (error.response && error.response.status === 401) {
+      if (error.response && error.response.status === 400) {
         toast.error("Bad request")
+      } else if (error.response && error.response.status === 401) {
+        toast.error("You are not logged in")
+      } else if (error.response && error.response.status === 403) {
+        toast.error("Access is denied")
       } else if (error.response && error.response.status === 409) {
         toast.error("Email in use")
       } else {
@@ -32,8 +36,12 @@ export const signinUser = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        toast.error("Unauthorized")
+      if (error.response && error.response.status === 400) {
+        toast.error("Bad request")
+      } else if (error.response && error.response.status === 401) {
+        toast.error("You are not logged in")
+      } else if (error.response && error.response.status === 403) {
+        toast.error("Access is denied")
       } else if (error.response && error.response.status === 409) {
         toast.error("Email in use")
       } else {
