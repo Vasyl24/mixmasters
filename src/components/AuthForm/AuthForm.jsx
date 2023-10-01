@@ -30,8 +30,8 @@ import {
 const validationSchema = yup.object().shape({
   name: yup
     .string()
-    .min(2, ({ min }) => `Name must be at least ${min} characters`)
-    .max(10, ({ max }) => `Name must be at least ${max} characters`)
+    .min(3, ({ min }) => `Name must be at least ${min} characters`)
+    .max(20, ({ max }) => `Name must be at least ${max} characters`)
     .required('Name is required')
     .label('Name'),
   birthdate: yup.date().nullable().required('Your age is required'),

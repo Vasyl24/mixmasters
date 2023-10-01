@@ -74,6 +74,7 @@ export const NavigationLink = styled(NavLink)`
   font-weight: 500;
   line-height: 1.6;
   border: 1px solid rgba(243, 243, 243, 0.2);
+  white-space: nowrap;
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     border 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
