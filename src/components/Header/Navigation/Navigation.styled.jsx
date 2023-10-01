@@ -19,12 +19,10 @@ const slideOut = keyframes`
     transform: translateY(-100%);
     opacity: 0;
   }
-  
 `;
 
 export const Nav = styled.nav`
-  animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
-    cubic-bezier(0.42, 0, 0.58, 1) forwards;
+  animation: ${props => (props.closing ? slideOut : slideIn)};
 
   @media (max-width: 767.98px) {
     top: 72.8px;
