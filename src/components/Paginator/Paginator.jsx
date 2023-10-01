@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+// import React, { useState } from 'react';
 import { StyledArrows, StyledPagination } from './Paginator.module';
 import sprite from 'assets/sprite.svg';
 
-const Paginator = ({}) => {
+const Paginator = () => {
   return (
     <StyledPagination>
       <ul>
