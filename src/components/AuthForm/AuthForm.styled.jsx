@@ -262,9 +262,7 @@ export const StyledBtn = styled.button`
   }
 
   &:disabled {
-    background-color: initial;
-    color: initial;
-    cursor: not-allowed;
+    pointer-events: none;
   }
 
   @media (min-width: 768px) {
