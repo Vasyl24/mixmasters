@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   ImageContainer,
   Wrapper,
@@ -17,22 +18,36 @@ import {
   RadioLabel,
   RadioButton,
 } from './DrinkDescriptionFields.styled';
-import { optionsGlass } from '../SelectCategories/Glass';
-import { optionsCoctail } from '../SelectCategories/CoctailCategory';
 import Select from 'react-select';
 import icons from '../../../assets/sprite.svg';
 import { styles } from './selectStyle';
+import { getGlasses, getCategories } from 'redux/filters/filtersOperations';
+import {
+  selectCategories,
+  selectGlasses,
+} from 'redux/filters/filtersSelectors';
 
 export const DrinkDescriptionFields = () => {
-  // const [categories, setCategories] = useState([]);
-  // const [glasses, setGlasses] = useState([]);
-  // const [title, setTitle] = useState({});
-  // const [selectedCategory, setSelectedCategory] = useState('');
-  // const [selectedGlass, setSelectedGlass] = useState('');
-  // const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const dispatch = useDispatch();
   const hiddenFileInput = useRef(null);
+  const glasses = useSelector(selectGlasses);
+  const categories = useSelector(selectCategories);
+
   const [selectedAlcoholic, setSelectedAlcoholic] = useState('alcoholic');
   const [img, setImg] = useState(null);
+
+  useEffect(() => {
+    dispatch(getGlasses());
+    dispatch(getCategories());
+  }, [dispatch]);
+
+  const categoriesSelect = categories.map(category => {
+    return { value: category, label: category };
+  });
+
+  const glassesSelect = glasses.map(glass => {
+    return { value: glass, label: glass };
+  });
 
   const handleOptionChange = changeEvent => {
     setSelectedAlcoholic(changeEvent.target.value);
@@ -96,9 +111,8 @@ export const DrinkDescriptionFields = () => {
           <SelectWrapper>
             <LabelSelect>Category</LabelSelect>
             <Select
-              // onSelect={handleCategorySelect}
               defaultValue={[{ value: 'Cocktail', label: 'Cocktail' }]}
-              options={optionsCoctail}
+              options={categoriesSelect}
               unstyled
               styles={styles}
               required
@@ -107,12 +121,11 @@ export const DrinkDescriptionFields = () => {
           <SelectWrapper>
             <LabelSelect>Glass</LabelSelect>
             <Select
-              // onSelect={handleGlassSelect}
               defaultValue={{
                 value: 'Highball glass',
                 label: 'Highball glass',
               }}
-              options={optionsGlass}
+              options={glassesSelect}
               unstyled
               styles={styles}
               required
