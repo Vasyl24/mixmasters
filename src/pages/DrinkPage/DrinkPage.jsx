@@ -5,27 +5,15 @@ import { DrinkIngredientsList } from 'components/DrinkIngredientsList/DrinkIngre
 import { RecipePreparation } from 'components/RecipePreparation/RecipePreparation';
 import { useDispatch } from 'react-redux';
 import { getDrinkById } from 'redux/drinks/drinksOperations';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
+import Loader from 'components/Loader/Loader';
+
 
 const DrinkPage = () => {
   const [drinkInfo, setDrinkInfo] = useState({});
   const dispatch = useDispatch();
   const { drinkId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-
-  console.log(drinkInfo);
-
-  const errorToast = text =>
-    toast.error(text, {
-      position: 'top-center',
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'dark',
-    });
 
   useEffect(() => {
     async function getDrinkInfo() {
@@ -35,10 +23,10 @@ const DrinkPage = () => {
         if (info) {
           setDrinkInfo(info.payload);
         } else {
-          errorToast('Something went wrong please try later.');
+          toast.error('Something went wrong please try later.');
         }
       } catch (error) {
-        errorToast(error.message);
+        toast.error(`${error.message}`);
       } finally {
         setIsLoading(false);
       }
@@ -46,10 +34,11 @@ const DrinkPage = () => {
     getDrinkInfo();
   }, [dispatch, drinkId]);
 
-console.log(drinkInfo.ingredients);
+console.log(drinkInfo);
 
   return (
     <div>
+      {isLoading && <Loader/>}
       {!isLoading && drinkInfo.drink && (
         <>
           <DrinkPageHero drinkInfo={drinkInfo} />
@@ -58,11 +47,10 @@ console.log(drinkInfo.ingredients);
             instructions={drinkInfo.instructions}
             description={drinkInfo.description}
           />
-        </>)}
+        </>
+      )}
     </div>
   );
 };
 
 export default DrinkPage;
-
-

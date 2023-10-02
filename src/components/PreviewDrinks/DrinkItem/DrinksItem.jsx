@@ -9,13 +9,14 @@ import defaultImg from '../../../assets/rectangle-2.jpg';
 const DrinksItem = props => {
   const { _id, drink, drinkThumb } = props.drinkItem;
   const src = drinkThumb || defaultImg;
+  const title = drink.length >= 25 ? drink.slice(0, 23) + '...' : drink;
 
   return (
-    <li key={_id.$oid}>
+    <li key={_id}>
       <StyledImg src={src} alt={drink} />
       <StyledContainer>
-        <StyledName>{drink}</StyledName>
-        <StyledBtn to={`/drinks/${_id.$oid}`}>See more</StyledBtn>
+        <StyledName>{title}</StyledName>
+        <StyledBtn to={`/drinks/${_id}`}>See more</StyledBtn>
       </StyledContainer>
     </li>
   );

@@ -69,11 +69,8 @@ const SubscribeButton = styled.button`
   border: 1px solid rgba(243, 243, 243, 0.2);
   transition: color 0.5s, border-color 0.5s;
 
-  &:not(:disabled):hover {
+  &:hover {
     border-color: #f3f3f3;
-  }
-
-  &:disabled {
     color: rgba(243, 243, 243, 0.4941176471);
     border-color: rgba(243, 243, 243, 0.4941176471);
   }

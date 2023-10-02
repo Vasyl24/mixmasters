@@ -2,23 +2,22 @@ import styled, { keyframes } from 'styled-components';
 
 const slideIn = keyframes`
   from {
-    transform: translateX(500%);
+    transform: translateY(-100%);
   }
   to {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 `;
 
 const slideOut = keyframes`
   from {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
   }
   to {
-    transform: translateX(100%);
+    transform: translateY(-100%);
     opacity: 0;
   }
-  
 `;
 
 export const UserMenu = styled.div`
@@ -61,32 +60,12 @@ export const UserName = styled.span`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: 1.5;
   }
 `;
-export const ModalStyles = {
-  overlay: {
-    position: 'fixed',
-    width: '100vw',
-    height: '100vh',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    padding: '0px',
-  },
-  content: {
-    top: '30%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    background: 'none',
-    overflow: 'auto',
-    WebkitOverflowScrolling: 'touch',
-    borderRadius: 'none',
-    outline: 'none',
-    border: 'none',
-  },
-};

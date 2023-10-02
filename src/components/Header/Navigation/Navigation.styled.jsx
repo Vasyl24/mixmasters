@@ -19,12 +19,10 @@ const slideOut = keyframes`
     transform: translateY(-100%);
     opacity: 0;
   }
-  
 `;
 
 export const Nav = styled.nav`
-  animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
-    cubic-bezier(0.42, 0, 0.58, 1) forwards;
+  animation: ${props => (props.closing ? slideOut : slideIn)};
 
   @media (max-width: 767.98px) {
     top: 72.8px;
@@ -43,7 +41,6 @@ export const Nav = styled.nav`
   }
 
   @media (min-width: 1440px) {
-    margin-right: 190px;
     transform: translateX(0);
     z-index: 400;
   }
@@ -74,6 +71,7 @@ export const NavigationLink = styled(NavLink)`
   font-weight: 500;
   line-height: 1.6;
   border: 1px solid rgba(243, 243, 243, 0.2);
+  white-space: nowrap;
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     border 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,

@@ -19,7 +19,7 @@ export const StyledContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-   margin-top: 14px;
+  margin-top: 14px;
 `;
 
 export const StyledName = styled.p`

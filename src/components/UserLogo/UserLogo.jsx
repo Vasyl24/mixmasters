@@ -1,19 +1,17 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Modal from 'react-modal';
-import { lock, unlock } from 'tua-body-scroll-lock';
 
 import { selectUser } from '../../redux/selectors';
-import { UserMenu, UserIcon, UserName, ModalStyles } from './UserLogo.styled';
+import { UserMenu, UserIcon, UserName } from './UserLogo.styled';
 import { UserLogoPopup } from 'components/UserLogoPopup/UserLogoPopup';
 import { LogOutModal } from '../LogOutModal/LogOutModal';
 import { UserInfoModal } from '../UserInfoModal/UserInfoModal';
 
-Modal.setAppElement('#root');
 export const UserLogo = () => {
   const { name, avatarURL } = useSelector(selectUser);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalComponet, setModalComponent] = useState(null);
+
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
   };
@@ -28,27 +26,20 @@ export const UserLogo = () => {
         <UserIcon src={avatarURL} alt="User photo" />
         <UserName>{name}</UserName>
       </UserMenu>
+      {modalComponet === 'UserLogoPopup' && (
+        <UserLogoPopup
+          setModalComponent={setModalComponent}
+          modalIsOpen={modalIsOpen}
+          toggleModal={toggleModal}
+        />
+      )}
 
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={toggleModal}
-        style={ModalStyles}
-        onAfterOpen={lock}
-        onAfterClose={unlock}
-      >
-        {modalComponet === 'UserLogoPopup' && (
-          <UserLogoPopup setModalComponent={setModalComponent} />
-        )}
-        {modalComponet === 'LogOutModal' && (
-          <LogOutModal
-            setModalComponent={setModalComponent}
-            toggleModal={toggleModal}
-          />
-        )}
-        {modalComponet === 'UserInfoModal' && (
-          <UserInfoModal toggleModal={toggleModal} />
-        )}
-      </Modal>
+      {modalComponet === 'LogOutModal' && (
+        <LogOutModal toggleModal={toggleModal} modalIsOpen={modalIsOpen} />
+      )}
+      {modalComponet === 'UserInfoModal' && (
+        <UserInfoModal toggleModal={toggleModal} modalIsOpen={modalIsOpen} />
+      )}
     </>
   );
 };

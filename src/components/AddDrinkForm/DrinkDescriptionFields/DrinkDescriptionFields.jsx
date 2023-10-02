@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   ImageContainer,
   Wrapper,
@@ -9,45 +10,83 @@ import {
   FlexContainer,
   InputWraper,
   FieldStyle,
-  Validate,
+  // Validate,
   Margin,
   SelectWrapper,
   LabelSelect,
-  RadioWrapper
+  RadioWrapper,
+  RadioLabel,
+  RadioButton,
 } from './DrinkDescriptionFields.styled';
-import  Select  from 'react-select';
-import icons from '../../../assets/sprite.svg'
-import { styles } from "./selectStyle";
+import Select from 'react-select';
+import icons from '../../../assets/sprite.svg';
+import { styles } from './selectStyle';
+import { getGlasses, getCategories } from 'redux/filters/filtersOperations';
+import {
+  selectCategories,
+  selectGlasses,
+} from 'redux/filters/filtersSelectors';
 
-export const DrinkDescriptionFields = () => {
-const [categories, setCategories] = useState([]);
-const [glasses, setGlasses] = useState([]);
-const [title, setTitle] = useState({});
-const [selectedCategory, setSelectedCategory] = useState('');
-const [selectedGlass, setSelectedGlass] = useState('');
-const [selectedIngredients, setSelectedIngredients] = useState([]);
+export const DrinkDescriptionFields = ({
+  drinkThumb,
+  drink,
+  shortDescription,
+  category,
+  glass,
+  alcoholic,
+}) => {
+  const dispatch = useDispatch();
+  const hiddenFileInput = useRef(null);
+  const glasses = useSelector(selectGlasses);
+  const categories = useSelector(selectCategories);
 
-  
-  const handleCategorySelect = category => {
-    setSelectedCategory(category);
+  const [selectedAlcoholic, setSelectedAlcoholic] = useState('alcoholic');
+  const [img, setImg] = useState(null);
+
+  useEffect(() => {
+    dispatch(getGlasses());
+    dispatch(getCategories());
+  }, [dispatch]);
+
+  const categoriesSelect = categories.map(category => {
+    return { value: category, label: category };
+  });
+
+  const glassesSelect = glasses.map(glass => {
+    return { value: glass, label: glass };
+  });
+
+  const handleOptionChange = changeEvent => {
+    setSelectedAlcoholic(changeEvent.target.value);
+    // console.log(changeEvent.target.value);
   };
 
-  const handleGlassSelect = glass => {
-    setSelectedGlass(glass);
+  const handleImgClick = () => {
+    hiddenFileInput.current.click();
   };
 
-  
+  const handleImgUpload = evt => {
+    if (evt.target.files.length > 0) {
+      setImg({
+        src: URL.createObjectURL(evt.target.files[0]),
+      });
+    }
+  };
 
-    return (
-      <Wrapper>
-        <ImageContainer>
-          <Image />
+  const handleBlur = evt => {
+    if (!evt.target.value) {
+      console.log('Please enter a value');
+    }
+  };
+
+  return (
+    <Wrapper>
+      <ImageContainer onClick={handleImgClick}>
+        {img === null ? (
           <>
+            <Image style={{ display: 'none' }} />
             <BtnContainer>
-              <svg
-                width="28"
-                height="28"
-              >
+              <svg width="50" height="50">
                 <use xlinkHref={`${icons}#icon-plus`} />
               </svg>
             </BtnContainer>
@@ -55,63 +94,88 @@ const [selectedIngredients, setSelectedIngredients] = useState([]);
               <BtnText>Add image</BtnText>
             </div>
           </>
-          <ImageInput />
-        </ImageContainer>
-        <FlexContainer>
-          <InputWraper>
-            <FieldStyle
-              placeholder="Enter item title"
-              type="text"
-            />
-            <Validate></Validate>
-            <FieldStyle
-              placeholder="Enter about recipe"
-              type="text"
-            />
-            <Validate></Validate>
-          </InputWraper>
-          <Margin>
-            <SelectWrapper>
-              <LabelSelect>Category</LabelSelect>
-              <Select
-                onSelect={handleCategorySelect}
-                defaultValue={{ value: "Cocktail", label: "Cocktail" }}
-                unstyled
-                styles={styles}
-                required
-              />
-            </SelectWrapper>
-            <SelectWrapper>
-              <LabelSelect>Glass</LabelSelect>
-              <Select
-                onSelect={handleGlassSelect}
-                defaultValue={{ value: "Highball glass", label: "Highball glass" }}
-                unstyled
-                styles={styles}
-                required
-              />
-            </SelectWrapper>
-          </Margin>
-          <RadioWrapper>
-            <label>
-              <input
-                stroke="#F3F3F3"
-                type="radio"
-                value="alcoholic"
-                checked
-              />
-              Alcoholic
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="nonAlcoholic"
-              />
-             Non-alcoholic
-            </label>
-          </RadioWrapper>
-        </FlexContainer>
-      </Wrapper>
-    );
-  };
+        ) : (
+          <Image src={img.src} alt={img.src} />
+        )}
 
+        <ImageInput
+          name={drinkThumb}
+          type="file"
+          accept="image/*"
+          ref={hiddenFileInput}
+          onChange={handleImgUpload}
+        />
+      </ImageContainer>
+      <FlexContainer>
+        <InputWraper>
+          <FieldStyle
+            name={drink}
+            placeholder="Enter item title"
+            type="text"
+            onBlur={handleBlur}
+          />
+          {/* <Validate></Validate> */}
+          <FieldStyle
+            name={shortDescription}
+            placeholder="Enter about recipe"
+            type="text"
+            onBlur={handleBlur}
+          />
+          {/* <Validate></Validate> */}
+        </InputWraper>
+        <Margin>
+          <SelectWrapper>
+            <LabelSelect>Category</LabelSelect>
+            <Select
+              name={category}
+              defaultValue={[{ value: 'Cocktail', label: 'Cocktail' }]}
+              options={categoriesSelect}
+              unstyled
+              styles={styles}
+              required
+            />
+          </SelectWrapper>
+          <SelectWrapper>
+            <LabelSelect>Glass</LabelSelect>
+            <Select
+              name={glass}
+              defaultValue={{
+                value: 'Highball glass',
+                label: 'Highball glass',
+              }}
+              options={glassesSelect}
+              unstyled
+              styles={styles}
+              required
+            />
+          </SelectWrapper>
+        </Margin>
+        <RadioWrapper>
+          <RadioLabel>
+            <RadioButton
+              name={alcoholic}
+              id="option1"
+              stroke="#F3F3F3"
+              type="radio"
+              value="alcoholic"
+              checked={selectedAlcoholic === 'alcoholic'}
+              onChange={handleOptionChange}
+            />
+            Alcoholic
+          </RadioLabel>
+          <RadioLabel>
+            <RadioButton
+              name={alcoholic}
+              id="option2"
+              type="radio"
+              value="nonAlcoholic"
+              checked={selectedAlcoholic === 'nonAlcoholic'}
+              onChange={handleOptionChange}
+            />
+            Non-alcoholic
+          </RadioLabel>
+        </RadioWrapper>
+      </FlexContainer>
+    </Wrapper>
+  );
+};

@@ -7,23 +7,14 @@ import {
   fetchMainpage,
   fetchAllDrinks,
 } from './drinksOperations';
-import { toast } from 'react-toastify';
-
-//Для тестування. Видалити коли буде робочий бек
-// import coctails from 'temporary/recipes.json';
+import { signoutUser } from '../auth/authOperations';
+import { toast } from 'react-hot-toast';
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
   toast.error('Something went wrong please try later.', {
     position: 'top-center',
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: 'dark',
   });
 };
 
@@ -57,19 +48,10 @@ const drinksSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       const index = state.items.findIndex(
-        drink => drink.id === action.payload.id
+        drink => drink.id === action.meta.arg.id
       );
       state.items.splice(index, 1);
-      toast.success('Drink deleted successfully.', {
-        position: 'top-center',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-      });
+      toast.success('Drink deleted successfully.', { position: 'top-center' });
     },
     [deleteMyDrink.rejected]: handleRejected,
 
@@ -93,19 +75,10 @@ const drinksSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       const index = state.items.findIndex(
-        drink => drink.id === action.payload.id
+        drink => drink._id === action.meta.arg.id
       );
       state.items.splice(index, 1);
-      toast.success('Drink deleted successfully.', {
-        position: 'top-center',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-      });
+      toast.success('Drink deleted successfully.', { position: 'top-center' });
     },
     [deleteFavoriteDrink.rejected]: handleRejected,
     [fetchMainpage.pending](state) {
@@ -132,6 +105,11 @@ const drinksSlice = createSlice({
     [fetchAllDrinks.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
+    },
+    [signoutUser.fulfilled](state, action) {
+      state.items = [];
+      state.error = null;
+      state.isLoading = false;
     },
   },
 });

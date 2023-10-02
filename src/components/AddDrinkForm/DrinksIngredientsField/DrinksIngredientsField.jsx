@@ -1,4 +1,5 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import icons from '../../../assets/sprite.svg';
 import {
@@ -12,25 +13,43 @@ import {
   SelectWraper,
   Wrapper,
   CounterWrp,
-  StyledButton
+  StyledButton,
 } from './DrinksIngredientsField.styled';
-import { optionsIngredientUnit } from "./optionsIngredientUnit";
-import { styles } from "./selectStyle";
-import { stylesMeasure } from "./selectStyleMeasure";
-import ingredientsList from '../../../temporary/ingredients.json';
-import drinksData from '../../../temporary/recipes.json';
-
+import { getIngredients } from 'redux/filters/filtersOperations';
+import { selectIngredients } from 'redux/filters/filtersSelectors';
+import { optionsIngredientUnit } from '../optionsIngredientUnit';
+import { styles } from './selectStyle';
+import { stylesMeasure } from './selectStyleMeasure';
+import { nanoid } from 'nanoid';
+// import { FieldArray } from 'formik';
 
 const DrinkIngredientsFields = () => {
+  const dispatch = useDispatch();
+  const listIngredients = useSelector(selectIngredients);
 
-  const [ingredients, setIngredients] = useState(ingredientsList);
   const [count, setCount] = useState(1);
-  const [drinks] = useState(drinksData);
-	const [filteredDrinks, setFilteredDrinks] = useState(drinks);
+  const [allIngredients, setallIngredients] = useState([{ id: nanoid() }]);
+  const [amountIngredientUnit, setAmountIngredientUnit] = useState(0);
+
+  useEffect(() => {
+    dispatch(getIngredients());
+  }, [dispatch]);
+
+  const ingredientsSelect = listIngredients.map(ingredient => {
+    return { value: ingredient.title, label: ingredient.title };
+  });
+
+  const handleAmountUnitChange = e => {
+    const regex = /^[0-9\b]+$/;
+    if (e.target.value === '' || regex.test(e.target.value)) {
+      setAmountIngredientUnit(e.target.value);
+    }
+    console.log(e.target);
+  };
 
   const plusButtonHandler = () => {
     setCount(count + 1);
-    setIngredients(prevState => [...prevState, [...ingredientsList]]);
+    setallIngredients([...allIngredients, { id: nanoid() }]);
   };
 
   const minusButtonHandler = () => {
@@ -40,108 +59,108 @@ const DrinkIngredientsFields = () => {
       return;
     }
 
-    setIngredients(() => {
-      const newIngredients = [...ingredients];
-      newIngredients.pop();
-      return newIngredients;
-    });
+    allIngredients.pop();
   };
 
+  const handleDeleteIngredient = id => {
+    if (count !== 1) {
+      setCount(count - 1);
 
-	
-const handleIngredientChange = ingredient => {
-    if (ingredient === '') {
-      setFilteredDrinks(drinks);
-    } else {
-      const filtered = drinks.filter(drink => {
-        const ingredients = drink.ingredients.map(item => item.title);
-        return ingredients.includes(ingredient);
-      });
-      setFilteredDrinks(filtered);
-	}
-  };	
-  
-return (
-  
-  <Wrapper>
-    <CounterWrapper>
-      <IngredientsText>Ingredients</IngredientsText>
-      <CounterWrp>
-      <StyledButton onClick={minusButtonHandler}>
-            <svg>
-             <use xlinkHref={`${icons}#icon-minus`} />
-            </svg> 
-      </StyledButton>
-      <p>{count}</p>
-      <StyledButton onClick={plusButtonHandler}>
-            <svg>
-              <use xlinkHref={`${icons}#icon-plus-plus`} />         
-            </svg> 
-      </StyledButton>
-    </CounterWrp>
-    </CounterWrapper>
-    <IngredientsList>
-     {ingredients.map((arr, index) => (
-      <li key={index}>  
-        <SelectWraper>
-            <FlexWraper>
-              <Select
-              // key={index}
-              //   options={arr.map(ingredients => {
-              //      return { value: ingredients.title, label: ingredients.title, id: ingredients._id  };
-              //  })}
-              name="ingredients"
-              onIngredientChange={handleIngredientChange}
-              placeholder={"Select ingredient..."}
-              unstyled
-              required
-              styles={styles}
-            />
-            <MeasureWraper>
-              <FieldStyle
-                name="amountIngredien"
-                type="number"
-                step="0.1"
-                placeholder="0"
-                 required
-               />
-              <Select
-                options={optionsIngredientUnit}
-                placeholder={""}
-                unstyled
-                styles={stylesMeasure}
-                required
-              />
-            </MeasureWraper>
-          </FlexWraper>           
-            <DeleteBtn
-              onClick={() => {
-                if (count === 1) {
-                  return;
-                }
-                setIngredients(() => {
-                  const newIngredients = [...ingredients];
-                  const idxOfIngredient = newIngredients.indexOf(arr);
-                  newIngredients.splice(idxOfIngredient, 1);
-                  setCount(count - 1);
+      const idxOfIngredient = allIngredients.findIndex(
+        ingredientId => ingredientId.id === id
+      );
+      allIngredients.splice(idxOfIngredient, 1);
+    }
+  };
 
-                  return newIngredients;
-                });
-              }}
-              type="button"
-            >
+  // const deleteContact = contactId => {
+  //   if (count !== 1) {
+  //     setCount(count - 1);
+  //     setallIngredients(prevState =>
+  //       prevState.filter(contact => contact.id !== contactId)
+  //     );
+  //   }
+  // };
+
+  return (
+    <Wrapper>
+      <CounterWrapper>
+        <IngredientsText>Ingredients</IngredientsText>
+        <CounterWrp>
+          <StyledButton onClick={minusButtonHandler}>
             <svg>
-              <use xlinkHref={`${icons}#icon-close`} />
+              <use xlinkHref={`${icons}#icon-minus`} />
             </svg>
-          </DeleteBtn>
-          
-          </SelectWraper>
-         
-       </li>
-        ))}
-    </IngredientsList>
-</Wrapper>
+          </StyledButton>
+          <p>{count}</p>
+          <StyledButton onClick={plusButtonHandler}>
+            <svg>
+              <use xlinkHref={`${icons}#icon-plus-plus`} />
+            </svg>
+          </StyledButton>
+        </CounterWrp>
+      </CounterWrapper>
+      <IngredientsList>
+        {allIngredients.map(ingredient => (
+          <li key={ingredient.id}>
+            <SelectWraper>
+              <FlexWraper>
+                {/* {({ values }) => (
+                  <FieldArray name={ingredients}> */}
+                {/* {values.ingredients.length > 0 &&
+                      values.ingredients.map((ingredient, index) => ( */}
+                {/* <div key={index}> */}
+                <Select
+                  options={ingredientsSelect}
+                  // name={ingredient.title}
+                  name="ingredient"
+                  placeholder={'Select ingredient...'}
+                  unstyled
+                  required
+                  styles={styles}
+                />
 
+                <MeasureWraper>
+                  <FieldStyle
+                    // name={ingredient.measure}
+                    name="ingredient"
+                    type="number"
+                    placeholder="0"
+                    value={amountIngredientUnit}
+                    onChange={handleAmountUnitChange}
+                    min={0}
+                    required
+                  />
+                  <Select
+                    // name={ingredient.measure}
+                    name="ingredient"
+                    options={optionsIngredientUnit}
+                    placeholder={''}
+                    unstyled
+                    styles={stylesMeasure}
+                    required
+                  />
+                </MeasureWraper>
+                {/* </div>
+                      ))}
+                  </FieldArray>
+                )} */}
+              </FlexWraper>
+              <DeleteBtn
+                // onClick={() => deleteContact(ingredient.id)}
+                onClick={() => handleDeleteIngredient(ingredient.id)}
+                type="button"
+              >
+                <svg>
+                  <use xlinkHref={`${icons}#icon-close`} />
+                </svg>
+              </DeleteBtn>
+            </SelectWraper>
+            {ingredient.component}
+          </li>
+        ))}
+      </IngredientsList>
+    </Wrapper>
   );
 };
 export default DrinkIngredientsFields;

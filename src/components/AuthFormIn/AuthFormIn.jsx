@@ -3,11 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { ToastContainer } from 'react-toastify';
-// import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-hot-toast';
 import sprite from 'assets/sprite.svg';
-
 import { signinUser } from 'redux/auth/authOperations';
 import { selectIsLoggedIn } from '../../redux/selectors';
 import {
@@ -21,6 +18,11 @@ import {
   StyledLink,
   IconPasswordHidden,
   IconPasswordShow,
+  ContainerLayout,
+  ValidContainer,
+  ValidMessage,
+  IconDone,
+  IconError,
 } from './AuthFormIn.styled';
 
 const validationSchema = yup.object().shape({
@@ -30,13 +32,14 @@ const validationSchema = yup.object().shape({
     .required('Email address is required'),
   password: yup
     .string()
-    .min(8, ({ min }) => `Password must be at least ${min} characters`)
-    .max(30, ({ max }) => `Password must be no more than ${max} characters`)
+    .min(6, ({ min }) => `The password must be at least ${min} characters`)
+    .max(30, ({ max }) => `The password must be no more than ${max} characters`)
     .required('Password is required'),
 });
 
 const AuthFormIn = () => {
   const [textPassword, setTextPassword] = useState(true);
+  
 
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -53,16 +56,19 @@ const AuthFormIn = () => {
     });
   };
 
+  
+
   const onSubmit = async values => {
     if (isLoggedIn) {
-      // toast.error('User is already logged in');
       navigate('/home', { replace: true });
       return;
-    } else if (dispatch(signinUser({ ...values }))) {
+    }
+    const response = await dispatch(signinUser({ ...values }));
+
+    if (response && response.error) {
+      toast.error('Incorrect email or password');
+    } else {
       resetForm();
-      if (isLoggedIn) {
-        navigate('/home', { replace: true });
-      }
     }
   };
 
@@ -70,67 +76,100 @@ const AuthFormIn = () => {
     initialValues,
     onSubmit,
     validationSchema,
+    validateOnSubmit: true,
   });
 
   return (
-    <LoginContainer onSubmit={formik.handleSubmit}>
-      <ToastContainer />
-      <Title>Sign In</Title>
+    <ContainerLayout>
+      <LoginContainer onSubmit={formik.handleSubmit}>
+        <Title>Sign In</Title>
+        <InputBlock>
+          <label htmlFor="email">
+            <StyledInput
+              name="email"
+              type="email"
+              placeholder="Email"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+              border={
+                formik.touched.email &&
+                (formik.errors.email
+                  ? '1px solid #da1414'
+                  : '1px solid #3cbc81')
+              }
+            />
+            {formik.touched.email &&
+              (formik.errors.email ? (
+                <ErrorContainer>
+                  <ErrorMessage>{formik.errors.email}</ErrorMessage>
+                </ErrorContainer>
+              ) : (
+                <ValidContainer>
+                  <ValidMessage>This is a correct email</ValidMessage>
+                </ValidContainer>
+              ))}
 
-      <InputBlock>
-        <label htmlFor="email">
-          <StyledInput
-            name="email"
-            type="text"
-            placeholder="Email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-        </label>
-        {formik.touched.email && formik.errors.email && (
-          <ErrorContainer>
-            <ErrorMessage>{formik.errors.email}</ErrorMessage>
-          </ErrorContainer>
-        )}
+            {formik.touched.email &&
+              (formik.errors.email ? (
+                <IconError>
+                  <use href={`${sprite}#icon-error`} />
+                </IconError>
+              ) : (
+                <IconDone>
+                  <use href={`${sprite}#icon-done`} />
+                </IconDone>
+              ))}
+          </label>
 
-        <label htmlFor="password">
-          <StyledInput
-            name="password"
-            type={textPassword ? 'password' : 'text'}
-            placeholder="Password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            style={{ color: textPassword ? 'inherit' : '#f3f3f3' }}
-          />
-          <div onClick={() => setTextPassword(prevState => !prevState)}>
-            {textPassword ? (
-              <IconPasswordHidden>
-                <use href={`${sprite}#icon-eye-off`} />
-              </IconPasswordHidden>
-            ) : (
-              <IconPasswordShow>
-                <use href={`${sprite}#icon-eye`} />
-              </IconPasswordShow>
-            )}
-          </div>
-        </label>
-        {formik.touched.password && formik.errors.password && (
-          <ErrorContainer>
-            <ErrorMessage>{formik.errors.password}</ErrorMessage>
-          </ErrorContainer>
-        )}
-      </InputBlock>
+          <label htmlFor="password">
+            <StyledInput
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              border={
+                formik.touched.password &&
+                (formik.errors.password
+                  ? '1px solid #da1414'
+                  : '1px solid #3cbc81')
+              }
+            />
+            {formik.touched.password &&
+              (formik.errors.password ? (
+                <ErrorContainer>
+                  <ErrorMessage>{formik.errors.password}</ErrorMessage>
+                </ErrorContainer>
+              ) : (
+                <ValidContainer>
+                  <ValidMessage>This is a correct password</ValidMessage>
+                </ValidContainer>
+              ))}
+            <div onClick={() => setTextPassword(prevState => !prevState)}>
+              {textPassword ? (
+                <IconPasswordHidden>
+                  <use href={`${sprite}#icon-eye-off`} />
+                </IconPasswordHidden>
+              ) : (
+                <IconPasswordShow>
+                  <use href={`${sprite}#icon-eye`} />
+                </IconPasswordShow>
+              )}
+            </div>
+          </label>
+        </InputBlock>
 
-      <StyledBtn
-        type="submit"
-        disabled={!formik.isValid || formik.isSubmitting}
-      >
-        Sign In
-      </StyledBtn>
-      <StyledLink to="/signup">Sign Up</StyledLink>
-    </LoginContainer>
+        <StyledBtn
+          type="submit"
+          disabled={!formik.isValid || formik.isSubmitting}
+        >
+          Sign In
+        </StyledBtn>
+        <StyledLink to="/signup">Sign Up</StyledLink>
+      </LoginContainer>
+    </ContainerLayout>
   );
 };
 

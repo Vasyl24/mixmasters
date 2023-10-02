@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 
 export const SectionContainer = styled.section`
   padding-top: 80px;
-  padding-bottom: 80px;
+  margin-bottom: 112px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   @media screen and (min-width: 768px) {
     padding-top: 120px;
-    padding-bottom: 120px;
+    margin-bottom: 123px;
   }
   @media screen and (min-width: 1440px) {
     justify-content: space-between;
     padding-top: 128px;
-    padding-bottom: 160px;
+    margin-bottom: 160px;
   }
 `;
 export const Container = styled.div`
@@ -23,7 +23,7 @@ export const Container = styled.div`
   @media screen and (min-width: 768px) {
     margin-bottom: 54px;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1440px) {
     margin-bottom: 0px;
   }
 `;
@@ -54,11 +54,15 @@ export const Text = styled.p`
     line-height: 1.3;
   }
   @media screen and (min-width: 1440px) {
+    margin-bottom: 40px;
     width: 500px;
   }
 `;
 export const Picture = styled.img`
   width: 252px;
+  @media screen and (min-width: 768px) {
+    width: 359px;
+  }
 `;
 export const Button = styled(Link)`
   z-index: 2000;
@@ -68,7 +72,7 @@ export const Button = styled(Link)`
   background-color: var(--text-btn-color);
   padding: 14px 40px;
   color: var(--accent-color);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.28;
   outline: none;
@@ -78,5 +82,9 @@ export const Button = styled(Link)`
   &:hover {
     background-color: var(--hover-btn-color);
     color: var(--text-btn-color);
+  }
+  @media (min-width: 768px) {
+    padding: 18px 44px;
+    font-size: 16px;
   }
 `;

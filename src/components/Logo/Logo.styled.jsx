@@ -2,9 +2,9 @@ import styled, { keyframes } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import icons from '../../assets/sprite.svg';
 
-const slideInFromLeft = keyframes`
+const slideInFromTop = keyframes`
   from {
-    transform: translateX(-200%);
+    transform: translateY(-100%);
   }
   to {
     transform: translateX(0);
@@ -16,7 +16,6 @@ export const LogoLink = styled(NavLink)`
   z-index: 400;
 
   @media screen and (min-width: 1440px) {
-    margin-right: 225px;
   }
 `;
 
@@ -24,7 +23,7 @@ export const LogoGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  animation: ${slideInFromLeft} 0.8s ease-in-out forwards;
+  animation: ${slideInFromTop} 0.8s ease-in-out forwards;
   transform: translateX(-200%);
 
   transition-property: transform;
@@ -48,6 +47,7 @@ export const Icon = styled.svg`
 
 export const Name = styled.span`
   font-weight: 600;
+  white-space: nowrap;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;

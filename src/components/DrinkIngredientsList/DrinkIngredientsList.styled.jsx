@@ -42,9 +42,41 @@ export const IngredientItem = styled.li`
   }
 `;
 
+export const ContainerImage = styled.div`
+  padding: 22px 23px 23px 22px;
+  background-color: rgba(22, 31, 55, 0.5);
+  /* background-image: ${props => `url(${props.img})`}; */
+  border-radius: 8px;
+  margin-bottom: 8px;
+  width: 157px;
+  height: 157px;
+  background-size: cover;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 14px;
+    width: 220px;
+    height: 220px;
+  }
+`;
+
+export const Image = styled.div`
+/* padding: 22px 23px 23px 22px; */
+/* background-color: rgba(22, 31, 55, 0.5); */
+  background-image: ${props => `url(${props.img})`};
+  /* border-radius: 8px; */
+  /* margin-bottom: 8px; */
+  width: 107px;
+  height: 107px;
+  background-size: cover;
+  @media screen and (min-width: 768px) {
+    /* margin-bottom: 14px; */
+    width: 175px;
+    height: 175px;
+  }
+`;
+
 export const IngredientImage = styled.img`
   margin-bottom: 8px;
-  width: 220px;
+  width: 157px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 14px;
