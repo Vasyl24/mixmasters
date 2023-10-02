@@ -43,26 +43,38 @@ export const DrinksPage = () => {
 
   const [pageNumbersToShow, setPageNumbersToShow] = useState(8);
 
-  const updateDrinksPerPageAndPageNumbers = () => {
-    if (window.innerWidth < 768) {
-      dispatch(setLimitValue(10));
-      setPageNumbersToShow(5);
-    } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
-      dispatch(setLimitValue(10));
-      setPageNumbersToShow(8);
-    } else if (window.innerWidth >= 1440) {
-      dispatch(setLimitValue(9));
-      setPageNumbersToShow(8);
-    }
-  };
+  // const updateDrinksPerPageAndPageNumbers = () => {
+  //   if (window.innerWidth < 768) {
+  //     dispatch(setLimitValue(10));
+  //     setPageNumbersToShow(5);
+  //   } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
+  //     dispatch(setLimitValue(10));
+  //     setPageNumbersToShow(8);
+  //   } else if (window.innerWidth >= 1440) {
+  //     dispatch(setLimitValue(9));
+  //     setPageNumbersToShow(8);
+  //   }
+  // };
 
   useEffect(() => {
+      const updateDrinksPerPageAndPageNumbers = () => {
+        if (window.innerWidth < 768) {
+          dispatch(setLimitValue(10));
+          setPageNumbersToShow(5);
+        } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
+          dispatch(setLimitValue(10));
+          setPageNumbersToShow(8);
+        } else if (window.innerWidth >= 1440) {
+          dispatch(setLimitValue(9));
+          setPageNumbersToShow(8);
+        }
+      };
     updateDrinksPerPageAndPageNumbers();
     window.addEventListener('resize', updateDrinksPerPageAndPageNumbers);
     return () => {
       window.removeEventListener('resize', updateDrinksPerPageAndPageNumbers);
     };
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(setSelectedCategory(selectedCategory));
