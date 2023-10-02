@@ -20,16 +20,14 @@ import { selectIngredients } from 'redux/filters/filtersSelectors';
 import { optionsIngredientUnit } from '../optionsIngredientUnit';
 import { styles } from './selectStyle';
 import { stylesMeasure } from './selectStyleMeasure';
-import { nanoid } from 'nanoid';
-// import { FieldArray } from 'formik';
+// import { nanoid } from 'nanoid';
 
 const DrinkIngredientsFields = ({ values, setFieldValue }) => {
   const dispatch = useDispatch();
   const listIngredients = useSelector(selectIngredients);
 
   const [count, setCount] = useState(1);
-  const [allIngredients, setallIngredients] = useState([{ id: nanoid() }]);
-  // const [amountIngredientUnit, setAmountIngredientUnit] = useState(0);
+
 
   useEffect(() => {
     dispatch(getIngredients());
@@ -39,17 +37,17 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
     return { value: ingredient.title, label: ingredient.title };
   });
 
-  // const handleAmountUnitChange = e => {
-  //   const regex = /^[0-9\b]+$/;
-  //   if (e.target.value === '' || regex.test(e.target.value)) {
-  //     setAmountIngredientUnit(e.target.value);
-  //   }
-  //   console.log(e.target);
-  // };
-
   const plusButtonHandler = () => {
     setCount(count + 1);
-    setallIngredients([...allIngredients, { id: nanoid() }]);
+    setFieldValue('ingredients', [
+      ...values.ingredients,
+      {
+        title: '',
+        amount: '',
+        measure: '',
+        ingredientId: '',
+      },
+    ]);
   };
 
   const minusButtonHandler = () => {
@@ -59,17 +57,17 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
       return;
     }
 
-    allIngredients.pop();
+    // setFieldValue('ingredients', [...values.ingredients]);
   };
 
   const handleDeleteIngredient = id => {
     if (count !== 1) {
       setCount(count - 1);
 
-      const idxOfIngredient = allIngredients.findIndex(
-        ingredientId => ingredientId.id === id
-      );
-      allIngredients.splice(idxOfIngredient, 1);
+      // const idxOfIngredient = allIngredients.findIndex(
+      //   ingredientId => ingredientId.id === id
+      // );
+      // allIngredients.splice(idxOfIngredient, 1);
     }
   };
 
@@ -81,7 +79,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
   //     );
   //   }
   // };
-
+  console.log('values', values);
   return (
     <Wrapper>
       <CounterWrapper>
@@ -102,34 +100,37 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
       </CounterWrapper>
 
       <IngredientsList>
-        {allIngredients.map(ingredient => (
+        {values.ingredients.map((ingredient, index) => (
           <li key={ingredient.id}>
             <SelectWraper>
               <FlexWraper>
                 <Select
                   options={ingredientsSelect}
-                  name="ingredient.title"
+                  name={`ingredients[${index}].name`}
                   placeholder={'Select ingredient...'}
                   unstyled
                   required
                   styles={styles}
-                  // onChange={}
                 />
 
                 <MeasureWraper>
                   <FieldStyle
-                    name="ingredient"
+                    name={`ingredients[${index}].amount`}
                     type="number"
                     placeholder="0"
-                    // onChange={e => setFieldValue('ingredients', e.target.value)}
-                    value={values.ingredients}
+                    value={ingredient.amount}
                     min={0}
                     required
                   />
                   <Select
-                    name="ingredient.measure"
+                    name={`ingredients[${index}].measure`}
                     options={optionsIngredientUnit}
                     placeholder={''}
+                    onChange={e => {
+                      const newIngredients = [...values.ingredients];
+                      newIngredients[index].measure = e.value;
+                      setFieldValue('ingredients', newIngredients);
+                    }}
                     unstyled
                     styles={stylesMeasure}
                     required

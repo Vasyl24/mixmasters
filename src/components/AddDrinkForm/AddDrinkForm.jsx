@@ -27,6 +27,7 @@ export const AddDrinkForm = () => {
           ingredients: [
             {
               title: '',
+              amount: '',
               measure: '',
               ingredientId: '',
             },
@@ -34,14 +35,25 @@ export const AddDrinkForm = () => {
         }}
         onSubmit={handleSubmit}
       >
-        <StyledForm>
-          <Form>
-            <DrinkDescriptionFields />
-            <DrinkIngredientsFields />
-            <RecipePreparationFields />
-            <AddBtn type="submit" title="Add" />
-          </Form>
-        </StyledForm>
+        {props => (
+          <StyledForm>
+            <Form>
+              <DrinkDescriptionFields
+                values={props.values}
+                setFieldValue={props.setFieldValue}
+              />
+              <DrinkIngredientsFields
+                values={props.values}
+                setFieldValue={props.setFieldValue}
+              />
+              <RecipePreparationFields
+                values={props.values}
+                setFieldValue={props.setFieldValue}
+              />
+              <AddBtn type="submit" title="Add" />
+            </Form>
+          </StyledForm>
+        )}
       </Formik>
     </>
   );
