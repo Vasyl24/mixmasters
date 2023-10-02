@@ -1,7 +1,7 @@
 import React from 'react';
-import { ToggleContainer } from './ThemeToggler.styled';
-import { Toggle } from 'hellaui';
-// import { useState } from 'react';
+import { Circle, Input, Label, ToggleContainer } from './ThemeToggler.styled';
+// import { ToggleContainer } from './ThemeToggler.styled';
+//import { Toggle } from 'hellaui';
 
 export default function ThemeToggler() {
 
@@ -31,15 +31,10 @@ export default function ThemeToggler() {
 
   return (
     <ToggleContainer>
-      <Toggle
-        onChange={toggleTheme}
-        rounding={'circle'}
-        labelPosition={position}
-      />
-      {/* <Label for={'checkbox'}> */}
-      {/* <Input type={'checkbox'} id="checkbox" /> */}
-      {/* </Label> */}
-      {/*  <Circle /> */}
+      <Label>
+        <Input type={'checkbox'} id="checkbox" />
+      </Label>
+      <Circle />
     </ToggleContainer>
   );
 }

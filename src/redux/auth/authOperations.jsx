@@ -17,7 +17,7 @@ export const signupUser = createAsyncThunk(
       } else if (error.response && error.response.status === 401) {
         toast.error('You are not logged in');
       } else if (error.response && error.response.status === 403) {
-        toast.error('Access is denied');
+        toast.error('Access denied');
       } else if (error.response && error.response.status === 409) {
         toast.error('Email in use');
       } else {
@@ -43,7 +43,7 @@ export const signinUser = createAsyncThunk(
         } else if (error.response && error.response.status === 401) {
           toast.error('You are not logged in');
         } else if (error.response && error.response.status === 403) {
-          toast.error('Access is denied');
+          toast.error('Access denied');
         } else if (error.response && error.response.status === 409) {
           toast.error('Email in use');
         } else {
@@ -98,6 +98,33 @@ export const updateUser = createAsyncThunk(
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const subscribeUser = createAsyncThunk(
+  'auth/subscribe',
+  async (credentials, thunkAPI) => {
+    try {
+      console.log(credentials);
+      const res = await axios.post('/users/subscribe', credentials);
+      return res.data;
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        toast.error('Unauthorized');
+        if (error.response && error.response.status === 400) {
+          toast.error('Bad request');
+        } else if (error.response && error.response.status === 401) {
+          toast.error('You are not logged in');
+        } else if (error.response && error.response.status === 403) {
+          toast.error('Access denied');
+        } else if (error.response && error.response.status === 409) {
+          toast.error('Email in use');
+        } else {
+          toast.error('Authentication Error');
+        }
+        return thunkAPI.rejectWithValue(error.message);
+      }
     }
   }
 );
