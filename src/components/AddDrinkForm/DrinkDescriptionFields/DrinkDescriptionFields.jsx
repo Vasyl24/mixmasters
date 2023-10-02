@@ -51,7 +51,16 @@ export const DrinkDescriptionFields = ({ values, setFieldValue }) => {
 
   const handleOptionChange = evt => {
     setSelectedAlcoholic(evt.target.value);
+    setFieldValue('alcoholic', evt.target.value);
     // console.log(changeEvent.target.value);
+  };
+
+  const handleCategoryChange = evt => {
+    setFieldValue('category', evt.value);
+  };
+
+  const handleGlassChange = evt => {
+    setFieldValue('glass', evt.value);
   };
 
   const handleImgClick = () => {
@@ -128,6 +137,7 @@ export const DrinkDescriptionFields = ({ values, setFieldValue }) => {
               unstyled
               styles={styles}
               required
+              onChange={handleCategoryChange}
             />
           </SelectWrapper>
           <SelectWrapper>
@@ -142,6 +152,7 @@ export const DrinkDescriptionFields = ({ values, setFieldValue }) => {
               unstyled
               styles={styles}
               required
+              onChange={handleGlassChange}
             />
           </SelectWrapper>
         </Margin>

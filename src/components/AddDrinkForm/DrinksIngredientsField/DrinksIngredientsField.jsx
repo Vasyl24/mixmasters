@@ -28,7 +28,6 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
 
   const [count, setCount] = useState(1);
 
-
   useEffect(() => {
     dispatch(getIngredients());
   }, [dispatch]);
@@ -71,6 +70,17 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
     }
   };
 
+  // const handleIngredientChange = evt => {
+  //   setFieldValue('ingredients', [
+  //     ...values.ingredients,
+  //     {
+  //       title: evt.value,
+  //     },
+  //   ]);
+
+  // setFieldValue('glass', evt.value);
+  // };
+
   // const deleteContact = contactId => {
   //   if (count !== 1) {
   //     setCount(count - 1);
@@ -108,6 +118,11 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
                   options={ingredientsSelect}
                   name={`ingredients[${index}].name`}
                   placeholder={'Select ingredient...'}
+                  onChange={e => {
+                    const newIngredients = [...values.ingredients];
+                    newIngredients[index].title = e.value;
+                    setFieldValue('ingredients', newIngredients);
+                  }}
                   unstyled
                   required
                   styles={styles}

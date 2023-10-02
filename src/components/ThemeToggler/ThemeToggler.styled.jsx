@@ -24,8 +24,8 @@ export const ToggleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  /* min-width: 40px;
-  height: 20px; */
+  min-width: 40px;
+  height: 20px;
   margin-left: auto;
   padding: 1px;
   border-radius: 10px;

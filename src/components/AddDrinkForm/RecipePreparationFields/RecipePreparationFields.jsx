@@ -5,7 +5,11 @@ import {
   Wrapper,
 } from './RecipePreparationFields.styled';
 
-export default function RecipePreparationFields() {
+export default function RecipePreparationFields({ values, setFieldValue }) {
+  const handleTextInput = evt => {
+    setFieldValue('instructions', evt.target.value);
+  };
+
   return (
     <Wrapper>
       <RecipeText>Recipe Preparation</RecipeText>
@@ -15,6 +19,7 @@ export default function RecipePreparationFields() {
         name="instructions"
         placeholder="Enter the recipe"
         rows="8"
+        onChange={handleTextInput}
       />
       {/* <Validate></Validate> */}
     </Wrapper>
