@@ -113,3 +113,11 @@ export const fetchPopularDrinks = createAsyncThunk(
     }
   }
 );
+
+export const setLimitValue = createAsyncThunk('drinks/setLimitValue', limit => {
+  return limit;
+});
+
+export const setPageValue = createAsyncThunk('drinks/setPageValue', page => {
+  return page;
+});
