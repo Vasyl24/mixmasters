@@ -26,7 +26,6 @@ export const UserLogo = () => {
         <UserIcon src={avatarURL} alt="User photo" />
         <UserName>{name}</UserName>
       </UserMenu>
-
       {modalComponet === 'UserLogoPopup' && (
         <UserLogoPopup
           setModalComponent={setModalComponent}
