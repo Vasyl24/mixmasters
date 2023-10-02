@@ -8,9 +8,32 @@ import { StyledForm } from './AddDrinkForm.styled';
 import { AddBtn } from 'components/Butttons/AddBtn/AddDrinksBtn';
 
 export const AddDrinkForm = () => {
+  const handleSubmit = values => {
+    console.log(values);
+  };
+
   return (
     <>
-      <Formik>
+      <Formik
+        initialValues={{
+          _id: '',
+          drink: '',
+          category: '',
+          alcoholic: '',
+          glass: '',
+          shortDescription: '',
+          instructions: '',
+          drinkThumb: null,
+          ingredients: [
+            {
+              title: '',
+              measure: '',
+              ingredientId: '',
+            },
+          ],
+        }}
+        onSubmit={handleSubmit}
+      >
         <StyledForm>
           <DrinkDescriptionFields />
           <DrinkIngredientsFields />
