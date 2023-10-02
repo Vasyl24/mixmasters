@@ -2,9 +2,9 @@ import React from 'react';
 import { StyledArrows, StyledPagination } from './Paginator.module';
 import sprite from 'assets/sprite.svg';
 import { useDispatch } from 'react-redux';
-import { fetchAllDrinks } from 'redux/drinks/drinksOperations';
+import { setPageValue } from 'redux/drinks/drinksOperations';
 
-const Paginator = ({ page, limit, drinks, count, onPageChange }) => {
+const Paginator = ({ page, limit, count, pageNumbersToShow }) => {
   const dispatch = useDispatch();
 
   const totalPages = Math.ceil(count / limit);
@@ -16,8 +16,18 @@ const Paginator = ({ page, limit, drinks, count, onPageChange }) => {
 
   const handlePageChange = newPage => {
     if (newPage >= 1 && newPage <= totalPages) {
-      dispatch(fetchAllDrinks({ page: newPage, limit }));
+      dispatch(setPageValue(newPage));
     }
+  };
+
+  const getVisiblePageNumbers = () => {
+    const halfPageNumbersToShow = Math.floor(pageNumbersToShow / 2);
+    const currentPageIndex = pageNumbers.indexOf(page);
+
+    const start = Math.max(0, currentPageIndex - halfPageNumbersToShow);
+    const end = Math.min(pageNumbers.length - 1, start + pageNumbersToShow - 1);
+
+    return pageNumbers.slice(start, end + 1);
   };
 
   return (
@@ -33,7 +43,7 @@ const Paginator = ({ page, limit, drinks, count, onPageChange }) => {
           </svg>
         </StyledArrows>
         <ul>
-          {pageNumbers.map((number, index) => (
+          {getVisiblePageNumbers().map((number, index) => (
             <button
               key={index}
               onClick={() => handlePageChange(number)}

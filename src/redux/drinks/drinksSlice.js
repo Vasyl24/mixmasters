@@ -6,6 +6,8 @@ import {
   deleteFavoriteDrink,
   fetchMainpage,
   fetchAllDrinks,
+  setLimitValue,
+  setPageValue,
 } from './drinksOperations';
 import { signoutUser } from '../auth/authOperations';
 import { toast } from 'react-hot-toast';
@@ -110,6 +112,14 @@ const drinksSlice = createSlice({
       state.items = [];
       state.error = null;
       state.isLoading = false;
+    },
+
+    [setLimitValue.fulfilled](state, action) {
+      state.limit = action.payload;
+    },
+
+    [setPageValue.fulfilled](state, action) {
+      state.page = action.payload;
     },
   },
 });
