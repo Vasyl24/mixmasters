@@ -27,7 +27,7 @@ import {
   selectGlasses,
 } from 'redux/filters/filtersSelectors';
 
-export const DrinkDescriptionFields = ({ setFieldValue }) => {
+export const DrinkDescriptionFields = ({ values, setFieldValue }) => {
   const dispatch = useDispatch();
   const hiddenFileInput = useRef(null);
   const glasses = useSelector(selectGlasses);
@@ -51,7 +51,6 @@ export const DrinkDescriptionFields = ({ setFieldValue }) => {
 
   const handleOptionChange = evt => {
     setSelectedAlcoholic(evt.target.value);
-    // setFieldValue('alcoholic', evt.target.value);
     // console.log(changeEvent.target.value);
   };
 
@@ -64,6 +63,8 @@ export const DrinkDescriptionFields = ({ setFieldValue }) => {
       setImg({
         src: URL.createObjectURL(evt.target.files[0]),
       });
+      setFieldValue('drinkThumb', URL.createObjectURL(evt.target.files[0]));
+      // console.log(URL.createObjectURL(evt.target.files[0]));
     }
   };
 
@@ -93,7 +94,7 @@ export const DrinkDescriptionFields = ({ setFieldValue }) => {
         )}
 
         <ImageInput
-          name="drinkThumb"
+          name={`drinkThumb`}
           type="file"
           accept="image/*"
           ref={hiddenFileInput}
