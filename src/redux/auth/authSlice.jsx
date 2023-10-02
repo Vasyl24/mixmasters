@@ -62,6 +62,9 @@ const authSlice = createSlice({
     },
 
     // logoutUser
+    [updateUser.pending](state, _) {
+      state.isLoading = true;
+    },
 
     [signoutUser.fulfilled](state) {
       state.user = { name: null, birthdate: null, email: null };
@@ -100,7 +103,6 @@ const authSlice = createSlice({
     },
 
     [updateUser.fulfilled](state, action) {
-      console.log(action.payload);
       state.user.name = action.payload.name;
       state.user.avatarURL = action.payload.avatarURL;
       state.isRefreshing = false;

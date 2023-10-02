@@ -68,12 +68,20 @@ export const InputFile = styled(Field)`
   margin: 0px auto 10px;
 `;
 export const AvatarPreviewWrap = styled.div`
+  overflow: hidden;
   margin-bottom: 39px;
   /* display: flex; */
   column-gap: 60px;
   align-items: center;
   justify-content: center;
 `;
+
+export const PreviewImg = styled.img`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+`;
+
 export const StyledForm = styled(Form)`
   position: relative;
 `;

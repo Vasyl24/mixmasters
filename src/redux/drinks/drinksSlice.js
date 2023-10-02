@@ -7,6 +7,7 @@ import {
   fetchMainpage,
   fetchAllDrinks,
 } from './drinksOperations';
+import { signoutUser } from '../auth/authOperations';
 import { toast } from 'react-hot-toast';
 
 const handleRejected = (state, action) => {
@@ -101,6 +102,11 @@ const drinksSlice = createSlice({
     [fetchAllDrinks.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
+    },
+    [signoutUser.fulfilled](state, action) {
+      state.items = [];
+      state.error = null;
+      state.isLoading = false;
     },
   },
 });

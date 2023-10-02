@@ -5,6 +5,7 @@ import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
 import { lock, unlock } from 'tua-body-scroll-lock';
 import Avatar from 'react-avatar-edit';
+import { toast } from 'react-hot-toast';
 
 import icons from '../../assets/sprite.svg';
 import {
@@ -21,6 +22,7 @@ import {
   AddButton,
   IconEdit,
   AvatarPreviewWrap,
+  PreviewImg,
 } from './UserInfoModal.styled';
 import { yupSchema } from './yupSchema';
 import { selectUser } from '../../redux/selectors';
@@ -58,9 +60,9 @@ export const UserInfoModal = ({ toggleModal, modalIsOpen }) => {
 
   const handleSubmit = values => {
     const formData = new FormData();
+    const avatar = new Blob([preview], { type: 'image/png' }); // Create a BLOB object
     formData.append('name', values.name);
-    formData.append('avatar', preview);
-    console.log(formData.entries());
+    formData.append('avatar', avatar);
     dispatch(updateUser(formData));
     toggleModal();
   };
@@ -76,7 +78,7 @@ export const UserInfoModal = ({ toggleModal, modalIsOpen }) => {
   };
   const onBeforeFileLoad = elem => {
     if (elem.target.files[0].size > 5000000) {
-      alert('File is too big!');
+      toast.error('File is too big! Should be maximum 5Mb');
       elem.target.value = '';
     }
   };
@@ -114,6 +116,7 @@ export const UserInfoModal = ({ toggleModal, modalIsOpen }) => {
           <AvatarPreviewWrap id="avatar-show" style={{ display: 'none' }}>
             <Avatar
               width={100}
+              imageWidth={100}
               height={100}
               onCrop={onCrop}
               onClose={onClose}
@@ -121,14 +124,7 @@ export const UserInfoModal = ({ toggleModal, modalIsOpen }) => {
               src={null}
               label=""
             />
-            {preview && (
-              <>
-                <img src={preview} alt="Preview" />
-                {/* <a href={preview} download="avatar">
-                Download image
-              </a> */}
-              </>
-            )}
+            {preview && <PreviewImg src={preview} alt="Preview" />}
           </AvatarPreviewWrap>
           <Formik
             initialValues={initialValues}
