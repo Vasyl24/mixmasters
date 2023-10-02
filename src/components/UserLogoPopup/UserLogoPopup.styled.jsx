@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 export const ModalStyles = {
-  top: '-30%',
+  // top: '20px',
   borderRadius: '8px',
   width: '177px',
   height: '134px',
   padding: '18px',
   backgroundColor: 'var(--accent-color)',
 };
-export const BackdropStyles = {};
+export const BackdropStyles = {
+  backgroundColor: 'none',
+};
 
 export const EditProfileWrap = styled.div`
   margin-bottom: 38px;

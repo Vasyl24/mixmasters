@@ -30,7 +30,6 @@ export const LogOutModal = ({ toggleModal, modalIsOpen }) => {
   }, [windowWidth]);
 
   const handleLogOut = () => {
-    toggleModal();
     dispatch(signoutUser());
     navigate('/welcome', { replace: true });
   };

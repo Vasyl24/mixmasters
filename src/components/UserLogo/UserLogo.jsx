@@ -33,6 +33,7 @@ export const UserLogo = () => {
           toggleModal={toggleModal}
         />
       )}
+
       {modalComponet === 'LogOutModal' && (
         <LogOutModal toggleModal={toggleModal} modalIsOpen={modalIsOpen} />
       )}
