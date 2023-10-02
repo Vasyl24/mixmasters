@@ -11,7 +11,7 @@ export const Title = styled.p`
   font-size: 28px;
   font-weight: 600;
   line-height: 1.1;
-  color: #f3f3f3;
+  color: var(--text-color);
   @media screen and (min-width: 768px) {
     font-size: 40px;
     font-weight: 600;
@@ -45,7 +45,7 @@ export const Description = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.3;
-  color: #f3f3f3;
+  color: var(--text-color);
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.38;
@@ -60,7 +60,7 @@ export const Recipe = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.3;
-  color: #f3f3f3;
+  color: var(--text-color);
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.38;
@@ -77,6 +77,7 @@ export const ContainerImage = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url(${recipeImgMob1x});
+  border-radius: 8px;
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {

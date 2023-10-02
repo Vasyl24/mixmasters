@@ -24,17 +24,17 @@ export const ToggleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  min-width: 40px;
-  height: 20px;
+  /* min-width: 40px;
+  height: 20px; */
   margin-left: auto;
   margin-right: 28px;
-  padding: 1px;
+  /* padding: 1px;
   border-radius: 10px;
   border: 1px solid var(--background-color);
   background-color: var(--text-btn-color);
   box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.1) inset;
   animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
-    cubic-bezier(0.42, 0, 0.58, 1) forwards;
+    cubic-bezier(0.42, 0, 0.58, 1) forwards; */
 `;
 export const Circle = styled.div`
   width: 16px;
