@@ -4,30 +4,30 @@ import { Circle, Input, Label, ToggleContainer } from './ThemeToggler.styled';
 //import { Toggle } from 'hellaui';
 
 export default function ThemeToggler() {
-
   // const [isChecked, setIsChecked] = useState(false);
-  let position = 'right';
+  // let position = 'right';
   const setDarkMode = () => {
-    document.querySelector("body").setAttribute('data-theme', 'dark');
-    position = 'right';
-    localStorage.setItem("selectedTheme", "dark")
-  }
+    document.querySelector('body').setAttribute('data-theme', 'dark');
+    // position = 'right';
+    localStorage.setItem('selectedTheme', 'dark');
+  };
   const setLightMode = () => {
     document.querySelector('body').setAttribute('data-theme', 'light');
-    position = 'left';
+    // position = 'left';
     localStorage.setItem('selectedTheme', 'light');
   };
-  const selectedTheme = localStorage.getItem("selectedTheme");
+  const selectedTheme = localStorage.getItem('selectedTheme');
 
-  if (selectedTheme === "dark") {
+  if (selectedTheme === 'dark') {
     setDarkMode();
-  } else {setLightMode()}
-
-  const toggleTheme = e => {
-    if (e.target.checked) setDarkMode();
-    else setLightMode()
+  } else {
+    setLightMode();
   }
 
+  // const toggleTheme = e => {
+  //   if (e.target.checked) setDarkMode();
+  //   else setLightMode();
+  // };
 
   return (
     <ToggleContainer>
