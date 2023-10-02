@@ -117,7 +117,7 @@ export const StyledInput = styled.input`
   width: 100%;
   height: 54px;
   border-radius: 200px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
+  border: ${props => props.border || '1px solid rgba(243, 243, 243, 0.2)'};
   background-color: transparent;
   padding-left: 24px;
   margin-bottom: 14px;

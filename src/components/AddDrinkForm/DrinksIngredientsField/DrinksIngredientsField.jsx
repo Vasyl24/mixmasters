@@ -61,18 +61,15 @@ const DrinkIngredientsFields = () => {
     allIngredients.pop();
   };
 
-  const handleDeleteIngredient = ingredientId => {
+
+  const handleDeleteIngredient = id => {
     if (count !== 1) {
       setCount(count - 1);
 
-      // setallIngredients([
-      //   allIngredients.filter(ingredient => ingredient.id !== ingredientId),
-      // ]);
-
-      // const idxOfIngredient = allIngredients.findIndex(
-      //   ingredientId => ingredientId.id === ingredientInput.id
-      // );
-      // allIngredients.splice(idxOfIngredient, 1);
+      const idxOfIngredient = allIngredients.findIndex(
+        ingredientId => ingredientId.id === id
+      );
+      allIngredients.splice(idxOfIngredient, 1);
     }
 
     // deleteContact = contactId => {
@@ -83,6 +80,12 @@ const DrinkIngredientsFields = () => {
     //   }));
     // };
   };
+
+  // const deleteContact = contactId => {
+  //   setallIngredients(prevState =>
+  //     prevState.filter(contact => contact.id !== contactId)
+  //   );
+  // };
 
   return (
     <Wrapper>
@@ -136,6 +139,7 @@ const DrinkIngredientsFields = () => {
                 </MeasureWraper>
               </FlexWraper>
               <DeleteBtn
+                // onClick={() => deleteContact(ingredient.id)}
                 onClick={() => handleDeleteIngredient(ingredient.id)}
                 type="button"
               >

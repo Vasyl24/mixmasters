@@ -2,9 +2,9 @@ import styled, { keyframes } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import icons from '../../assets/sprite.svg';
 
-const slideInFromLeft = keyframes`
+const slideInFromTop = keyframes`
   from {
-    transform: translateX(-200%);
+    transform: translateY(-100%);
   }
   to {
     transform: translateX(0);
@@ -23,7 +23,7 @@ export const LogoGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  animation: ${slideInFromLeft} 0.8s ease-in-out forwards;
+  animation: ${slideInFromTop} 0.8s ease-in-out forwards;
   transform: translateX(-200%);
 
   transition-property: transform;
