@@ -11,6 +11,7 @@ export const ContainerHero = styled.div`
 `;
 
 export const PageTitle = styled.h1`
+color:var(--btn-color);
   margin-bottom: 8px;
   font-size: 32px;
   font-weight: 600;
@@ -43,7 +44,7 @@ export const GlassAlcohol = styled.p`
   font-size: 12px;
   font-weight: 400;
   line-height: 1.2;
-  color: rgba(243, 243, 243, 0.5);
+  color: var(--accent-text-color);
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.25;
@@ -57,7 +58,7 @@ export const Description = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.3;
-  color: rgb(243, 243, 243);
+  color: var(--text-color);
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.38;
@@ -72,8 +73,8 @@ export const Button = styled.button`
   font-size: 14px;
   line-height: calc(18 / 16);
   font-weight: 600;
-  background-color: var(--text-btn-color);
-  color: var(--accent-color);
+  background-color: var(--btn-color);
+  color: var(--list-color);
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
   cursor: pointer;

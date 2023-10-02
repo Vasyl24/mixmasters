@@ -1,6 +1,6 @@
 // import React, { useState, useEffect } from 'react';
 import React from 'react';
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 import { DrinkDescriptionFields } from 'components/AddDrinkForm/DrinkDescriptionFields/DrinkDescriptionFields';
 import DrinkIngredientsFields from 'components/AddDrinkForm/DrinksIngredientsField/DrinksIngredientsField';
 import RecipePreparationFields from 'components/AddDrinkForm/RecipePreparationFields/RecipePreparationFields';
@@ -35,10 +35,12 @@ export const AddDrinkForm = () => {
         onSubmit={handleSubmit}
       >
         <StyledForm>
-          <DrinkDescriptionFields />
-          <DrinkIngredientsFields />
-          <RecipePreparationFields />
-          <AddBtn type="submit" title="Add" />
+          <Form>
+            <DrinkDescriptionFields />
+            <DrinkIngredientsFields />
+            <RecipePreparationFields />
+            <AddBtn type="submit" title="Add" />
+          </Form>
         </StyledForm>
       </Formik>
     </>

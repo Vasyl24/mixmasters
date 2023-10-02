@@ -18,7 +18,7 @@ import {
 import { toast } from 'react-hot-toast';
 import defaultImg from '../../assets/blue-iced-tea.png';
 import { PageTitle } from 'components/PageTitle/PageTitle';
-import Paginator from 'components/Paginator/Paginator';
+import MyPaginator from 'components/MyPaginator/MyPaginator';
 import Loader from 'components/Loader/Loader';
 
 const MyDrinksPage = () => {
@@ -86,7 +86,7 @@ const MyDrinksPage = () => {
         </StyledDefaultContainer>
       )}
       {drinks.length > 8 && (
-        <Paginator
+        <MyPaginator
           drinksPerPage={drinksPerPage}
           totalDrinks={drinks.length}
           onPageChange={onPageChange}
