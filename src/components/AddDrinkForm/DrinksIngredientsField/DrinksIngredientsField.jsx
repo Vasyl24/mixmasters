@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import Select from 'react-select';
 import icons from '../../../assets/sprite.svg';
 import {
@@ -22,20 +21,21 @@ import { optionsIngredientUnit } from '../optionsIngredientUnit';
 import { styles } from './selectStyle';
 import { stylesMeasure } from './selectStyleMeasure';
 import { nanoid } from 'nanoid';
+// import { FieldArray } from 'formik';
 
 const DrinkIngredientsFields = () => {
   const dispatch = useDispatch();
-  const ingredients = useSelector(selectIngredients);
+  const listIngredients = useSelector(selectIngredients);
 
   const [count, setCount] = useState(1);
   const [allIngredients, setallIngredients] = useState([{ id: nanoid() }]);
-  const [amountIngredientUnit, setAmountIngredientUnit] = useState([]);
+  const [amountIngredientUnit, setAmountIngredientUnit] = useState(0);
 
   useEffect(() => {
     dispatch(getIngredients());
   }, [dispatch]);
 
-  const ingredientsSelect = ingredients.map(ingredient => {
+  const ingredientsSelect = listIngredients.map(ingredient => {
     return { value: ingredient.title, label: ingredient.title };
   });
 
@@ -44,6 +44,7 @@ const DrinkIngredientsFields = () => {
     if (e.target.value === '' || regex.test(e.target.value)) {
       setAmountIngredientUnit(e.target.value);
     }
+    console.log(e.target);
   };
 
   const plusButtonHandler = () => {
@@ -61,7 +62,6 @@ const DrinkIngredientsFields = () => {
     allIngredients.pop();
   };
 
-
   const handleDeleteIngredient = id => {
     if (count !== 1) {
       setCount(count - 1);
@@ -71,20 +71,15 @@ const DrinkIngredientsFields = () => {
       );
       allIngredients.splice(idxOfIngredient, 1);
     }
-
-    // deleteContact = contactId => {
-    //   this.setState(prevState => ({
-    //     contacts: prevState.contacts.filter(
-    //       contact => contact.id !== contactId
-    //     ),
-    //   }));
-    // };
   };
 
   // const deleteContact = contactId => {
-  //   setallIngredients(prevState =>
-  //     prevState.filter(contact => contact.id !== contactId)
-  //   );
+  //   if (count !== 1) {
+  //     setCount(count - 1);
+  //     setallIngredients(prevState =>
+  //       prevState.filter(contact => contact.id !== contactId)
+  //     );
+  //   }
   // };
 
   return (
@@ -110,9 +105,15 @@ const DrinkIngredientsFields = () => {
           <li key={ingredient.id}>
             <SelectWraper>
               <FlexWraper>
+                {/* {({ values }) => (
+                  <FieldArray name={ingredients}> */}
+                {/* {values.ingredients.length > 0 &&
+                      values.ingredients.map((ingredient, index) => ( */}
+                {/* <div key={index}> */}
                 <Select
                   options={ingredientsSelect}
-                  name="ingredients"
+                  // name={ingredient.title}
+                  name="ingredient"
                   placeholder={'Select ingredient...'}
                   unstyled
                   required
@@ -121,7 +122,8 @@ const DrinkIngredientsFields = () => {
 
                 <MeasureWraper>
                   <FieldStyle
-                    name="amountIngredient"
+                    // name={ingredient.measure}
+                    name="ingredient"
                     type="number"
                     placeholder="0"
                     value={amountIngredientUnit}
@@ -130,6 +132,8 @@ const DrinkIngredientsFields = () => {
                     required
                   />
                   <Select
+                    // name={ingredient.measure}
+                    name="ingredient"
                     options={optionsIngredientUnit}
                     placeholder={''}
                     unstyled
@@ -137,6 +141,10 @@ const DrinkIngredientsFields = () => {
                     required
                   />
                 </MeasureWraper>
+                {/* </div>
+                      ))}
+                  </FieldArray>
+                )} */}
               </FlexWraper>
               <DeleteBtn
                 // onClick={() => deleteContact(ingredient.id)}

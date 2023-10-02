@@ -27,7 +27,14 @@ import {
   selectGlasses,
 } from 'redux/filters/filtersSelectors';
 
-export const DrinkDescriptionFields = () => {
+export const DrinkDescriptionFields = ({
+  drinkThumb,
+  drink,
+  shortDescription,
+  category,
+  glass,
+  alcoholic,
+}) => {
   const dispatch = useDispatch();
   const hiddenFileInput = useRef(null);
   const glasses = useSelector(selectGlasses);
@@ -51,6 +58,7 @@ export const DrinkDescriptionFields = () => {
 
   const handleOptionChange = changeEvent => {
     setSelectedAlcoholic(changeEvent.target.value);
+    // console.log(changeEvent.target.value);
   };
 
   const handleImgClick = () => {
@@ -65,13 +73,11 @@ export const DrinkDescriptionFields = () => {
     }
   };
 
-  // const handleCategorySelect = category => {
-  //   setSelectedCategory(category);
-  // };
-
-  // const handleGlassSelect = glass => {
-  //   setSelectedGlass(glass);
-  // };
+  const handleBlur = evt => {
+    if (!evt.target.value) {
+      console.log('Please enter a value');
+    }
+  };
 
   return (
     <Wrapper>
@@ -93,8 +99,8 @@ export const DrinkDescriptionFields = () => {
         )}
 
         <ImageInput
+          name={drinkThumb}
           type="file"
-          name="file"
           accept="image/*"
           ref={hiddenFileInput}
           onChange={handleImgUpload}
@@ -102,15 +108,26 @@ export const DrinkDescriptionFields = () => {
       </ImageContainer>
       <FlexContainer>
         <InputWraper>
-          <FieldStyle placeholder="Enter item title" type="text" />
+          <FieldStyle
+            name={drink}
+            placeholder="Enter item title"
+            type="text"
+            onBlur={handleBlur}
+          />
           {/* <Validate></Validate> */}
-          <FieldStyle placeholder="Enter about recipe" type="text" />
+          <FieldStyle
+            name={shortDescription}
+            placeholder="Enter about recipe"
+            type="text"
+            onBlur={handleBlur}
+          />
           {/* <Validate></Validate> */}
         </InputWraper>
         <Margin>
           <SelectWrapper>
             <LabelSelect>Category</LabelSelect>
             <Select
+              name={category}
               defaultValue={[{ value: 'Cocktail', label: 'Cocktail' }]}
               options={categoriesSelect}
               unstyled
@@ -121,6 +138,7 @@ export const DrinkDescriptionFields = () => {
           <SelectWrapper>
             <LabelSelect>Glass</LabelSelect>
             <Select
+              name={glass}
               defaultValue={{
                 value: 'Highball glass',
                 label: 'Highball glass',
@@ -135,6 +153,7 @@ export const DrinkDescriptionFields = () => {
         <RadioWrapper>
           <RadioLabel>
             <RadioButton
+              name={alcoholic}
               id="option1"
               stroke="#F3F3F3"
               type="radio"
@@ -146,6 +165,7 @@ export const DrinkDescriptionFields = () => {
           </RadioLabel>
           <RadioLabel>
             <RadioButton
+              name={alcoholic}
               id="option2"
               type="radio"
               value="nonAlcoholic"
