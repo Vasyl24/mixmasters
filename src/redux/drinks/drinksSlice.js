@@ -22,6 +22,8 @@ const drinksSlice = createSlice({
   name: 'drinks',
   initialState: {
     items: [],
+    page: 1,
+    limit: 9,
     isLoading: false,
     error: null,
   },
@@ -98,6 +100,7 @@ const drinksSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
+      state.count = action.payload.length;
     },
     [fetchAllDrinks.rejected](state, action) {
       state.isLoading = false;
