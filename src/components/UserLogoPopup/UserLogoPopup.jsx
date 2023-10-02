@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
 import icons from '../../assets/sprite.svg';
-import { lock } from 'tua-body-scroll-lock';
+
 import {
   ModalStyles,
   BackdropStyles,
@@ -16,12 +17,23 @@ export const UserLogoPopup = ({
   modalIsOpen,
   toggleModal,
 }) => {
+  useEffect(() => {
+    modalIsOpen
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'auto');
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [modalIsOpen]);
+
   const handleLogOut = () => {
     setModalComponent('LogOutModal');
   };
+
   const handleEdit = () => {
     setModalComponent('UserInfoModal');
   };
+
   return (
     <Rodal
       visible={modalIsOpen}
@@ -31,7 +43,6 @@ export const UserLogoPopup = ({
       showCloseButton={false}
       customStyles={ModalStyles}
       customMaskStyles={BackdropStyles}
-      onAnimationEnd={lock()}
     >
       <EditProfileWrap onClick={handleEdit}>
         <Text>Edit profile</Text>

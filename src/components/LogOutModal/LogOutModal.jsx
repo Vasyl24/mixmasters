@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
-import { lock, unlock } from 'tua-body-scroll-lock';
 
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 import icons from '../../assets/sprite.svg';
@@ -28,6 +27,14 @@ export const LogOutModal = ({ toggleModal, modalIsOpen }) => {
     if (windowWidth >= 768) setModalSize([500, 215]);
     else if (windowWidth < 768) setModalSize([335, 193]);
   }, [windowWidth]);
+  useEffect(() => {
+    modalIsOpen
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'auto');
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [modalIsOpen]);
 
   const handleLogOut = () => {
     dispatch(signoutUser());
@@ -35,7 +42,6 @@ export const LogOutModal = ({ toggleModal, modalIsOpen }) => {
   };
   const handleClose = () => {
     toggleModal();
-    unlock();
   };
   return (
     <Rodal
@@ -48,7 +54,6 @@ export const LogOutModal = ({ toggleModal, modalIsOpen }) => {
       showCloseButton={false}
       customStyles={ModalStyles}
       customMaskStyles={BackdropStyles}
-      onAnimationEnd={lock()}
     >
       <CloseButton type="button" onClick={handleClose}>
         <Icon>

@@ -16,7 +16,7 @@ export const UserLogo = () => {
     setModalIsOpen(!modalIsOpen);
   };
   const handleUserMenuShow = () => {
-    setModalIsOpen(true);
+    toggleModal();
     setModalComponent('UserLogoPopup');
   };
 

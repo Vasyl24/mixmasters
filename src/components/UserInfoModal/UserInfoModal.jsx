@@ -3,7 +3,6 @@ import { Formik, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
-import { lock, unlock } from 'tua-body-scroll-lock';
 import Avatar from 'react-avatar-edit';
 import { toast } from 'react-hot-toast';
 
@@ -41,11 +40,18 @@ export const UserInfoModal = ({ toggleModal, modalIsOpen }) => {
     if (windowWidth >= 768) setModalSize([500, 426]);
     else if (windowWidth < 768) setModalSize([335, 345]);
   }, [windowWidth]);
+  useEffect(() => {
+    modalIsOpen
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'auto');
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [modalIsOpen]);
 
   const initialValues = { name: name };
   const handleClose = () => {
     toggleModal();
-    unlock();
   };
 
   const handleAddFile = () => {
@@ -95,7 +101,6 @@ export const UserInfoModal = ({ toggleModal, modalIsOpen }) => {
         showCloseButton={false}
         customStyles={ModalStyles}
         customMaskStyles={BackdropStyles}
-        onAnimationEnd={lock()}
       >
         <Container>
           <CloseButton type="button" onClick={handleClose}>
