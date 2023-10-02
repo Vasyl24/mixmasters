@@ -34,12 +34,14 @@ export const UserInfoModal = ({ toggleModal, modalIsOpen }) => {
   const [modalSize, setModalSize] = useState([335, 345]);
   const [previewIsShown, setPreviewIsShown] = useState(false);
   const [preview, setPreview] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
   const windowWidth = useWindowWidth();
 
   useEffect(() => {
     if (windowWidth >= 768) setModalSize([500, 426]);
     else if (windowWidth < 768) setModalSize([335, 345]);
   }, [windowWidth]);
+
   useEffect(() => {
     modalIsOpen
       ? (document.body.style.overflow = 'hidden')
@@ -63,12 +65,14 @@ export const UserInfoModal = ({ toggleModal, modalIsOpen }) => {
     avatarPreview.style.display = 'flex';
     setPreviewIsShown(true);
   };
+  const onFileLoad = file => {
+    setImageFile(file);
+  };
 
   const handleSubmit = values => {
     const formData = new FormData();
-    const avatar = new Blob([preview], { type: 'image/png' }); // Create a BLOB object
     formData.append('name', values.name);
-    formData.append('avatar', avatar);
+    formData.append('avatar', imageFile);
     dispatch(updateUser(formData));
     toggleModal();
   };
@@ -128,6 +132,7 @@ export const UserInfoModal = ({ toggleModal, modalIsOpen }) => {
               onBeforeFileLoad={onBeforeFileLoad}
               src={null}
               label=""
+              onFileLoad={onFileLoad}
             />
             {preview && <PreviewImg src={preview} alt="Preview" />}
           </AvatarPreviewWrap>
