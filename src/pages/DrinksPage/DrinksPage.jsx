@@ -5,18 +5,28 @@ import { PageTitle } from 'components/PageTitle/PageTitle';
 import Paginator from 'components/Paginator/Paginator';
 import { StyledMainContainer } from './DrinksPage.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDrinks } from 'redux/drinks/drinksSelectors';
+import {
+  selectDrinks,
+  selectLimit,
+  selectPage,
+} from 'redux/drinks/drinksSelectors';
 import { fetchAllDrinks } from 'redux/drinks/drinksOperations';
 import { selectSearchQuery } from 'redux/filters/filtersSelectors';
 import {
   setSelectedCategory,
   setSelectedIngredient,
 } from 'redux/filters/filtersSlice';
+import { useSearchParams } from 'react-router-dom';
 
 export const DrinksPage = () => {
   const dispatch = useDispatch();
 
   const drinks = useSelector(selectDrinks);
+  const page = useSelector(selectPage);
+  const limit = useSelector(selectLimit);
+  const allDrinks = drinks.result;
+  const count = drinks.count;
+
   const searchQuery = useSelector(selectSearchQuery);
   const selectedCategory = useSelector(state => state.filters.selectedCategory);
   const selectedIngredient = useSelector(
@@ -24,6 +34,36 @@ export const DrinksPage = () => {
   );
 
   const [filteredDrinks, setFilteredDrinks] = useState([]);
+
+  // const [searchParams, setSearchParams] = useSearchParams();
+  const [setSearchParams] = useSearchParams();
+  useEffect(() => {
+    setSearchParams({ page, limit });
+  }, [page, limit, setSearchParams]);
+
+  // const [drinksPerPage, setDrinksPerPage] = useState(9);
+  // const [pageNumbersToShow, setPageNumbersToShow] = useState(8);
+
+  // const updateDrinksPerPageAndPageNumbers = () => {
+  //   if (window.innerWidth < 768) {
+  //     setDrinksPerPage(10);
+  //     setPageNumbersToShow(5);
+  //   } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
+  //     setDrinksPerPage(10);
+  //     setPageNumbersToShow(8);
+  //   } else if (window.innerWidth >= 1440) {
+  //     setDrinksPerPage(9);
+  //     setPageNumbersToShow(8);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   updateDrinksPerPageAndPageNumbers();
+  //   window.addEventListener('resize', updateDrinksPerPageAndPageNumbers);
+  //   return () => {
+  //     window.removeEventListener('resize', updateDrinksPerPageAndPageNumbers);
+  //   };
+  // }, []);
 
   useEffect(() => {
     dispatch(setSelectedCategory(selectedCategory));
@@ -40,29 +80,41 @@ export const DrinksPage = () => {
         },
       })
     );
-  }, [dispatch, searchQuery, selectedCategory, selectedIngredient]);
+  }, [
+    dispatch,
+    limit,
+    page,
+
+    searchQuery,
+    selectedCategory,
+    selectedIngredient,
+  ]);
 
   useEffect(() => {
-    const filtered = drinks.filter(drink => {
-      return (
-        drink.drink.toLowerCase().includes(searchQuery.toLowerCase()) &&
-        (!selectedCategory || drink.category === selectedCategory) &&
-        (!selectedIngredient ||
-          drink.ingredients.some(ingredient =>
-            ingredient.title.includes(selectedIngredient)
-          ))
-      );
-    });
+    if (allDrinks) {
+      const filtered = allDrinks.filter(drink => {
+        return (
+          drink.drink.toLowerCase().includes(searchQuery.toLowerCase()) &&
+          (!selectedCategory || drink.category === selectedCategory) &&
+          (!selectedIngredient ||
+            drink.ingredients.some(ingredient =>
+              ingredient.title.includes(selectedIngredient)
+            ))
+        );
+      });
 
-    setFilteredDrinks(filtered);
-  }, [drinks, searchQuery, selectedCategory, selectedIngredient]);
+      setFilteredDrinks(filtered);
+    }
+  }, [allDrinks, drinks, searchQuery, selectedCategory, selectedIngredient]);
 
   return (
     <StyledMainContainer>
       <PageTitle title="Drinks" />
       <DrinksSearch />
       <Drinks drinks={filteredDrinks} />
-      {filteredDrinks.length > 0 && <Paginator />}
+      {filteredDrinks.length > 0 && (
+        <Paginator page={page} limit={limit} count={count} />
+      )}
     </StyledMainContainer>
   );
 };

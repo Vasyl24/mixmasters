@@ -95,7 +95,7 @@ export const fetchAllDrinks = createAsyncThunk(
       const response = await axios.get(
         `/drinks/search?page=${page}&limit=${limit}`
       );
-      return response.data.result;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
