@@ -25,7 +25,7 @@ import {
   ValidContainer,
   ValidMessage,
   ContainerLayout,
-} from './AuthForm.styled';
+} from './SignUpForm.styled';
 
 const validationSchema = yup.object().shape({
   name: yup
@@ -129,8 +129,12 @@ const AuthForm = () => {
               dateFormat="dd/MM/yyyy"
               onBlur={formik.handleBlur}
               maxDate={yesterday}
-              yearDropdown
-              yearDropdownItemNumber={10}
+              showYearDropdown
+              showMonthDropdown
+              yearDropdownItemNumber={70}
+              scrollableYearDropdown
+              scrollableMonthDropdown
+              dropdownMode="select"
             />
             <StyledIconСalendar onClick={openCalendar}>
               <IconСalendar>

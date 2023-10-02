@@ -1,4 +1,4 @@
-import AuthFormIn from 'components/AuthFormIn/AuthFormIn';
+import AuthFormIn from 'components/SignInForm/SignInForm';
 
 const SignUpPage = () => {
   return (

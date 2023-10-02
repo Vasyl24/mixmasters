@@ -23,7 +23,7 @@ import {
   ValidMessage,
   IconDone,
   IconError,
-} from './AuthFormIn.styled';
+} from './SignInForm.styled';
 
 const validationSchema = yup.object().shape({
   email: yup
