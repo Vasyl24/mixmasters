@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToggleContainer, Input, Label } from './ThemeToggler.styled';
+import { ToggleContainer } from './ThemeToggler.styled';
 // import { ToggleContainer } from './ThemeToggler.styled';
 
 export default function ThemeToggler() {
