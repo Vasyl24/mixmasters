@@ -30,12 +30,11 @@ const handleRejected = (state, action) => {
 const drinksSlice = createSlice({
   name: 'drinks',
   initialState: {
-    //Для тестування. Замінити на "items: [],"" коли буде робочий бек
     items: [],
-    // items: [],
+    page: 1,
+    limit: 9,
     isLoading: false,
     error: null,
-    
   },
   extraReducers: {
     [fetchMyDrinks.pending](state) {
@@ -128,6 +127,7 @@ const drinksSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
+      state.count = action.payload.length;
     },
     [fetchAllDrinks.rejected](state, action) {
       state.isLoading = false;
