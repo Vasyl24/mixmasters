@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
-import { lock, unlock } from 'tua-body-scroll-lock';
+import { lock } from 'tua-body-scroll-lock';
 
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 import icons from '../../assets/sprite.svg';
@@ -22,11 +22,10 @@ import {
 export const LogOutModal = ({ toggleModal, modalIsOpen }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [modalSize, setModalSize] = useState([335, 193]);
+  const [modalSize, setModalSize] = useState(['335', '193']);
   const windowWidth = useWindowWidth();
   useEffect(() => {
-    if (windowWidth >= 768) setModalSize([500, 215]);
-    else if (windowWidth < 768) setModalSize([335, 193]);
+    if (windowWidth >= 768) setModalSize(['500', '215']);
   }, [windowWidth]);
 
   const handleLogOut = () => {
@@ -36,14 +35,13 @@ export const LogOutModal = ({ toggleModal, modalIsOpen }) => {
   };
   const handleClose = () => {
     toggleModal();
-    unlock();
   };
   return (
     <Rodal
       width={modalSize[0]}
       height={modalSize[1]}
       visible={modalIsOpen}
-      onClose={handleClose}
+      onClose={toggleModal}
       closeOnEsc={true}
       animation={'zoom'}
       showCloseButton={false}

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 export const ModalStyles = {
+  top: '-70%',
   borderRadius: '8px',
   padding: '50px',
   backgroundColor: 'var(--accent-color)',
