@@ -5,7 +5,11 @@ import { PageTitle } from 'components/PageTitle/PageTitle';
 import Paginator from 'components/Paginator/Paginator';
 import { StyledMainContainer } from './DrinksPage.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDrinks, selectLimit, selectPage } from 'redux/drinks/drinksSelectors';
+import {
+  selectDrinks,
+  selectLimit,
+  selectPage,
+} from 'redux/drinks/drinksSelectors';
 import { fetchAllDrinks } from 'redux/drinks/drinksOperations';
 import { selectSearchQuery } from 'redux/filters/filtersSelectors';
 import {
@@ -31,34 +35,35 @@ export const DrinksPage = () => {
 
   const [filteredDrinks, setFilteredDrinks] = useState([]);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  // const [searchParams, setSearchParams] = useSearchParams();
+  const [setSearchParams] = useSearchParams();
   useEffect(() => {
     setSearchParams({ page, limit });
   }, [page, limit, setSearchParams]);
 
-  const [drinksPerPage, setDrinksPerPage] = useState(9);
-  const [pageNumbersToShow, setPageNumbersToShow] = useState(8);
+  // const [drinksPerPage, setDrinksPerPage] = useState(9);
+  // const [pageNumbersToShow, setPageNumbersToShow] = useState(8);
 
-  const updateDrinksPerPageAndPageNumbers = () => {
-    if (window.innerWidth < 768) {
-      setDrinksPerPage(10);
-      setPageNumbersToShow(5);
-    } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
-      setDrinksPerPage(10);
-      setPageNumbersToShow(8);
-    } else if (window.innerWidth >= 1440) {
-      setDrinksPerPage(9);
-      setPageNumbersToShow(8);
-    }
-  };
+  // const updateDrinksPerPageAndPageNumbers = () => {
+  //   if (window.innerWidth < 768) {
+  //     setDrinksPerPage(10);
+  //     setPageNumbersToShow(5);
+  //   } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
+  //     setDrinksPerPage(10);
+  //     setPageNumbersToShow(8);
+  //   } else if (window.innerWidth >= 1440) {
+  //     setDrinksPerPage(9);
+  //     setPageNumbersToShow(8);
+  //   }
+  // };
 
-  useEffect(() => {
-    updateDrinksPerPageAndPageNumbers();
-    window.addEventListener('resize', updateDrinksPerPageAndPageNumbers);
-    return () => {
-      window.removeEventListener('resize', updateDrinksPerPageAndPageNumbers);
-    };
-  }, []);
+  // useEffect(() => {
+  //   updateDrinksPerPageAndPageNumbers();
+  //   window.addEventListener('resize', updateDrinksPerPageAndPageNumbers);
+  //   return () => {
+  //     window.removeEventListener('resize', updateDrinksPerPageAndPageNumbers);
+  //   };
+  // }, []);
 
   useEffect(() => {
     dispatch(setSelectedCategory(selectedCategory));
