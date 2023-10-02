@@ -1,4 +1,4 @@
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const slideIn = keyframes`
   from {
@@ -27,7 +27,6 @@ export const ToggleContainer = styled.div`
   min-width: 40px;
   height: 20px;
   margin-left: auto;
-  margin-right: 28px;
   padding: 1px;
   border-radius: 10px;
   border: 1px solid var(--background-color);

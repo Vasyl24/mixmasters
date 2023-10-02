@@ -26,14 +26,12 @@ export const UserMenu = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
-  margin-right: 14px;
   transition: transform;
   cursor: pointer;
   animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
     cubic-bezier(0.42, 0, 0.58, 1) forwards;
 
   @media (min-width: 768px) {
-    margin-right: 24px;
     gap: 14px;
   }
   @media (min-width: 1440px) {

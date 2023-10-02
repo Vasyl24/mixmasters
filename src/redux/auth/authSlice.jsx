@@ -7,6 +7,7 @@ import {
   signoutUser,
   refreshUser,
   updateUser,
+  subscribeUser,
 } from './authOperations';
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
     birthdate: null,
     email: null,
     avatarURL: '',
+    subscription: '',
   },
   token: null,
   isLoggedIn: false,
@@ -111,6 +113,25 @@ const authSlice = createSlice({
     },
 
     [updateUser.rejected](state, action) {
+      state.error = action.payload;
+      state.isRefreshing = false;
+      state.isLoading = false;
+    },
+
+    // subscribeUser
+    [subscribeUser.pending](state, _) {
+      state.isRefreshing = true;
+      state.isLoading = true;
+    },
+
+    [subscribeUser.fulfilled](state, action) {
+      state.user.subscription = action.payload.subscription ?? '';
+      state.isRefreshing = false;
+      state.isLoading = false;
+      state.error = null;
+    },
+
+    [subscribeUser.rejected](state, action) {
       state.error = action.payload;
       state.isRefreshing = false;
       state.isLoading = false;

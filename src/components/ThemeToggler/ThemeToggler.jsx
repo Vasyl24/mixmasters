@@ -1,14 +1,14 @@
 import React from 'react';
-import { ToggleContainer } from './ThemeToggler.styled';
+import { Circle, Input, Label, ToggleContainer } from './ThemeToggler.styled';
 // import { ToggleContainer } from './ThemeToggler.styled';
 
 export default function ThemeToggler() {
   return (
     <ToggleContainer>
-      {/* <Label for={'checkbox'}> */}
-      {/* <Input type={'checkbox'} id="checkbox" /> */}
-      {/* </Label> */}
-      {/*  <Circle /> */}
+      <Label>
+        <Input type={'checkbox'} id="checkbox" />
+      </Label>
+      <Circle />
     </ToggleContainer>
   );
 }
