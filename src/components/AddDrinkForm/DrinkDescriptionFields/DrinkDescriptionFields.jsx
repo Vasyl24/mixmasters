@@ -27,14 +27,7 @@ import {
   selectGlasses,
 } from 'redux/filters/filtersSelectors';
 
-export const DrinkDescriptionFields = ({
-  drinkThumb,
-  drink,
-  shortDescription,
-  category,
-  glass,
-  alcoholic,
-}) => {
+export const DrinkDescriptionFields = ({ setFieldValue }) => {
   const dispatch = useDispatch();
   const hiddenFileInput = useRef(null);
   const glasses = useSelector(selectGlasses);
@@ -56,8 +49,9 @@ export const DrinkDescriptionFields = ({
     return { value: glass, label: glass };
   });
 
-  const handleOptionChange = changeEvent => {
-    setSelectedAlcoholic(changeEvent.target.value);
+  const handleOptionChange = evt => {
+    setSelectedAlcoholic(evt.target.value);
+    // setFieldValue('alcoholic', evt.target.value);
     // console.log(changeEvent.target.value);
   };
 
@@ -99,7 +93,7 @@ export const DrinkDescriptionFields = ({
         )}
 
         <ImageInput
-          name={drinkThumb}
+          name="drinkThumb"
           type="file"
           accept="image/*"
           ref={hiddenFileInput}
@@ -109,14 +103,14 @@ export const DrinkDescriptionFields = ({
       <FlexContainer>
         <InputWraper>
           <FieldStyle
-            name={drink}
+            name="drink"
             placeholder="Enter item title"
             type="text"
             onBlur={handleBlur}
           />
           {/* <Validate></Validate> */}
           <FieldStyle
-            name={shortDescription}
+            name="shortDescription"
             placeholder="Enter about recipe"
             type="text"
             onBlur={handleBlur}
@@ -127,7 +121,7 @@ export const DrinkDescriptionFields = ({
           <SelectWrapper>
             <LabelSelect>Category</LabelSelect>
             <Select
-              name={category}
+              name="category"
               defaultValue={[{ value: 'Cocktail', label: 'Cocktail' }]}
               options={categoriesSelect}
               unstyled
@@ -138,7 +132,7 @@ export const DrinkDescriptionFields = ({
           <SelectWrapper>
             <LabelSelect>Glass</LabelSelect>
             <Select
-              name={glass}
+              name="glass"
               defaultValue={{
                 value: 'Highball glass',
                 label: 'Highball glass',
@@ -153,7 +147,7 @@ export const DrinkDescriptionFields = ({
         <RadioWrapper>
           <RadioLabel>
             <RadioButton
-              name={alcoholic}
+              name="alcoholic"
               id="option1"
               stroke="#F3F3F3"
               type="radio"
@@ -165,7 +159,7 @@ export const DrinkDescriptionFields = ({
           </RadioLabel>
           <RadioLabel>
             <RadioButton
-              name={alcoholic}
+              name="alcoholic"
               id="option2"
               type="radio"
               value="nonAlcoholic"
