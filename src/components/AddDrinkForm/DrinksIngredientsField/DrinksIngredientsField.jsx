@@ -23,13 +23,13 @@ import { stylesMeasure } from './selectStyleMeasure';
 import { nanoid } from 'nanoid';
 // import { FieldArray } from 'formik';
 
-const DrinkIngredientsFields = () => {
+const DrinkIngredientsFields = ({ values, setFieldValue }) => {
   const dispatch = useDispatch();
   const listIngredients = useSelector(selectIngredients);
 
   const [count, setCount] = useState(1);
   const [allIngredients, setallIngredients] = useState([{ id: nanoid() }]);
-  const [amountIngredientUnit, setAmountIngredientUnit] = useState(0);
+  // const [amountIngredientUnit, setAmountIngredientUnit] = useState(0);
 
   useEffect(() => {
     dispatch(getIngredients());
@@ -39,13 +39,13 @@ const DrinkIngredientsFields = () => {
     return { value: ingredient.title, label: ingredient.title };
   });
 
-  const handleAmountUnitChange = e => {
-    const regex = /^[0-9\b]+$/;
-    if (e.target.value === '' || regex.test(e.target.value)) {
-      setAmountIngredientUnit(e.target.value);
-    }
-    console.log(e.target);
-  };
+  // const handleAmountUnitChange = e => {
+  //   const regex = /^[0-9\b]+$/;
+  //   if (e.target.value === '' || regex.test(e.target.value)) {
+  //     setAmountIngredientUnit(e.target.value);
+  //   }
+  //   console.log(e.target);
+  // };
 
   const plusButtonHandler = () => {
     setCount(count + 1);
@@ -100,40 +100,34 @@ const DrinkIngredientsFields = () => {
           </StyledButton>
         </CounterWrp>
       </CounterWrapper>
+
       <IngredientsList>
         {allIngredients.map(ingredient => (
           <li key={ingredient.id}>
             <SelectWraper>
               <FlexWraper>
-                {/* {({ values }) => (
-                  <FieldArray name={ingredients}> */}
-                {/* {values.ingredients.length > 0 &&
-                      values.ingredients.map((ingredient, index) => ( */}
-                {/* <div key={index}> */}
                 <Select
                   options={ingredientsSelect}
-                  // name={ingredient.title}
-                  name="ingredient"
+                  name="ingredient.title"
                   placeholder={'Select ingredient...'}
                   unstyled
                   required
                   styles={styles}
+                  // onChange={}
                 />
 
                 <MeasureWraper>
                   <FieldStyle
-                    // name={ingredient.measure}
                     name="ingredient"
                     type="number"
                     placeholder="0"
-                    value={amountIngredientUnit}
-                    onChange={handleAmountUnitChange}
+                    // onChange={e => setFieldValue('ingredients', e.target.value)}
+                    value={values.ingredients}
                     min={0}
                     required
                   />
                   <Select
-                    // name={ingredient.measure}
-                    name="ingredient"
+                    name="ingredient.measure"
                     options={optionsIngredientUnit}
                     placeholder={''}
                     unstyled
@@ -141,11 +135,8 @@ const DrinkIngredientsFields = () => {
                     required
                   />
                 </MeasureWraper>
-                {/* </div>
-                      ))}
-                  </FieldArray>
-                )} */}
               </FlexWraper>
+
               <DeleteBtn
                 // onClick={() => deleteContact(ingredient.id)}
                 onClick={() => handleDeleteIngredient(ingredient.id)}
