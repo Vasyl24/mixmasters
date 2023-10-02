@@ -2,14 +2,21 @@ import styled from 'styled-components';
 import { Form, Field } from 'formik';
 
 export const ModalStyles = {
-  top: '-50%',
+  // top: '-50%',
   borderRadius: '8px',
-  padding: '50px',
+  padding: '0px',
   backgroundColor: 'var(--accent-color)',
 };
 export const BackdropStyles = {
   backgroundColor: 'rgba(0, 0, 0, 0.8)',
 };
+export const Container = styled.div`
+  margin: 0px auto;
+  padding: 50px 25px;
+  @media screen and (min-width: 768px) {
+    padding: 50px 50px;
+  }
+`;
 
 export const CloseButton = styled.button`
   position: absolute;
@@ -59,6 +66,13 @@ export const AddButton = styled.button`
 export const InputFile = styled(Field)`
   cursor: pointer;
   margin: 0px auto 10px;
+`;
+export const AvatarPreviewWrap = styled.div`
+  margin-bottom: 39px;
+  /* display: flex; */
+  column-gap: 60px;
+  align-items: center;
+  justify-content: center;
 `;
 export const StyledForm = styled(Form)`
   position: relative;

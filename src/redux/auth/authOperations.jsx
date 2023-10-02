@@ -13,11 +13,11 @@ export const signupUser = createAsyncThunk(
       return res.data;
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        toast.error("Bad request")
+        toast.error('Bad request');
       } else if (error.response && error.response.status === 409) {
-        toast.error("Email in use")
+        toast.error('Email in use');
       } else {
-        toast.error("Registration error")
+        toast.error('Registration error');
       }
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -33,11 +33,11 @@ export const signinUser = createAsyncThunk(
       return res.data;
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        toast.error("Unauthorized")
+        toast.error('Unauthorized');
       } else if (error.response && error.response.status === 409) {
-        toast.error("Email in use")
+        toast.error('Email in use');
       } else {
-        toast.error("Authentication Error")
+        toast.error('Authentication Error');
       }
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -77,10 +77,15 @@ export const refreshUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'auth/update',
-  async (credentials, thunkAPI) => {
+  async (formData, thunkAPI) => {
     try {
-      const res = await axios.patch('/users/update', credentials);
-      // console.log(res.data);
+      const res = await axios.patch('/users/update', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(formData);
+      console.log(res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
