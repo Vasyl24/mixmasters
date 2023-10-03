@@ -1,33 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyledArrows, StyledPagination } from './Paginator.module';
 import sprite from 'assets/sprite.svg';
-import { useDispatch } from 'react-redux';
-import { setPageValue } from 'redux/drinks/drinksOperations';
+import { useWindowWidth } from 'hooks/useWindowWidth';
 
-const Paginator = ({ page, limit, count, pageNumbersToShow }) => {
-  const dispatch = useDispatch();
-
-  const totalPages = Math.ceil(count / limit);
-
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
+const Paginator = ({ page, setPage, restPages, totalPages }) => {
+  const [pagesToShow, setPagesToShow] = useState(5);
+  const windowWidth = useWindowWidth();
 
   const handlePageChange = newPage => {
-    if (newPage >= 1 && newPage <= totalPages) {
-      dispatch(setPageValue(newPage));
+    if (newPage >= 1 && newPage <= restPages) {
+      setPage(newPage);
     }
   };
 
+  useEffect(() => {
+    if (windowWidth > 0 && windowWidth < 768 && pagesToShow !== 5) {
+      setPagesToShow(5);
+    } else if (windowWidth >= 768 && pagesToShow !== 8) {
+      setPagesToShow(8);
+    }
+  }, [windowWidth, pagesToShow]);
+
   const getVisiblePageNumbers = () => {
-    const halfPageNumbersToShow = Math.floor(pageNumbersToShow / 2);
-    const currentPageIndex = pageNumbers.indexOf(page);
+    // let visiblePages = Array.from({ length: pagesToShow }, (_, k) => k + 1);
 
-    const start = Math.max(0, currentPageIndex - halfPageNumbersToShow);
-    const end = Math.min(pageNumbers.length - 1, start + pageNumbersToShow - 1);
+    const min = page > pagesToShow ? page - pagesToShow + 1 : 1;
+    const max = page < totalPages ? min + pagesToShow : totalPages + 1;
+    console.log(min, max);
 
-    return pageNumbers.slice(start, end + 1);
+    let visiblePages = Array.from({ length: max - min }, (_, i) => i + min);
+
+    return visiblePages;
   };
 
   return (

@@ -5,9 +5,9 @@ import {
   fetchFavoriteDrinks,
   deleteFavoriteDrink,
   fetchMainpage,
-  fetchAllDrinks,
-  setLimitValue,
-  setPageValue,
+  // fetchAllDrinks,
+  // setLimitValue,
+  // setPageValue,
 } from './drinksOperations';
 import { signoutUser } from '../auth/authOperations';
 import { toast } from 'react-hot-toast';
@@ -24,8 +24,6 @@ const drinksSlice = createSlice({
   name: 'drinks',
   initialState: {
     items: [],
-    page: 1,
-    limit: 9,
     isLoading: false,
     error: null,
   },
@@ -95,32 +93,32 @@ const drinksSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    [fetchAllDrinks.pending](state) {
-      state.isLoading = true;
-    },
-    [fetchAllDrinks.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
-      state.count = action.payload.length;
-    },
-    [fetchAllDrinks.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+    // [fetchAllDrinks.pending](state) {
+    //   state.isLoading = true;
+    // },
+    // [fetchAllDrinks.fulfilled](state, action) {
+    //   state.isLoading = false;
+    //   state.error = null;
+    //   state.items = action.payload;
+    //   state.count = action.payload.length;
+    // },
+    // [fetchAllDrinks.rejected](state, action) {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
     [signoutUser.fulfilled](state, action) {
       state.items = [];
       state.error = null;
       state.isLoading = false;
     },
 
-    [setLimitValue.fulfilled](state, action) {
-      state.limit = action.payload;
-    },
+    // [setLimitValue.fulfilled](state, action) {
+    //   state.limit = action.payload;
+    // },
 
-    [setPageValue.fulfilled](state, action) {
-      state.page = action.payload;
-    },
+    // [setPageValue.fulfilled](state, action) {
+    //   state.page = action.payload;
+    // },
   },
 });
 

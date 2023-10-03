@@ -88,19 +88,19 @@ export const fetchMainpage = createAsyncThunk(
   }
 );
 
-export const fetchAllDrinks = createAsyncThunk(
-  'drinks/fetchAllDrinks',
-  async ({ page, limit }, thunkAPI) => {
-    try {
-      const response = await axios.get(
-        `/drinks/search?page=${page}&limit=${limit}`
-      );
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// export const fetchAllDrinks = createAsyncThunk(
+//   'drinks/fetchAllDrinks',
+//   async ({ page, limit }, thunkAPI) => {
+//     try {
+//       const response = await axios.get(
+//         `/drinks/search?page=${page}&limit=${limit}`
+//       );
+//       return response.data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const fetchPopularDrinks = createAsyncThunk(
   'drinks/fetchPopularDrinks',
@@ -114,10 +114,10 @@ export const fetchPopularDrinks = createAsyncThunk(
   }
 );
 
-export const setLimitValue = createAsyncThunk('drinks/setLimitValue', limit => {
-  return limit;
-});
+// export const setLimitValue = createAsyncThunk('drinks/setLimitValue', limit => {
+//   return limit;
+// });
 
-export const setPageValue = createAsyncThunk('drinks/setPageValue', page => {
-  return page;
-});
+// export const setPageValue = createAsyncThunk('drinks/setPageValue', page => {
+//   return page;
+// });

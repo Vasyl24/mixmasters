@@ -1,62 +1,59 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import {
   StyledFilterContainer,
   StyledSelectInput,
   StyledTextInput,
 } from './DrinksSearch.styled';
-import {
-  selectCategories,
-  selectIngredients,
-  selectSearchQuery,
-} from 'redux/filters/filtersSelectors';
-import { useEffect } from 'react';
-import { getCategories, getIngredients } from 'redux/filters/filtersOperations';
-import {
-  setSearchQuery,
-  setSelectedCategory,
-  setSelectedIngredient,
-} from 'redux/filters/filtersOperations';
 
-export const DrinksSearch = () => {
-  const dispatch = useDispatch();
+import { fetchCategories, fetchIngerients } from './DrinkSearchApi';
 
-  const categories = useSelector(selectCategories);
-  const ingredients = useSelector(selectIngredients);
-  const searchQuery = useSelector(selectSearchQuery);
+export const DrinksSearch = ({ setQuery, setCategory, setIngredient }) => {
+  const [categories, setCategories] = useState([]);
+  const categoryOptions = categories.map(category => {
+    return { value: category, label: category };
+  });
+  const [ingredients, setIngredients] = useState([]);
+  const ingredientOptions = ingredients.map(ingredient => {
+    return { value: ingredient.title, label: ingredient.title };
+  });
 
   const handleTextChange = e => {
-    dispatch(setSearchQuery(e.target.value));
+    setQuery(e.target.value);
   };
 
   const handleCategoryChange = e => {
-    dispatch(setSelectedCategory(e.value));
+    setCategory(e.value);
   };
 
   const handleIngredientChange = e => {
-    dispatch(setSelectedIngredient(e.value));
+    setIngredient(e.value);
   };
 
-  const categoryOptions = [
-    { value: '', label: 'All categories' },
-    ...categories.map(category => ({
-      value: category,
-      label: category,
-    })),
-  ];
-
-  const ingredientOptions = [
-    { value: '', label: 'Ingredients' },
-    ...ingredients.map((ingredient, index) => ({
-      key: index,
-      value: ingredient.title,
-      label: ingredient.title,
-    })),
-  ];
-
   useEffect(() => {
-    dispatch(getCategories());
-    dispatch(getIngredients());
-  }, [dispatch]);
+    async function loadCategories() {
+      try {
+        const response = await fetchCategories();
+        setCategories(response);
+      } catch (error) {
+        if (error.code) {
+          return toast.error(`Oops, something went wrong.`);
+        }
+      }
+    }
+    async function loadIngredients() {
+      try {
+        const response = await fetchIngerients();
+        setIngredients(response);
+      } catch (error) {
+        if (error.code) {
+          return toast.error(`Oops, something went wrong.`);
+        }
+      }
+    }
+    loadCategories();
+    loadIngredients();
+  }, []);
 
   return (
     <label htmlFor="categorySelect">
@@ -64,18 +61,21 @@ export const DrinksSearch = () => {
         <StyledTextInput
           type="text"
           placeholder="Enter the text"
-          value={searchQuery}
+          name="query"
+          // value={searchQuery}
           onChange={handleTextChange}
         />
         <StyledSelectInput
           classNamePrefix="Select"
           onChange={handleCategoryChange}
           placeholder="All categories"
+          name="category"
           options={categoryOptions}
         />
         <StyledSelectInput
           onChange={handleIngredientChange}
           classNamePrefix="Select"
+          name="ingredient"
           placeholder="Ingredients"
           options={ingredientOptions}
         ></StyledSelectInput>
