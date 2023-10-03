@@ -190,7 +190,7 @@ const AuthForm = () => {
           <label htmlFor="password">
             <StyledInput
               name="password"
-              type="password"
+              type={textPassword ? 'password' : 'text'}
               placeholder="Password"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
