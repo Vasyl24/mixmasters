@@ -34,8 +34,6 @@ const DrinkPage = () => {
     getDrinkInfo();
   }, [dispatch, drinkId]);
 
-console.log(drinkInfo);
-
   return (
     <div>
       {isLoading && <Loader/>}
