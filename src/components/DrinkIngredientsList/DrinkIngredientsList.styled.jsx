@@ -5,7 +5,7 @@ export const Subtitle = styled.p`
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25;
-  color: rgba(243, 243, 243, 0.5);
+  color: var(--accent-text-color);
   @media screen and (min-width: 768px) {
     margin-bottom: 24px;
   }
@@ -44,7 +44,8 @@ export const IngredientItem = styled.li`
 
 export const ContainerImage = styled.div`
   padding: 22px 23px 23px 22px;
-  background-color: rgba(22, 31, 55, 0.5);
+  background-color: var(--image-wrapper-color);
+  /* background-color: rgba(22, 31, 55, 0.5); */
   /* background-image: ${props => `url(${props.img})`}; */
   border-radius: 8px;
   margin-bottom: 8px;
