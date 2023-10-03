@@ -35,6 +35,7 @@ export const TextareaStyle = styled(Field)`
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
     @media (min-width: 768px) {
+      margin-bottom:20px;
 		width: 480px;
 		padding: 14px 24px;
 		font-size: 17px;
@@ -46,7 +47,6 @@ export const TextareaStyle = styled(Field)`
 	:focus {
 		border-color: #f3f3f3;
 	}
-}
 `;
 export const Validate = styled.div`
   margin-top: -36px;

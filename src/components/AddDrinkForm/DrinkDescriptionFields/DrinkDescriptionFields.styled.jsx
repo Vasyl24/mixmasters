@@ -209,8 +209,14 @@ export const RadioWrapper = styled.div`
 
 export const RadioLabel = styled.label`
   cursor: pointer;
+ font-size: 16px;
+
 `;
 
 export const RadioButton = styled.input`
   cursor: pointer;
+  margin-right: 8px;
+  accent-color: #f3f3f3;
+  /* width: 16px;
+  height: 16px; */
 `;

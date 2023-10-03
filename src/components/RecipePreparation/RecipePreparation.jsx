@@ -17,7 +17,7 @@ export function RecipePreparation({ description, instructions }) {
           <Description>{description}</Description>
           <Recipe>{instructions}</Recipe>
         </ContainerDescription>
-        <ContainerImage />
+        <ContainerImage/>
       </ContainerRecipe>
     </>
   );
