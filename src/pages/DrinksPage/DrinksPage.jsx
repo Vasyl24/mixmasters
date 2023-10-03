@@ -1,134 +1,83 @@
 import React, { useState, useEffect } from 'react';
+// import { useSearchParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
 import { Drinks } from 'components/Drinks/Drinks';
 import { DrinksSearch } from 'components/DrinksSearch/DrinksSearch';
 import { PageTitle } from 'components/PageTitle/PageTitle';
 import Paginator from 'components/Paginator/Paginator';
 import { StyledMainContainer } from './DrinksPage.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectDrinks,
-  selectLimit,
-  selectPage,
-} from 'redux/drinks/drinksSelectors';
-import { fetchAllDrinks, setLimitValue } from 'redux/drinks/drinksOperations';
-import { selectSearchQuery } from 'redux/filters/filtersSelectors';
-import {
-  setSelectedCategory,
-  setSelectedIngredient,
-} from 'redux/filters/filtersSlice';
-import { useSearchParams } from 'react-router-dom';
+import { fetchDrinks } from '../../components/DrinksSearch/DrinkSearchApi';
+import { useWindowWidth } from 'hooks/useWindowWidth';
 
 export const DrinksPage = () => {
-  const dispatch = useDispatch();
-
-  const drinks = useSelector(selectDrinks);
-  const page = useSelector(selectPage);
-  const limit = useSelector(selectLimit);
-  const allDrinks = drinks.result;
-  const count = drinks.count;
-
-  const searchQuery = useSelector(selectSearchQuery);
-  const selectedCategory = useSelector(state => state.filters.selectedCategory);
-  const selectedIngredient = useSelector(
-    state => state.filters.selectedIngredient
-  );
-
+  const [query, setQuery] = useState('');
+  const [category, setCategory] = useState('');
+  const [ingredient, setIngredient] = useState('');
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const [count, setCount] = useState(0);
+  const [restPages, setRestPages] = useState(0);
   const [filteredDrinks, setFilteredDrinks] = useState([]);
+  const totalPages = Math.ceil(count / limit);
+  // const [searchParams, setSearchParams] = useSearchParams();
+  const windowWidth = useWindowWidth();
 
-  const [searchParams, setSearchParams] = useSearchParams();
-
+  // useEffect(() => {
+  //   setSearchParams({ q: query, category: category, ingredient: ingredient });
+  // }, [setSearchParams, query, category, ingredient]);
   useEffect(() => {
-    setSearchParams({ page, limit });
-  }, [page, limit, setSearchParams]);
-
-  const [pageNumbersToShow, setPageNumbersToShow] = useState(8);
-
-  // const updateDrinksPerPageAndPageNumbers = () => {
-  //   if (window.innerWidth < 768) {
-  //     dispatch(setLimitValue(10));
-  //     setPageNumbersToShow(5);
-  //   } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
-  //     dispatch(setLimitValue(10));
-  //     setPageNumbersToShow(8);
-  //   } else if (window.innerWidth >= 1440) {
-  //     dispatch(setLimitValue(9));
-  //     setPageNumbersToShow(8);
-  //   }
-  // };
-
-  useEffect(() => {
-      const updateDrinksPerPageAndPageNumbers = () => {
-        if (window.innerWidth < 768) {
-          dispatch(setLimitValue(10));
-          setPageNumbersToShow(5);
-        } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
-          dispatch(setLimitValue(10));
-          setPageNumbersToShow(8);
-        } else if (window.innerWidth >= 1440) {
-          dispatch(setLimitValue(9));
-          setPageNumbersToShow(8);
-        }
-      };
-    updateDrinksPerPageAndPageNumbers();
-    window.addEventListener('resize', updateDrinksPerPageAndPageNumbers);
-    return () => {
-      window.removeEventListener('resize', updateDrinksPerPageAndPageNumbers);
-    };
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(setSelectedCategory(selectedCategory));
-    dispatch(setSelectedIngredient(selectedIngredient));
-
-    dispatch(
-      fetchAllDrinks({
-        page: Number(searchParams.get('page')),
-        limit: Number(searchParams.get('limit')),
-        filters: {
-          searchQuery: searchQuery,
-          selectedCategory: selectedCategory || null,
-          selectedIngredient: selectedIngredient || null,
-        },
-      })
-    );
-  }, [
-    dispatch,
-    limit,
-    page,
-    searchParams,
-    searchQuery,
-    selectedCategory,
-    selectedIngredient,
-  ]);
-
-  useEffect(() => {
-    if (allDrinks) {
-      const filtered = allDrinks.filter(drink => {
-        return (
-          drink.drink.toLowerCase().includes(searchQuery.toLowerCase()) &&
-          (!selectedCategory || drink.category === selectedCategory) &&
-          (!selectedIngredient ||
-            drink.ingredients.some(ingredient =>
-              ingredient.title.includes(selectedIngredient)
-            ))
-        );
-      });
-
-      setFilteredDrinks(filtered);
+    if (windowWidth > 0 && windowWidth < 1440 && limit !== 10) {
+      setLimit(10);
+    } else if (windowWidth >= 1440 && limit !== 9) {
+      setLimit(9);
     }
-  }, [allDrinks, drinks, searchQuery, selectedCategory, selectedIngredient]);
+  }, [windowWidth, limit]);
+
+  useEffect(() => {
+    async function loadDrinks() {
+      try {
+        const response = await fetchDrinks({
+          params: {
+            q: query,
+            category: category,
+            ingredient: ingredient,
+            page: page,
+            limit: limit,
+          },
+        });
+        if (!response.result.length) {
+          return toast.error(
+            `Sorry, there are no drinks matching your search query. Please try again.`
+          );
+        }
+        setFilteredDrinks(response.result);
+        setCount(response.count);
+        setRestPages(response.restPages);
+      } catch (error) {
+        if (error.code) {
+          return toast.error(`Oops, something went wrong.`);
+        }
+      }
+    }
+    loadDrinks();
+  }, [query, category, ingredient, page, limit]);
 
   return (
     <StyledMainContainer>
       <PageTitle title="Drinks" />
-      <DrinksSearch />
+      <DrinksSearch
+        setQuery={setQuery}
+        setCategory={setCategory}
+        setIngredient={setIngredient}
+      />
       <Drinks drinks={filteredDrinks} />
-      {filteredDrinks.length > 0 && (
+      {totalPages > 1 && (
         <Paginator
           page={page}
-          limit={limit}
-          count={count}
-          pageNumbersToShow={pageNumbersToShow}
+          setPage={setPage}
+          totalPages={totalPages}
+          restPages={restPages}
         />
       )}
     </StyledMainContainer>
