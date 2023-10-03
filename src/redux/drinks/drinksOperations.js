@@ -1,6 +1,19 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+
+export const addMyDrinks = createAsyncThunk(
+  'drinks/addMyDrinks',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.post('/drinks/own/add');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const fetchMyDrinks = createAsyncThunk(
   'drinks/fetchMyDrinks',
   async (_, thunkAPI) => {

@@ -20,7 +20,7 @@ import { selectIngredients } from 'redux/filters/filtersSelectors';
 import { optionsIngredientUnit } from '../optionsIngredientUnit';
 import { styles } from './selectStyle';
 import { stylesMeasure } from './selectStyleMeasure';
-// import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid';
 
 const DrinkIngredientsFields = ({ values, setFieldValue }) => {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
         title: '',
         amount: '',
         measure: '',
-        ingredientId: '',
+        ingredientId: nanoid(),
       },
     ]);
   };
@@ -55,41 +55,23 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
       setCount(1);
       return;
     }
-
-    // setFieldValue('ingredients', [...values.ingredients]);
+    setFieldValue('ingredients', [...values.ingredients].slice(0, -1));
   };
 
   const handleDeleteIngredient = id => {
     if (count !== 1) {
       setCount(count - 1);
 
-      // const idxOfIngredient = allIngredients.findIndex(
-      //   ingredientId => ingredientId.id === id
-      // );
-      // allIngredients.splice(idxOfIngredient, 1);
+      setFieldValue(
+        'ingredients',
+        [...values.ingredients].filter(
+          ingredient => ingredient.ingredientId !== id
+        )
+      );
     }
   };
 
-  // const handleIngredientChange = evt => {
-  //   setFieldValue('ingredients', [
-  //     ...values.ingredients,
-  //     {
-  //       title: evt.value,
-  //     },
-  //   ]);
-
-  // setFieldValue('glass', evt.value);
-  // };
-
-  // const deleteContact = contactId => {
-  //   if (count !== 1) {
-  //     setCount(count - 1);
-  //     setallIngredients(prevState =>
-  //       prevState.filter(contact => contact.id !== contactId)
-  //     );
-  //   }
-  // };
-  console.log('values', values);
+  // console.log('values', values);
   return (
     <Wrapper>
       <CounterWrapper>
@@ -111,7 +93,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
 
       <IngredientsList>
         {values.ingredients.map((ingredient, index) => (
-          <li key={ingredient.id}>
+          <li key={ingredient.ingredientId}>
             <SelectWraper>
               <FlexWraper>
                 <Select
@@ -154,8 +136,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
               </FlexWraper>
 
               <DeleteBtn
-                // onClick={() => deleteContact(ingredient.id)}
-                onClick={() => handleDeleteIngredient(ingredient.id)}
+                onClick={() => handleDeleteIngredient(ingredient.ingredientId)}
                 type="button"
               >
                 <svg>
