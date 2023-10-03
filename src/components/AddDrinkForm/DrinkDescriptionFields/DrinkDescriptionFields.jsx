@@ -163,8 +163,8 @@ export const DrinkDescriptionFields = ({ values, setFieldValue }) => {
               id="option1"
               stroke="#F3F3F3"
               type="radio"
-              value="alcoholic"
-              checked={selectedAlcoholic === 'alcoholic'}
+              value="Alcoholic"
+              checked={selectedAlcoholic === 'Alcoholic'}
               onChange={handleOptionChange}
             />
             Alcoholic
@@ -174,8 +174,8 @@ export const DrinkDescriptionFields = ({ values, setFieldValue }) => {
               name="alcoholic"
               id="option2"
               type="radio"
-              value="nonAlcoholic"
-              checked={selectedAlcoholic === 'nonAlcoholic'}
+              value="Non alcoholic"
+              checked={selectedAlcoholic === 'Non alcoholic'}
               onChange={handleOptionChange}
             />
             Non-alcoholic
