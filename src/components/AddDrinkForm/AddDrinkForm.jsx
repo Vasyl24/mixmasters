@@ -36,23 +36,18 @@ export const AddDrinkForm = () => {
     //   ingredient.measure = [ingredient.amount, ingredient.measure].join(' ');
     //   delete ingredient.amount;
     // });
-
-    console.log(values.ingredients);
+    // console.log(values.ingredients);
     formData.append('recipe', JSON.stringify(values));
-
     formData.append('cocktail', file);
-
-    Object.entries(values).forEach(([key, value]) => {
-      if (key === 'ingredients') {
-        formData.append(key, JSON.stringify(value));
-      } else {
-        formData.append(key, value);
-      }
-    });
-
+    // Object.entries(values).forEach(([key, value]) => {
+    //   if (key === "ingredients") {
+    //     formData.append(key, JSON.stringify(value));
+    //   } else {
+    //     formData.append(key, value);
+    //   }
+    // });
     axios.post('/drinks/own/add', formData);
-
-    // resetForm();
+    resetForm();
   };
 
   return (

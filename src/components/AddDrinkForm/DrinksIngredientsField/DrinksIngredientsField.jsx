@@ -33,7 +33,11 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
   }, [dispatch]);
 
   const ingredientsSelect = listIngredients.map(ingredient => {
-    return { value: ingredient.title, label: ingredient.title };
+    return {
+      value: ingredient.title,
+      label: ingredient.title,
+      _id: ingredient._id,
+    };
   });
 
   const plusButtonHandler = () => {
@@ -98,11 +102,12 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
               <FlexWraper>
                 <Select
                   options={ingredientsSelect}
-                  name={`ingredients[${index}].name`}
+                  name={`ingredients[${index}].title`}
                   placeholder={'Select ingredient...'}
                   onChange={e => {
                     const newIngredients = [...values.ingredients];
                     newIngredients[index].title = e.value;
+                    newIngredients[index].ingredientId = e._id;
                     // console.log(e.value);
 
                     setFieldValue('ingredients', newIngredients);
