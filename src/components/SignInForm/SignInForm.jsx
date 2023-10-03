@@ -39,7 +39,6 @@ const validationSchema = yup.object().shape({
 
 const AuthFormIn = () => {
   const [textPassword, setTextPassword] = useState(true);
-  
 
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -55,8 +54,6 @@ const AuthFormIn = () => {
       values: initialValues,
     });
   };
-
-  
 
   const onSubmit = async values => {
     if (isLoggedIn) {
@@ -125,7 +122,7 @@ const AuthFormIn = () => {
           <label htmlFor="password">
             <StyledInput
               name="password"
-              type="password"
+              type={textPassword ? 'password' : 'text'}
               placeholder="Password"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
