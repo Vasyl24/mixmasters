@@ -8,7 +8,14 @@ import {
 
 import { fetchCategories, fetchIngerients } from './DrinkSearchApi';
 
-export const DrinksSearch = ({ setQuery, setCategory, setIngredient }) => {
+export const DrinksSearch = ({
+  query,
+  setQuery,
+  category,
+  setCategory,
+  ingredient,
+  setIngredient,
+}) => {
   const [categories, setCategories] = useState([]);
   const categoryOptions = categories.map(category => {
     return { value: category, label: category };
@@ -23,11 +30,11 @@ export const DrinksSearch = ({ setQuery, setCategory, setIngredient }) => {
   };
 
   const handleCategoryChange = e => {
-    setCategory(e.value);
+    !e ? setCategory('') : setCategory(e.value);
   };
 
   const handleIngredientChange = e => {
-    setIngredient(e.value);
+    !e ? setIngredient('') : setIngredient(e.value);
   };
 
   useEffect(() => {
@@ -70,6 +77,8 @@ export const DrinksSearch = ({ setQuery, setCategory, setIngredient }) => {
           onChange={handleCategoryChange}
           placeholder="All categories"
           name="category"
+          defaultValue={category}
+          isClearable
           options={categoryOptions}
         />
         <StyledSelectInput
@@ -77,6 +86,8 @@ export const DrinksSearch = ({ setQuery, setCategory, setIngredient }) => {
           classNamePrefix="Select"
           name="ingredient"
           placeholder="Ingredients"
+          defaultValue={ingredient}
+          isClearable
           options={ingredientOptions}
         ></StyledSelectInput>
       </StyledFilterContainer>

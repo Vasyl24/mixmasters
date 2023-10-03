@@ -67,8 +67,11 @@ export const DrinksPage = () => {
     <StyledMainContainer>
       <PageTitle title="Drinks" />
       <DrinksSearch
+        query={query}
         setQuery={setQuery}
+        category={category}
         setCategory={setCategory}
+        ingredient={ingredient}
         setIngredient={setIngredient}
       />
       <Drinks drinks={filteredDrinks} />
