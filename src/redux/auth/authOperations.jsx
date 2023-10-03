@@ -4,7 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
 
 export const signupUser = createAsyncThunk(
-  'auth/signup',
+  'auth/signupUser',
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/auth/signup', credentials);
@@ -12,64 +12,41 @@ export const signupUser = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      if (error.response && error.response.status === 400) {
-        toast.error('Bad request');
-      } else if (error.response && error.response.status === 401) {
-        toast.error('You are not logged in');
-      } else if (error.response && error.response.status === 403) {
-        toast.error('Access denied');
-      } else if (error.response && error.response.status === 409) {
-        toast.error('Email in use');
-      } else {
-        toast.error('Registration error');
-      }
-      return thunkAPI.rejectWithValue(error.message);
+      toast.error(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
 
 export const signinUser = createAsyncThunk(
-  'auth/signin',
+  'auth/signinUser',
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/auth/signin', credentials);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        toast.error('Unauthorized');
-        if (error.response && error.response.status === 400) {
-          toast.error('Bad request');
-        } else if (error.response && error.response.status === 401) {
-          toast.error('You are not logged in');
-        } else if (error.response && error.response.status === 403) {
-          toast.error('Access denied');
-        } else if (error.response && error.response.status === 409) {
-          toast.error('Email in use');
-        } else {
-          toast.error('Authentication Error');
-        }
-        return thunkAPI.rejectWithValue(error.message);
-      }
+      toast.error(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
 
 export const signoutUser = createAsyncThunk(
-  'auth/signout',
+  'auth/signoutUser',
   async (_, thunkAPI) => {
     try {
       const res = await axios.post('/auth/signout');
       clearAuthHeader();
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
 
 export const refreshUser = createAsyncThunk(
-  'auth/refresh',
+  'auth/refreshUser',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -81,13 +58,13 @@ export const refreshUser = createAsyncThunk(
       const res = await axios.get('/users/current');
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
 
 export const updateUser = createAsyncThunk(
-  'auth/update',
+  'auth/updateUser',
   async (formData, thunkAPI) => {
     try {
       const res = await axios.patch('/users/update', formData, {
@@ -97,34 +74,21 @@ export const updateUser = createAsyncThunk(
       });
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
 
 export const subscribeUser = createAsyncThunk(
-  'auth/subscribe',
+  'auth/subscribeUser',
   async (credentials, thunkAPI) => {
     try {
-      console.log(credentials);
       const res = await axios.post('/users/subscribe', credentials);
+      console.log(res.data);
       return res.data;
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        toast.error('Unauthorized');
-        if (error.response && error.response.status === 400) {
-          toast.error('Bad request');
-        } else if (error.response && error.response.status === 401) {
-          toast.error('You are not logged in');
-        } else if (error.response && error.response.status === 403) {
-          toast.error('Access denied');
-        } else if (error.response && error.response.status === 409) {
-          toast.error('Email in use');
-        } else {
-          toast.error('Authentication Error');
-        }
-        return thunkAPI.rejectWithValue(error.message);
-      }
+      toast.error(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );

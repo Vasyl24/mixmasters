@@ -1,17 +1,19 @@
 import styled from 'styled-components';
+import { Field, Form } from 'formik';
 
-const SubscribeFormContainer = styled.div`
+export const SubscribeFormContainer = styled(Form)`
   margin: 0px auto;
   display: flex;
   flex-direction: column;
   max-width: 480px;
 
   @media (min-width: 768px) {
+    margin: 0;
     max-width: 309px;
   }
 `;
 
-const SubscribeText = styled.p`
+export const SubscribeText = styled.p`
   margin-bottom: 24px;
   color: #f3f3f3;
   font-size: 16px;
@@ -23,11 +25,11 @@ const SubscribeText = styled.p`
   }
 `;
 
-const SubscribeInput = styled.input`
+export const SubscribeInput = styled(Field)`
   width: 100%;
   height: 54px;
   border-radius: 200px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
+  border: ${props => props.border || '1px solid rgba(243, 243, 243, 0.2)'};
   background-color: transparent;
   padding: 18px 24px;
   color: #f3f3f3;
@@ -37,7 +39,7 @@ const SubscribeInput = styled.input`
   transition: border-color 0.3s ease-in-out;
 
   &::placeholder {
-    color: #f3f3f3;
+    color: #666666;
   }
 
   @media (min-width: 768px) {
@@ -51,12 +53,22 @@ const SubscribeInput = styled.input`
   &:hover {
     outline: none;
     color: #f3f3f3;
-    border-color: rgba(243, 243, 243, 0.5);
+    border: ${props => props.border || '1px solid rgba(243, 243, 243, 0.2)'};
     background-color: transparent;
   }
 `;
 
-const SubscribeButton = styled.button`
+export const ErrorField = styled.div`
+  position: absolute;
+  bottom: -18px;
+  left: 15px;
+  font-size: 12px;
+  color: #da1414;
+  padding: 0 10px;
+  border-radius: 15px;
+`;
+
+export const SubscribeButton = styled.button`
   margin-top: 18px;
   height: 54px;
   color: #f3f3f3;
@@ -75,6 +87,13 @@ const SubscribeButton = styled.button`
     border-color: rgba(243, 243, 243, 0.4941176471);
   }
 
+  &:disabled,
+  &[disabled] {
+    border: 1px solid #999999;
+    color: #666666;
+    cursor: not-allowed;
+  }
+
   @media (min-width: 768px) {
     height: 56px;
     font-size: 17px;
@@ -82,47 +101,6 @@ const SubscribeButton = styled.button`
   }
 `;
 
-const InputContainer = styled.div`
+export const InputContainer = styled.div`
   position: relative;
 `;
-
-const ErrorMessageOnBorder = styled.div`
-  position: absolute;
-  font-size: 12px;
-  color: red;
-  bottom: 0;
-  left: 170px;
-`;
-
-const SubscribeStatusContainer = styled.div`
-  position: relative;
-`;
-
-const StatusMessage = styled.p`
-  position: absolute;
-  bottom: -118px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-`;
-
-const SuccessStatus = styled.span`
-  color: green;
-`;
-
-const ErrorStatus = styled.span`
-  color: red;
-`;
-
-export {
-  SubscribeFormContainer,
-  SubscribeText,
-  SubscribeInput,
-  SubscribeButton,
-  InputContainer,
-  ErrorMessageOnBorder,
-  SubscribeStatusContainer,
-  StatusMessage,
-  SuccessStatus,
-  ErrorStatus,
-};
