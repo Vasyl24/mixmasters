@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
 
@@ -20,7 +19,6 @@ import {
 
 export const LogOutModal = ({ toggleModal, modalIsOpen }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [modalSize, setModalSize] = useState([335, 193]);
   const windowWidth = useWindowWidth();
   useEffect(() => {
@@ -38,7 +36,6 @@ export const LogOutModal = ({ toggleModal, modalIsOpen }) => {
 
   const handleLogOut = () => {
     dispatch(signoutUser());
-    navigate('/welcome', { replace: true });
   };
   const handleClose = () => {
     toggleModal();

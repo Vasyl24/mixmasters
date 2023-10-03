@@ -36,6 +36,7 @@ export const StyledName = styled.p`
 export const StyledBtn = styled(Link)`
   border: none;
   background-color: inherit;
+  color: var(--accent-text-color);
   opacity: 0.5;
   font-size: 14px;
   font-weight: 500;
@@ -44,5 +45,10 @@ export const StyledBtn = styled(Link)`
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.13;
+  }
+  &:hover,
+  &:focus {
+    color: var(--text-btn-color);
+    transform: scale(1.1);
   }
 `;

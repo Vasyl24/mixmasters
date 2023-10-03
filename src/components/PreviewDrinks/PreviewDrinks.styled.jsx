@@ -45,6 +45,7 @@ export const Category = styled.h3`
 export const Button = styled(Link)`
   z-index: 2000;
   display: block;
+  text-align: center;
   width: 170px;
   margin: 0px auto;
   border-radius: 42px;
