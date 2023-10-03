@@ -1,19 +1,18 @@
 import React from 'react';
-import { Circle, Input, Label, ToggleContainer } from './ThemeToggler.styled';
-// import { ToggleContainer } from './ThemeToggler.styled';
-//import { Toggle } from 'hellaui';
+import { ToggleContainer } from './ThemeToggler.styled';
+
+import { Toggle } from 'hellaui';
 
 export default function ThemeToggler() {
-  // const [isChecked, setIsChecked] = useState(false);
-  // let position = 'right';
+  let position = 'right';
   const setDarkMode = () => {
     document.querySelector('body').setAttribute('data-theme', 'dark');
-    // position = 'right';
+    position = 'right';
     localStorage.setItem('selectedTheme', 'dark');
   };
   const setLightMode = () => {
     document.querySelector('body').setAttribute('data-theme', 'light');
-    // position = 'left';
+    position = 'left';
     localStorage.setItem('selectedTheme', 'light');
   };
   const selectedTheme = localStorage.getItem('selectedTheme');
@@ -24,20 +23,67 @@ export default function ThemeToggler() {
     setLightMode();
   }
 
-  // const toggleTheme = e => {
-  //   if (e.target.checked) setDarkMode();
-  //   else setLightMode();
-  // };
+  const toggleTheme = e => {
+    if (e.target.checked) setDarkMode();
+    else setLightMode();
+  };
 
   return (
     <ToggleContainer>
-      <Label>
-        <Input type={'checkbox'} id="checkbox" />
-      </Label>
-      <Circle />
+      <Toggle
+        onChange={toggleTheme}
+        rounding={'circle'}
+        labelPosition={position}
+        defaultChecked={selectedTheme === 'dark'}
+      />
     </ToggleContainer>
   );
 }
+
+
+
+
+// ====================================================================================================================
+// import React from 'react';
+// import { Circle, Input, Label, ToggleContainer } from './ThemeToggler.styled';
+// // import { ToggleContainer } from './ThemeToggler.styled';
+// //import { Toggle } from 'hellaui';
+
+// export default function ThemeToggler() {
+//   // const [isChecked, setIsChecked] = useState(false);
+//   // let position = 'right';
+//   const setDarkMode = () => {
+//     document.querySelector('body').setAttribute('data-theme', 'dark');
+//     // position = 'right';
+//     localStorage.setItem('selectedTheme', 'dark');
+//   };
+//   const setLightMode = () => {
+//     document.querySelector('body').setAttribute('data-theme', 'light');
+//     // position = 'left';
+//     localStorage.setItem('selectedTheme', 'light');
+//   };
+//   const selectedTheme = localStorage.getItem('selectedTheme');
+
+//   if (selectedTheme === 'dark') {
+//     setDarkMode();
+//   } else {
+//     setLightMode();
+//   }
+
+//   // const toggleTheme = e => {
+//   //   if (e.target.checked) setDarkMode();
+//   //   else setLightMode();
+//   // };
+
+//   return (
+//     <ToggleContainer>
+//       <Label>
+//         <Input type={'checkbox'} id="checkbox" />
+//       </Label>
+//       <Circle />
+//     </ToggleContainer>
+//   );
+// }
 
 // import { useState, useLayoutEffect } from "react";
 

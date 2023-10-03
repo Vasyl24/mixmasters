@@ -39,7 +39,6 @@ export function DrinkPageHero({ drinkInfo }) {
       const deletedDrink = await dispatch(deleteFavoriteDrink(drink));
       if (!deletedDrink.error) {
         setIsFavorite(false);
-        toast.success('Drink deleted from favorite!')
       } else {
         toast.error('Something went wrong please try later!');
       }

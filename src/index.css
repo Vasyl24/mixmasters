@@ -9,7 +9,7 @@
   --correct-state-color: #3cbc81;
   --error-state-color: #da1414;
   --pagination-color: #4070cd;
-  --accent-text-color:rgba(243, 243, 243, 0.5);
+  --accent-text-color:rgba(243, 243, 243, 0.50);
   --image-wrapper-color:#161f37;
 }
 
@@ -24,8 +24,9 @@
   --error-state-color: #da1414;
   --pagination-color: #4070cd;
   --dark-color: #0a0a11;
-  --accent-text-color:rgba(243, 243, 243, 0.5);
+  --accent-text-color:rgba(243, 243, 243, 0.50);
   --image-wrapper-color:#161f37;
+
 }
 
 [data-theme='light'] {
@@ -39,8 +40,8 @@
   --error-state-color: #da1414;
   --pagination-color: #4070cd;
   --dark-color:#0a0a11;
-  --accent-text-color: 'grey';
   --image-wrapper-color:#161f37;
+  --accent-text-color:#060609a6;
 } 
 
 *{

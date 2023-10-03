@@ -78,7 +78,7 @@ const drinksSlice = createSlice({
         drink => drink._id === action.meta.arg.id
       );
       state.items.splice(index, 1);
-      toast.success('Drink deleted successfully.', { position: 'top-center' });
+      toast.success('Drink deleted successfully.');
     },
     [deleteFavoriteDrink.rejected]: handleRejected,
     [fetchMainpage.pending](state) {
