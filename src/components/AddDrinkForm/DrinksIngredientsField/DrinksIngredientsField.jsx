@@ -20,7 +20,7 @@ import { selectIngredients } from 'redux/filters/filtersSelectors';
 import { optionsIngredientUnit } from '../optionsIngredientUnit';
 import { styles } from './selectStyle';
 import { stylesMeasure } from './selectStyleMeasure';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 const DrinkIngredientsFields = ({ values, setFieldValue }) => {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
         title: '',
         amount: '',
         measure: '',
-        ingredientId: nanoid(),
+        ingredientId: '',
       },
     ]);
   };
@@ -103,6 +103,8 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
                   onChange={e => {
                     const newIngredients = [...values.ingredients];
                     newIngredients[index].title = e.value;
+                    // console.log(e.value);
+
                     setFieldValue('ingredients', newIngredients);
                   }}
                   unstyled
@@ -126,6 +128,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
                     onChange={e => {
                       const newIngredients = [...values.ingredients];
                       newIngredients[index].measure = e.value;
+                      // console.log(e.value);
                       setFieldValue('ingredients', newIngredients);
                     }}
                     unstyled

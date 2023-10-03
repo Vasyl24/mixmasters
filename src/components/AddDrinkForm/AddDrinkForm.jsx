@@ -6,11 +6,11 @@ import DrinkIngredientsFields from 'components/AddDrinkForm/DrinksIngredientsFie
 import RecipePreparationFields from 'components/AddDrinkForm/RecipePreparationFields/RecipePreparationFields';
 import { StyledForm } from './AddDrinkForm.styled';
 import { AddBtn } from 'components/Butttons/AddBtn/AddDrinksBtn';
-import { nanoid } from 'nanoid';
+import axios from 'axios';
 
 export const AddDrinkForm = () => {
   const initialValues = {
-    _id: nanoid(),
+    _id: '',
     drink: '',
     category: 'Cocktail',
     alcoholic: '',
@@ -23,20 +23,35 @@ export const AddDrinkForm = () => {
         title: '',
         amount: '',
         measure: '',
-        ingredientId: nanoid(),
+        ingredientId: '',
       },
     ],
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    const formData = new FormData(initialValues);
-    formData.append('initialValues', JSON.stringify(initialValues));
+    let file = values.drinkThumb;
+    const formData = new FormData();
 
-    fetch('/add', {
-      method: 'POST',
-      body: formData,
+    // values.ingredients.map(ingredient => {
+    //   ingredient.measure = [ingredient.amount, ingredient.measure].join(' ');
+    //   delete ingredient.amount;
+    // });
+
+    console.log(values.ingredients);
+    formData.append('recipe', JSON.stringify(values));
+
+    formData.append('cocktail', file);
+
+    Object.entries(values).forEach(([key, value]) => {
+      if (key === 'ingredients') {
+        formData.append(key, JSON.stringify(value));
+      } else {
+        formData.append(key, value);
+      }
     });
+
+    axios.post('/drinks/own/add', formData);
+
     // resetForm();
   };
 
