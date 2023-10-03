@@ -125,7 +125,7 @@ const authSlice = createSlice({
     },
 
     [subscribeUser.fulfilled](state, action) {
-      state.user.subscription = action.payload.subscription ?? '';
+      state.user.subscription = action.payload.subscription;
       state.isRefreshing = false;
       state.isLoading = false;
       state.error = null;

@@ -1,123 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import { Formik, Form } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { ErrorMessage, Formik } from 'formik';
+import * as Yup from 'yup';
 import {
   SubscribeFormContainer,
   SubscribeText,
   SubscribeInput,
   SubscribeButton,
   InputContainer,
-  ErrorMessageOnBorder,
-  SubscribeStatusContainer,
-  StatusMessage,
-  SuccessStatus,
-  ErrorStatus,
+  ErrorField,
 } from './EmailSubscription.styled';
+import { subscribeUser } from 'redux/auth/authOperations';
+import { selectUser } from 'redux/selectors';
+
+const EMAILPATTERN = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+const SchemaEmail = Yup.object().shape({
+  email: Yup.string()
+    .matches(EMAILPATTERN, 'Please enter a valid email')
+    .required('Email is required'),
+});
 
 const SubscribeForm = () => {
-  const [isConfirmed, setIsConfirmed] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
-  const [status, setStatus] = useState('');
+  const dispatch = useDispatch();
+  const { subscription } = useSelector(selectUser);
 
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
-  };
-
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  const handleSubmit = async (values, { resetForm }) => {
+    const subscription = values.email;
     try {
-      setIsConfirmed(true);
-      setStatus('success');
+      await dispatch(subscribeUser({ subscription }));
       resetForm();
     } catch (error) {
-      setStatus('error');
-    } finally {
-      setSubmitting(false);
+      console.log(error);
     }
   };
-
-  useEffect(() => {
-    if (isConfirmed) {
-      const timer = setTimeout(() => {
-        setIsConfirmed(false);
-        setStatus('');
-      }, 3000);
-
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, [isConfirmed]);
 
   return (
     <Formik
       initialValues={{ email: '' }}
+      validationSchema={SchemaEmail}
       onSubmit={handleSubmit}
-      validate={values => {
-        const errors = {};
-
-        if (!values.email) {
-          return errors;
-        }
-
-        if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-          errors.email = 'Invalid email address.';
-        }
-
-        return errors;
-      }}
     >
-      {({ isSubmitting, errors, values }) => (
-        <Form className="subscribe_form">
-          <SubscribeFormContainer>
-            <SubscribeText>
-              Subscribe to our newsletter and stay in touch with the latest news
-              and special offers.
-            </SubscribeText>
-            <InputContainer>
-              <SubscribeInput
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                data-customvalid={!errors.email && isFocused}
-                data-custominvalid={errors.email && isFocused}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-              />
-
-              {isFocused && errors.email && (
-                <ErrorMessageOnBorder>{errors.email}</ErrorMessageOnBorder>
-              )}
-            </InputContainer>
-            <SubscribeStatusContainer>
-              {status === 'success' && isConfirmed && (
-                <StatusMessage>
-                  <SuccessStatus>
-                    You have successfully subscribed to the newsletter
-                  </SuccessStatus>
-                </StatusMessage>
-              )}
-
-              {status === 'error' && (
-                <StatusMessage>
-                  <ErrorStatus>
-                    Oops! An error occurred. Please try again later.
-                  </ErrorStatus>
-                </StatusMessage>
-              )}
-            </SubscribeStatusContainer>
-            <SubscribeButton
-              type="submit"
-              disabled={
-                isSubmitting || !values.email || Object.keys(errors).length > 0
+      {({ errors, touched }) => (
+        <SubscribeFormContainer>
+          <SubscribeText>
+            Subscribe to our newsletter and stay in touch with the latest news
+            and special offers.
+          </SubscribeText>
+          <InputContainer>
+            <SubscribeInput
+              type="email"
+              name="email"
+              placeholder={subscription}
+              border={
+                touched.email &&
+                (errors.email ? '1px solid #da1414' : '1px solid #3cbc81')
               }
-            >
-              {isSubmitting ? 'Subscribing...' : 'Subscribe'}
-            </SubscribeButton>
-          </SubscribeFormContainer>
-        </Form>
+            />
+            <ErrorMessage component={ErrorField} name="email" />
+          </InputContainer>
+          <SubscribeButton type="submit">Subscribe</SubscribeButton>
+        </SubscribeFormContainer>
       )}
     </Formik>
   );
