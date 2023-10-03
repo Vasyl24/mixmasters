@@ -72,7 +72,7 @@ export const DrinkDescriptionFields = ({ values, setFieldValue }) => {
       setImg({
         src: URL.createObjectURL(evt.target.files[0]),
       });
-      setFieldValue('drinkThumb', URL.createObjectURL(evt.target.files[0]));
+      setFieldValue('drinkThumb', evt.target.files[0]);
       // console.log(URL.createObjectURL(evt.target.files[0]));
     }
   };
