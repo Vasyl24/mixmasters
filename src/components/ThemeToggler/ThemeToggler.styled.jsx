@@ -1,4 +1,5 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+// import styled, { keyframes } from 'styled-components';
 
 export const ToggleContainer = styled.div`
   display: flex;
@@ -7,9 +8,6 @@ export const ToggleContainer = styled.div`
   margin-left: auto;
   margin-right: 28px;
 `;
-
-
-
 
 // ===================================================================================================================
 // import styled, { keyframes } from 'styled-components';
