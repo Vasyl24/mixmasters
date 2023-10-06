@@ -20,12 +20,11 @@ import { selectIngredients } from 'redux/filters/filtersSelectors';
 import { optionsIngredientUnit } from '../optionsIngredientUnit';
 import { styles } from './selectStyle';
 import { stylesMeasure } from './selectStyleMeasure';
-// import { nanoid } from 'nanoid';
 
 const DrinkIngredientsFields = ({ values, setFieldValue }) => {
   const dispatch = useDispatch();
   const listIngredients = useSelector(selectIngredients);
-
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const [count, setCount] = useState(1);
 
   useEffect(() => {
@@ -53,15 +52,6 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
     ]);
   };
 
-  const minusButtonHandler = () => {
-    setCount(count - 1);
-    if (count === 1) {
-      setCount(1);
-      return;
-    }
-    setFieldValue('ingredients', [...values.ingredients].slice(0, -1));
-  };
-
   const handleDeleteIngredient = id => {
     if (count !== 1) {
       setCount(count - 1);
@@ -75,7 +65,40 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
     }
   };
 
-  // console.log('values', values);
+  const handleSelectIngredient = (e, index) => {
+    const newIngredients = [...values.ingredients];
+    newIngredients[index].title = e.value;
+    newIngredients[index].ingredientId = e._id;
+    setFieldValue('ingredients', newIngredients);
+
+    setSelectedOptions(prevOptions => {
+      const newOptions = [...prevOptions];
+      newOptions[index] = e;
+      return newOptions;
+    });
+  };
+
+  const handleAmountChange = (e, index) => {
+    const updatedIngredients = [...values.ingredients];
+    updatedIngredients[index].amount = e.target.value;
+    setFieldValue('ingredients', updatedIngredients);
+  };
+
+  const handleMeasureChange = (e, index) => {
+    const updatedIngredients = [...values.ingredients];
+    updatedIngredients[index].measure = e.value;
+    setFieldValue('ingredients', updatedIngredients);
+  };
+
+  const minusButtonHandler = () => {
+    setCount(prevCount => {
+      if (prevCount === 1) return prevCount;
+
+      setFieldValue('ingredients', values.ingredients.slice(0, -1));
+      return prevCount - 1;
+    });
+  };
+
   return (
     <Wrapper>
       <CounterWrapper>
@@ -103,15 +126,9 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
                 <Select
                   options={ingredientsSelect}
                   name={`ingredients[${index}].title`}
+                  value={selectedOptions[index]}
                   placeholder={'Select ingredient...'}
-                  onChange={e => {
-                    const newIngredients = [...values.ingredients];
-                    newIngredients[index].title = e.value;
-                    newIngredients[index].ingredientId = e._id;
-                    // console.log(e.value);
-
-                    setFieldValue('ingredients', newIngredients);
-                  }}
+                  onChange={e => handleSelectIngredient(e, index)}
                   unstyled
                   required
                   styles={styles}
@@ -123,6 +140,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
                     type="number"
                     placeholder="0"
                     value={ingredient.amount}
+                    onChange={e => handleAmountChange(e, index)}
                     min={0}
                     required
                   />
@@ -130,12 +148,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
                     name={`ingredients[${index}].measure`}
                     options={optionsIngredientUnit}
                     placeholder={''}
-                    onChange={e => {
-                      const newIngredients = [...values.ingredients];
-                      newIngredients[index].measure = e.value;
-                      // console.log(e.value);
-                      setFieldValue('ingredients', newIngredients);
-                    }}
+                    onChange={e => handleMeasureChange(e, index)}
                     unstyled
                     styles={stylesMeasure}
                     required
