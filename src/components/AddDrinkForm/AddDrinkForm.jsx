@@ -32,10 +32,10 @@ export const AddDrinkForm = () => {
     let file = values.drinkThumb;
     const formData = new FormData();
 
-    // values.ingredients.map(ingredient => {
-    //   ingredient.measure = [ingredient.amount, ingredient.measure].join(' ');
-    //   delete ingredient.amount;
-    // });
+    values.ingredients.map(ingredient => {
+      ingredient.measure = [ingredient.amount, ingredient.measure].join(' ');
+      return delete ingredient.amount;
+    });
     // console.log(values.ingredients);
     formData.append('recipe', JSON.stringify(values));
     formData.append('cocktail', file);
