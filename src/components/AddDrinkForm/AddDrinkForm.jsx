@@ -1,4 +1,3 @@
-// import React, { useState, useEffect } from 'react';
 import React from 'react';
 import { Formik, Form } from 'formik';
 import { DrinkDescriptionFields } from 'components/AddDrinkForm/DrinkDescriptionFields/DrinkDescriptionFields';
@@ -10,14 +9,14 @@ import axios from 'axios';
 
 export const AddDrinkForm = () => {
   const initialValues = {
-    _id: '',
     drink: '',
     category: 'Cocktail',
     alcoholic: '',
     glass: 'Highball glass',
+    description: '',
     shortDescription: '',
     instructions: '',
-    drinkThumb: null,
+    drinkThumb: '',
     ingredients: [
       {
         title: '',
@@ -36,16 +35,10 @@ export const AddDrinkForm = () => {
       ingredient.measure = [ingredient.amount, ingredient.measure].join(' ');
       return delete ingredient.amount;
     });
-    // console.log(values.ingredients);
+
     formData.append('recipe', JSON.stringify(values));
     formData.append('cocktail', file);
-    // Object.entries(values).forEach(([key, value]) => {
-    //   if (key === "ingredients") {
-    //     formData.append(key, JSON.stringify(value));
-    //   } else {
-    //     formData.append(key, value);
-    //   }
-    // });
+
     axios.post('/drinks/own/add', formData);
     resetForm();
   };

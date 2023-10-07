@@ -20,6 +20,7 @@ import { selectIngredients } from 'redux/filters/filtersSelectors';
 import { optionsIngredientUnit } from '../optionsIngredientUnit';
 import { styles } from './selectStyle';
 import { stylesMeasure } from './selectStyleMeasure';
+// import { nanoid } from 'nanoid';
 
 const DrinkIngredientsFields = ({ values, setFieldValue }) => {
   const dispatch = useDispatch();
@@ -40,6 +41,13 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
   });
 
   const plusButtonHandler = () => {
+    // console.log(values.ingredients);
+    // values.ingredients.every(
+    //   ingredient => {
+    // console.log(ingredient);
+    // if (ingredient.ingredientId === '') {
+    // console.log('No id');
+    // } else {
     setCount(count + 1);
     setFieldValue('ingredients', [
       ...values.ingredients,
@@ -50,6 +58,9 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
         ingredientId: '',
       },
     ]);
+    // }
+    //   }
+    // );
   };
 
   const handleDeleteIngredient = id => {

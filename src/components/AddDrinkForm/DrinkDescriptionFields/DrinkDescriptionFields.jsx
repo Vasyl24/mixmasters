@@ -27,13 +27,13 @@ import {
   selectGlasses,
 } from 'redux/filters/filtersSelectors';
 
-export const DrinkDescriptionFields = ({ values, setFieldValue }) => {
+export const DrinkDescriptionFields = ({ setFieldValue }) => {
   const dispatch = useDispatch();
   const hiddenFileInput = useRef(null);
   const glasses = useSelector(selectGlasses);
   const categories = useSelector(selectCategories);
 
-  const [selectedAlcoholic, setSelectedAlcoholic] = useState('alcoholic');
+  const [selectedAlcoholic, setSelectedAlcoholic] = useState('Non alcoholic');
   const [img, setImg] = useState(null);
 
   useEffect(() => {
@@ -52,7 +52,6 @@ export const DrinkDescriptionFields = ({ values, setFieldValue }) => {
   const handleOptionChange = evt => {
     setSelectedAlcoholic(evt.target.value);
     setFieldValue('alcoholic', evt.target.value);
-    // console.log(changeEvent.target.value);
   };
 
   const handleCategoryChange = evt => {
@@ -72,8 +71,8 @@ export const DrinkDescriptionFields = ({ values, setFieldValue }) => {
       setImg({
         src: URL.createObjectURL(evt.target.files[0]),
       });
+
       setFieldValue('drinkThumb', evt.target.files[0]);
-      // console.log(URL.createObjectURL(evt.target.files[0]));
     }
   };
 
@@ -81,6 +80,11 @@ export const DrinkDescriptionFields = ({ values, setFieldValue }) => {
     if (!evt.target.value) {
       console.log('Please enter a value');
     }
+  };
+
+  const handleDescInput = evt => {
+    setFieldValue('description', evt.target.value);
+    setFieldValue('shortDescription', evt.target.value);
   };
 
   return (
@@ -124,6 +128,7 @@ export const DrinkDescriptionFields = ({ values, setFieldValue }) => {
             placeholder="Enter about recipe"
             type="text"
             onBlur={handleBlur}
+            onChange={handleDescInput}
           />
           {/* <Validate></Validate> */}
         </InputWraper>
