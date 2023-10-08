@@ -17,8 +17,6 @@ export const StyledAddDrinksBtn = styled.button`
     font-size: 16px;
   }
 
-
-
   &:hover {
     background: #161f37;
     color: #f3f3f3;

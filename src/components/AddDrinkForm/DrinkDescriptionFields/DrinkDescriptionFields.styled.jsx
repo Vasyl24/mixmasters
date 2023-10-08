@@ -21,7 +21,7 @@ export const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 18px;
-  margin-top: 40px;
+
   margin-bottom: 40px;
   border-radius: 8px;
   background: rgba(22, 31, 55, 0.5);
@@ -58,9 +58,6 @@ export const Image = styled.img`
 `;
 
 export const BtnContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 50px;
   height: 50px;
   border-radius: 6px;
@@ -92,7 +89,6 @@ export const FlexContainer = styled.div`
 export const InputWraper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
   width: 100%;
 `;
 
@@ -209,14 +205,39 @@ export const RadioWrapper = styled.div`
 
 export const RadioLabel = styled.label`
   cursor: pointer;
- font-size: 16px;
-
 `;
 
 export const RadioButton = styled.input`
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 10px;
+  border: 1.3px solid rgba(243, 243, 243, 0.5);
+  box-shadow: 0 0 0 1px rgba(243, 243, 243, 0.5);
   cursor: pointer;
   margin-right: 8px;
-  accent-color: #f3f3f3;
-  /* width: 16px;
-  height: 16px; */
+  width: 16px;
+  height: 16px;
+
+  &::before {
+    transform: scale(0, 0);
+    transition: all 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+  }
+
+  &:checked {
+    box-shadow: 0 0 0 1px #f3f3f3;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: #f3f3f3;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+
+      transform: translate(-50%, -50%) scale(1, 1);
+    }
+  }
 `;
