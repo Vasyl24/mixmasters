@@ -20,7 +20,7 @@ import { selectIngredients } from 'redux/filters/filtersSelectors';
 import { optionsIngredientUnit } from '../optionsIngredientUnit';
 import { styles } from './selectStyle';
 import { stylesMeasure } from './selectStyleMeasure';
-// import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid';
 
 const DrinkIngredientsFields = ({ values, setFieldValue }) => {
   const dispatch = useDispatch();
@@ -40,17 +40,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
     };
   });
 
-  const plusButtonHandler = index => {
-    // console.log(values.ingredients);
-    // values.ingredients.every(
-    //   ingredient => {
-    // console.log(ingredient);
-
-    // const updatedIngredients = [...values.ingredients];
-    // updatedIngredients[index].ingredientId;
-    // if (!updatedIngredients[index].ingredientId) {
-    //   console.log('No id');
-    // } else {
+  const plusButtonHandler = () => {
     setCount(count + 1);
     setFieldValue('ingredients', [
       ...values.ingredients,
@@ -58,12 +48,9 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
         title: '',
         amount: '',
         measure: '',
-        ingredientId: '',
+        ingredientId: nanoid(),
       },
     ]);
-    // }
-    //   }
-    // );
   };
 
   const handleDeleteIngredient = id => {
@@ -119,14 +106,14 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
         <IngredientsText>Ingredients</IngredientsText>
         <CounterWrp>
           <StyledButton onClick={minusButtonHandler}>
-            <svg>
+            <svg width={16} height={16}>
               <use xlinkHref={`${icons}#icon-minus`} />
             </svg>
           </StyledButton>
           <p>{count}</p>
 
           <StyledButton onClick={plusButtonHandler}>
-            <svg>
+            <svg width={16} height={16}>
               <use xlinkHref={`${icons}#icon-plus-plus`} />
             </svg>
           </StyledButton>
@@ -181,9 +168,6 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
               </DeleteBtn>
             </SelectWraper>
             {ingredient.component}
-            {/* {!ingredient.ingredientId
-              ? console.log('No id')
-              : ingredient.component} */}
           </li>
         ))}
       </IngredientsList>

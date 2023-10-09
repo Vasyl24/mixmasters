@@ -12,7 +12,7 @@ export const CounterWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 34px;
+  margin-bottom: 40px;
 
   @media (min-width: 1440px) {
     width: 540px;

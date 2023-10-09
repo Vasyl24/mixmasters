@@ -13,15 +13,16 @@ export const Wrapper = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  width: 320px;
+  width: 335px;
   height: 320px;
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
   gap: 18px;
 
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 40px;
   border-radius: 8px;
   background: rgba(22, 31, 55, 0.5);
@@ -161,7 +162,7 @@ export const SelectWrapper = styled.div`
   &:hover,
   &::selection {
     outline: none;
-    border-color: #f3f3f3;
+    // border-color: #f3f3f3;
   }
 `;
 
@@ -205,6 +206,8 @@ export const RadioWrapper = styled.div`
 
 export const RadioLabel = styled.label`
   cursor: pointer;
+
+  color: ${props => (props.checked ? '#f3f3f3' : 'rgba(243, 243, 243, 0.5)')};
 `;
 
 export const RadioButton = styled.input`

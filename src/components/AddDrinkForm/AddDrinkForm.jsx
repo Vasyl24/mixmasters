@@ -6,6 +6,7 @@ import RecipePreparationFields from 'components/AddDrinkForm/RecipePreparationFi
 import { StyledForm } from './AddDrinkForm.styled';
 import { AddBtn } from 'components/Butttons/AddBtn/AddDrinksBtn';
 import axios from 'axios';
+import { nanoid } from 'nanoid';
 
 export const AddDrinkForm = () => {
   const initialValues = {
@@ -22,7 +23,7 @@ export const AddDrinkForm = () => {
         title: '',
         amount: '',
         measure: '',
-        ingredientId: '',
+        ingredientId: nanoid(),
       },
     ],
   };
