@@ -8,8 +8,14 @@ export const styles = {
     lineHeight: 'calc(14 / 14)',
     backgroundColor: 'transparent',
     borderRadius: '5px',
-    cursor: 'text',
+    cursor: 'pointer',
   }),
+
+  // Group: baseStyles => ({
+  //   ...baseStyles,
+  //   padding: '16px 18px',
+  //   width: '200px',
+  // }),
 
   menu: baseStyles => ({
     ...baseStyles,
@@ -56,9 +62,12 @@ export const styles = {
   option: (baseStyles, state) => ({
     ...baseStyles,
     fontSize: '12px',
+    lineHeight: 'calc(16 / 12)',
+    fontWeight: 400,
     textWrap: 'nowrap',
     padding: 0,
     color: state.isSelected ? '#f3f3f3' : 'inherit',
+    cursor: 'pointer',
     '&:hover': {
       color: '#f3f3f3',
     },
@@ -67,9 +76,13 @@ export const styles = {
   indicatorsContainer: baseStyles => ({
     ...baseStyles,
     height: '100%',
-    '&:hover': {
-      color: '#161F37',
-    },
+    cursor: 'pointer',
+  }),
+
+  dropdownIndicator: (base, state) => ({
+    ...base,
+    transition: 'transform ease-in-out 0.3s',
+    transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : null,
   }),
 
   valueContainer: baseStyles => ({
