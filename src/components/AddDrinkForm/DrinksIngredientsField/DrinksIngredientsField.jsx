@@ -40,13 +40,16 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
     };
   });
 
-  const plusButtonHandler = () => {
+  const plusButtonHandler = index => {
     // console.log(values.ingredients);
     // values.ingredients.every(
     //   ingredient => {
     // console.log(ingredient);
-    // if (ingredient.ingredientId === '') {
-    // console.log('No id');
+
+    // const updatedIngredients = [...values.ingredients];
+    // updatedIngredients[index].ingredientId;
+    // if (!updatedIngredients[index].ingredientId) {
+    //   console.log('No id');
     // } else {
     setCount(count + 1);
     setFieldValue('ingredients', [
@@ -121,6 +124,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
             </svg>
           </StyledButton>
           <p>{count}</p>
+
           <StyledButton onClick={plusButtonHandler}>
             <svg>
               <use xlinkHref={`${icons}#icon-plus-plus`} />
@@ -177,6 +181,9 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
               </DeleteBtn>
             </SelectWraper>
             {ingredient.component}
+            {/* {!ingredient.ingredientId
+              ? console.log('No id')
+              : ingredient.component} */}
           </li>
         ))}
       </IngredientsList>
