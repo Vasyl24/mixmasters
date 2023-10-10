@@ -20,6 +20,8 @@ export const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 18px;
+  position: relative;
+  z-index: 400;
 
   margin-left: auto;
   margin-right: auto;
@@ -38,7 +40,7 @@ export const ImageContainer = styled.div`
     margin: 0;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     min-width: 400px;
     max-width: 400px;
     height: 400px;
@@ -205,30 +207,44 @@ export const RadioWrapper = styled.div`
 `;
 
 export const RadioLabel = styled.label`
+  display: flex;
+  justify-content: center;
   cursor: pointer;
 
-  color: ${props => (props.checked ? '#f3f3f3' : 'rgba(243, 243, 243, 0.5)')};
+  color: rgba(243, 243, 243, 0.5);
+
+  &:checked {
+    color: #f3f3f3;
+  }
 `;
+
+// export const LabelText = styled.span`
+//   &:checked {
+//     color: #f3f3f3;
+//   }
+// `;
 
 export const RadioButton = styled.input`
   position: relative;
   appearance: none;
   -webkit-appearance: none;
   border-radius: 10px;
-  border: 1.3px solid rgba(243, 243, 243, 0.5);
-  box-shadow: 0 0 0 1px rgba(243, 243, 243, 0.5);
+  border: 1px solid rgba(243, 243, 243, 0.5);
+  box-shadow: 0 0 0 0.3px rgba(243, 243, 243, 0.5);
   cursor: pointer;
   margin-right: 8px;
   width: 16px;
   height: 16px;
+  // transform: scale(0, 0);
 
   &::before {
-    transform: scale(0, 0);
-    transition: all 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+    transform: translate(-50%, -50%) scale(0, 0);
+    transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
   }
 
   &:checked {
-    box-shadow: 0 0 0 1px #f3f3f3;
+    border: 1px solid #f3f3f3;
+    box-shadow: 0 0 0 0.3px #f3f3f3;
 
     &::before {
       content: '';
@@ -236,10 +252,11 @@ export const RadioButton = styled.input`
       top: 50%;
       left: 50%;
       background-color: #f3f3f3;
-      width: 0.75rem;
-      height: 0.75rem;
+      width: 0.65rem;
+      height: 0.65rem;
       border-radius: 50%;
 
+      // transform: translate(-50%, -50%);
       transform: translate(-50%, -50%) scale(1, 1);
     }
   }

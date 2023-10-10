@@ -132,8 +132,8 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
                   placeholder={'Select ingredient...'}
                   onChange={e => handleSelectIngredient(e, index)}
                   unstyled
-                  required
                   styles={styles}
+                  required
                 />
 
                 <MeasureWraper>

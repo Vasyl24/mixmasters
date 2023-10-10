@@ -11,7 +11,7 @@ export const styles = {
     cursor: 'pointer',
   }),
 
-  // Group: baseStyles => ({
+  // option: baseStyles => ({
   //   ...baseStyles,
   //   padding: '16px 18px',
   //   width: '200px',
@@ -34,7 +34,7 @@ export const styles = {
 
     animation: 'fadeIn 0.2s ease-in-out',
 
-    '@media (min-width: 1280px)': {
+    '@media (min-width: 1440px)': {
       marginLeft: '10px',
     },
   }),

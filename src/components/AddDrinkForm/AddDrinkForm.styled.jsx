@@ -1,11 +1,3 @@
-import styled from 'styled-components'
-// import { Form } from 'formik';
+import styled from 'styled-components';
 
-export const StyledForm = styled.div`
-  // margin-bottom: 80px;
-  
-  // @media {min-width: 1440px} {
-  //  margin-bottom: 0;
-  // }
-  
-  `;
+export const StyledForm = styled.div``;
