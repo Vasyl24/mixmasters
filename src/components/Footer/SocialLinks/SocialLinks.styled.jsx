@@ -30,7 +30,7 @@ export const Container = styled.div`
     gap: 16px;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1440px) {
     margin-top: 40px;
     gap: 16px;
   }
@@ -47,7 +47,6 @@ export const SocialLinksIcon = styled.svg`
   @media screen and (min-width: 768px) {
     width: 28px;
     height: 28px;
-    g
   }
 `;
 

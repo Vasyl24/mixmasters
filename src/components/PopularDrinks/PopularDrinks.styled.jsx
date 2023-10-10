@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   gap: 28px;
   flex-direction: column;
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1440px) {
     gap: 40px;
     width: 313px;
   }
@@ -30,7 +30,7 @@ export const List = styled.ul`
   flex-direction: column;
   gap: 24px;
 
-  @media (min-width: 768px) and (max-width: 1279.9px) {
+  @media (min-width: 768px) and (max-width: 1439.98px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px;
@@ -47,7 +47,7 @@ export const DrinkItem = styled(Link)`
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1440px) {
     width: 100%;
   }
 

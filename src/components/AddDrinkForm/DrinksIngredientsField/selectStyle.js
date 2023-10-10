@@ -15,12 +15,12 @@ export const styles = {
       borderColor: '#f3f3f3',
     },
 
-    '@media (max-width: 393px)': {
-      width: '180px',
-    },
-
     '@media (min-width: 768px)': {
       width: '332px',
+    },
+
+    '@media (min-width: 1440px)': {
+      width: '316px',
       height: '56px',
       fontSize: '17px',
       lineHeight: 'calc(26 / 17)',
@@ -88,13 +88,16 @@ export const styles = {
   indicatorsContainer: baseStyles => ({
     ...baseStyles,
     height: '100%',
-    '&:hover': {
-      color: '#161F37',
-    },
 
     '@media (min-width: 768px)': {
       marginTop: '1px',
     },
+  }),
+
+  dropdownIndicator: (base, state) => ({
+    ...base,
+    transition: 'transform ease-in-out 0.3s',
+    transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : null,
   }),
 
   valueContainer: baseStyles => ({

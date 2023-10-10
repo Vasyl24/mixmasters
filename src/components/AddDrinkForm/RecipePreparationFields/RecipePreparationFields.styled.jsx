@@ -17,36 +17,38 @@ export const RecipeText = styled.h3`
 `;
 
 export const TextareaStyle = styled(Field)`
-    width: 100%;
-	padding: 16px;
-  
-	color: var(--text-btn-color);
-	background-color: transparent;
-	outline: none;
-	border: 1px solid rgba(243, 243, 243, 0.5);
-	border-radius: 14px;
-	opacity: 0.8;
-	font-size: 14px;
-	line-height: calc(18 / 14);
-	resize: none;
+  width: 100%;
+  height: 184px;
+  padding: 16px;
+  margin-bottom: 20px;
 
-	transition-property: border-color;
-	transition-duration: 250ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-btn-color);
+  background-color: transparent;
+  outline: none;
+  border: 1px solid rgba(243, 243, 243, 0.5);
+  border-radius: 14px;
+  opacity: 0.8;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  resize: none;
 
-    @media (min-width: 768px) {
-      margin-bottom:20px;
-		width: 480px;
-		padding: 14px 24px;
-		font-size: 17px;
-		line-height: calc(26 / 17);
-		border-radius: 20px;
-	}
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	&:hover,
-	:focus {
-		border-color: #f3f3f3;
-	}
+  @media (min-width: 768px) {
+    margin-bottom: 20px;
+    width: 480px;
+    padding: 14px 24px;
+    font-size: 17px;
+    line-height: calc(26 / 17);
+    border-radius: 20px;
+  }
+
+  &:hover,
+  :focus {
+    border-color: #f3f3f3;
+  }
 `;
 export const Validate = styled.div`
   margin-top: -36px;
