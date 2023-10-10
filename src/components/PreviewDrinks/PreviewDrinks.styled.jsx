@@ -49,10 +49,9 @@ export const Button = styled(Link)`
   width: 170px;
   margin: 0px auto;
   border-radius: 42px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
-  background-color: var(--text-btn-color);
+  background-color: var(--btn-color);
   padding: 14px 40px;
-  color: var(--accent-color);
+  color: var(--text-btn-color);
   font-size: 14px;
   font-weight: 600;
   line-height: 1.28;
@@ -62,7 +61,7 @@ export const Button = styled(Link)`
 
   &:hover {
     background-color: var(--hover-btn-color);
-    color: var(--text-btn-color);
+    color: var(--hover-txt-color);
   }
   @media (min-width: 768px) {
     padding: 18px 44px;
