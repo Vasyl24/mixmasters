@@ -24,7 +24,7 @@ export const StyledFilterContainer = styled.div`
 `;
 
 export const StyledTextInput = styled.input`
-  color: #f3f3f3;
+  color: var(--text-color);
   font-size: 17px;
   font-weight: 400;
   line-height: 2.6;
@@ -33,14 +33,14 @@ export const StyledTextInput = styled.input`
   height: 54px;
 
   border-radius: 200px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
+  border: 1px solid var(--text-color);
   opacity: 0.8;
   background-color: inherit;
 
   padding: 14px 24px;
 
   &::placeholder {
-    color: #f3f3f3;
+    color: var(--text-color);
     text-align: left;
 
     font-size: 17px;
@@ -59,15 +59,14 @@ export const StyledSelectInput = styled(Select)`
   .Select__control {
     width: 100%;
     height: 54px;
-    background-color: #161f37;
+    background-color: var(--image-wrapper-color);
     border: none;
     border-radius: 40px;
     box-shadow: none;
     cursor: pointer;
     padding: 0 18px;
     font-size: 17px;
-    color: #f3f3f3;
-
+    color: var(--hover-txt-color);
     font-weight: 400;
     line-height: 2.6;
 
@@ -76,12 +75,13 @@ export const StyledSelectInput = styled(Select)`
       height: 56px;
     }
   }
+
   svg {
     transform: rotate(0deg);
     transition: transform 500ms cubic-bezier(0.46, 0.03, 0.52, 0.96);
   }
   .Select__placeholder {
-    color: #f3f3f3;
+    color: var(--hover-txt-color);
   }
   .Select__control--menu-is-open {
     svg {
@@ -94,19 +94,23 @@ export const StyledSelectInput = styled(Select)`
   }
 
   .Select__menu {
-    background-color: #161f37;
+    background-color: var(--list-color);
     border-radius: 20px;
     padding-right: 8px;
     padding-top: 8px;
     padding-bottom: 8px;
   }
   .Select__option {
-    color: rgba(243, 243, 243, 0.4);
+    color: var(--text-color);
+    opacity: 0.4;
     background-color: transparent;
   }
   .Select__option:hover {
     background-color: transparent;
-    color: rgba(243, 243, 243, 1);
+    opacity: 1;
+  }
+  .Select__single-value {
+    color: var(--hover-txt-color);
   }
 
   .Select__menu-list::-webkit-scrollbar {
@@ -117,11 +121,11 @@ export const StyledSelectInput = styled(Select)`
     background: transparent;
   }
   .Select__menu-list::-webkit-scrollbar-thumb {
-    background: #434d67;
+    background: var(--scrollbar-thumb-color);
     border-radius: 20px;
     height: 110px;
   }
-  .Select__menu-list::-webkit-scrollbar-thumb:hover {
+  /* .Select__menu-list::-webkit-scrollbar-thumb:hover {
     background: #434d67;
-  }
+  } */
 `;
