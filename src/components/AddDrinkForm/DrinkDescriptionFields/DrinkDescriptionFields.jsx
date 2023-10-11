@@ -10,7 +10,7 @@ import {
   FlexContainer,
   InputWraper,
   FieldStyle,
-  // Validate,
+  Validate,
   Margin,
   SelectWrapper,
   LabelSelect,
@@ -26,8 +26,15 @@ import {
   selectCategories,
   selectGlasses,
 } from 'redux/filters/filtersSelectors';
+import { ErrorMessage } from 'formik';
+// import { ErrorMessage } from 'formik';
 
-export const DrinkDescriptionFields = ({ setFieldValue }) => {
+export const DrinkDescriptionFields = ({
+  setFieldValue,
+  touched,
+  errors,
+  validate,
+}) => {
   const dispatch = useDispatch();
   const hiddenFileInput = useRef(null);
   const glasses = useSelector(selectGlasses);
@@ -76,11 +83,11 @@ export const DrinkDescriptionFields = ({ setFieldValue }) => {
     }
   };
 
-  const handleBlur = evt => {
-    if (!evt.target.value) {
-      console.log('Please enter a value');
-    }
-  };
+  // const handleBlur = evt => {
+  //   if (!evt.target.value) {
+  //     console.log('Please enter a value');
+  //   }
+  // };
 
   const handleDescInput = evt => {
     setFieldValue('description', evt.target.value);
@@ -98,9 +105,8 @@ export const DrinkDescriptionFields = ({ setFieldValue }) => {
                 <use xlinkHref={`${icons}#icon-plus`} />
               </svg>
             </BtnContainer>
-            <div>
-              <BtnText>Add image</BtnText>
-            </div>
+
+            <BtnText>Add image</BtnText>
           </>
         ) : (
           <Image src={img.src} alt={img.src} />
@@ -116,20 +122,43 @@ export const DrinkDescriptionFields = ({ setFieldValue }) => {
       </ImageContainer>
       <FlexContainer>
         <InputWraper>
-          <FieldStyle
-            name="drink"
-            placeholder="Enter item title"
-            type="text"
-            onBlur={handleBlur}
-          />
-          {/* <Validate></Validate> */}
-          <FieldStyle
-            name="shortDescription"
-            placeholder="Enter about recipe"
-            type="text"
-            onBlur={handleBlur}
-            onChange={handleDescInput}
-          />
+          <div style={{ position: 'relative' }}>
+            <FieldStyle
+              name="drink"
+              placeholder="Enter item title"
+              type="text"
+              border={
+                touched.drink &&
+                (errors.drink
+                  ? '1px solid #da1414'
+                  : '1px solid rgba(243, 243, 243, 0.5)')
+              }
+            />
+          </div>
+
+          <ErrorMessage name="drink" component={Validate} />
+          {/* {touched.drink && errors.drink ? (
+            <Validate>{errors.drink}</Validate>
+          ) : null} */}
+
+          {/* <ErrorMessage name="drink" />
+          </Validate> */}
+          <div style={{ position: 'relative' }}>
+            <FieldStyle
+              name="shortDescription"
+              placeholder="Enter about recipe"
+              type="text"
+              // onBlur={handleBlur}
+              onChange={handleDescInput}
+            />
+          </div>
+          {touched.shortDescription && errors.shortDescription ? (
+            <Validate>{errors.shortDescription}</Validate>
+          ) : null}
+
+          {/* {touched.ingredients && errors.ingredients ? (
+            <ErrorMessage>{errors.ingredients}</ErrorMessage>
+          ) : null} */}
           {/* <Validate></Validate> */}
         </InputWraper>
         <Margin>

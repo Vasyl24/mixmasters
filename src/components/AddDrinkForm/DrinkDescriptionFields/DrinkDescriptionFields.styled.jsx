@@ -105,7 +105,8 @@ export const FieldStyle = styled(Field)`
   outline: none;
   border: none;
   opacity: 0.6;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.5);
+  border-bottom: ${props =>
+    props.border || '1px solid rgba(243, 243, 243, 0.5)'};
 
   transition-property: border-color, opacity;
   transition-duration: 250ms;
@@ -129,17 +130,17 @@ export const FieldStyle = styled(Field)`
   }
 `;
 
-// export const Validate = styled.div`
-//   height: 30px;
-//   font-size: 12px;
-//   letter-spacing: 0.28px;
-//   color: #da1414;
+export const Validate = styled.span`
+  height: 30px;
+  font-size: 12px;
+  letter-spacing: 0.28px;
+  color: #da1414;
 
-//   @media (min-width: 768px) {
-//     height: 36px;
-//     font-size: 14px;
-//   }
-// `;
+  @media (min-width: 768px) {
+    height: 36px;
+    font-size: 14px;
+  }
+`;
 
 export const SelectWrapper = styled.div`
   display: flex;
@@ -245,6 +246,7 @@ export const RadioButton = styled.input`
   &:checked {
     border: 1px solid #f3f3f3;
     box-shadow: 0 0 0 0.3px #f3f3f3;
+    color: #f3f3f3;
 
     &::before {
       content: '';
@@ -261,3 +263,15 @@ export const RadioButton = styled.input`
     }
   }
 `;
+
+// export const RadioLabel = styled.label`
+//   display: flex;
+//   justify-content: center;
+//   cursor: pointer;
+
+//   color: rgba(243, 243, 243, 0.5);
+
+//   &${RadioButton}:checked {
+//     color: #f3f3f3;
+//   }
+// `;
