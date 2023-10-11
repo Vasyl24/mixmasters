@@ -15,6 +15,7 @@ export const DrinksSearch = ({
   setCategory,
   ingredient,
   setIngredient,
+  setPage,
 }) => {
   const [categories, setCategories] = useState([]);
   const categoryOptions = categories.map(category => {
@@ -27,14 +28,17 @@ export const DrinksSearch = ({
 
   const handleTextChange = e => {
     setQuery(e.target.value);
+    setPage(1);
   };
 
   const handleCategoryChange = e => {
     !e ? setCategory('') : setCategory(e.value);
+    setPage(1);
   };
 
   const handleIngredientChange = e => {
     !e ? setIngredient('') : setIngredient(e.value);
+    setPage(1);
   };
 
   useEffect(() => {
