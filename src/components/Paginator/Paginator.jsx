@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { StyledArrows, StyledPagination } from './Paginator.module';
+import {
+  StyledArrows,
+  StyledPagination,
+  StyledList,
+  StyledItem,
+} from './Paginator.module';
 import sprite from 'assets/sprite.svg';
 import { useWindowWidth } from 'hooks/useWindowWidth';
 
@@ -8,7 +13,7 @@ const Paginator = ({ page, setPage, restPages, totalPages }) => {
   const windowWidth = useWindowWidth();
 
   const handlePageChange = newPage => {
-    if (newPage >= 1 && newPage <= restPages) {
+    if (newPage >= 1 && newPage <= totalPages) {
       setPage(newPage);
     }
   };
@@ -25,9 +30,7 @@ const Paginator = ({ page, setPage, restPages, totalPages }) => {
     // let visiblePages = Array.from({ length: pagesToShow }, (_, k) => k + 1);
 
     const min = page > pagesToShow ? page - pagesToShow + 1 : 1;
-    const max = page < totalPages ? min + pagesToShow : totalPages + 1;
-    console.log(min, max);
-
+    const max = totalPages < pagesToShow ? totalPages + 1 : pagesToShow + min;
     let visiblePages = Array.from({ length: max - min }, (_, i) => i + min);
 
     return visiblePages;
@@ -35,39 +38,37 @@ const Paginator = ({ page, setPage, restPages, totalPages }) => {
 
   return (
     <StyledPagination>
-      <ul>
-        <StyledArrows
-          type="button"
-          onClick={() => handlePageChange(page - 1)}
-          disabled={page === 1}
-        >
-          <svg style={{ width: 14, height: 20, marginRight: 30 }}>
-            <use href={sprite + '#icon-arrow-left'} />
-          </svg>
-        </StyledArrows>
-        <ul>
-          {getVisiblePageNumbers().map((number, index) => (
-            <button
+      <StyledArrows
+        type="button"
+        onClick={() => handlePageChange(page - 1)}
+        disabled={page === 1}
+      >
+        <svg style={{ width: 14, height: 20, marginRight: 30 }}>
+          <use href={sprite + '#icon-arrow-left'} />
+        </svg>
+      </StyledArrows>
+      <StyledList>
+        {getVisiblePageNumbers().map((number, index) => (
+          <li key={index}>
+            <StyledItem
               key={index}
               onClick={() => handlePageChange(number)}
               className={number === page ? 'active' : ''}
             >
-              <li key={index} onClick={() => handlePageChange(number)}>
-                {number}
-              </li>
-            </button>
-          ))}
-        </ul>
-        <StyledArrows
-          type="button"
-          onClick={() => handlePageChange(page + 1)}
-          disabled={page === totalPages}
-        >
-          <svg style={{ width: 14, height: 20 }}>
-            <use href={sprite + '#icon-arrow-right'} />
-          </svg>
-        </StyledArrows>
-      </ul>
+              {number}
+            </StyledItem>
+          </li>
+        ))}
+      </StyledList>
+      <StyledArrows
+        type="button"
+        onClick={() => handlePageChange(page + 1)}
+        disabled={page === totalPages}
+      >
+        <svg style={{ width: 14, height: 20 }}>
+          <use href={sprite + '#icon-arrow-right'} />
+        </svg>
+      </StyledArrows>
     </StyledPagination>
   );
 };

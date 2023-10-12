@@ -73,6 +73,7 @@ export const DrinksPage = () => {
         setCategory={setCategory}
         ingredient={ingredient}
         setIngredient={setIngredient}
+        setPage={setPage}
       />
       <Drinks drinks={filteredDrinks} />
       {totalPages > 1 && (
