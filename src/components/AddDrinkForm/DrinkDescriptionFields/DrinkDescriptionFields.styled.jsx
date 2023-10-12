@@ -28,7 +28,8 @@ export const ImageContainer = styled.div`
   margin-bottom: 40px;
   border-radius: 8px;
   background: rgba(22, 31, 55, 0.5);
-  border: 1px solid rgba(22, 31, 55, 0.5);
+  border: ${props => props.border || '1px solid rgba(22, 31, 55, 0.5)'};
+
   cursor: pointer;
   transition-property: border-color, border;
   transition-duration: 250ms;
@@ -96,6 +97,7 @@ export const InputWraper = styled.div`
 `;
 
 export const FieldStyle = styled(Field)`
+  width: 400px;
   font-size: 14px;
   letter-spacing: -0.28px;
   padding-bottom: 14px;
@@ -131,6 +133,8 @@ export const FieldStyle = styled(Field)`
 `;
 
 export const Validate = styled.span`
+  position: absolute;
+  right: 0;
   height: 30px;
   font-size: 12px;
   letter-spacing: 0.28px;
@@ -138,6 +142,16 @@ export const Validate = styled.span`
 
   @media (min-width: 768px) {
     height: 36px;
+    font-size: 14px;
+  }
+`;
+
+export const ValidateImg = styled.span`
+  font-size: 12px;
+  letter-spacing: 0.28px;
+  color: #da1414;
+
+  @media (min-width: 768px) {
     font-size: 14px;
   }
 `;

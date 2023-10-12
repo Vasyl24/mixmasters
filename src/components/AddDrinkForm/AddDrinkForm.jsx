@@ -11,11 +11,13 @@ import * as Yup from 'yup';
 
 const ValidationSchema = Yup.object().shape({
   drink: Yup.string()
-    .min(2, 'Too Short!')
-    .max(25, 'Too Long!')
+    .min(2, 'Too Short')
+    .max(25, 'Too Long')
     .required('Required'),
-  description: Yup.string().min(10, 'Too Short!').required('Required'),
-  shortDescription: Yup.string().required('Required'),
+  description: Yup.string().min(10, 'Too Short').required('Required'),
+  shortDescription: Yup.string().min(10, 'Too Short').required('Required'),
+  instructions: Yup.string().min(10, 'Too Short').required('Required'),
+  drinkThumb: Yup.mixed().required('Required'),
 });
 
 export const AddDrinkForm = () => {
@@ -77,6 +79,7 @@ export const AddDrinkForm = () => {
                 touched={props.touched}
                 errors={props.errors}
               />
+
               <DrinkIngredientsFields
                 values={props.values}
                 setFieldValue={props.setFieldValue}
@@ -84,12 +87,14 @@ export const AddDrinkForm = () => {
                 touched={props.touched}
                 error={props.errors}
               />
+
               <RecipePreparationFields
                 values={props.values}
                 setFieldValue={props.setFieldValue}
                 touched={formik.touched}
                 errors={formik.errors}
               />
+
               <AddBtn type="submit" title="Add" />
             </Form>
           </StyledForm>

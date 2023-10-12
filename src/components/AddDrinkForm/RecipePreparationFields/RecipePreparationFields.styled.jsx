@@ -25,7 +25,7 @@ export const TextareaStyle = styled(Field)`
   color: var(--text-btn-color);
   background-color: transparent;
   outline: none;
-  border: 1px solid rgba(243, 243, 243, 0.5);
+  border: ${props => props.border || '1px solid rgba(243, 243, 243, 0.5)'};
   border-radius: 14px;
   opacity: 0.8;
   font-size: 14px;
@@ -50,18 +50,21 @@ export const TextareaStyle = styled(Field)`
     border-color: #f3f3f3;
   }
 `;
-export const Validate = styled.div`
-  margin-top: -36px;
-  margin-bottom: 36px;
-  margin-left: 16px;
+export const Validate = styled.span`
+  position: absolute;
+  top: 14px;
+  right: 24px;
   height: 20px;
   font-size: 12px;
   letter-spacing: 0.28px;
   color: #da1414;
 
   @media (min-width: 768px) {
-    margin-top: -36px;
-    margin-left: 24px;
     font-size: 14px;
   }
+`;
+
+export const TextareaContainer = styled.div`
+  position: relative;
+  width: 480px;
 `;

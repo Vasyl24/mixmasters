@@ -17,6 +17,7 @@ import {
   RadioWrapper,
   RadioLabel,
   RadioButton,
+  ValidateImg,
 } from './DrinkDescriptionFields.styled';
 import Select from 'react-select';
 import icons from '../../../assets/sprite.svg';
@@ -27,14 +28,8 @@ import {
   selectGlasses,
 } from 'redux/filters/filtersSelectors';
 import { ErrorMessage } from 'formik';
-// import { ErrorMessage } from 'formik';
 
-export const DrinkDescriptionFields = ({
-  setFieldValue,
-  touched,
-  errors,
-  validate,
-}) => {
+export const DrinkDescriptionFields = ({ setFieldValue, touched, errors }) => {
   const dispatch = useDispatch();
   const hiddenFileInput = useRef(null);
   const glasses = useSelector(selectGlasses);
@@ -83,12 +78,6 @@ export const DrinkDescriptionFields = ({
     }
   };
 
-  // const handleBlur = evt => {
-  //   if (!evt.target.value) {
-  //     console.log('Please enter a value');
-  //   }
-  // };
-
   const handleDescInput = evt => {
     setFieldValue('description', evt.target.value);
     setFieldValue('shortDescription', evt.target.value);
@@ -96,7 +85,17 @@ export const DrinkDescriptionFields = ({
 
   return (
     <Wrapper>
-      <ImageContainer onClick={handleImgClick}>
+      <ImageContainer
+        onClick={handleImgClick}
+        border={
+          touched.drinkThumb &&
+          (errors.drinkThumb
+            ? '1px solid #da1414'
+            : '1px solid rgba(243, 243, 243, 0.5)')
+        }
+      >
+        <ErrorMessage name={`drinkThumb`} component={ValidateImg} />
+
         {img === null ? (
           <>
             <Image style={{ display: 'none' }} />
@@ -120,6 +119,7 @@ export const DrinkDescriptionFields = ({
           onChange={handleImgUpload}
         />
       </ImageContainer>
+
       <FlexContainer>
         <InputWraper>
           <div style={{ position: 'relative' }}>
@@ -134,33 +134,27 @@ export const DrinkDescriptionFields = ({
                   : '1px solid rgba(243, 243, 243, 0.5)')
               }
             />
+
+            <ErrorMessage name="drink" component={Validate} />
           </div>
 
-          <ErrorMessage name="drink" component={Validate} />
-          {/* {touched.drink && errors.drink ? (
-            <Validate>{errors.drink}</Validate>
-          ) : null} */}
-
-          {/* <ErrorMessage name="drink" />
-          </Validate> */}
           <div style={{ position: 'relative' }}>
             <FieldStyle
               name="shortDescription"
               placeholder="Enter about recipe"
               type="text"
-              // onBlur={handleBlur}
               onChange={handleDescInput}
+              border={
+                touched.shortDescription &&
+                (errors.shortDescription
+                  ? '1px solid #da1414'
+                  : '1px solid rgba(243, 243, 243, 0.5)')
+              }
             />
+            <ErrorMessage name="shortDescription" component={Validate} />
           </div>
-          {touched.shortDescription && errors.shortDescription ? (
-            <Validate>{errors.shortDescription}</Validate>
-          ) : null}
-
-          {/* {touched.ingredients && errors.ingredients ? (
-            <ErrorMessage>{errors.ingredients}</ErrorMessage>
-          ) : null} */}
-          {/* <Validate></Validate> */}
         </InputWraper>
+
         <Margin>
           <SelectWrapper>
             <LabelSelect>Category</LabelSelect>
@@ -174,6 +168,7 @@ export const DrinkDescriptionFields = ({
               onChange={handleCategoryChange}
             />
           </SelectWrapper>
+
           <SelectWrapper>
             <LabelSelect>Glass</LabelSelect>
             <Select
@@ -190,6 +185,7 @@ export const DrinkDescriptionFields = ({
             />
           </SelectWrapper>
         </Margin>
+
         <RadioWrapper>
           <RadioLabel>
             <RadioButton
@@ -203,6 +199,7 @@ export const DrinkDescriptionFields = ({
             />
             Alcoholic
           </RadioLabel>
+
           <RadioLabel>
             <RadioButton
               name="alcoholic"
