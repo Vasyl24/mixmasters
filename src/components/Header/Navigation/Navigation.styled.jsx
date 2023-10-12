@@ -36,7 +36,7 @@ export const Nav = styled.nav`
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #0a0a11;
+    background-color: var(--background-color);
     z-index: 200;
   }
 
@@ -70,17 +70,19 @@ export const NavigationLink = styled(NavLink)`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.6;
-  border: 1px solid rgba(243, 243, 243, 0.2);
+  border: 1px solid rgba(22, 31, 55, 0.20);
   white-space: nowrap;
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     border 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
   &:hover,
   &:focus {
-    background: var(--accent-color);
+    background: var(--image-wrapper-color);;
     border-color: transparent;
   }
   &.active {
-    background: var(--accent-color);
+    color: #ffffff;
+    background: var(--image-wrapper-color);
     border-color: transparent;
   }
 `;
