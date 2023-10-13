@@ -194,7 +194,7 @@ export const DrinkDescriptionFields = ({ setFieldValue, touched, errors }) => {
           {user.isAdult === false ? (
             <div
               onClick={() => {
-                toast.error('You are not 18 years old');
+                toast.error('You are under 18 years old');
               }}
             >
               <RadioLabel>
