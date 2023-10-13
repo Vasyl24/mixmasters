@@ -18,6 +18,7 @@ import {
   RadioLabel,
   RadioButton,
   ValidateImg,
+  InputContainer,
 } from './DrinkDescriptionFields.styled';
 import Select from 'react-select';
 import icons from '../../../assets/sprite.svg';
@@ -28,12 +29,15 @@ import {
   selectGlasses,
 } from 'redux/filters/filtersSelectors';
 import { ErrorMessage } from 'formik';
+import { useAuth } from 'useAuth';
+import toast from 'react-hot-toast';
 
 export const DrinkDescriptionFields = ({ setFieldValue, touched, errors }) => {
   const dispatch = useDispatch();
   const hiddenFileInput = useRef(null);
   const glasses = useSelector(selectGlasses);
   const categories = useSelector(selectCategories);
+  const { user } = useAuth();
 
   const [selectedAlcoholic, setSelectedAlcoholic] = useState('Non alcoholic');
   const [img, setImg] = useState(null);
@@ -122,7 +126,7 @@ export const DrinkDescriptionFields = ({ setFieldValue, touched, errors }) => {
 
       <FlexContainer>
         <InputWraper>
-          <div style={{ position: 'relative' }}>
+          <InputContainer>
             <FieldStyle
               name="drink"
               placeholder="Enter item title"
@@ -136,9 +140,9 @@ export const DrinkDescriptionFields = ({ setFieldValue, touched, errors }) => {
             />
 
             <ErrorMessage name="drink" component={Validate} />
-          </div>
+          </InputContainer>
 
-          <div style={{ position: 'relative' }}>
+          <InputContainer>
             <FieldStyle
               name="shortDescription"
               placeholder="Enter about recipe"
@@ -152,7 +156,7 @@ export const DrinkDescriptionFields = ({ setFieldValue, touched, errors }) => {
               }
             />
             <ErrorMessage name="shortDescription" component={Validate} />
-          </div>
+          </InputContainer>
         </InputWraper>
 
         <Margin>
@@ -187,18 +191,36 @@ export const DrinkDescriptionFields = ({ setFieldValue, touched, errors }) => {
         </Margin>
 
         <RadioWrapper>
-          <RadioLabel>
-            <RadioButton
-              name="alcoholic"
-              id="option1"
-              stroke="#F3F3F3"
-              type="radio"
-              value="Alcoholic"
-              checked={selectedAlcoholic === 'Alcoholic'}
-              onChange={handleOptionChange}
-            />
-            Alcoholic
-          </RadioLabel>
+          {user.isAdult === false ? (
+            <div
+              onClick={() => {
+                toast.error('You are not 18 years old');
+              }}
+            >
+              <RadioLabel>
+                <RadioButton
+                  name="alcoholic"
+                  id="option1"
+                  type="radio"
+                  value="Alcoholic"
+                  disabled={user.isAdult === false}
+                />
+                Alcoholic
+              </RadioLabel>
+            </div>
+          ) : (
+            <RadioLabel>
+              <RadioButton
+                name="alcoholic"
+                id="option1"
+                type="radio"
+                value="Alcoholic"
+                checked={selectedAlcoholic === 'Alcoholic'}
+                onChange={handleOptionChange}
+              />
+              Alcoholic
+            </RadioLabel>
+          )}
 
           <RadioLabel>
             <RadioButton

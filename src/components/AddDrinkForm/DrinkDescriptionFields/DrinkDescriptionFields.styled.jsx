@@ -226,11 +226,12 @@ export const RadioLabel = styled.label`
   justify-content: center;
   cursor: pointer;
 
-  color: rgba(243, 243, 243, 0.5);
+  // color: rgba(243, 243, 243, 0.5);
+  color: #f3f3f3;
 
-  &:checked {
-    color: #f3f3f3;
-  }
+  // &:checked {
+  //   color: #f3f3f3;
+  // }
 `;
 
 // export const LabelText = styled.span`
@@ -276,6 +277,15 @@ export const RadioButton = styled.input`
       transform: translate(-50%, -50%) scale(1, 1);
     }
   }
+
+  &:disabled {
+    pointer-events: none;
+    cursor: unset;
+  }
+`;
+
+export const InputContainer = styled.div`
+  position: relative;
 `;
 
 // export const RadioLabel = styled.label`
