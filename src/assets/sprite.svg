@@ -78,7 +78,7 @@
 <path fill="none" stroke="#f3f3f3" style="stroke: var(--color1, #f3f3f3)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.4" d="M1.333 1.333l29.333 29.333"></path>
 </symbol>
 <symbol id="icon-minus" viewBox="0 0 32 32">
-<path fill="none" stroke="#f3f3f3" style="stroke: var(--color1, #f3f3f3)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3" d="M5 16h22"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3" d="M5 16h22"></path>
 </symbol>
 <symbol id="icon-plus" viewBox="0 0 32 32">
 <path fill="none" style="fill: var(--color1, #f3f3f3)" d="M4.078 0.314h23.843c2.079 0 3.765 1.686 3.765 3.765v23.843c0 2.079-1.686 3.765-3.765 3.765h-23.843c-2.079 0-3.765-1.686-3.765-3.765v-23.843c0-2.079 1.686-3.765 3.765-3.765z"></path>

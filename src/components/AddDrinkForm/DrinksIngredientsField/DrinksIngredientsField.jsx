@@ -105,7 +105,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
       <CounterWrapper>
         <IngredientsText>Ingredients</IngredientsText>
         <CounterWrp>
-          <StyledButton onClick={minusButtonHandler}>
+          <StyledButton onClick={minusButtonHandler} disabled={count === 1}>
             <svg width={16} height={16}>
               <use xlinkHref={`${icons}#icon-minus`} />
             </svg>
@@ -146,6 +146,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
                     min={0}
                     required
                   />
+
                   <Select
                     name={`ingredients[${index}].measure`}
                     options={optionsIngredientUnit}

@@ -197,6 +197,13 @@ export const StyledButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+  stroke: #f3f3f3;
+
+  &:disabled {
+    pointer-events: none;
+    cursor: unset;
+    stroke: rgba(243, 243, 243, 0.5);
+  }
 `;
 
 export const CounterWrp = styled.div`

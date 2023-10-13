@@ -8,6 +8,7 @@ import { AddBtn } from 'components/Butttons/AddBtn/AddDrinksBtn';
 import axios from 'axios';
 import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 
 const ValidationSchema = Yup.object().shape({
   drink: Yup.string()
@@ -21,6 +22,8 @@ const ValidationSchema = Yup.object().shape({
 });
 
 export const AddDrinkForm = () => {
+  const navigate = useNavigate();
+
   const initialValues = {
     drink: '',
     category: 'Cocktail',
@@ -53,6 +56,7 @@ export const AddDrinkForm = () => {
     formData.append('cocktail', file);
 
     axios.post('/drinks/own/add', formData);
+    navigate('/my', { replace: true });
     resetForm();
   };
 
