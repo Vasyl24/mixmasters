@@ -28,6 +28,7 @@ export const ImageContainer = styled.div`
   margin-bottom: 40px;
   border-radius: 8px;
   background: rgba(22, 31, 55, 0.5);
+  // background-color: var(--image-wrapper-color);
   border: ${props => props.border || '1px solid rgba(22, 31, 55, 0.5)'};
 
   cursor: pointer;
@@ -102,13 +103,14 @@ export const FieldStyle = styled(Field)`
   letter-spacing: -0.28px;
   padding-bottom: 14px;
   margin-bottom: 30px;
-  color: var(--text-btn-color);
+  // color: var(--text-btn-color);
+  color: var(--accent-text-color);
   background-color: transparent;
   outline: none;
   border: none;
   opacity: 0.6;
   border-bottom: ${props =>
-    props.border || '1px solid rgba(243, 243, 243, 0.5)'};
+    props.border || '1px solid var(--accent-text-color)'};
 
   transition-property: border-color, opacity;
   transition-duration: 250ms;
