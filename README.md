@@ -31,16 +31,16 @@ with others.
 
 ## Main functions
 
-1.**\_\_**Drink Search:**\_\_** Search for drinks by various criteria such as
+1.**Drink Search:** Search for drinks by various criteria such as
 name, ingredients or type.
 
-2.**\_\_**View Recipes:**\_\_** After searching, you can view information about
+2.**View Recipes:** After searching, you can view information about
 the drink, including ingredient lists, cooking instructions, and images.
 
-3.**\_\_**Add to favorites:**\_\_** Registered users can add drinks to their
+3.**Add to favorites:** Registered users can add drinks to their
 favorites list. This allows you to store and easily find your favorite drinks.
 
-4.**\_\_**Adding your own recipes:**\_\_** You can also add your own cocktail
+4.**Adding your own recipes:** You can also add your own cocktail
 and drink recipes, including the name, list of ingredients and instructions for
 making them. This allows you to contribute to the library and share your recipes
 with others.
