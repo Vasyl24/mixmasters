@@ -135,7 +135,7 @@ export const DrinkDescriptionFields = ({ setFieldValue, touched, errors }) => {
                 touched.drink &&
                 (errors.drink
                   ? '1px solid #da1414'
-                  : '1px solid rgba(243, 243, 243, 0.5)')
+                  : '1px solid var(--accent-text-color)')
               }
             />
 
@@ -152,7 +152,7 @@ export const DrinkDescriptionFields = ({ setFieldValue, touched, errors }) => {
                 touched.shortDescription &&
                 (errors.shortDescription
                   ? '1px solid #da1414'
-                  : '1px solid rgba(243, 243, 243, 0.5)')
+                  : '1px solid var(--accent-text-color)')
               }
             />
             <ErrorMessage name="shortDescription" component={Validate} />

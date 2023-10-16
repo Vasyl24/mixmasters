@@ -50,9 +50,9 @@ export const styles = {
     marginLeft: 'auto',
     marginTop: '-6px',
     overflowX: 'hidden',
-    color: 'rgba(243, 243, 243, 0.50)',
+    color: 'var(--list-text-color)',
     borderRadius: '12px',
-    backgroundColor: '#161F37',
+    backgroundColor: 'var(--list-color)',
     '::-webkit-scrollbar': {
       width: '5px',
       height: '80px',
@@ -66,10 +66,10 @@ export const styles = {
     fontWeight: 400,
     textWrap: 'nowrap',
     padding: 0,
-    color: state.isSelected ? '#f3f3f3' : 'inherit',
+    color: state.isSelected ? 'var(--text-color)' : 'inherit',
     cursor: 'pointer',
     '&:hover': {
-      color: '#f3f3f3',
+      color: 'var(--text-color)',
     },
   }),
 

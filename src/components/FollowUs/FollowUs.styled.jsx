@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h3`
-  color: #f3f3f3;
+  color: var(--text-color);
   font-size: 18px;
   font-weight: 500;
   line-height: calc(24 / 18);

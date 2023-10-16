@@ -28,6 +28,8 @@
     --dark-color: #0a0a11;
     --accent-text-color: rgba(243, 243, 243, 0.5);
     --image-wrapper-color: #161f37;
+    --list-text-color: rgba(243, 243, 243, 0.4);
+    --border-icon-color: rgba(243, 243, 243, 0.2);
   }
 
   [data-theme='light'] {
@@ -45,6 +47,8 @@
     --dark-color: #0a0a11;
     --image-wrapper-color: #161f37;
     --accent-text-color: #060609a6;
+    --list-text-color: rgba(10, 10, 17, 0.4);
+    --border-icon-color: rgba(22, 31, 55, 0.20);
   }
 }
 

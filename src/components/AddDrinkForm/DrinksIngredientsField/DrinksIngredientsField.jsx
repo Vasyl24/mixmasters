@@ -163,7 +163,7 @@ const DrinkIngredientsFields = ({ values, setFieldValue }) => {
                 onClick={() => handleDeleteIngredient(ingredient.ingredientId)}
                 type="button"
               >
-                <svg>
+                <svg width={20} height={20}>
                   <use xlinkHref={`${icons}#icon-close`} />
                 </svg>
               </DeleteBtn>

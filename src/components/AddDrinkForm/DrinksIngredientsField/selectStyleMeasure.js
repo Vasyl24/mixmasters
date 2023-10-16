@@ -41,10 +41,10 @@ export const stylesMeasure = {
     marginLeft: '-12px',
     marginTop: '-6px',
     overflowX: 'hidden',
-    color: 'rgba(243, 243, 243, 0.50)',
+    color: 'var(--list-text-color)',
     textAlign: 'center',
     borderRadius: '12px',
-    backgroundColor: '#161F37',
+    backgroundColor: 'var(--list-color)',
     '::-webkit-scrollbar': {
       width: '5px',
       height: '80px',
@@ -55,10 +55,10 @@ export const stylesMeasure = {
     ...baseStyles,
     fontSize: '12px',
     textWrap: 'nowrap',
-    color: state.isSelected ? '#f3f3f3' : 'inherit',
+    color: state.isSelected ? 'var(--text-color)' : 'inherit',
     cursor: 'pointer',
     '&:hover': {
-      color: '#f3f3f3',
+      color: 'var(--text-color)',
     },
   }),
 

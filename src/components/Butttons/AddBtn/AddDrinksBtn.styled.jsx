@@ -5,8 +5,8 @@ export const StyledAddDrinksBtn = styled.button`
   font-size: 14px;
   line-height: calc(18 / 16);
   font-weight: 600;
-  background: #f3f3f3;
-  color: #161f37;
+  background: var(--btn-color);
+  color: var(--text-btn-color);
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
   cursor: pointer;
@@ -22,8 +22,8 @@ export const StyledAddDrinksBtn = styled.button`
   }
 
   &:hover {
-    background: #161f37;
-    color: #f3f3f3;
+    background: var(--text-btn-color);
+    color: var(--btn-color);
   }
   }
 `;
