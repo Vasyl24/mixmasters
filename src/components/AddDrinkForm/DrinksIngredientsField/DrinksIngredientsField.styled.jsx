@@ -20,7 +20,6 @@ export const CounterWrapper = styled.div`
 `;
 
 export const IngredientsText = styled.h3`
-  color: $mainFontColor;
   font-size: 28px;
   font-weight: 600;
   line-height: calc(32 / 28);
@@ -74,7 +73,7 @@ export const MeasureWraper = styled.div`
   height: 50px;
   background: transparent;
   border-radius: 200px;
-  border: 1px solid rgba(243, 243, 243, 0.5);
+  border: 1px solid var(--list-text-color);
 
   transition-property: border-color;
   transition-duration: 250ms;
@@ -87,7 +86,7 @@ export const MeasureWraper = styled.div`
 
   &:hover,
   &:focus {
-    border-color: #f3f3f3;
+    border-color: var(--text-color);
   }
 `;
 
@@ -98,7 +97,7 @@ export const FieldStyle = styled(Field)`
   border: none;
   text-align: center;
   cursor: pointer;
-  color: var(--text-btn-color);
+  color: var(--text-color);
   background-color: transparent;
   outline: none;
   font-size: 14px;
@@ -137,6 +136,7 @@ export const DeleteBtn = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+  stroke: var(--text-color);
   @media screen and (min-width: 768px) {
     width: 20px;
     height: 20px;`;
@@ -193,16 +193,17 @@ export const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: inherit;
   border: none;
   outline: none;
+  background: transparent;
   cursor: pointer;
-  stroke: #f3f3f3;
+  stroke: var(--btn-color);
 
   &:disabled {
     pointer-events: none;
     cursor: unset;
-    stroke: rgba(243, 243, 243, 0.5);
+    stroke: var(--text-color);
+    opacity: 0.3;
   }
 `;
 
@@ -214,6 +215,6 @@ export const CounterWrp = styled.div`
   align-items: center;
   background-color: transparent;
   border-radius: 200px;
-  border: 1px solid rgba(243, 243, 243, 0.5);
+  border: 1px solid var(--list-text-color);
   opacity: 0.8;
 `;

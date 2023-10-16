@@ -27,9 +27,8 @@ export const ImageContainer = styled.div`
   margin-right: auto;
   margin-bottom: 40px;
   border-radius: 8px;
-  background: rgba(22, 31, 55, 0.5);
-  // background-color: var(--image-wrapper-color);
-  border: ${props => props.border || '1px solid rgba(22, 31, 55, 0.5)'};
+  background: var(--image-wrapper-color);
+  border: ${props => props.border || 'none'};
 
   cursor: pointer;
   transition-property: border-color, border;
@@ -50,7 +49,7 @@ export const ImageContainer = styled.div`
 
   &:hover,
   &:focus {
-    border: 1px solid rgba(243, 243, 243);
+    border: 1px solid var(--accent-text-color);
   }
 `;
 
@@ -77,6 +76,7 @@ export const BtnText = styled.p`
   font-size: 16px;
   font-weight: 500;
   line-height: calc(20 / 16);
+  color: #f3f3f3;
 `;
 
 export const ImageInput = styled.input`
@@ -103,12 +103,11 @@ export const FieldStyle = styled(Field)`
   letter-spacing: -0.28px;
   padding-bottom: 14px;
   margin-bottom: 30px;
-  // color: var(--text-btn-color);
   color: var(--accent-text-color);
   background-color: transparent;
   outline: none;
   border: none;
-  opacity: 0.6;
+  // opacity: 0.6;
   border-bottom: ${props =>
     props.border || '1px solid var(--accent-text-color)'};
 
@@ -129,7 +128,8 @@ export const FieldStyle = styled(Field)`
   &:hover,
   :focus,
   :active {
-    border-color: #f3f3f3;
+    border-color: var(--text-color);
+    color: var(--text-color);
     opacity: 1;
   }
 `;
@@ -164,8 +164,8 @@ export const SelectWrapper = styled.div`
   align-items: start;
   height: 34px;
   padding-bottom: 14px;
-  border-bottom: 1px solid;
-  border-color: rgba(243, 243, 243, 0.3);
+  border-bottom: 1px solid var(--accent-text-color);
+  border-opacity: 0.5;
 
   transition-property: border-color;
   transition-duration: 250ms;
@@ -196,7 +196,7 @@ export const Margin = styled.div`
 `;
 
 export const LabelSelect = styled.label`
-  color: rgba(243, 243, 243, 0.5);
+  color: var(--accent-text-color);
   font-size: 14px;
   letter-spacing: -0.28px;
   opacity: 0.6;
@@ -228,8 +228,7 @@ export const RadioLabel = styled.label`
   justify-content: center;
   cursor: pointer;
 
-  // color: rgba(243, 243, 243, 0.5);
-  color: #f3f3f3;
+  color: var(--text-color);
 
   // &:checked {
   //   color: #f3f3f3;
@@ -247,8 +246,8 @@ export const RadioButton = styled.input`
   appearance: none;
   -webkit-appearance: none;
   border-radius: 10px;
-  border: 1px solid rgba(243, 243, 243, 0.5);
-  box-shadow: 0 0 0 0.3px rgba(243, 243, 243, 0.5);
+  border: 1px solid var(--text-color);
+  box-shadow: 0 0 0 0.3px var(--text-color);
   cursor: pointer;
   margin-right: 8px;
   width: 16px;
@@ -261,16 +260,16 @@ export const RadioButton = styled.input`
   }
 
   &:checked {
-    border: 1px solid #f3f3f3;
-    box-shadow: 0 0 0 0.3px #f3f3f3;
-    color: #f3f3f3;
+    border: 1px solid var(--text-color);
+    box-shadow: 0 0 0 0.3px var(--text-color);
+    color: var(--text-color);
 
     &::before {
       content: '';
       position: absolute;
       top: 50%;
       left: 50%;
-      background-color: #f3f3f3;
+      background-color: var(--text-color);
       width: 0.65rem;
       height: 0.65rem;
       border-radius: 50%;

@@ -3,19 +3,19 @@ import icons from '../../../assets/sprite.svg';
 
 const socialLinks = [
   {
-    name: "Facebook",
-    url: "https://www.facebook.com/",
-    iconId: "icon-facebook",
+    name: 'Facebook',
+    url: 'https://www.facebook.com/',
+    iconId: 'icon-facebook',
   },
   {
-    name: "Instagram",
-    url: "https://www.instagram.com/",
-    iconId: "icon-instagram",
+    name: 'Instagram',
+    url: 'https://www.instagram.com/',
+    iconId: 'icon-instagram',
   },
   {
-    name: "YouTube",
-    url: "https://www.youtube.com/",
-    iconId: "icon-youtube",
+    name: 'YouTube',
+    url: 'https://www.youtube.com/',
+    iconId: 'icon-youtube',
   },
 ];
 
@@ -41,8 +41,7 @@ export const SocialLinksIcon = styled.svg`
   width: 22px;
   height: 22px;
   display: flex;
-  fill: #f3f3f3
-  margin-left: 3px;
+  fill: var(--text-color);
 
   @media screen and (min-width: 768px) {
     width: 28px;
@@ -52,13 +51,13 @@ export const SocialLinksIcon = styled.svg`
 
 // Styled IconContainer
 export const IconContainer = styled.a`
-  border: 1px solid rgba(243, 243, 243, 0.2);
+  border: 1px solid var(--border-icon-color);
   border-radius: 10px;
   padding: 8px;
   transition: border 0.3s ease;
 
   &:hover {
-    border: 1px solid #f3f3f3
+    border: 1px solid var(--text-color);
   }
 `;
 

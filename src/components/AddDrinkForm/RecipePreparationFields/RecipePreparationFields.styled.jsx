@@ -5,7 +5,6 @@ export const Wrapper = styled.div``;
 
 export const RecipeText = styled.h3`
   margin-bottom: 40px;
-  color: $mainFontColor;
   font-size: 28px;
   font-weight: #f3f3f3;
   line-height: calc(32 / 28);
@@ -22,10 +21,10 @@ export const TextareaStyle = styled(Field)`
   padding: 16px;
   margin-bottom: 20px;
 
-  color: var(--text-btn-color);
+  color: var(--text-color);
   background-color: transparent;
   outline: none;
-  border: ${props => props.border || '1px solid rgba(243, 243, 243, 0.5)'};
+  border: ${props => props.border || '1px solid var(--list-text-color)'};
   border-radius: 14px;
   opacity: 0.8;
   font-size: 14px;
@@ -47,7 +46,7 @@ export const TextareaStyle = styled(Field)`
 
   &:hover,
   :focus {
-    border-color: #f3f3f3;
+    border-color: var(--text-color);
   }
 `;
 export const Validate = styled.span`

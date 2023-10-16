@@ -13,11 +13,10 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h3`
-  color: #f3f3f3;
+  color: var(--text-color);
   font-size: 18px;
   font-weight: 500;
   line-height: calc(24 / 18);
-  // margin-top: 88px;
 
   @media (min-width: 768px) {
     font-size: 24px;
@@ -35,7 +34,6 @@ export const List = styled.ul`
     grid-template-columns: 1fr 1fr;
     gap: 32px;
   }
-
 `;
 
 export const DrinkItem = styled(Link)`
@@ -70,14 +68,14 @@ export const TextWrapper = styled.div`
 `;
 
 export const Subtitle = styled.p`
-  color: #f3f3f3;
+  color: var(--text-color);
   font-size: 16px;
   font-weight: 500;
   line-height: calc(22 / 16);
 `;
 
 export const Text = styled.p`
-  color: rgba(243, 243, 243, 0.5);
+  color: var(--list-text-color);
   font-size: 14px;
   line-height: calc(18 / 14);
   height: 55px;
