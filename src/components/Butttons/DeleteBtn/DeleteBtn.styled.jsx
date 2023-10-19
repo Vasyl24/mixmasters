@@ -8,8 +8,7 @@ export const StyledDeleteBtn = styled.button`
   height: 46px;
   border-radius: 40px;
   border: none;
-  background-color: var(--accent-color);
-  transition: background-color 0.3s ease;
+  background-color: var(--btn-background-color);
   margin-left: 8px;
 
   @media (min-width: 768px) {
@@ -19,19 +18,19 @@ export const StyledDeleteBtn = styled.button`
 
   &:hover,
   &:active {
-    background-color: var(--text-btn-color);
+    background-color: var(--hover-btn-color);
   }
 
   &:hover svg,
   &:active svg {
-    stroke: var(--accent-color);
-    fill: var(--text-btn-color);
+    stroke: var(--hover-txt-color);
+    fill: var(--hover-btn-color);
   }
 `;
 
 export const TrashIcon = styled.svg`
   width: 24px;
   height: 24px;
-  stroke: var(--text-btn-color);
-  fill: var(--accent-color);
+  stroke: var(--hover-txt-color);
+  fill: var(--btn-background-color);
 `;

@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 export const StyledSeeMoreBtn = styled(NavLink)`
   border-radius: 42px;
-  background-color: var(--accent-color);
-  color: var(--text-btn-color);
+  background-color: var(--btn-background-color);
+  color: var(--btn-text-color);
   font-size: 14px;
   font-weight: 600;
   line-height: calc(18 / 14);
@@ -17,8 +17,8 @@ export const StyledSeeMoreBtn = styled(NavLink)`
     color 400ms ease;
 
   &:hover {
-    background-color: var(--text-btn-color);
-    color: var(--accent-color);
+    background-color: var(--hover-btn-color);
+    color: var(--hover-txt-color);
   }
 
   @media (min-width: 768px) {
