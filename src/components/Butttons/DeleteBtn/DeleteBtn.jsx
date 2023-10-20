@@ -1,15 +1,6 @@
 import { StyledDeleteBtn, TrashIcon } from './DeleteBtn.styled';
 import sprite from 'assets/sprite.svg';
 
-// export const DeleteBtn = ({ id, page }) => {
-//     return (
-//         <>
-//         <StyledDeleteBtn>
-//          <TrashIcon />
-//         </StyledDeleteBtn>
-//         </>
-//     )
-// }
 export const DeleteBtn = ({ onDelete, id }) => {
   return (
     <>

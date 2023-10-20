@@ -43,8 +43,8 @@ export const StyledItem = styled.div`
 export const StyledArrows = styled.button`
   width: 27px;
   height: 27px;
-  stroke: var(--text-color);
-  opacity: 0.7;
+  fill: var(--text-color);
+  opacity: 0.3;
   background-color: transparent;
   border: none;
   margin: 0 10px;

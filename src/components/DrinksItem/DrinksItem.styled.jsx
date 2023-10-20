@@ -61,7 +61,7 @@ export const StyledType = styled.h3`
   font-weight: 400;
   line-height: 1.28;
   margin-top: 4px;
-  color: var(--text-btn-color);
+  color: var(--text-color);
   opacity: 0.5;
 
   @media screen and (min-width: 768px) {

@@ -21,7 +21,7 @@ export const StyledPagination = styled.div`
     width: 27px;
     height: 27px;
     border-radius: 50%;
-    color: #f3f3f3;
+    color: var(--text-color);
     transition: background-color 0.5s;
     font-size: 12px;
     font-weight: 500;
@@ -32,14 +32,15 @@ export const StyledPagination = styled.div`
   }
 
   button.active {
-    background-color: rgba(64, 112, 205, 0.5);
+    background-color: var(--pagination-color);
   }
 `;
 
 export const StyledArrows = styled.button`
   width: 27px;
   height: 27px;
-  fill: rgba(243, 243, 243, 0.3);
+  fill: var(--text-color);
+  opacity: 0.3;
   background-color: transparent;
   border: none;
   margin: 0 10px;
