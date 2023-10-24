@@ -70,19 +70,23 @@ export const NavigationLink = styled(NavLink)`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.6;
-  border: 1px solid rgba(22, 31, 55, 0.20);
+  border: 1px solid var(--border-icon-color);
   white-space: nowrap;
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     border 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
   &:hover,
   &:focus {
-    background: var(--image-wrapper-color);;
-    border-color: transparent;
+    background: var(--image-wrapper-color);
+    border-color: var(--image-wrapper-color);
+    color: ${props =>
+      props.dataTheme === 'light' ? 'var(--background-color)' : '#f3f3f3'};
   }
   &.active {
-    color: #ffffff;
+    color: ${props =>
+      props.dataTheme === 'light' ? 'var(--background-color)' : '#f3f3f3'};
+
     background: var(--image-wrapper-color);
-    border-color: transparent;
+    border-color: var(--image-wrapper-color);
   }
 `;

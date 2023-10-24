@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../components/Logo/Logo';
+import Logo from '../Logo/Logo';
 import SocialLinks from './SocialLinks/SocialLinks';
 import { Nav } from './Nav/Nav';
 import EmailSubscription from './EmailSubscription/EmailSubscription';
@@ -58,13 +58,13 @@ function Footer() {
               </a>
             </FooterTextButton>
           </div>
-          <FooterFirstBallContainer>
-            <FooterFirstBall />
-          </FooterFirstBallContainer>
-          <FooterSecondBall />
-          <FooterThirdBall />
         </FooterInfo>
       </FooterWrap>
+      <FooterFirstBallContainer>
+        <FooterFirstBall />
+      </FooterFirstBallContainer>
+      <FooterSecondBall />
+      <FooterThirdBall />
     </FooterContainer>
   );
 }

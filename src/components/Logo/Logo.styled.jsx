@@ -14,7 +14,6 @@ const slideInFromTop = keyframes`
 export const LogoLink = styled(NavLink)`
   margin-right: auto;
   z-index: 400;
-  
 
   @media screen and (min-width: 1440px) {
   }
