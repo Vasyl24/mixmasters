@@ -28,8 +28,8 @@ const slideOut = keyframes`
 export const IconWrapper = styled.div`
   width: 32px;
   height: 32px;
-  stroke: #f3f3f3;
-    animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
+  stroke: var(--btn-color);
+  animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
   cubic-bezier(0.42, 0, 0.58, 1) forwards;
 
   @media (min-width: 768px) {
@@ -45,6 +45,7 @@ export const IconWrapper = styled.div`
 export const Icon = styled.svg`
   width: 100%;
   height: 100%;
+  stroke: var(--btn-color);
 `;
 
 const BurgerMenuWrapper = styled.div`

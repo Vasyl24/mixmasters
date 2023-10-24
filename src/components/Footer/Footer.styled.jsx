@@ -3,8 +3,12 @@ import styled, { keyframes } from 'styled-components';
 // Create a container for the footer
 export const FooterContainer = styled.footer`
   border-top: 1px solid rgba(243, 243, 243, 0.2);
+  background: #0a0a11;
 `;
 
+export const LogoContainer = styled.div`
+  color: white;
+`;
 export const FooterWrap = styled.div`
   padding: 40px 20px 18px;
 
