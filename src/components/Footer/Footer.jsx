@@ -15,6 +15,7 @@ import {
   FooterFirstBall,
   FooterSecondBall,
   FooterThirdBall,
+  LogoContainer,
 } from './Footer.styled';
 
 function Footer() {
@@ -24,7 +25,9 @@ function Footer() {
         <FlexContainer>
           <FooterGroup>
             <div>
-              <Logo />
+              <LogoContainer>
+                <Logo />
+              </LogoContainer>
               <SocialLinks />
             </div>
             <Nav />

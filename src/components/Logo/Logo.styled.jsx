@@ -14,6 +14,7 @@ const slideInFromTop = keyframes`
 export const LogoLink = styled(NavLink)`
   margin-right: auto;
   z-index: 400;
+  
 
   @media screen and (min-width: 1440px) {
   }
@@ -38,6 +39,7 @@ export const LogoGroup = styled.div`
 export const Icon = styled.svg`
   width: 22px;
   height: 22px;
+  fill: var(--btn-color);
 
   @media screen and (min-width: 768px) {
     width: 28px;
@@ -62,9 +64,7 @@ const Logo = () => {
       <LogoGroup>
         <Icon>
           <a href="/home">
-            <svg>
-              <use xlinkHref={`${icons}#icon-logo`} />
-            </svg>
+            <use xlinkHref={`${icons}#icon-logo`} />
           </a>
         </Icon>
         <Name>Drink Master</Name>
