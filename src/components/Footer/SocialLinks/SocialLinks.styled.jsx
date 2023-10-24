@@ -41,7 +41,7 @@ export const SocialLinksIcon = styled.svg`
   width: 22px;
   height: 22px;
   display: flex;
-  fill: var(--text-color);
+  fill: #f3f3f3;
 
   @media screen and (min-width: 768px) {
     width: 28px;
@@ -51,13 +51,13 @@ export const SocialLinksIcon = styled.svg`
 
 // Styled IconContainer
 export const IconContainer = styled.a`
-  border: 1px solid var(--border-icon-color);
+  border: 1px solid rgba(243, 243, 243, 0.2);
   border-radius: 10px;
   padding: 8px;
   transition: border 0.3s ease;
 
   &:hover {
-    border: 1px solid var(--text-color);
+    border: 1px solid #f3f3f3;
   }
 `;
 
