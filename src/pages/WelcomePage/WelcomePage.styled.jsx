@@ -22,6 +22,7 @@ export const ContainerLayout = styled.div`
       rgba(10, 10, 17, 0)
     ),
     url(${welcomemd1x});
+  background-color: #0a0a11;
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -114,6 +115,7 @@ export const TitleStart = styled.h2`
   font-size: 28px;
   line-height: calc(32 / 28);
   text-align: center;
+  color: #f3f3f3;
 
   @media (min-width: 768px) {
     font-size: 40px;
@@ -127,6 +129,7 @@ export const TextStart = styled.p`
   text-align: center;
   margin-top: 14px;
   max-width: 319px;
+  color: #f3f3f3;
 
   @media (min-width: 768px) {
     font-size: 18px;

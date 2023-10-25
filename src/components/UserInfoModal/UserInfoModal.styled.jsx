@@ -5,7 +5,7 @@ export const ModalStyles = {
   // top: '-50%',
   borderRadius: '8px',
   padding: '0px',
-  backgroundColor: 'var(--accent-color)',
+  backgroundColor: 'var(--btn-background-color)',
 };
 export const BackdropStyles = {
   backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -24,6 +24,8 @@ export const CloseButton = styled.button`
   right: 14px;
   background-color: transparent;
   border: none;
+  stroke: #f3f3f3;
+
   @media screen and (min-width: 768px) {
     top: 18px;
     right: 18px;

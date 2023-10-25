@@ -11,8 +11,8 @@ export const ToggleContainer = styled.div`
 export const ToggleLabel = styled.label`
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 40px;
+  height: 20px;
 `;
 
 export const ToggleInputChecked = styled.input`
@@ -33,13 +33,13 @@ export const Slider = styled.div`
   &:before {
     content: '';
     position: absolute;
-    height: 26px;
-    width: 26px;
-    bottom: 4px;
+    top: 1px;
+    left: 1px;
+    height: 18px;
+    width: 18px;
     background-color: var(--list-color);
     transition: transform 0.4s;
     border-radius: 50%;
-    left: 4px;
   }
 
   ${ToggleInputChecked}:checked + & {
@@ -47,6 +47,6 @@ export const Slider = styled.div`
   }
 
   ${ToggleInputChecked}:checked + &:before {
-    transform: translateX(26px);
+    transform: translateX(21px);
   }
 `;

@@ -33,6 +33,8 @@ export const StyledPagination = styled.div`
 
   button.active {
     background-color: var(--pagination-color);
+
+    opacity: ${props => (props.dataTheme === 'light' ? '100%' : '50%')};
   }
 `;
 

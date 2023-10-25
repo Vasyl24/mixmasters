@@ -36,7 +36,11 @@ export const StyledItem = styled.div`
   cursor: pointer;
   &.active {
     color: var(--hover-txt-color);
-    background-color: var(--pagination-color);
+    // background-color: var(--pagination-color);
+    background-color: ${props =>
+      props.dataTheme === 'light'
+        ? 'rgba(64, 112, 205, 1)'
+        : 'rgba(64, 112, 205, 0.5)'};
   }
 `;
 

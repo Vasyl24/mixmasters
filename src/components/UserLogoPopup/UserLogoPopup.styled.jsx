@@ -5,7 +5,7 @@ export const ModalStyles = {
   width: '177px',
   height: '134px',
   padding: '18px',
-  backgroundColor: 'var(--accent-color)',
+  backgroundColor: 'var(--btn-background-color)',
 };
 export const BackdropStyles = {
   backgroundColor: 'none',
@@ -23,6 +23,7 @@ export const Text = styled.span`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
+  color: #f3f3f3;
 `;
 
 export const Icon = styled.svg`

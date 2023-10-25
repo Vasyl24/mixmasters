@@ -53,7 +53,7 @@ export const LogOutModal = ({ toggleModal, modalIsOpen }) => {
       customMaskStyles={BackdropStyles}
     >
       <CloseButton type="button" onClick={handleClose}>
-        <Icon>
+        <Icon style={{ stroke: '#f3f3f3' }}>
           <use xlinkHref={`${icons}#icon-close`} />
         </Icon>
       </CloseButton>
