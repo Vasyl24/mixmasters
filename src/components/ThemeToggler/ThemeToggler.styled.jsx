@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import styled, { keyframes } from 'styled-components';
 
 export const ToggleContainer = styled.div`
   display: flex;
@@ -9,60 +8,45 @@ export const ToggleContainer = styled.div`
   margin-right: 28px;
 `;
 
-// ===================================================================================================================
-// import styled, { keyframes } from 'styled-components';
+export const ToggleLabel = styled.label`
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+`;
 
-// const slideIn = keyframes`
-//   from {
-//     transform: translateY(-200%);
-//   }
-//   to {
-//     transform: translateY(0);
-//   }
-// `;
+export const ToggleInputChecked = styled.input`
+  display: none; // Приховуємо інпут
+`;
 
-// const slideOut = keyframes`
-//   from {
-//     transform: translateY(0);
-//     opacity: 1;
-//   }
-//   to {
-//     transform: translateY(-100%);
-//     opacity: 0;
-//   }
-// `;
+export const Slider = styled.div`
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--btn-color);
+  transition: background-color 0.4s;
+  border-radius: 34px;
 
-// export const ToggleContainer = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: flex-end;
-//   min-width: 40px;
-//   height: 20px;
-//   margin-left: auto;
-//   padding: 1px;
-//   border-radius: 10px;
-//   border: 1px solid var(--background-color);
-//   background-color: var(--text-btn-color);
-//   box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.1) inset;
-//   animation: ${props => (props.closing ? slideOut : slideIn)} 0.8s
-//     cubic-bezier(0.42, 0, 0.58, 1) forwards;
-// `;
-// export const Circle = styled.div`
-//   width: 16px;
-//   height: 16px;
-//   border-radius: 50%;
-//   background-color: var(--accent-color);
-// `;
+  &:before {
+    content: '';
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    bottom: 4px;
+    background-color: var(--list-color);
+    transition: transform 0.4s;
+    border-radius: 50%;
+    left: 4px;
+  }
 
-// export const Label = styled.label``;
-// export const Input = styled.input`
-//   position: absolute;
-//   opacity: 0;
-//   width: 0px;
-//   height: 0px;
-//   appearance: none;
-// `;
+  ${ToggleInputChecked}:checked + & {
+    background-color: var(--btn-color);
+  }
 
-// export const input:checked + circle `
-// background-color: var(--background-color);
-// `;
+  ${ToggleInputChecked}:checked + &:before {
+    transform: translateX(26px);
+  }
+`;

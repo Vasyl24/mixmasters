@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../Logo/Logo';
+import Logo from '../Footer/LogoFooter/LogoFooter';
 import SocialLinks from './SocialLinks/SocialLinks';
 import { Nav } from './Nav/Nav';
 import EmailSubscription from './EmailSubscription/EmailSubscription';

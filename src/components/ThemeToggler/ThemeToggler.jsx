@@ -1,98 +1,47 @@
-import React from 'react';
-import { ToggleContainer } from './ThemeToggler.styled';
+import React, { useState, useEffect } from 'react';
+import {
+  ToggleContainer,
+  ToggleLabel,
+  ToggleInputChecked,
+  Slider,
+} from './ThemeToggler.styled';
 
-import { Toggle } from 'hellaui';
+const Toggle = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-export default function ThemeToggler() {
-  let position = 'right';
-  const setDarkMode = () => {
-    document.querySelector('body').setAttribute('data-theme', 'dark');
-    position = 'right';
-    localStorage.setItem('selectedTheme', 'dark');
-  };
-  const setLightMode = () => {
-    document.querySelector('body').setAttribute('data-theme', 'light');
-    position = 'left';
-    localStorage.setItem('selectedTheme', 'light');
-  };
-  const selectedTheme = localStorage.getItem('selectedTheme');
+  useEffect(() => {
+    const selectedTheme = localStorage.getItem('selectedTheme');
+    if (selectedTheme === 'dark') {
+      setIsDarkMode(true);
+      document.querySelector('body').setAttribute('data-theme', 'dark');
+    } else if (selectedTheme === 'light') {
+      setIsDarkMode(false);
+      document.querySelector('body').setAttribute('data-theme', 'light');
+    } else {
+      setIsDarkMode(false);
+      document.querySelector('body').setAttribute('data-theme', 'light');
+    }
+  }, []);
 
-  if (selectedTheme === 'dark') {
-    setDarkMode();
-  } else {
-    setLightMode();
-  }
-
-  const toggleTheme = e => {
-    if (e.target.checked) setDarkMode();
-    else setLightMode();
+  const toggleTheme = () => {
+    const newTheme = isDarkMode ? 'light' : 'dark';
+    setIsDarkMode(!isDarkMode);
+    document.querySelector('body').setAttribute('data-theme', newTheme);
+    localStorage.setItem('selectedTheme', newTheme);
   };
 
   return (
     <ToggleContainer>
-      <Toggle
-        onChange={toggleTheme}
-        rounding={'circle'}
-        labelPosition={position}
-        defaultChecked={selectedTheme === 'dark'}
-      />
+      <ToggleLabel className="toggle-label">
+        <ToggleInputChecked
+          type="checkbox"
+          checked={isDarkMode}
+          onChange={toggleTheme}
+        />
+        <Slider className="slider" />
+      </ToggleLabel>
     </ToggleContainer>
   );
-}
+};
 
-
-
-
-// ====================================================================================================================
-// import React from 'react';
-// import { Circle, Input, Label, ToggleContainer } from './ThemeToggler.styled';
-// // import { ToggleContainer } from './ThemeToggler.styled';
-// //import { Toggle } from 'hellaui';
-
-// export default function ThemeToggler() {
-//   // const [isChecked, setIsChecked] = useState(false);
-//   // let position = 'right';
-//   const setDarkMode = () => {
-//     document.querySelector('body').setAttribute('data-theme', 'dark');
-//     // position = 'right';
-//     localStorage.setItem('selectedTheme', 'dark');
-//   };
-//   const setLightMode = () => {
-//     document.querySelector('body').setAttribute('data-theme', 'light');
-//     // position = 'left';
-//     localStorage.setItem('selectedTheme', 'light');
-//   };
-//   const selectedTheme = localStorage.getItem('selectedTheme');
-
-//   if (selectedTheme === 'dark') {
-//     setDarkMode();
-//   } else {
-//     setLightMode();
-//   }
-
-//   // const toggleTheme = e => {
-//   //   if (e.target.checked) setDarkMode();
-//   //   else setLightMode();
-//   // };
-
-//   return (
-//     <ToggleContainer>
-//       <Label>
-//         <Input type={'checkbox'} id="checkbox" />
-//       </Label>
-//       <Circle />
-//     </ToggleContainer>
-//   );
-// }
-
-// import { useState, useLayoutEffect } from "react";
-
-// export const useTheme = () => {
-//     const [theme, setTheme] = useState('light');
-
-//     useLayoutEffect(() => {
-//         return document.documentElement.setAttribute['data-theme']
-//     }, [theme])
-
-//     return { theme, setTheme }
-// }
+export default Toggle;
