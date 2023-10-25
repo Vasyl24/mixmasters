@@ -22,6 +22,7 @@ export const ContainerLayout = styled.div`
       rgba(10, 10, 17, 0)
     ),
     url(${welcomemd1x});
+  background-color: #0a0a11;
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -96,7 +97,7 @@ export const LoginContainer = styled.form`
 `;
 
 export const Title = styled.h1`
-  color: var(--text-btn-color);
+  color: #f3f3f3;
   font-size: 28px;
   font-weight: 600;
   line-height: 1.15;
@@ -121,10 +122,11 @@ export const StyledInput = styled.input`
   background-color: transparent;
   padding-left: 24px;
   margin-bottom: 14px;
-  color: var(--text-btn-color);
+  color: #f3f3f3;
 
   &::placeholder {
-    color: var(--text-btn-color);
+    color: #f3f3f3;
+    opacity: 50%;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.3;
@@ -160,7 +162,7 @@ export const ErrorMessage = styled.div`
   top: -10px;
   transform: translateY(-50%);
 
-  color: var(--error-state-color);
+  color: #da1414;
   font-size: 12px;
 `;
 
@@ -174,7 +176,7 @@ export const ValidMessage = styled.div`
   top: -10px;
   transform: translateY(-50%);
 
-  color: var(--correct-state-color);
+  color: #3cbc81;
   font-size: 12px;
 `;
 
@@ -188,9 +190,9 @@ export const StyledBtn = styled.button`
 
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
-  background: var(--text-btn-color);
+  background: #f3f3f3;
 
-  color: var(--accent-color);
+  color: #161f37;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -202,8 +204,8 @@ export const StyledBtn = styled.button`
 
   &focus,
   &:hover {
-    background: var(--hover-btn-color);
-    color: var(--text-btn-color);
+    background: #161f37;
+    color: #f3f3f3;
   }
 
   &:disabled {
@@ -223,6 +225,8 @@ export const StyledLink = styled(NavLink)`
   line-height: 1.3;
   text-decoration-line: underline;
   padding-top: 14px;
+  color: #f3f3f3;
+  cursor: pointer;
 
   @media (min-width: 768px) {
     font-size: 14px;

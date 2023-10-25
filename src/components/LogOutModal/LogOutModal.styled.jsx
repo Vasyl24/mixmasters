@@ -2,7 +2,7 @@ import styled from 'styled-components';
 export const ModalStyles = {
   borderRadius: '8px',
   padding: '50px',
-  backgroundColor: 'var(--accent-color)',
+  backgroundColor: 'var(--btn-background-color)',
 };
 export const BackdropStyles = {
   backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -15,6 +15,7 @@ export const Text = styled.p`
   font-weight: 500;
   line-height: 1.3;
   letter-spacing: -0.28px;
+  color: #f3f3f3;
   @media screen and (min-width: 768px) {
     margin-bottom: 37px;
     font-size: 18px;
@@ -42,8 +43,6 @@ export const Icon = styled.svg`
   @media screen and (min-width: 768px) {
     width: 32px;
     height: 32px;
-  }
-  @media screen and (min-width: 1440px) {
   }
 `;
 export const StyledCancelBtn = styled.button`

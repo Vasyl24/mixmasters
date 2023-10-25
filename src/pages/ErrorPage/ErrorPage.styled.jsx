@@ -32,7 +32,7 @@ export const NotFoundImgStyled = styled.img`
 `;
 
 export const NotFoundTextStyled = styled.span`
-  color: rgba(243, 243, 243, 0.1);
+  color: var(--error-text-color);
   font-size: 120px;
   font-weight: 600;
   line-height: calc(123 / 120);

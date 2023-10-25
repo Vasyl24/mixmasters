@@ -33,10 +33,10 @@ export const IngredientsContainer = styled.ul`
 `;
 
 export const IngredientItem = styled.li`
-  width:157px;
+  width: 157px;
 
   @media screen and (min-width: 768px) {
-    width:220px;
+    width: 220px;
   }
   @media screen and (min-width: 1440px) {
   }
@@ -60,8 +60,8 @@ export const ContainerImage = styled.div`
 `;
 
 export const Image = styled.div`
-/* padding: 22px 23px 23px 22px; */
-/* background-color: rgba(22, 31, 55, 0.5); */
+  /* padding: 22px 23px 23px 22px; */
+  /* background-color: rgba(22, 31, 55, 0.5); */
   background-image: ${props => `url(${props.img})`};
   /* border-radius: 8px; */
   /* margin-bottom: 8px; */
@@ -100,14 +100,13 @@ export const IngredientName = styled.p`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
-  color: #f3f3f3;
+  color: var(--text-color);
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 1.33;
   }
   @media screen and (min-width: 1440px) {
-   
   }
 `;
 
@@ -115,7 +114,7 @@ export const IngredientAmount = styled.p`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
-  color: rgba(243, 243, 243, 0.5);
+  color: var(--list-text-color);
 
   @media screen and (min-width: 768px) {
     font-size: 16px;

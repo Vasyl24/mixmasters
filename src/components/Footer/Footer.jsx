@@ -1,6 +1,5 @@
 import React from 'react';
 import Logo from '../Footer/LogoFooter/LogoFooter';
-import SocialLinks from './SocialLinks/SocialLinks';
 import { Nav } from './Nav/Nav';
 import EmailSubscription from './EmailSubscription/EmailSubscription';
 import {
@@ -17,6 +16,7 @@ import {
   FooterThirdBall,
   LogoContainer,
 } from './Footer.styled';
+import FooterSocialLinks from './FooterSocialLinks/FooterSocialLinks';
 
 function Footer() {
   return (
@@ -28,7 +28,7 @@ function Footer() {
               <LogoContainer>
                 <Logo />
               </LogoContainer>
-              <SocialLinks />
+              <FooterSocialLinks />
             </div>
             <Nav />
           </FooterGroup>

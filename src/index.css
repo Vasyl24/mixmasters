@@ -32,6 +32,7 @@
     --image-wrapper-color: #161f37;
     --list-text-color: rgba(243, 243, 243, 0.4);
     --border-icon-color: rgba(243, 243, 243, 0.2);
+    --error-text-color: rgba(243, 243, 243, 0.1);
   }
 
   [data-theme='light'] {
@@ -52,7 +53,8 @@
     --image-wrapper-color: #161f37;
     --accent-text-color: #060609a6;
     --list-text-color: rgba(10, 10, 17, 0.4);
-    --border-icon-color: rgba(22, 31, 55, 0.20);
+    --border-icon-color: rgba(22, 31, 55, 0.2);
+    --error-text-color: rgba(64, 112, 205, 0.1);
   }
 }
 
