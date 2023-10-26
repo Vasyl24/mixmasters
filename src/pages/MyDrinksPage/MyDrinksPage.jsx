@@ -19,7 +19,6 @@ import { toast } from 'react-hot-toast';
 import defaultImg from '../../assets/blue-iced-tea.png';
 import { PageTitle } from 'components/PageTitle/PageTitle';
 import MyPaginator from 'components/MyPaginator/MyPaginator';
-import Loader from 'components/Loader/Loader';
 
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
@@ -68,9 +67,7 @@ const MyDrinksPage = () => {
   const indexOfFirstDrink = indexOfLastDrink - drinksPerPage;
   const currentDrinks = drinks.slice(indexOfFirstDrink, indexOfLastDrink);
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <StyledPageContainer>
       <PageTitle title={'My drinks'} />
       {error &&

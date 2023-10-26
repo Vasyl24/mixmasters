@@ -6,8 +6,6 @@ import { RecipePreparation } from 'components/RecipePreparation/RecipePreparatio
 import { useDispatch } from 'react-redux';
 import { getDrinkById } from 'redux/drinks/drinksOperations';
 import toast from 'react-hot-toast';
-import Loader from 'components/Loader/Loader';
-
 
 const DrinkPage = () => {
   const [drinkInfo, setDrinkInfo] = useState({});
@@ -36,7 +34,6 @@ const DrinkPage = () => {
 
   return (
     <div>
-      {isLoading && <Loader/>}
       {!isLoading && drinkInfo.drink && (
         <>
           <DrinkPageHero drinkInfo={drinkInfo} />
