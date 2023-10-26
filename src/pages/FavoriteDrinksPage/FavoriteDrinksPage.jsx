@@ -70,9 +70,7 @@ const FavoriteDrinksPage = () => {
   const indexOfFirstDrink = indexOfLastDrink - drinksPerPage;
   const currentDrinks = drinks.slice(indexOfFirstDrink, indexOfLastDrink);
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <StyledPageContainer>
       <PageTitle title={'Favorites'} />
       {isLoading && <Loader />}

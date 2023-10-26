@@ -13,13 +13,16 @@ const SharedLayout = () => {
   return (
     <Background>
       <Wrap>
-        {isLoggedIn && <Header />}
         {isLoggedIn ? (
-          <Main>
+          <>
             <Suspense fallback={<Loader />}>
-              <Outlet />
+              <Header />
+              <Main>
+                <Outlet />
+              </Main>
+              <Footer />
             </Suspense>
-          </Main>
+          </>
         ) : (
           <WelcomeMain>
             <Suspense fallback={<Loader />}>
@@ -27,7 +30,6 @@ const SharedLayout = () => {
             </Suspense>
           </WelcomeMain>
         )}
-        {isLoggedIn && <Footer />}
       </Wrap>
     </Background>
   );

@@ -94,7 +94,7 @@ export const StyledField = styled(Field)`
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
   background-color: transparent;
-  color: var(--text-btn-color);
+  color: #f3f3f3;
   font-size: 14px;
   line-height: 1.28;
   @media screen and (min-width: 768px) {
@@ -121,9 +121,9 @@ export const StyledBtn = styled.button`
   width: 285px;
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
-  background-color: var(--text-btn-color);
+  background-color: #f3f3f3;
   padding: 18px 0px;
-  color: var(--accent-color);
+  color: #434d67;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.28;
@@ -137,7 +137,7 @@ export const StyledBtn = styled.button`
   }
 
   &:hover {
-    background: var(--hover-btn-color);
-    color: var(--text-btn-color);
+    background: #161f37;
+    color: #f3f3f3;
   }
 `;
